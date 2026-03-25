@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { DataLoader } from './components/DataLoader';
 import { Cartel } from './components/Cartel';
+import ReglasPrefijo from "./components/ReglasPrefijo";
+
+<ReglasPrefijo />
 
 function App() {
   const [productos, setProductos] = useState([]);

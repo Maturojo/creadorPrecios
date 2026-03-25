@@ -1,25 +1,17 @@
 const mongoose = require("mongoose");
 
-const productoSchema = new mongoose.Schema(
+const reglaPrefijoSchema = new mongoose.Schema(
   {
-    codigo: {
+    prefijo: {
       type: String,
       required: true,
+      unique: true,
+      uppercase: true,
       trim: true,
-    },
-    nombre: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    precio: {
-      type: Number,
-      required: true,
-      default: 0,
     },
     familia: {
       type: String,
-      default: "SIN CLASIFICAR",
+      required: true,
       trim: true,
     },
     subfamilia: {
@@ -27,9 +19,10 @@ const productoSchema = new mongoose.Schema(
       default: "",
       trim: true,
     },
-    gruposCarteleria: {
-      type: [String],
-      default: [],
+    descripcion: {
+      type: String,
+      default: "",
+      trim: true,
     },
     activo: {
       type: Boolean,
@@ -39,4 +32,4 @@ const productoSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Producto", productoSchema);
+module.exports = mongoose.model("ReglaPrefijo", reglaPrefijoSchema);
