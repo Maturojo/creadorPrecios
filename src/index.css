@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+    padding: 0;
+  }
+  /* Ajusta el salto de página para que no corte carteles */
+  .cartel-container {
+    break-inside: avoid;
+  }
+}
+
+/* Para que en pantalla se vea gris y en papel blanco */
+body {
+  background-color: #f3f4f6;
+}
+
+@media print {
+  /* Elimina márgenes extra de la página */
+  @page {
+    margin: 0.5cm;
+  }
+
+  /* Asegura que el fondo blanco se mantenga y no imprima grises */
+  body {
+    background-color: white !important;
+  }
+
+  /* Evita que un cartel empiece en una hoja y termine en otra */
+  .cartel-container {
+    break-inside: avoid;
+  }
+
+  /* Oculta el encabezado y pie de página que pone el navegador (URL, fecha) */
+  header, .no-print {
+    display: none !important;
+  }
+}
