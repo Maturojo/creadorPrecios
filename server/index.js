@@ -1,192 +1,44 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const path = require("path");
-require("dotenv").config({ path: path.join(__dirname, ".env") });
 
-const Producto = require("./models/Producto");
-const reglasPrefijoRoutes = require("./routes/reglasPrefijo");
-const clasificarProducto = require("./utils/clasificarProducto");
+const productosRoutes = require("./routes/productos");
 
 const app = express();
 
-app.use(cors());
-app.use(express.json({ limit: "50mb" }));
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 
-// Rutas de reglas de prefijo
-app.use("/api/reglas-prefijo", reglasPrefijoRoutes);
+app.use(express.json({ limit: "25mb" }));
+app.use(express.urlencoded({ extended: true, limit: "25mb" }));
 
-// Ruta de prueba
-app.get("/", (req, res) => {
-  res.send("Servidor funcionando");
+app.get("/api/health", (req, res) => {
+  res.json({ ok: true });
 });
 
-// Obtener todos los productos
-app.get("/api/productos", async (req, res) => {
-  try {
-    const productos = await Producto.find().sort({ nombre: 1 });
-    res.json(productos);
-  } catch (error) {
-    console.error("Error al obtener productos:", error);
-    res.status(500).json({ error: error.message });
-  }
-});
+app.use("/api/productos", productosRoutes);
 
-// Obtener familias únicas
-app.get("/api/familias", async (req, res) => {
-  try {
-    const familias = await Producto.distinct("familia");
-    res.json(familias.sort());
-  } catch (error) {
-    console.error("Error al obtener familias:", error);
-    res.status(500).json({ error: error.message });
-  }
-});
+const PORT = 4000;
+const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI;
 
-// Carga masiva de productos
-app.post("/api/productos/bulk", async (req, res) => {
-  const { tipo, datos } = req.body;
-
-  try {
-    if (!Array.isArray(datos)) {
-      return res.status(400).json({ error: "El campo 'datos' debe ser un array" });
-    }
-
-    // Si es carga total, borra lo anterior
-    if (tipo === "total") {
-      await Producto.deleteMany({});
-    }
-
-    const productosPreparados = [];
-
-    for (const item of datos) {
-      const codigo = String(item.codigo || item.barras || "").trim();
-      const nombre = String(item.nombre || "").trim();
-
-      const precioRaw = String(item.precio ?? "0").trim().replace(",", ".");
-      const precio = Number(precioRaw);
-
-      const clasificacion = await clasificarProducto(codigo);
-
-      productosPreparados.push({
-        codigo,
-        nombre,
-        precio: Number.isFinite(precio) ? precio : 0,
-        familia: clasificacion.familia,
-        subfamilia: clasificacion.subfamilia,
-        activo: true,
-      });
-    }
-
-    const guardados = await Producto.insertMany(productosPreparados);
-
-    console.log(`Se guardaron ${guardados.length} productos en Atlas`);
-
-    res.json({
-      success: true,
-      count: guardados.length,
-    });
-  } catch (error) {
-    console.error("Error al guardar productos:", error);
-    res.status(500).json({ error: error.message });
-  }
-});
-
-// Actualizar/agregar productos sin borrar todo
-app.post("/api/productos/actualizar", async (req, res) => {
-  const { datos } = req.body;
-
-  try {
-    if (!Array.isArray(datos)) {
-      return res.status(400).json({ error: "El campo 'datos' debe ser un array" });
-    }
-
-    let actualizados = 0;
-    let creados = 0;
-
-    for (const item of datos) {
-      const codigo = String(item.codigo || item.barras || "").trim();
-      const nombre = String(item.nombre || "").trim();
-
-      const precioRaw = String(item.precio ?? "0").trim().replace(",", ".");
-      const precio = Number(precioRaw);
-
-      if (!codigo || !nombre) continue;
-
-      const clasificacion = await clasificarProducto(codigo);
-
-      const existente = await Producto.findOne({ codigo });
-
-      if (existente) {
-        existente.nombre = nombre;
-        existente.precio = Number.isFinite(precio) ? precio : 0;
-        existente.familia = clasificacion.familia;
-        existente.subfamilia = clasificacion.subfamilia;
-        existente.activo = true;
-        await existente.save();
-        actualizados++;
-      } else {
-        await Producto.create({
-          codigo,
-          nombre,
-          precio: Number.isFinite(precio) ? precio : 0,
-          familia: clasificacion.familia,
-          subfamilia: clasificacion.subfamilia,
-          activo: true,
-        });
-        creados++;
-      }
-    }
-
-    res.json({
-      success: true,
-      actualizados,
-      creados,
-    });
-  } catch (error) {
-    console.error("Error al actualizar/agregar productos:", error);
-    res.status(500).json({ error: error.message });
-  }
-});
-
-app.get("/api/debug-prefijo/:prefijo", async (req, res) => {
-  try {
-    const prefijo = String(req.params.prefijo || "").toUpperCase().trim();
-
-    const productos = await Producto.find({
-      codigo: { $regex: `^${prefijo}`, $options: "i" }
-    }).select("codigo nombre familia");
-
-    res.json({
-      prefijo,
-      cantidad: productos.length,
-      productos,
-    });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-console.log("Intentando conectar a:", process.env.MONGO_URI);
-
-const uri = process.env.MONGO_URI;
-
-if (!uri) {
-  console.error("❌ ERROR: No se encontró la variable MONGO_URI en el archivo .env");
-  process.exit(1);
+if (!mongoUri) {
+  throw new Error("Falta MONGODB_URI o MONGO_URI en .env");
 }
 
 mongoose
-  .connect(uri)
+  .connect(mongoUri)
   .then(() => {
-    console.log("✅ Conectado a MongoDB Atlas");
-
-    const PORT = process.env.PORT || 3001;
-
+    console.log("✅ Mongo conectado");
     app.listen(PORT, () => {
-      console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+      console.log(`🚀 Servidor en puerto ${PORT}`);
     });
   })
-  .catch((err) => {
-    console.error("❌ Error de conexión:", err);
+  .catch((error) => {
+    console.error("❌ Error conectando Mongo:", error);
   });

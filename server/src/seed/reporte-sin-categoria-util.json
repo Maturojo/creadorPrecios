@@ -1,0 +1,1622 @@
+[
+  {
+    "sku": "BAN180",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BAN120",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "MPCF3080C",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "MPCF40100C",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "MPCF4080C",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BBP2030",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BBP3030",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BBP2020",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BBG",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BBM",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BBC",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BP100",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BP60",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BP80",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BI80",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BI70",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BI60",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BI50",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BI40",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BI30",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "MRV60",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "MRV80",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "EJF80",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "EJF60",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "EJF40",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P2",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P3",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P4",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P5",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P6",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "EJP80",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "EJP60",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "EJP40",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PERFE60",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PERFE80",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PERFE100",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "ETMB40",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "ETMB60",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "ETMB80",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "M10",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "M15",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "M20",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "M25",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "M30",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PPCH",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PN10",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PN15",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PM30",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PM40",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PM50",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PM60",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PM70",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "RHP",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "RHPC",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "R1740",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "R1760",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "R1780",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "E4MB30",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "VMC",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "VMG",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CAJ2",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CAJ3",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CAJ4",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CAJ6",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PIZC",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PIZG",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "REEG",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "RE",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "RE60",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CA",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CAXL",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "ER60",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "ER80",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CANDYM",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CANDYG",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CANDYC",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "MARG",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "MARC",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "MPG",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "MPCH",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CAN2",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CAN3",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CAN4",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CAN6",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CIR10",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CIR15",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CIR20",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CIR25",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CIR30",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CIR35",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CIR40",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CIR45",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CIR50",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CIR55",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "ESR7",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "ESR10",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "ESR15",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "ESR20",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "ESR25",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "ESR30",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "ESR35",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "ESR40",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR510",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "A307",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BMB",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BCB",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BGB",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CL7",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CL10",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CL15",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CL20",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CL25",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CL30",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CL35",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CL55",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CL50",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CL45",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CL40",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CL60",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CL8",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CL9",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PMDF31",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PMDF32",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PMDF51",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PMDF52",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PMDF91",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PMDF92",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PMDF121",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PMDF122",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PMDF151",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PMDF152",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PMDF181",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PMDF182",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PFB31",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PFB32",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PFN31",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PFN32",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "POSB1",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "POSB2",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PTB151",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PTB152",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PTB181",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PTB182",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PTB211",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PTB212",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PTB301",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PTB302",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR513",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR515",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR520",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR525",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR530",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR535",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR527",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR523",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR540",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR550",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR517",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR310",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR313",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR315",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR320",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR325",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR330",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR335",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR343",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AR340",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "A306",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "A308",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BB70",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BB60",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BB50",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BB40",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BB80",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BB30",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "MR60",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "MR80",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BPG",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BPC",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BB2020",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BB2030",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BB2535",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BB3040",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CP2020",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CP2030",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CP2040",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CP3030",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CP4040",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "EV120",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "EV80",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "F10155",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "F15205",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "F202010",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "F20207",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "F202510",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "F20257",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "F203010",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "F20307",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "ORG1",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "ORG2",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "ORG3",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "ORG4",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "TORNE20",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "TORNE25",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "TORNE30",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PIZSC",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "PIZSM",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "TE49",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "TE29",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "TE69",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "TE99",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "TVF2",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "TVF4",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "TVF6",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "TVF9",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "TVF12",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "TEV4",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "TEV6",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "TEV12",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P10155",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P102010",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P151510",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P15155",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P15157",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P15205",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P15207",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P202010",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P20205",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P20207",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P202510",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P20255",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P20257",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P203010",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "P20307",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "OC",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "OM",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "OG",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "C6",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "C7",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "C15",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "C20",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "C25",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "C30",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "C10",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "Z1010",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "Z1015",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "Z1515",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "Z1520",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "Z2020",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "Z2025",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "Z2030",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "Z2525",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "Z2535",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "Z3030",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "Z305020",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "Z3545",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "Z354520",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CM3030",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CM3040",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CM4040",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CP3040",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BO8",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "B10",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "B13",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "B16",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "B19",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "B23",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "B26",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "B29",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "B35",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "B40",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "B45",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "B60",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AN14",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AN22",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AN33",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AT14",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AT22",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "AT33",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "STN14",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "STN22",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "STN33",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "STT14",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "STT22",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "STT33",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "TERCIA1/2",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "TERCIA1",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "MELA1/2",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "MELA1",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "R17100",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "E4MB60",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF1515",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF2025",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF2525",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF1530",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF2530",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF3030",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF2050",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF3040",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF4040",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF3050",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF2070",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF3060",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF3070",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF2060",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF2020",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF60",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF80",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF80100",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF50100",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF6090",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF6080",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF5080",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF5070",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF5060",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF4070",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF3090",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF3080",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF5050",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "BF4060",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CAJM4",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CAJM5",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "CAJM6",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  },
+  {
+    "sku": "EN2C",
+    "categoriasRaw": "",
+    "motivo": "sin-categorias"
+  }
+]

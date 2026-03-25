@@ -1,24 +1,39 @@
+const mongoose = require("mongoose");
+
 const ReglaPrefijo = require("../models/ReglaPrefijo");
 
-async function clasificarProducto(codigo) {
+async function clasificarProducto(codigo, productoId = null) {
   const codigoLimpio = String(codigo || "").toUpperCase().trim();
 
   let reglas = await ReglaPrefijo.find({ activo: true });
-
   reglas = reglas.sort((a, b) => b.prefijo.length - a.prefijo.length);
 
-  const regla = reglas.find((r) => codigoLimpio.startsWith(r.prefijo));
+  for (const regla of reglas) {
+    const coincidePrefijo = codigoLimpio.startsWith(
+      String(regla.prefijo || "").toUpperCase().trim()
+    );
 
-  if (!regla) {
-    return {
-      familia: "SIN CLASIFICAR",
-      subfamilia: "",
-    };
+    const incluidoManualmente =
+      productoId &&
+      Array.isArray(regla.productosIncluidos) &&
+      regla.productosIncluidos.some((id) => String(id) === String(productoId));
+
+    const excluidoManualmente =
+      productoId &&
+      Array.isArray(regla.productosExcluidos) &&
+      regla.productosExcluidos.some((id) => String(id) === String(productoId));
+
+    if ((coincidePrefijo || incluidoManualmente) && !excluidoManualmente) {
+      return {
+        familia: regla.familia,
+        subfamilia: regla.subfamilia || "",
+      };
+    }
   }
 
   return {
-    familia: regla.familia,
-    subfamilia: regla.subfamilia || "",
+    familia: "SIN CLASIFICAR",
+    subfamilia: "",
   };
 }
 

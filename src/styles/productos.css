@@ -1,0 +1,141 @@
+.productos-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.productos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.productos-header h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+}
+
+.productos-header p {
+  margin: 0;
+  color: #666;
+}
+
+.btn-imprimir {
+  height: 44px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 10px;
+  background: #111;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.productos-filtros {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.productos-filtros input,
+.productos-filtros select {
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid #d7d7d7;
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+
+.productos-resumen {
+  margin-bottom: 16px;
+  color: #444;
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 16px;
+}
+
+.producto-card {
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+  padding: 16px;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.producto-card.seleccionado {
+  border: 2px solid #111;
+}
+
+.producto-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+}
+
+.producto-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.producto-codigo {
+  font-size: 0.85rem;
+  color: #777;
+  font-weight: 600;
+}
+
+.producto-precio {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.producto-card h3 {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.producto-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.producto-tags span {
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #f3f3f3;
+  color: #555;
+}
+
+.estado {
+  margin-top: 20px;
+  color: #555;
+}
+
+.estado.error {
+  color: #b00020;
+}
+
+@media (max-width: 768px) {
+  .productos-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .productos-filtros {
+    grid-template-columns: 1fr;
+  }
+}

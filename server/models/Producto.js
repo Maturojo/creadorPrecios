@@ -5,7 +5,9 @@ const productoSchema = new mongoose.Schema(
     codigo: {
       type: String,
       required: true,
+      unique: true,
       trim: true,
+      uppercase: true,
     },
     nombre: {
       type: String,
@@ -14,29 +16,27 @@ const productoSchema = new mongoose.Schema(
     },
     precio: {
       type: Number,
-      required: true,
       default: 0,
     },
-    familia: {
-      type: String,
-      default: "SIN CLASIFICAR",
-      trim: true,
-    },
-    subfamilia: {
+    categoria: {
       type: String,
       default: "",
       trim: true,
     },
-    gruposCarteleria: {
-      type: [String],
-      default: [],
+    subcategoria: {
+      type: String,
+      default: "",
+      trim: true,
     },
     activo: {
       type: Boolean,
       default: true,
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
-module.exports = mongoose.model("Producto", productoSchema);
+module.exports =
+  mongoose.models.Producto || mongoose.model("Producto", productoSchema);
