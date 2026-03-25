@@ -1,107 +1,127 @@
-export const Cartel = ({ producto }) => {
-  // Función para redondear y dar formato de moneda
-  const precioFormateado = Math.round(producto.precio).toLocaleString('es-AR');
+function formatearPrecio(valor) {
+  const numero = Number(valor || 0);
+
+  return numero.toLocaleString("es-AR", {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  });
+}
+
+function Cartel({ producto }) {
+  const nombre = producto?.nombre || "SIN NOMBRE";
+  const precio = producto?.precio || 0;
+  const codigo = producto?.codigo || producto?.barras || "";
+  const familia = producto?.familia || "SIN CLASIFICAR";
+  const subfamilia = producto?.subfamilia || "";
 
   return (
-    <div className="cartel-container">
-      {/* Encabezado con la Familia */}
-      <div className="familia-tag">
-        {producto.familia || 'GENERAL'}
+    <div
+      style={{
+        border: "4px solid black",
+        padding: "24px",
+        backgroundColor: "white",
+        minHeight: "390px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        boxSizing: "border-box",
+      }}
+    >
+      <div>
+        <div
+          style={{
+            display: "inline-block",
+            backgroundColor: "black",
+            color: "white",
+            padding: "6px 14px",
+            fontWeight: "bold",
+            fontSize: "22px",
+            marginBottom: "28px",
+            textTransform: "uppercase",
+          }}
+        >
+          {familia}
+        </div>
+
+        {subfamilia ? (
+          <div
+            style={{
+              marginBottom: "14px",
+              fontSize: "18px",
+              fontWeight: "bold",
+              textTransform: "uppercase",
+            }}
+          >
+            {subfamilia}
+          </div>
+        ) : null}
+
+        <div
+          style={{
+            textAlign: "center",
+            fontWeight: "bold",
+            fontSize: "30px",
+            lineHeight: 1.2,
+            textTransform: "uppercase",
+            marginTop: "18px",
+            marginBottom: "48px",
+            minHeight: "80px",
+          }}
+        >
+          {nombre}
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            gap: "10px",
+            marginBottom: "30px",
+          }}
+        >
+          <span
+            style={{
+              fontSize: "40px",
+              fontWeight: "bold",
+              lineHeight: 1,
+              marginTop: "16px",
+            }}
+          >
+            $
+          </span>
+
+          <span
+            style={{
+              fontSize: "96px",
+              fontWeight: "bold",
+              fontStyle: "italic",
+              lineHeight: 0.95,
+            }}
+          >
+            {formatearPrecio(precio)}
+          </span>
+        </div>
       </div>
 
-      {/* Nombre del Producto */}
-      <div className="nombre-producto">
-        {producto.nombre}
+      <div
+        style={{
+          borderTop: "2px solid #ddd",
+          paddingTop: "12px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          fontSize: "16px",
+          fontWeight: "bold",
+          textTransform: "uppercase",
+          gap: "12px",
+        }}
+      >
+        <span>COD: {codigo}</span>
+        <span>EFECTIVO / TRANSFERENCIA</span>
       </div>
-
-      {/* Precio Gigante */}
-      <div className="precio-contenedor">
-        <span className="signo-peso">$</span>
-        <span className="monto">{precioFormateado}</span>
-      </div>
-
-      {/* Pie del cartel */}
-      <div className="pie-cartel">
-        <span className="codigo">COD: {producto.id}</span>
-        <span className="leyenda">EFECTIVO / TRANSFERENCIA</span>
-      </div>
-
-      <style jsx>{`
-        .cartel-container {
-          width: 10cm;
-          height: 7cm;
-          border: 4px solid black;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          padding: 20px;
-          margin: 10px;
-          background-color: white;
-          position: relative;
-          page-break-inside: avoid;
-        }
-
-        .familia-tag {
-          background-color: black;
-          color: white;
-          align-self: flex-start;
-          padding: 2px 10px;
-          font-size: 12px;
-          font-weight: 900;
-          text-transform: uppercase;
-        }
-
-        .nombre-producto {
-          font-size: 26px;
-          font-weight: 900;
-          text-align: center;
-          text-transform: uppercase;
-          line-height: 1.1;
-          margin: 10px 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-grow: 1;
-        }
-
-        .precio-contenedor {
-          text-align: center;
-          margin-bottom: 5px;
-        }
-
-        .signo-peso {
-          font-size: 30px;
-          font-weight: 900;
-          vertical-align: top;
-          margin-right: 4px;
-        }
-
-        .monto {
-          font-size: 80px;
-          font-weight: 950;
-          letter-spacing: -4px;
-          font-style: italic;
-        }
-
-        .pie-cartel {
-          border-top: 2px solid #eee;
-          padding-top: 8px;
-          display: flex;
-          justify-content: space-between;
-          font-family: monospace;
-          font-size: 10px;
-          font-weight: bold;
-          color: #333;
-        }
-
-        @media print {
-          .cartel-container {
-            margin: 0;
-            border: 2px solid black;
-            box-shadow: none;
-          }
-        }
-      `}</style>
     </div>
   );
-};
+}
+
+export default Cartel;
