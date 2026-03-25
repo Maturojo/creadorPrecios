@@ -149,6 +149,24 @@ app.post("/api/productos/actualizar", async (req, res) => {
   }
 });
 
+app.get("/api/debug-prefijo/:prefijo", async (req, res) => {
+  try {
+    const prefijo = String(req.params.prefijo || "").toUpperCase().trim();
+
+    const productos = await Producto.find({
+      codigo: { $regex: `^${prefijo}`, $options: "i" }
+    }).select("codigo nombre familia");
+
+    res.json({
+      prefijo,
+      cantidad: productos.length,
+      productos,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 console.log("Intentando conectar a:", process.env.MONGO_URI);
 
 const uri = process.env.MONGO_URI;

@@ -7,7 +7,7 @@ import ReglasPrefijo from './components/ReglasPrefijo.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ReglasPrefijo />
+    
     <App />
     
   </StrictMode>,

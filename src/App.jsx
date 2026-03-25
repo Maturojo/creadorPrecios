@@ -12,8 +12,6 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  
-
   useEffect(() => {
     cargarTodo();
   }, []);
@@ -152,16 +150,14 @@ function App() {
 
   return (
     <div style={{ padding: "24px" }}>
-      
+      <ReglasPrefijo onReglasChange={cargarTodo} />
 
       <h1>Sur Maderas - Gestor de Precios</h1>
 
       {error ? (
         <p style={{ color: "red" }}>{error}</p>
       ) : (
-        <p>
-          Conectado a MongoDB Atlas | {productos.length} productos
-        </p>
+        <p>Conectado a MongoDB Atlas | {productos.length} productos</p>
       )}
 
       <div style={{ marginBottom: "12px" }}>
