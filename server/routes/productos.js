@@ -7,22 +7,46 @@ router.get("/", async (req, res) => {
   try {
     const { q = "", categoria = "", subcategoria = "" } = req.query;
 
-    const filtro = {};
+    const condiciones = [];
 
     if (q.trim()) {
-      filtro.$or = [
-        { nombre: { $regex: q, $options: "i" } },
-        { codigo: { $regex: q, $options: "i" } },
-      ];
+      condiciones.push({
+        $or: [
+          { nombre: { $regex: q, $options: "i" } },
+          { codigo: { $regex: q, $options: "i" } },
+        ],
+      });
     }
 
     if (categoria.trim()) {
-      filtro.categoria = categoria;
+      if (categoria === "Sin clasificar") {
+        condiciones.push({
+          $or: [
+            { categoria: { $exists: false } },
+            { categoria: null },
+            { categoria: "" },
+          ],
+        });
+      } else {
+        condiciones.push({ categoria });
+      }
     }
 
     if (subcategoria.trim()) {
-      filtro.subcategoria = subcategoria;
+      if (subcategoria === "Sin subcategoría") {
+        condiciones.push({
+          $or: [
+            { subcategoria: { $exists: false } },
+            { subcategoria: null },
+            { subcategoria: "" },
+          ],
+        });
+      } else {
+        condiciones.push({ subcategoria });
+      }
     }
+
+    const filtro = condiciones.length ? { $and: condiciones } : {};
 
     const productos = await Producto.find(filtro).sort({ nombre: 1 }).lean();
 
