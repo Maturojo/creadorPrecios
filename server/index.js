@@ -4,7 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-const productosRoutes = require("./routes/productos");
+const productosRouter = require("./routes/productos");
 
 const app = express();
 
@@ -22,7 +22,7 @@ app.get("/api/health", (req, res) => {
   res.json({ ok: true });
 });
 
-app.use("/api/productos", productosRoutes);
+app.use("/api/productos", productosRouter);
 
 const PORT = 4000;
 const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI;
