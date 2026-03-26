@@ -4,6 +4,16 @@ export function imprimirCarteles(productos) {
     return;
   }
 
+  const MAX_PRODUCTOS_POR_CARTEL = 6;
+
+  const chunkArray = (array, size) => {
+    const resultado = [];
+    for (let i = 0; i < array.length; i += size) {
+      resultado.push(array.slice(i, i + size));
+    }
+    return resultado;
+  };
+
   const agruparProductos = (lista) => {
     const grupos = {};
 
@@ -30,13 +40,22 @@ export function imprimirCarteles(productos) {
     return `$${Number(valor || 0).toLocaleString("es-AR")}`;
   };
 
-  const crearFilas = (items, minFilas = 6) => {
+  const escaparHtml = (texto) => {
+    return String(texto || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  };
+
+  const crearFilas = (items, minFilas = MAX_PRODUCTOS_POR_CARTEL) => {
     let filas = items
       .map(
         (p) => `
           <tr>
-            <td>${p.codigo || ""}</td>
-            <td>${p.nombre || p.descripcion || ""}</td>
+            <td>${escaparHtml(p.codigo)}</td>
+            <td>${escaparHtml(p.nombre || p.descripcion || "")}</td>
             <td>${formatearPrecio(p.precio)}</td>
           </tr>
         `
@@ -58,7 +77,25 @@ export function imprimirCarteles(productos) {
     return filas;
   };
 
-  const grupos = agruparProductos(productos);
+  const gruposBase = agruparProductos(productos);
+
+  const gruposPaginados = gruposBase.flatMap((grupo) => {
+    const itemsOrdenados = [...grupo.items].sort((a, b) => {
+      const nombreA = (a.nombre || a.descripcion || "").trim();
+      const nombreB = (b.nombre || b.descripcion || "").trim();
+      return nombreA.localeCompare(nombreB, "es", { sensitivity: "base" });
+    });
+
+    const bloques = chunkArray(itemsOrdenados, MAX_PRODUCTOS_POR_CARTEL);
+
+    return bloques.map((bloque, index) => ({
+      categoria: grupo.categoria,
+      subcategoria: grupo.subcategoria,
+      items: bloque,
+      numeroCartel: index + 1,
+      totalCarteles: bloques.length,
+    }));
+  });
 
   const html = `
     <html>
@@ -74,10 +111,6 @@ export function imprimirCarteles(productos) {
             padding: 0;
             font-family: Arial, sans-serif;
             background: white;
-          }
-
-          body {
-            padding: 0;
           }
 
           .cartel {
@@ -107,6 +140,12 @@ export function imprimirCarteles(productos) {
             font-size: 30px;
             font-weight: 700;
             line-height: 1.1;
+          }
+
+          .cartel-info {
+            margin-top: 12px;
+            font-size: 18px;
+            font-weight: 700;
           }
 
           .cartel-tabla-wrap {
@@ -166,13 +205,18 @@ export function imprimirCarteles(productos) {
         </style>
       </head>
       <body>
-        ${grupos
+        ${gruposPaginados
           .map(
             (grupo) => `
               <section class="cartel">
                 <div class="cartel-header">
-                  <h1 class="subcategoria">${grupo.subcategoria}</h1>
-                  <h2 class="categoria">${grupo.categoria}</h2>
+                  <h1 class="subcategoria">${escaparHtml(grupo.subcategoria)}</h1>
+                  <h2 class="categoria">${escaparHtml(grupo.categoria)}</h2>
+                  ${
+                    grupo.totalCarteles > 1
+                      ? `<div class="cartel-info">Cartel ${grupo.numeroCartel} de ${grupo.totalCarteles}</div>`
+                      : ""
+                  }
                 </div>
 
                 <div class="cartel-tabla-wrap">
@@ -185,7 +229,7 @@ export function imprimirCarteles(productos) {
                       </tr>
                     </thead>
                     <tbody>
-                      ${crearFilas(grupo.items, 6)}
+                      ${crearFilas(grupo.items)}
                     </tbody>
                   </table>
                 </div>

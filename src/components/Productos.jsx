@@ -82,6 +82,26 @@ export default function Productos() {
     return seleccionados.some((p) => p._id === id);
   }
 
+  function seleccionarTodosVisibles() {
+  setSeleccionados((prev) => {
+    const idsPrevios = new Set(prev.map((p) => p._id));
+    const nuevos = productos.filter((p) => !idsPrevios.has(p._id));
+    return [...prev, ...nuevos];
+  });
+}
+
+function deseleccionarTodosVisibles() {
+  const idsVisibles = new Set(productos.map((p) => p._id));
+
+  setSeleccionados((prev) =>
+    prev.filter((p) => !idsVisibles.has(p._id))
+  );
+}
+
+const todosVisiblesSeleccionados =
+  productos.length > 0 &&
+  productos.every((producto) => estaSeleccionado(producto._id));
+
   return (
     <section className="productos-page">
       <div className="productos-header">
@@ -90,12 +110,32 @@ export default function Productos() {
           <p>Ver todos los productos, filtrarlos y generar carteles.</p>
         </div>
 
-        <button
-          className="btn-imprimir"
-          onClick={() => imprimirCarteles(seleccionados)}
-        >
-          Imprimir carteles ({seleccionados.length})
-        </button>
+        <div className="productos-acciones">
+          <button
+            type="button"
+            className="btn-secundario"
+            onClick={seleccionarTodosVisibles}
+            disabled={!productos.length || todosVisiblesSeleccionados}
+          >
+            Seleccionar todos
+          </button>
+
+          <button
+            type="button"
+            className="btn-secundario"
+            onClick={deseleccionarTodosVisibles}
+            disabled={!productos.length}
+          >
+            Deseleccionar todos
+          </button>
+
+          <button
+            className="btn-imprimir"
+            onClick={() => imprimirCarteles(seleccionados)}
+          >
+            Imprimir carteles ({seleccionados.length})
+          </button>
+        </div>
       </div>
 
       <div className="productos-filtros">
