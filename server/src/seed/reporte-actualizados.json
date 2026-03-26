@@ -1,1273 +1,4009 @@
 [
   {
-    "sku": "AC1",
-    "nombre": "ACRILICO 50CC. (TODOS LOS COLORES)",
+    "codigo": "AC1",
+    "precioOriginal": "2312,835",
+    "precioGuardado": 2312,
+    "nombre": "Acrílicos 50cc",
     "categoria": "Artística",
     "subcategoria": "Pinturas"
   },
   {
-    "sku": "PT1",
-    "nombre": "PINTURA A LA TIZA",
+    "codigo": "PT1",
+    "precioOriginal": "6551,16",
+    "precioGuardado": 6551,
+    "nombre": "Pintura a la tiza",
     "categoria": "Artística",
     "subcategoria": "Pinturas"
   },
   {
-    "sku": "PT9",
-    "nombre": "PINTURA A LA TIZA 900CC",
+    "codigo": "PT9",
+    "precioOriginal": "23717,505",
+    "precioGuardado": 23717,
+    "nombre": "Pintura a la tiza 900cc EQ",
     "categoria": "Artística",
     "subcategoria": "Pinturas"
   },
   {
-    "sku": "D3D",
-    "nombre": "DIMENCIONAL 3D",
+    "codigo": "D3D",
+    "precioOriginal": "3630,165",
+    "precioGuardado": 3630,
+    "nombre": "Dimensional 3D EQ",
     "categoria": "Artística",
     "subcategoria": "Pinturas"
   },
   {
-    "sku": "BDI125",
-    "nombre": "BARNIZ Y DILUYENTE X 125 ML",
+    "codigo": "BDI125",
+    "precioOriginal": "5696,67",
+    "precioGuardado": 5696,
+    "nombre": "Barniz al agua EQ",
     "categoria": "Artística",
     "subcategoria": "Pinturas"
   },
   {
-    "sku": "LB1",
-    "nombre": "LACAS BRILLANTES AL AGUA 375CC.",
+    "codigo": "LB1",
+    "precioOriginal": "11920,86",
+    "precioGuardado": 11920,
+    "nombre": "Laca al agua 375cc EQ",
     "categoria": "Artística",
     "subcategoria": "Pinturas"
   },
   {
-    "sku": "PP1",
-    "nombre": "PINTURA PIZARRON",
+    "codigo": "PP1",
+    "precioOriginal": "6635,79",
+    "precioGuardado": 6635,
+    "nombre": "Pintura pizarron EQ",
     "categoria": "Artística",
     "subcategoria": "Pinturas"
   },
   {
-    "sku": "BALAN",
-    "nombre": "BALANCIN EN FIBRO FACIL",
+    "codigo": "BALAN",
+    "precioOriginal": "76484,205",
+    "precioGuardado": 76484,
+    "nombre": "Balancín 90x52x50h",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Juegos didácticos"
   },
   {
-    "sku": "BIM",
-    "nombre": "BIBLIOTECA MONTESSORI",
+    "codigo": "BIM",
+    "precioOriginal": "41394,78",
+    "precioGuardado": 41394,
+    "nombre": "Biblioteca montessori triple 50x37x60h",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Juegos didácticos"
   },
   {
-    "sku": "CACH",
-    "nombre": "CAMION ORDENADOR AUTITOS",
+    "codigo": "CACH",
+    "precioOriginal": "33647,67",
+    "precioGuardado": 33647,
+    "nombre": "Camion organizador de autitos",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Juegos didácticos"
   },
   {
-    "sku": "CB",
-    "nombre": "CUNA BEBE",
+    "codigo": "CB",
+    "precioOriginal": "17614,17",
+    "precioGuardado": 17614,
+    "nombre": "Cuna para bebes",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Juegos didácticos"
   },
   {
-    "sku": "DINO REX",
-    "nombre": "DINOSAURIO REX GRANDE",
+    "codigo": "DINO REX",
+    "precioOriginal": "56458,5",
+    "precioGuardado": 56458,
+    "nombre": "Dinorex puzzle 3D",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Juegos didácticos"
   },
   {
-    "sku": "MATE",
-    "nombre": "JUEGO DE FF. DE MATE",
+    "codigo": "MATE",
+    "precioOriginal": "13838,58",
+    "precioGuardado": 13838,
+    "nombre": "Mate y pava para niños",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Juegos didácticos"
   },
   {
-    "sku": "EQ",
-    "nombre": "EQUILIBRISTA",
+    "codigo": "EQ",
+    "precioOriginal": "977,55",
+    "precioGuardado": 977,
+    "nombre": "Muñecos equilibristas",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Juegos didácticos"
   },
   {
-    "sku": "ROMPEC",
-    "nombre": "ROMPECABEZAS LEON/VELERO/TORTUGA CHICO",
+    "codigo": "ROMPEC",
+    "precioOriginal": "5987,52",
+    "precioGuardado": 5987,
+    "nombre": "Rompecabezas  leon y huevo de dinosaurio",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Juegos didácticos"
   },
   {
-    "sku": "CHANGO",
-    "nombre": "CHANGUITO SUPERMERCADO NIÑOS",
+    "codigo": "CHANGO",
+    "precioOriginal": "44626,68",
+    "precioGuardado": 44626,
+    "nombre": "Carrito super mercado",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Muebles infantiles"
   },
   {
-    "sku": "VAG",
-    "nombre": "VAGON TRENCITO",
+    "codigo": "VAG",
+    "precioOriginal": "2732,1",
+    "precioGuardado": 2732,
+    "nombre": "Trencito y vagones encastrables",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Juegos didácticos"
   },
   {
-    "sku": "MB1",
-    "nombre": "MESA DE COMPUTACION  PARA BARBIE",
+    "codigo": "MB1",
+    "precioOriginal": "7350,315",
+    "precioGuardado": 7350,
+    "nombre": "Mesa de computación para muñecas.",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Casas para muñecas"
   },
   {
-    "sku": "BARBYA",
-    "nombre": "CASA BARBY DE TRES PISOS CON ASCENSOR",
+    "codigo": "BARBYA",
+    "precioOriginal": "122248,35",
+    "precioGuardado": 122248,
+    "nombre": "Casa para muñecas c/ 3 pisos y ascensor 90x30x110h",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Casas para muñecas"
   },
   {
-    "sku": "MPVM",
-    "nombre": "ESTANTERIA PUERTA DE VIDRIO Y MELAM.30X40X120",
+    "codigo": "MPVM",
+    "precioOriginal": "192767,61",
+    "precioGuardado": 192767,
+    "nombre": "Estantería melamina y pino con vidrio 30x40x120h",
     "categoria": "Muebles",
     "subcategoria": "Estanterías"
   },
   {
-    "sku": "ENMP",
-    "nombre": "ESCRITORIO NORDICO MELY PINO 1.20X40X78",
+    "codigo": "ENMP",
+    "precioOriginal": "203627,865",
+    "precioGuardado": 203627,
+    "nombre": "Escritorio nórdico c/ dos cajones 120x40x77h",
     "categoria": "Muebles",
     "subcategoria": "Escritorios y tocadores"
   },
   {
-    "sku": "ENMF",
-    "nombre": "ESCRITORIO NORDICO MELAMINAY FIBRO 55X90",
+    "codigo": "ENMF",
+    "precioOriginal": "147321,93",
+    "precioGuardado": 147321,
+    "nombre": "Escritorio melamina y Fibro fácil",
     "categoria": "Muebles",
     "subcategoria": "Escritorios y tocadores"
   },
   {
-    "sku": "MR4080",
-    "nombre": "MESA RATONA 80CM X 40CM PINO/MELAMINA",
+    "codigo": "MR4080",
+    "precioOriginal": "64072,1235",
+    "precioGuardado": 64072,
+    "nombre": "Mesa ratona recta 80cm x 40cm x 45cm (h)",
     "categoria": "Muebles",
     "subcategoria": "Mesas ratonas"
   },
   {
-    "sku": "MRG",
-    "nombre": "MESA RATONA GOTA EN PINO",
+    "codigo": "MRG",
+    "precioOriginal": "71245,44",
+    "precioGuardado": 71245,
+    "nombre": "Mesa ratona en gota 90cm x 60cm x 45cm (alto)",
     "categoria": "Muebles",
     "subcategoria": "Mesas ratonas"
   },
   {
-    "sku": "MR",
-    "nombre": "MAQUINA DE RELOJ",
+    "codigo": "MR",
+    "precioOriginal": "",
+    "precioGuardado": 4389,
+    "nombre": "Mesa ratona triangular 80cm x 80cm x 45cm (alto)",
     "categoria": "Muebles",
     "subcategoria": "Mesas ratonas"
   },
   {
-    "sku": "CCH",
-    "nombre": "COCINA PARA CHICOS",
+    "codigo": "CCH",
+    "precioOriginal": "38751,93",
+    "precioGuardado": 38751,
+    "nombre": "Cocina para niños 40x35x50(h)",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Muebles infantiles"
   },
   {
-    "sku": "SAC",
-    "nombre": "SILLA DE COMER PARA CHICOS",
+    "codigo": "SAC",
+    "precioOriginal": "44896,425",
+    "precioGuardado": 44896,
+    "nombre": "Silla alta para comer",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Muebles infantiles"
   },
   {
-    "sku": "MCHC",
-    "nombre": "MESITA P/CHICOS C/CAJON Y PIZARRON",
+    "codigo": "MCHC",
+    "precioOriginal": "37617,615",
+    "precioGuardado": 37617,
+    "nombre": "Mesa cuadrada c/ pizarrón y cajón 60x60 x 46 (h)",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Muebles infantiles"
   },
   {
-    "sku": "ECCH",
-    "nombre": "ESCRITORIO C/ ESP. CORONA C/ BANQ.",
+    "codigo": "ECCH",
+    "precioOriginal": "100677,675",
+    "precioGuardado": 100677,
+    "nombre": "Escritorio espejo corona 40x33x110 (h)",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Muebles infantiles"
   },
   {
-    "sku": "BCH",
-    "nombre": "BANQUITO P/ CHICOS   PINO",
+    "codigo": "BCH",
+    "precioOriginal": "26026,665",
+    "precioGuardado": 26026,
+    "nombre": "Banquito de pino para niños 30x30x30h",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Muebles infantiles"
   },
   {
-    "sku": "MCHN",
-    "nombre": "MESA CHICOS NORDICA 70X40 TAPA MELAMINA",
+    "codigo": "MCHN",
+    "precioOriginal": "59802,435",
+    "precioGuardado": 59802,
+    "nombre": "Mesa de niños nordica de melamina 70x40x45 (h)",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Muebles infantiles"
   },
   {
-    "sku": "SCHN",
-    "nombre": "SILLA CHICOS NORDICA 33X33 TAPA MELAMINA",
+    "codigo": "SCHN",
+    "precioOriginal": "35679,945",
+    "precioGuardado": 35679,
+    "nombre": "Silla para niños nórdica de melamina 35x35x35 (h)",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Muebles infantiles"
   },
   {
-    "sku": "SCH1",
-    "nombre": "SILLON PARA CHICOS",
+    "codigo": "SCH1",
+    "precioOriginal": "20386,905",
+    "precioGuardado": 20386,
+    "nombre": "Sillon de niño en pino 40x33x55 (h)",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Muebles infantiles"
   },
   {
-    "sku": "MCH",
-    "nombre": "MESITA PARA CHICOS 60 X 60 X 45 CM.",
+    "codigo": "MCH",
+    "precioOriginal": "23671,725",
+    "precioGuardado": 23671,
+    "nombre": "Mesita para chicos de Fibro Fácil 60x60x46 (h)",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Muebles infantiles"
   },
   {
-    "sku": "MRCH",
-    "nombre": "MESITA PARA CHICOS REDONDA 60 CM.",
+    "codigo": "MRCH",
+    "precioOriginal": "23671,725",
+    "precioGuardado": 23671,
+    "nombre": "Mesa para chicos redonda 60cm x 45 (h)",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Muebles infantiles"
   },
   {
-    "sku": "BP",
-    "nombre": "BANCO DE PLAZA",
+    "codigo": "BP",
+    "precioOriginal": "44864,4",
+    "precioGuardado": 44864,
+    "nombre": "Banco de plaza para niños 80x35x52h",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Muebles infantiles"
   },
   {
-    "sku": "JA",
-    "nombre": "JUGUETERO APILABLE",
+    "codigo": "JA",
+    "precioOriginal": "27440,175",
+    "precioGuardado": 27440,
+    "nombre": "Juguetero apilable",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Muebles infantiles"
   },
   {
-    "sku": "MO",
-    "nombre": "MESA PINO OVAL DE 90 X 60 CM CON BASE EN CRUZ",
+    "codigo": "MO",
+    "precioOriginal": "80153,64",
+    "precioGuardado": 80153,
+    "nombre": "Mesa ratona ovalada 90cm x 60cm x 45cm (h)",
     "categoria": "Muebles",
     "subcategoria": "Mesas ratonas"
   },
   {
-    "sku": "MRM60",
-    "nombre": "MESA RATONA DE 60CM",
+    "codigo": "MRM60",
+    "precioOriginal": "80206,539",
+    "precioGuardado": 80206,
+    "nombre": "Mesa ratona redonda 60cm(ø) x 45cm(h)",
     "categoria": "Muebles",
     "subcategoria": "Mesas ratonas"
   },
   {
-    "sku": "MCB",
-    "nombre": "MESA CUBO NORDICA 80X45 CM",
+    "codigo": "MCB",
+    "precioOriginal": "83920,095",
+    "precioGuardado": 83920,
+    "nombre": "Mesa ratona cubo 80cmx 40cmx 45cm(h)",
     "categoria": "Muebles",
     "subcategoria": "Mesas ratonas"
   },
   {
-    "sku": "MCHCO",
-    "nombre": "MESA PINO NIÑO CONEJO",
+    "codigo": "MCHCO",
+    "precioOriginal": "59665,515",
+    "precioGuardado": 59665,
+    "nombre": "Mesa pino 60cm(ø) x45cm(h)",
     "categoria": "Muebles",
     "subcategoria": "Mesas ratonas"
   },
   {
-    "sku": "A303",
-    "nombre": "ATRIL DE MESA PROFESIONAL",
+    "codigo": "A303",
+    "precioOriginal": "19290,705",
+    "precioGuardado": 19290,
+    "nombre": "Atril de mesa profesional - 45cm x 55cm",
     "categoria": "Artística",
     "subcategoria": "Productos para artistica"
   },
   {
-    "sku": "A300",
-    "nombre": "ATRIL DE PIE GRANDE",
+    "codigo": "A300",
+    "precioOriginal": "42079,905",
+    "precioGuardado": 42079,
+    "nombre": "Atril de pie grande - 60cm x 40cm x 190cm",
     "categoria": "Artística",
     "subcategoria": "Productos para artistica"
   },
   {
-    "sku": "A301",
-    "nombre": "ATRIL DE PIE  MEDIANO",
+    "codigo": "A301",
+    "precioOriginal": "36648,36",
+    "precioGuardado": 36648,
+    "nombre": "Atril de pie mediano - 60cm x 35cm x 140cm",
     "categoria": "Artística",
     "subcategoria": "Productos para artistica"
   },
   {
-    "sku": "BMM",
-    "nombre": "BAJO MESADA MODERNO, CON LAVARROPAS Y TABLA D",
+    "codigo": "BMM",
+    "precioOriginal": "79155,825",
+    "precioGuardado": 79155,
+    "nombre": "Bajo mesada completo para niños - 113 x 35 x 50 (h).",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Muebles infantiles"
   },
   {
-    "sku": "MLN",
-    "nombre": "MESA DE LUZ NORDICA DE PINO CON CAJON",
+    "codigo": "MLN",
+    "precioOriginal": "71045,1",
+    "precioGuardado": 71045,
+    "nombre": "Mesa nordica con un cajon 30x40x60h",
     "categoria": "Muebles",
     "subcategoria": "Mesas de luz"
   },
   {
-    "sku": "BMCH",
-    "nombre": "BAJO MESADA FF. NIÑOS",
+    "codigo": "BMCH",
+    "precioOriginal": "55353,69",
+    "precioGuardado": 55353,
+    "nombre": "Bajo mesada niño 50x35x60 (h)",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Muebles infantiles"
   },
   {
-    "sku": "BAM",
-    "nombre": "BANCO EN PINO Y MELAMINA",
+    "codigo": "BAM",
+    "precioOriginal": "42707,91",
+    "precioGuardado": 42707,
+    "nombre": "Banco en pino y melamina 30x30x45 (h)",
     "categoria": "Muebles",
     "subcategoria": "Bancos y escaleras"
   },
   {
-    "sku": "BE",
-    "nombre": "BANCO ESCALERA REBATIBLE",
+    "codigo": "BE",
+    "precioOriginal": "86961,84",
+    "precioGuardado": 86961,
+    "nombre": "Banco escalera rebatible 40X30X65 (h)",
     "categoria": "Muebles",
     "subcategoria": ""
   },
   {
-    "sku": "BRP80",
-    "nombre": "BANCO RECIBIDOR PINO  30X80X50 ALTO",
+    "codigo": "BAN180",
+    "precioOriginal": "98042,805",
+    "precioGuardado": 98042,
+    "nombre": "Banco quincho - 180cm x 30cm x 50cm",
     "categoria": "Muebles",
     "subcategoria": "Bancos y escaleras"
   },
   {
-    "sku": "BAR",
-    "nombre": "BANQUETA CON RESPALDO",
+    "codigo": "BAN120",
+    "precioOriginal": "83260,905",
+    "precioGuardado": 83260,
+    "nombre": "Banco quincho - 120cm x 30cm x 50cm",
     "categoria": "Muebles",
     "subcategoria": "Bancos y escaleras"
   },
   {
-    "sku": "BA",
-    "nombre": "BANQUETA ALTA RECTA",
+    "codigo": "BRP80",
+    "precioOriginal": "68896,695",
+    "precioGuardado": 68896,
+    "nombre": "Banco recibidor 80 x 30 x 50h",
     "categoria": "Muebles",
     "subcategoria": "Bancos y escaleras"
   },
   {
-    "sku": "BAB",
-    "nombre": "BANQUETA BAJA",
+    "codigo": "MPCF3080C",
+    "precioOriginal": "81809,49",
+    "precioGuardado": 81809,
+    "nombre": "Mesa pata curva FF - 30cm x 80cm",
+    "categoria": "Muebles",
+    "subcategoria": "Mesas y barras"
+  },
+  {
+    "codigo": "MPCF40100C",
+    "precioOriginal": "101185,77",
+    "precioGuardado": 101185,
+    "nombre": "Mesa pata curva FF - 40cm x 100cm",
+    "categoria": "Muebles",
+    "subcategoria": "Mesas y barras"
+  },
+  {
+    "codigo": "MPCF4080C",
+    "precioOriginal": "92574,195",
+    "precioGuardado": 92574,
+    "nombre": "Mesa pata curva FF - 40cm x 80cm",
+    "categoria": "Muebles",
+    "subcategoria": "Mesas y barras"
+  },
+  {
+    "codigo": "BBP2030",
+    "precioOriginal": "5582,745",
+    "precioGuardado": 5582,
+    "nombre": "Bandeja batea pino - 20cm x 30cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Bandejas y tablas"
+  },
+  {
+    "codigo": "BBP3030",
+    "precioOriginal": "6871,095",
+    "precioGuardado": 6871,
+    "nombre": "Bandeja batea pino - 30cm x 30cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Bandejas y tablas"
+  },
+  {
+    "codigo": "BBP2020",
+    "precioOriginal": "4723,845",
+    "precioGuardado": 4723,
+    "nombre": "Bandeja batea pino - 20cm x 20cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Bandejas y tablas"
+  },
+  {
+    "codigo": "BBG",
+    "precioOriginal": "12574,8",
+    "precioGuardado": 12574,
+    "nombre": "Bandeja batea FF - 20cm x 20cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Bandejas y tablas"
+  },
+  {
+    "codigo": "BBM",
+    "precioOriginal": "10059,945",
+    "precioGuardado": 10059,
+    "nombre": "Bandeja batea FF - 20cm x 35cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Bandejas y tablas"
+  },
+  {
+    "codigo": "BBC",
+    "precioOriginal": "7544,88",
+    "precioGuardado": 7544,
+    "nombre": "Bandeja batea FF - 14cm x 14cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Bandejas y tablas"
+  },
+  {
+    "codigo": "BAR",
+    "precioOriginal": "55975,185",
+    "precioGuardado": 55975,
+    "nombre": "Banqueta alta con respaldo 30 x 30 75 (h)",
     "categoria": "Muebles",
     "subcategoria": "Bancos y escaleras"
   },
   {
-    "sku": "BCHF",
-    "nombre": "BANCO NIÑO DE FF CUAD Y RED",
+    "codigo": "BA",
+    "precioOriginal": "45848,145",
+    "precioGuardado": 45848,
+    "nombre": "Banqueta alta recta 30 x 30 x 45 (h)",
+    "categoria": "Muebles",
+    "subcategoria": "Bancos y escaleras"
+  },
+  {
+    "codigo": "BAB",
+    "precioOriginal": "32132,1",
+    "precioGuardado": 32132,
+    "nombre": "Banqueta baja 20cm x 30cm x 40 (h)",
+    "categoria": "Muebles",
+    "subcategoria": "Bancos y escaleras"
+  },
+  {
+    "codigo": "BCHF",
+    "precioOriginal": "14953,785",
+    "precioGuardado": 14953,
+    "nombre": "Banquito FF 30 x 30 x 40 (h)",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Muebles infantiles"
   },
   {
-    "sku": "BAV",
-    "nombre": "BANQUITO VINTAGE",
+    "codigo": "BAV",
+    "precioOriginal": "31403,82",
+    "precioGuardado": 31403,
+    "nombre": "Banco vintage 30ø x 45 (h)",
     "categoria": "Muebles",
     "subcategoria": "Bancos y escaleras"
   },
   {
-    "sku": "MPLEW",
-    "nombre": "MESA PLEGABLE 60X60 CHICA",
+    "codigo": "BP100",
+    "precioOriginal": "79632,315",
+    "precioGuardado": 79632,
+    "nombre": "Banco de plaza para niños 80x35x52h",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "BP60",
+    "precioOriginal": "65048,97",
+    "precioGuardado": 65048,
+    "nombre": "Banco de plaza para niños 80x35x52h",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "BP80",
+    "precioOriginal": "70656,6",
+    "precioGuardado": 70656,
+    "nombre": "Banco de plaza para niños 80x35x52h",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "MPLEW",
+    "precioOriginal": "20223",
+    "precioGuardado": 20223,
+    "nombre": "Mesa plegable chica 60x60",
     "categoria": "Muebles",
     "subcategoria": "Mesas y barras"
   },
   {
-    "sku": "MPLEWG",
-    "nombre": "MESA PLEGABLES GRANDE",
+    "codigo": "MPLEWG",
+    "precioOriginal": "42747,2745",
+    "precioGuardado": 42747,
+    "nombre": "Mesa plegable grande 60x 80x 55h",
     "categoria": "Muebles",
     "subcategoria": "Mesas y barras"
   },
   {
-    "sku": "BIMC",
-    "nombre": "BIBLIOTECA MONTESORI CHICA",
+    "codigo": "BI80",
+    "precioOriginal": "145453,98",
+    "precioGuardado": 145453,
+    "nombre": "Biblioteca alta FF - 80cm x 30cm x183h",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "BI70",
+    "precioOriginal": "132798,225",
+    "precioGuardado": 132798,
+    "nombre": "Biblioteca alta FF - 70cm x 30cm x 183h",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "BI60",
+    "precioOriginal": "120569,085",
+    "precioGuardado": 120569,
+    "nombre": "Biblioteca alta FF - 60cm x 30cm x 183h",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "BI50",
+    "precioOriginal": "108320,835",
+    "precioGuardado": 108320,
+    "nombre": "Biblioteca alta FF - 50cm x 30cm x 183h",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "BI40",
+    "precioOriginal": "96091,695",
+    "precioGuardado": 96091,
+    "nombre": "Biblioteca alta FF - 40cm x 30cm x 183h",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "BI30",
+    "precioOriginal": "84018,165",
+    "precioGuardado": 84018,
+    "nombre": "Biblioteca alta FF - 30cm x 30cm x 183h",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "BIMC",
+    "precioOriginal": "20937,21",
+    "precioGuardado": 20937,
+    "nombre": "Biblioteca Montessori simple - 50x25x40h",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Juegos didácticos"
   },
   {
-    "sku": "BO18",
-    "nombre": "BODEGA 18 BOTELLAS",
+    "codigo": "BO18",
+    "precioOriginal": "87653,685",
+    "precioGuardado": 87653,
+    "nombre": "Bodega 18 botellas - 50x32x80h",
     "categoria": "TODO en accesorios para hogar",
     "subcategoria": "Bodegas"
   },
   {
-    "sku": "MRP100",
-    "nombre": "MESA RECIBIDORA EN PINO 30X100X78 ALTO",
+    "codigo": "MRP100",
+    "precioOriginal": "84206,955",
+    "precioGuardado": 84206,
+    "nombre": "Mesa recibidora 100x30x75h",
     "categoria": "Muebles",
     "subcategoria": "Mesas y barras"
   },
   {
-    "sku": "BO9",
-    "nombre": "BODEGA P/9 BOTELLAS P/COPAS",
+    "codigo": "BO9",
+    "precioOriginal": "78216,075",
+    "precioGuardado": 78216,
+    "nombre": "Bodega 9 botellas con porta copas - 40x32x76h",
     "categoria": "TODO en accesorios para hogar",
     "subcategoria": "Bodegas"
   },
   {
-    "sku": "BO10",
-    "nombre": "BODEGA BARRIL DE 10 BOTELLAS",
+    "codigo": "BO10",
+    "precioOriginal": "55570,725",
+    "precioGuardado": 55570,
+    "nombre": "Bodega barril 10 botellas - 35x30x68h",
     "categoria": "TODO en accesorios para hogar",
     "subcategoria": "Bodegas"
   },
   {
-    "sku": "P",
-    "nombre": "PATA/BOCHA TORNEADA 3\" 10CM",
+    "codigo": "P",
+    "precioOriginal": "",
+    "precioGuardado": 8800,
+    "nombre": "Perchero gancho recto",
     "categoria": "TODO en accesorios para hogar",
     "subcategoria": "Percheros"
   },
   {
-    "sku": "BD",
-    "nombre": "BODEGA MESA P/21 BOT.",
+    "codigo": "BD",
+    "precioOriginal": "151577,265",
+    "precioGuardado": 151577,
+    "nombre": "Bodega mesa 21 botellas - 100x30x76h",
     "categoria": "TODO en accesorios para hogar",
     "subcategoria": "Bodegas"
   },
   {
-    "sku": "BOA",
-    "nombre": "BODEGA APILABLE 3 BOT.",
+    "codigo": "BOA",
+    "precioOriginal": "10974,495",
+    "precioGuardado": 10974,
+    "nombre": "Bodegas Apilable 3 botellas - 40x22x14h",
     "categoria": "TODO en accesorios para hogar",
     "subcategoria": "Bodegas"
   },
   {
-    "sku": "CABE",
-    "nombre": "CABALLETES DE PINO 2 X 1",
+    "codigo": "MRV60",
+    "precioOriginal": "52285,8",
+    "precioGuardado": 52285,
+    "nombre": "Mesa redonda varillada - 35cm x 60cm",
+    "categoria": "Muebles",
+    "subcategoria": "Mesas y barras"
+  },
+  {
+    "codigo": "MRV80",
+    "precioOriginal": "57413,895",
+    "precioGuardado": 57413,
+    "nombre": "Mesa redonda varillada - 35cm x 80cm",
+    "categoria": "Muebles",
+    "subcategoria": "Mesas y barras"
+  },
+  {
+    "codigo": "CABE",
+    "precioOriginal": "25952,85",
+    "precioGuardado": 25952,
+    "nombre": "Caballete de pino 2x1 - 55x50x80h",
     "categoria": "TODO en accesorios para hogar",
     "subcategoria": "Caballetes"
   },
   {
-    "sku": "CFJ",
-    "nombre": "CAJON FRUTA JUGUETES 40X60 SIN RUEDAS",
+    "codigo": "CFJ",
+    "precioOriginal": "37683,45",
+    "precioGuardado": 37683,
+    "nombre": "Cajón juguetero - 60x40x41h",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Muebles infantiles"
   },
   {
-    "sku": "CALEC",
-    "nombre": "CALESITA SOUVENIRS",
+    "codigo": "CALEC",
+    "precioOriginal": "4920,825",
+    "precioGuardado": 4920,
+    "nombre": "Calesita souvenir",
     "categoria": "Candy bar y LASER",
     "subcategoria": "TODO en accesorios para hogar"
   },
   {
-    "sku": "CALEG",
-    "nombre": "CALESITA GRANDE",
+    "codigo": "CALEG",
+    "precioOriginal": "12059,985",
+    "precioGuardado": 12059,
+    "nombre": "Calesita grande - 20cm x 25cm (h)",
     "categoria": "Candy bar y LASER",
     "subcategoria": "TODO en accesorios para hogar"
   },
   {
-    "sku": "PAR",
-    "nombre": "PARRILLA P/CABALLETE",
+    "codigo": "PAR",
+    "precioOriginal": "9639,63",
+    "precioGuardado": 9639,
+    "nombre": "Parrilla para caballete 40x35",
     "categoria": "TODO en accesorios para hogar",
     "subcategoria": "Caballetes"
   },
   {
-    "sku": "ESPHOCO",
-    "nombre": "ESPEJO HOLLYWOOD COMPLETO",
+    "codigo": "ESPHOCO",
+    "precioOriginal": "53368,455",
+    "precioGuardado": 53368,
+    "nombre": "Espejo Hollywood completo 60x30x60h",
     "categoria": "Muebles",
     "subcategoria": ""
   },
   {
-    "sku": "EMB40",
-    "nombre": "ESTANTERIAS MELAMINA ESCALONADA BLANCA 1.15 X",
-    "categoria": "Muebles",
-    "subcategoria": "Estanterías"
-  },
-  {
-    "sku": "FR",
-    "nombre": "FIGURAS CON RUEDAS",
-    "categoria": "TODO PARA INFANTILES",
-    "subcategoria": "Juegos didácticos"
-  },
-  {
-    "sku": "FRM",
-    "nombre": "FIGURA CON RUEDAS MEDIANA",
-    "categoria": "TODO PARA INFANTILES",
-    "subcategoria": "Juegos didácticos"
-  },
-  {
-    "sku": "FRG",
-    "nombre": "FIGURA CON RUEDAS GRANDES",
-    "categoria": "TODO PARA INFANTILES",
-    "subcategoria": "Juegos didácticos"
-  },
-  {
-    "sku": "HCH",
-    "nombre": "HELADERA P/ CHICOS",
-    "categoria": "TODO PARA INFANTILES",
-    "subcategoria": "Muebles infantiles"
-  },
-  {
-    "sku": "HCHP",
-    "nombre": "HELADERA FF.PEQUEÑA",
-    "categoria": "TODO PARA INFANTILES",
-    "subcategoria": "Muebles infantiles"
-  },
-  {
-    "sku": "PP",
-    "nombre": "PERCHERO DE PIE 1,65 ALTURA´",
-    "categoria": "TODO en accesorios para hogar",
-    "subcategoria": "Percheros"
-  },
-  {
-    "sku": "MEM",
-    "nombre": "ESTANTERIA MACETERO ESCALONADO DE MELAMINA",
-    "categoria": "Muebles",
-    "subcategoria": "Estanterías"
-  },
-  {
-    "sku": "MLNM",
-    "nombre": "MESA DE LUZ NORDICA MELAMINA",
-    "categoria": "Muebles",
-    "subcategoria": "Mesas de luz"
-  },
-  {
-    "sku": "MB40100",
-    "nombre": "MESA BARRA 40X100",
-    "categoria": "Muebles",
-    "subcategoria": "Mesas y barras"
-  },
-  {
-    "sku": "MCM",
-    "nombre": "MESA COMEDOR MELAMINA1.20 X 0.70 MTS",
-    "categoria": "Muebles",
-    "subcategoria": "Mesas y barras"
-  },
-  {
-    "sku": "MLN2",
-    "nombre": "MESA DE LUZ NORDICA CON 2 CAJONES (PINO)",
-    "categoria": "Muebles",
-    "subcategoria": "Mesas de luz"
-  },
-  {
-    "sku": "PN",
-    "nombre": "PORTA NEETBOOK",
-    "categoria": "TODO en accesorios para hogar",
-    "subcategoria": "Percheros"
-  },
-  {
-    "sku": "MLCFC",
-    "nombre": "MESA LUZ PATA CURVA FIBRO C/CAJON 30X50",
-    "categoria": "Muebles",
-    "subcategoria": "Mesas de luz"
-  },
-  {
-    "sku": "ML",
-    "nombre": "MESA LUZ DE PINO C/ CAJON Y ESTANTE",
-    "categoria": "Muebles",
-    "subcategoria": "Mesas de luz"
-  },
-  {
-    "sku": "CFP2",
-    "nombre": "CAJON Y ESTANTE FLOTANTE  PINO",
-    "categoria": "Muebles",
-    "subcategoria": "Mesas de luz"
-  },
-  {
-    "sku": "PPG",
-    "nombre": "PERCHERO DE PIE C/G. EN EL MEDIO",
-    "categoria": "TODO en accesorios para hogar",
-    "subcategoria": "Percheros"
-  },
-  {
-    "sku": "PJE3",
-    "nombre": "PERCHERO PINO C/ESTANTES 3 GANCHOS",
-    "categoria": "TODO en accesorios para hogar",
-    "subcategoria": "Percheros"
-  },
-  {
-    "sku": "PRED",
-    "nombre": "PERCHERO RECIBIDOR REDONDO",
-    "categoria": "TODO en accesorios para hogar",
-    "subcategoria": "Percheros"
-  },
-  {
-    "sku": "RM100",
-    "nombre": "REPISA MELAMINA 50X100X20",
-    "categoria": "Muebles",
-    "subcategoria": "Estanterías"
-  },
-  {
-    "sku": "ROMPEG",
-    "nombre": "ROMPECABEZAS LEON/HUEVO GRANDE",
-    "categoria": "TODO PARA INFANTILES",
-    "subcategoria": "Juegos didácticos"
-  },
-  {
-    "sku": "SCHCO",
-    "nombre": "SILLA CONEJO NIÑOS  / MARIPOSA",
-    "categoria": "TODO PARA INFANTILES",
-    "subcategoria": "Muebles infantiles"
-  },
-  {
-    "sku": "SCHM",
-    "nombre": "SILLON DE CHICOS MECEDOR",
-    "categoria": "TODO PARA INFANTILES",
-    "subcategoria": "Muebles infantiles"
-  },
-  {
-    "sku": "TATC",
-    "nombre": "TORRE APILABLE TRIPLE CIRCULAR /CUADRADA/TRIA",
-    "categoria": "TODO PARA INFANTILES",
-    "subcategoria": "Juegos didácticos"
-  },
-  {
-    "sku": "TAM",
-    "nombre": "TORRE APRENDIZAJE MONTESORI",
-    "categoria": "TODO PARA INFANTILES",
-    "subcategoria": "Juegos didácticos"
-  },
-  {
-    "sku": "PCZG",
-    "nombre": "PIE DE CAMA ZAPATERO 120 CM",
-    "categoria": "Muebles",
-    "subcategoria": "Zapateros"
-  },
-  {
-    "sku": "PCZC",
-    "nombre": "PIE DE CAMA ZAPATERO 60CM",
-    "categoria": "Muebles",
-    "subcategoria": "Zapateros"
-  },
-  {
-    "sku": "REE",
-    "nombre": "REPISA EXHIBIDORA ESCALERA",
-    "categoria": "Muebles",
-    "subcategoria": "Estanterías"
-  },
-  {
-    "sku": "PPLE",
-    "nombre": "PUERTA PLEGABLE CUIDA BEBE",
-    "categoria": "TODO PARA INFANTILES",
-    "subcategoria": "Muebles infantiles"
-  },
-  {
-    "sku": "REM",
-    "nombre": "REPISA EXHIBIDORA MINI",
+    "codigo": "EJF80",
+    "precioOriginal": "7817,565",
+    "precioGuardado": 7817,
+    "nombre": "Estante en J FF - 80CM X 10CM X 7CM",
     "categoria": "Muebles",
     "subcategoria": "Repisas"
   },
   {
-    "sku": "BARBYT",
-    "nombre": "CASA BARBY CON TERRAZA",
-    "categoria": "TODO PARA INFANTILES",
-    "subcategoria": "Casas para muñecas"
-  },
-  {
-    "sku": "BARBYP",
-    "nombre": "CASA BARBY PREMIUM",
-    "categoria": "TODO PARA INFANTILES",
-    "subcategoria": "Casas para muñecas"
-  },
-  {
-    "sku": "ERB",
-    "nombre": "ESTANTE REJILLA BRAZOS",
+    "codigo": "EJF60",
+    "precioOriginal": "5863,2",
+    "precioGuardado": 5863,
+    "nombre": "Estante en J FF - 60CM X 10CM X 7CM",
     "categoria": "Muebles",
-    "subcategoria": "Estanterías"
+    "subcategoria": "Repisas"
   },
   {
-    "sku": "BUR",
-    "nombre": "BURRITO",
+    "codigo": "EJF40",
+    "precioOriginal": "3908,73",
+    "precioGuardado": 3908,
+    "nombre": "Estante en J FF - 40CM X 10CM X 7CM",
     "categoria": "Muebles",
-    "subcategoria": "Bancos y escaleras"
+    "subcategoria": "Repisas"
   },
   {
-    "sku": "ESC2",
-    "nombre": "ESCALERITA 2 ESC. FIBRO FACIL",
-    "categoria": "Muebles",
-    "subcategoria": ""
-  },
-  {
-    "sku": "MP",
-    "nombre": "MARTILLO PINO",
-    "categoria": "Muebles",
-    "subcategoria": "Estanterías"
-  },
-  {
-    "sku": "BO5",
-    "nombre": "BODEGA REDONDA 5 BOTELLAS",
+    "codigo": "P2",
+    "precioOriginal": "6918,45",
+    "precioGuardado": 6918,
+    "nombre": "Perchero gancho recto - 30cm x 10cm",
     "categoria": "TODO en accesorios para hogar",
-    "subcategoria": "Bodegas"
+    "subcategoria": "Percheros"
   },
   {
-    "sku": "CAN",
-    "nombre": "CANASTO MIMBRE",
+    "codigo": "P3",
+    "precioOriginal": "9874,725",
+    "precioGuardado": 9874,
+    "nombre": "Perchero gancho recto - 40cm x 10cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Percheros"
+  },
+  {
+    "codigo": "P4",
+    "precioOriginal": "13324,71",
+    "precioGuardado": 13324,
+    "nombre": "Perchero gancho recto - 60cm x 10cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Percheros"
+  },
+  {
+    "codigo": "P5",
+    "precioOriginal": "16612,575",
+    "precioGuardado": 16612,
+    "nombre": "Perchero gancho recto - 75cm x 10cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Percheros"
+  },
+  {
+    "codigo": "P6",
+    "precioOriginal": "19903,905",
+    "precioGuardado": 19903,
+    "nombre": "Perchero gancho recto - 90cm x 10cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Percheros"
+  },
+  {
+    "codigo": "EJP80",
+    "precioOriginal": "14982,135",
+    "precioGuardado": 14982,
+    "nombre": "Estante J pino - 80CM X 10CM X 7CM",
+    "categoria": "Muebles",
+    "subcategoria": "Repisas"
+  },
+  {
+    "codigo": "EJP60",
+    "precioOriginal": "11705,82",
+    "precioGuardado": 11705,
+    "nombre": "Estante J pino - 60CM X 10CM X 7CM",
+    "categoria": "Muebles",
+    "subcategoria": "Repisas"
+  },
+  {
+    "codigo": "EJP40",
+    "precioOriginal": "7803,915",
+    "precioGuardado": 7803,
+    "nombre": "Estante J pino - 40CM X 10CM X 7CM",
+    "categoria": "Muebles",
+    "subcategoria": "Repisas"
+  },
+  {
+    "codigo": "EMB40",
+    "precioOriginal": "79837,38",
+    "precioGuardado": 79837,
+    "nombre": "Estante melamina escalonada - 40x40x110h",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "PERFE60",
+    "precioOriginal": "71778,21",
+    "precioGuardado": 71778,
+    "nombre": "Perchero de feria plegable - 60cm x 120cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Percheros"
+  },
+  {
+    "codigo": "PERFE80",
+    "precioOriginal": "78507,345",
+    "precioGuardado": 78507,
+    "nombre": "Perchero de feria plegable - 80cm x 120cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Percheros"
+  },
+  {
+    "codigo": "PERFE100",
+    "precioOriginal": "82993,47",
+    "precioGuardado": 82993,
+    "nombre": "Perchero de feria plegable - 100cm x 120cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Percheros"
+  },
+  {
+    "codigo": "ETMB40",
+    "precioOriginal": "81641,49",
+    "precioGuardado": 81641,
+    "nombre": "Estantería Triple Melamina - 40cm x 40cm x 100cm",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "ETMB60",
+    "precioOriginal": "94816,26",
+    "precioGuardado": 94816,
+    "nombre": "Estantería Triple Melamina - 60cm x 40cm x 100cm",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "ETMB80",
+    "precioOriginal": "105059,745",
+    "precioGuardado": 105059,
+    "nombre": "Estantería Triple Melamina - 80cm x 40cm x 100cm",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "FR",
+    "precioOriginal": "2097,375",
+    "precioGuardado": 2097,
+    "nombre": "Figura con ruedas chicas",
+    "categoria": "TODO PARA INFANTILES",
+    "subcategoria": "Juegos didácticos"
+  },
+  {
+    "codigo": "FRM",
+    "precioOriginal": "2832,585",
+    "precioGuardado": 2832,
+    "nombre": "Figuras con ruedas mediana",
+    "categoria": "TODO PARA INFANTILES",
+    "subcategoria": "Juegos didácticos"
+  },
+  {
+    "codigo": "FRG",
+    "precioOriginal": "3689,805",
+    "precioGuardado": 3689,
+    "nombre": "Figuras con ruedas grandes",
+    "categoria": "TODO PARA INFANTILES",
+    "subcategoria": "Juegos didácticos"
+  },
+  {
+    "codigo": "HCH",
+    "precioOriginal": "73198,545",
+    "precioGuardado": 73198,
+    "nombre": "Heladera para niños 30 x 30 x 92 (h)",
+    "categoria": "TODO PARA INFANTILES",
+    "subcategoria": "Muebles infantiles"
+  },
+  {
+    "codigo": "HCHP",
+    "precioOriginal": "48711,18",
+    "precioGuardado": 48711,
+    "nombre": "Heladera para niños chica 20 x 30 x 60 (h)",
+    "categoria": "TODO PARA INFANTILES",
+    "subcategoria": "Muebles infantiles"
+  },
+  {
+    "codigo": "PP",
+    "precioOriginal": "",
+    "precioGuardado": 50017.9,
+    "nombre": "Perchero de pie",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Percheros"
+  },
+  {
+    "codigo": "MEM",
+    "precioOriginal": "29715,84",
+    "precioGuardado": 29715,
+    "nombre": "Macetero escalonado de melamina - 25x40x63h",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "M10",
+    "precioOriginal": "4213,23",
+    "precioGuardado": 4213,
+    "nombre": "Ménsula clásica/nórdica - 10cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Mensulas"
+  },
+  {
+    "codigo": "M15",
+    "precioOriginal": "5580,33",
+    "precioGuardado": 5580,
+    "nombre": "Ménsula clásica/nórdica - 15cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Mensulas"
+  },
+  {
+    "codigo": "M20",
+    "precioOriginal": "6291,6",
+    "precioGuardado": 6291,
+    "nombre": "Ménsula clásica/nórdica - 20cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Mensulas"
+  },
+  {
+    "codigo": "M25",
+    "precioOriginal": "7864,5",
+    "precioGuardado": 7864,
+    "nombre": "Ménsula clásica/nórdica - 25cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Mensulas"
+  },
+  {
+    "codigo": "M30",
+    "precioOriginal": "15251,88",
+    "precioGuardado": 15251,
+    "nombre": "Ménsula clásica/nórdica - 30cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Mensulas"
+  },
+  {
+    "codigo": "MLNM",
+    "precioOriginal": "89722,71",
+    "precioGuardado": 89722,
+    "nombre": "Mesa de luz nórdica melamina - 40cm x 30cm x 60h",
+    "categoria": "Muebles",
+    "subcategoria": "Mesas de luz"
+  },
+  {
+    "codigo": "MB40100",
+    "precioOriginal": "180842,655",
+    "precioGuardado": 180842,
+    "nombre": "Mesa barra - 40x100h",
+    "categoria": "Muebles",
+    "subcategoria": "Mesas y barras"
+  },
+  {
+    "codigo": "MCM",
+    "precioOriginal": "178442,25",
+    "precioGuardado": 178442,
+    "nombre": "Mesa comedor melamina 120x80x80h",
+    "categoria": "Muebles",
+    "subcategoria": "Mesas y barras"
+  },
+  {
+    "codigo": "MLN2",
+    "precioOriginal": "83962,305",
+    "precioGuardado": 83962,
+    "nombre": "Mesa de luz nórdica de 2 cajones con estante abajo - 30x40x60h",
+    "categoria": "Muebles",
+    "subcategoria": "Mesas de luz"
+  },
+  {
+    "codigo": "PN",
+    "precioOriginal": "",
+    "precioGuardado": 4357.8,
+    "nombre": "Perchero nórdico",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Percheros"
+  },
+  {
+    "codigo": "MLCFC",
+    "precioOriginal": "78601,53",
+    "precioGuardado": 78601,
+    "nombre": "Mesa de luz pata curva FF - 30x50",
+    "categoria": "Muebles",
+    "subcategoria": "Mesas de luz"
+  },
+  {
+    "codigo": "ML",
+    "precioOriginal": "67382,28",
+    "precioGuardado": 67382,
+    "nombre": "Mesa de luz de pino alta 40 x 30 x 75h",
+    "categoria": "Muebles",
+    "subcategoria": "Mesas de luz"
+  },
+  {
+    "codigo": "CFP2",
+    "precioOriginal": "59668,035",
+    "precioGuardado": 59668,
+    "nombre": "Mesa de pino flotante 40x30x26h",
+    "categoria": "Muebles",
+    "subcategoria": "Mesas de luz"
+  },
+  {
+    "codigo": "PPG",
+    "precioOriginal": "64734,39",
+    "precioGuardado": 64734,
+    "nombre": "Perchero de pie c/ gancho doble - 160cm (alto)",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Percheros"
+  },
+  {
+    "codigo": "PPCH",
+    "precioOriginal": "51715,44",
+    "precioGuardado": 51715,
+    "nombre": "Perchero de pie - 120cm (alto)",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Percheros"
+  },
+  {
+    "codigo": "PJE3",
+    "precioOriginal": "10352,58",
+    "precioGuardado": 10352,
+    "nombre": "Perchero J c/ estantes 3 ganchos - 45cm x 12cm x 9h",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Percheros"
+  },
+  {
+    "codigo": "PN10",
+    "precioOriginal": "39723,327",
+    "precioGuardado": 39723,
+    "nombre": "Perchero nórdico - 45cm x 180cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Percheros"
+  },
+  {
+    "codigo": "PN15",
+    "precioOriginal": "47882,6775",
+    "precioGuardado": 47882,
+    "nombre": "Perchero nórdico - 60cm x 180cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Percheros"
+  },
+  {
+    "codigo": "PRED",
+    "precioOriginal": "18317,46",
+    "precioGuardado": 18317,
+    "nombre": "Perchero recibidor redondo - 20d x 20h",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Percheros"
+  },
+  {
+    "codigo": "PM30",
+    "precioOriginal": "7913,535",
+    "precioGuardado": 7913,
+    "nombre": "Pie de maceta - 30cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Porta macetas"
+  },
+  {
+    "codigo": "PM40",
+    "precioOriginal": "9672,075",
+    "precioGuardado": 9672,
+    "nombre": "Pie de maceta - 40cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Porta macetas"
+  },
+  {
+    "codigo": "PM50",
+    "precioOriginal": "11430,615",
+    "precioGuardado": 11430,
+    "nombre": "Pie de maceta - 50cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Porta macetas"
+  },
+  {
+    "codigo": "PM60",
+    "precioOriginal": "13189,26",
+    "precioGuardado": 13189,
+    "nombre": "Pie de maceta - 60cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Porta macetas"
+  },
+  {
+    "codigo": "PM70",
+    "precioOriginal": "14916,405",
+    "precioGuardado": 14916,
+    "nombre": "Pie de maceta - 70cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Porta macetas"
+  },
+  {
+    "codigo": "RHP",
+    "precioOriginal": "14976,885",
+    "precioGuardado": 14976,
+    "nombre": "Repisa hexagonal - 12cm x 40cm",
+    "categoria": "Muebles",
+    "subcategoria": "Repisas"
+  },
+  {
+    "codigo": "RHPC",
+    "precioOriginal": "13104,735",
+    "precioGuardado": 13104,
+    "nombre": "Repisa hexagonal - 10cm x 35cm",
+    "categoria": "Muebles",
+    "subcategoria": "Repisas"
+  },
+  {
+    "codigo": "R1740",
+    "precioOriginal": "13458,48",
+    "precioGuardado": 13458,
+    "nombre": "Repisas melamina - 40cm x 17cm",
+    "categoria": "Muebles",
+    "subcategoria": "Repisas"
+  },
+  {
+    "codigo": "R1760",
+    "precioOriginal": "15701,49",
+    "precioGuardado": 15701,
+    "nombre": "Repisas melamina - 60cm x 17cm",
+    "categoria": "Muebles",
+    "subcategoria": "Repisas"
+  },
+  {
+    "codigo": "R1780",
+    "precioOriginal": "17976",
+    "precioGuardado": 17976,
+    "nombre": "Repisas melamina - 80cm x 17cm",
+    "categoria": "Muebles",
+    "subcategoria": "Repisas"
+  },
+  {
+    "codigo": "RM100",
+    "precioOriginal": "90922,755",
+    "precioGuardado": 90922,
+    "nombre": "Estantería melamina 50x100x20",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "E4MB30",
+    "precioOriginal": "68645,535",
+    "precioGuardado": 68645,
+    "nombre": "Estante cuadrado de melamina - 30CM X 30CM X 100CM",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "ROMPEG",
+    "precioOriginal": "7366,8",
+    "precioGuardado": 7366,
+    "nombre": "Rompe cabezas Leon/velero/tortuga",
+    "categoria": "TODO PARA INFANTILES",
+    "subcategoria": "Juegos didácticos"
+  },
+  {
+    "codigo": "SCHCO",
+    "precioOriginal": "25693,29",
+    "precioGuardado": 25693,
+    "nombre": "Silla conejo/mariposa 28x45h",
+    "categoria": "TODO PARA INFANTILES",
+    "subcategoria": "Muebles infantiles"
+  },
+  {
+    "codigo": "SCHM",
+    "precioOriginal": "20999,895",
+    "precioGuardado": 20999,
+    "nombre": "Sillón de chicos mecedor 30x60x50h",
+    "categoria": "TODO PARA INFANTILES",
+    "subcategoria": "Muebles infantiles"
+  },
+  {
+    "codigo": "TATC",
+    "precioOriginal": "11786,88",
+    "precioGuardado": 11786,
+    "nombre": "Torre apilable triple",
+    "categoria": "TODO PARA INFANTILES",
+    "subcategoria": "Juegos didácticos"
+  },
+  {
+    "codigo": "TAM",
+    "precioOriginal": "149615,445",
+    "precioGuardado": 149615,
+    "nombre": "Torre de aprendizaje Montessori - 45x50x93h",
+    "categoria": "TODO PARA INFANTILES",
+    "subcategoria": "Juegos didácticos"
+  },
+  {
+    "codigo": "VMC",
+    "precioOriginal": "10834,005",
+    "precioGuardado": 10834,
+    "nombre": "Vuelta al mundo - 30cm x 12cm x 33cm",
+    "categoria": "Candy bar y LASER",
+    "subcategoria": "TODO en accesorios para hogar"
+  },
+  {
+    "codigo": "VMG",
+    "precioOriginal": "17114,58",
+    "precioGuardado": 17114,
+    "nombre": "Vuelta al mundo - 35cm x 12cm x 45cm",
+    "categoria": "Candy bar y LASER",
+    "subcategoria": "TODO en accesorios para hogar"
+  },
+  {
+    "codigo": "PCZG",
+    "precioOriginal": "117498,99",
+    "precioGuardado": 117498,
+    "nombre": "Zapatero pie de cama pino - 120CM",
+    "categoria": "Muebles",
+    "subcategoria": "Zapateros"
+  },
+  {
+    "codigo": "PCZC",
+    "precioOriginal": "56089,11",
+    "precioGuardado": 56089,
+    "nombre": "Zapatero pie de cama pino - 60CM",
+    "categoria": "Muebles",
+    "subcategoria": "Zapateros"
+  },
+  {
+    "codigo": "REE",
+    "precioOriginal": "",
+    "precioGuardado": 53905.5,
+    "nombre": "Repisa exhibidora escalera",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "CAJ2",
+    "precioOriginal": "78507,345",
+    "precioGuardado": 78507,
+    "nombre": "Cajonera - 50x50x15 - 2 cajones",
     "categoria": "Muebles",
     "subcategoria": "Cajoneras"
   },
   {
-    "sku": "S147",
-    "nombre": "PORTA MUFFINS DE TRES PISOS",
-    "categoria": "Candy bar y LASER",
-    "subcategoria": "TODO en accesorios para hogar"
+    "codigo": "CAJ3",
+    "precioOriginal": "100938,075",
+    "precioGuardado": 100938,
+    "nombre": "Cajonera - 50x50x15 - 3 cajones",
+    "categoria": "Muebles",
+    "subcategoria": "Cajoneras"
   },
   {
-    "sku": "PMFF5",
-    "nombre": "PORTA MUFFINS DE FF5 GRANDE",
-    "categoria": "Candy bar y LASER",
-    "subcategoria": "TODO en accesorios para hogar"
+    "codigo": "CAJ4",
+    "precioOriginal": "125611,815",
+    "precioGuardado": 125611,
+    "nombre": "Cajonera - 50x50x15 - 4 cajones",
+    "categoria": "Muebles",
+    "subcategoria": "Cajoneras"
   },
   {
-    "sku": "RER",
-    "nombre": "REPISA ESCALONADA CON RUEDAS",
+    "codigo": "CAJ6",
+    "precioOriginal": "172716,18",
+    "precioGuardado": 172716,
+    "nombre": "Cajonera - 50x50x15 - 6 cajones",
+    "categoria": "Muebles",
+    "subcategoria": "Cajoneras"
+  },
+  {
+    "codigo": "PIZC",
+    "precioOriginal": "38929,905",
+    "precioGuardado": 38929,
+    "nombre": "Pizarrón doble - 50cm x 100cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Pizarras"
+  },
+  {
+    "codigo": "PIZG",
+    "precioOriginal": "54489,645",
+    "precioGuardado": 54489,
+    "nombre": "Pizarrón doble - 60cm x 120cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Pizarras"
+  },
+  {
+    "codigo": "PPLE",
+    "precioOriginal": "111226,29",
+    "precioGuardado": 111226,
+    "nombre": "Puerta plegable cuida bebe - 95 a 130",
+    "categoria": "TODO PARA INFANTILES",
+    "subcategoria": "Muebles infantiles"
+  },
+  {
+    "codigo": "REEG",
+    "precioOriginal": "67292,085",
+    "precioGuardado": 67292,
+    "nombre": "Repisa exhibidora escalera - 40CM X 25CM X 150CM",
     "categoria": "Muebles",
     "subcategoria": "Estanterías"
   },
   {
-    "sku": "BF",
-    "nombre": "BANDEJA 30 X 45  FF9",
+    "codigo": "REM",
+    "precioOriginal": "12234,915",
+    "precioGuardado": 12234,
+    "nombre": "Repisa exhibidora mini - 32cm x 20cm x 40h",
+    "categoria": "Muebles",
+    "subcategoria": "Repisas"
+  },
+  {
+    "codigo": "RE",
+    "precioOriginal": "7817,565",
+    "precioGuardado": 7817,
+    "nombre": "Repisa especiero - 40CM X 11CM X 9CM",
+    "categoria": "Muebles",
+    "subcategoria": "Repisas"
+  },
+  {
+    "codigo": "RE60",
+    "precioOriginal": "11702,46",
+    "precioGuardado": 11702,
+    "nombre": "Repisa especiero - 60CM x11CM x9CM",
+    "categoria": "Muebles",
+    "subcategoria": "Repisas"
+  },
+  {
+    "codigo": "BARBYT",
+    "precioOriginal": "141103,62",
+    "precioGuardado": 141103,
+    "nombre": "Casa barbie con terraza - 90x35x120h",
+    "categoria": "TODO PARA INFANTILES",
+    "subcategoria": "Casas para muñecas"
+  },
+  {
+    "codigo": "BARBYP",
+    "precioOriginal": "51327,57",
+    "precioGuardado": 51327,
+    "nombre": "Casa barbie techo desmontable - 60x30x90h",
+    "categoria": "TODO PARA INFANTILES",
+    "subcategoria": "Casas para muñecas"
+  },
+  {
+    "codigo": "CA",
+    "precioOriginal": "42692,895",
+    "precioGuardado": 42692,
+    "nombre": "Caballito de pino - 50cm x 50cm",
+    "categoria": "TODO PARA INFANTILES",
+    "subcategoria": "Juegos didácticos"
+  },
+  {
+    "codigo": "CAXL",
+    "precioOriginal": "49347,48",
+    "precioGuardado": 49347,
+    "nombre": "Caballito de pino - 70cm x 70cm",
+    "categoria": "TODO PARA INFANTILES",
+    "subcategoria": "Juegos didácticos"
+  },
+  {
+    "codigo": "ER60",
+    "precioOriginal": "80082,135",
+    "precioGuardado": 80082,
+    "nombre": "Estante rejilla pino - 60cm x 30cm x 120cm",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "ER80",
+    "precioOriginal": "93667,56",
+    "precioGuardado": 93667,
+    "nombre": "Estante rejilla pino - 80cm x 30cm x 120cm",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "CANDYM",
+    "precioOriginal": "40711,65",
+    "precioGuardado": 40711,
+    "nombre": "Mesa candy bar FF - 40cm x 100cm",
+    "categoria": "Candy bar y LASER",
+    "subcategoria": "TODO en accesorios para hogar"
+  },
+  {
+    "codigo": "CANDYG",
+    "precioOriginal": "50211,105",
+    "precioGuardado": 50211,
+    "nombre": "Mesa candy bar FF - 40cm x 120cm",
+    "categoria": "Candy bar y LASER",
+    "subcategoria": "TODO en accesorios para hogar"
+  },
+  {
+    "codigo": "CANDYC",
+    "precioOriginal": "31212,3",
+    "precioGuardado": 31212,
+    "nombre": "Mesa candy bar FF - 40cm x 80cm",
+    "categoria": "Candy bar y LASER",
+    "subcategoria": "TODO en accesorios para hogar"
+  },
+  {
+    "codigo": "ERB",
+    "precioOriginal": "80082,135",
+    "precioGuardado": 80082,
+    "nombre": "Estante rejilla brazos - 90x30x120h",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "BUR",
+    "precioOriginal": "54753,72",
+    "precioGuardado": 54753,
+    "nombre": "Burrito escalera",
+    "categoria": "Muebles",
+    "subcategoria": "Bancos y escaleras"
+  },
+  {
+    "codigo": "ESC2",
+    "precioOriginal": "24692,85",
+    "precioGuardado": 24692,
+    "nombre": "Escalera rebatible 30x30x30h",
+    "categoria": "Muebles",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "MP",
+    "precioOriginal": "",
+    "precioGuardado": 658,
+    "nombre": "Macetero pino",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "BO5",
+    "precioOriginal": "59562,3",
+    "precioGuardado": 59562,
+    "nombre": "Bodega redonda 5 botellas - 50cm x 60cm x 60cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Bodegas"
+  },
+  {
+    "codigo": "MARG",
+    "precioOriginal": "5741,4",
+    "precioGuardado": 5741,
+    "nombre": "Marco repisa pino - 30CM X 30CM",
+    "categoria": "Muebles",
+    "subcategoria": "Repisas"
+  },
+  {
+    "codigo": "MARC",
+    "precioOriginal": "4784,535",
+    "precioGuardado": 4784,
+    "nombre": "Marco repisa pino - 20CM X 30CM",
+    "categoria": "Muebles",
+    "subcategoria": "Repisas"
+  },
+  {
+    "codigo": "MPG",
+    "precioOriginal": "85236,585",
+    "precioGuardado": 85236,
+    "nombre": "Macetero pino - 40CM X 30CM X 150CM",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "CAN",
+    "precioOriginal": "",
+    "precioGuardado": 5437.6,
+    "nombre": "Cajonera FF 30x40",
+    "categoria": "Muebles",
+    "subcategoria": "Cajoneras"
+  },
+  {
+    "codigo": "MPCH",
+    "precioOriginal": "78507,345",
+    "precioGuardado": 78507,
+    "nombre": "Macetero pino - 40CM X 30CM X 100CM",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "CAN2",
+    "precioOriginal": "56174,895",
+    "precioGuardado": 56174,
+    "nombre": "Cajonera FF 30x40 - 2 cajones",
+    "categoria": "Muebles",
+    "subcategoria": "Cajoneras"
+  },
+  {
+    "codigo": "CAN3",
+    "precioOriginal": "78644,895",
+    "precioGuardado": 78644,
+    "nombre": "Cajonera FF 30x40 - 3 cajones",
+    "categoria": "Muebles",
+    "subcategoria": "Cajoneras"
+  },
+  {
+    "codigo": "CAN4",
+    "precioOriginal": "101114,895",
+    "precioGuardado": 101114,
+    "nombre": "Cajonera FF 30x40 - 4 cajones",
+    "categoria": "Muebles",
+    "subcategoria": "Cajoneras"
+  },
+  {
+    "codigo": "CAN6",
+    "precioOriginal": "113449,77",
+    "precioGuardado": 113449,
+    "nombre": "Cajonera FF 30x40 - 6 cajones",
+    "categoria": "Muebles",
+    "subcategoria": "Cajoneras"
+  },
+  {
+    "codigo": "S147",
+    "precioOriginal": "11302,2",
+    "precioGuardado": 11302,
+    "nombre": "Porta muffins 3 pisos 35x45h",
+    "categoria": "Candy bar y LASER",
+    "subcategoria": "TODO en accesorios para hogar"
+  },
+  {
+    "codigo": "PMFF5",
+    "precioOriginal": "19587,225",
+    "precioGuardado": 19587,
+    "nombre": "Porta muffins grande",
+    "categoria": "Candy bar y LASER",
+    "subcategoria": "TODO en accesorios para hogar"
+  },
+  {
+    "codigo": "RER",
+    "precioOriginal": "113172,99",
+    "precioGuardado": 113172,
+    "nombre": "Repisa escalonada con ruedas",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "CIR10",
+    "precioOriginal": "552,615",
+    "precioGuardado": 552,
+    "nombre": "Círculos FF5 - 10CM",
     "categoria": "Artística",
     "subcategoria": "Productos para artistica"
   },
   {
-    "sku": "B",
-    "nombre": "BOLSA DE CORTES",
+    "codigo": "CIR15",
+    "precioOriginal": "1094,52",
+    "precioGuardado": 1094,
+    "nombre": "Círculos FF5 - 15CM",
     "categoria": "Artística",
     "subcategoria": "Productos para artistica"
   },
   {
-    "sku": "CL",
-    "nombre": "CLAVOS",
+    "codigo": "CIR20",
+    "precioOriginal": "1397,76",
+    "precioGuardado": 1397,
+    "nombre": "Círculos FF5 - 20CM",
     "categoria": "Artística",
     "subcategoria": "Productos para artistica"
   },
   {
-    "sku": "EMCP",
-    "nombre": "ESCRITORIO MELAMINA CCABALLETE Y PARRILLA",
+    "codigo": "CIR25",
+    "precioOriginal": "2631,405",
+    "precioGuardado": 2631,
+    "nombre": "Círculos FF5 - 25CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "CIR30",
+    "precioOriginal": "3830,085",
+    "precioGuardado": 3830,
+    "nombre": "Círculos FF5 - 30CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "CIR35",
+    "precioOriginal": "4179,945",
+    "precioGuardado": 4179,
+    "nombre": "Círculos FF5 - 35CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "CIR40",
+    "precioOriginal": "5385,87",
+    "precioGuardado": 5385,
+    "nombre": "Círculos FF5 - 40CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "CIR45",
+    "precioOriginal": "5839,785",
+    "precioGuardado": 5839,
+    "nombre": "Círculos FF5 - 45CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "CIR50",
+    "precioOriginal": "7784,07",
+    "precioGuardado": 7784,
+    "nombre": "Círculos FF5 - 50CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "CIR55",
+    "precioOriginal": "9167,865",
+    "precioGuardado": 9167,
+    "nombre": "Círculos FF5 - 55CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "ESR7",
+    "precioOriginal": "930,72",
+    "precioGuardado": 930,
+    "nombre": "Circulos de espejos - 7CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "ESR10",
+    "precioOriginal": "1660,995",
+    "precioGuardado": 1660,
+    "nombre": "Circulos de espejos - 10CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "ESR15",
+    "precioOriginal": "3576,72",
+    "precioGuardado": 3576,
+    "nombre": "Circulos de espejos - 15CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "ESR20",
+    "precioOriginal": "5981,535",
+    "precioGuardado": 5981,
+    "nombre": "Circulos de espejos - 20CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "ESR25",
+    "precioOriginal": "9009,315",
+    "precioGuardado": 9009,
+    "nombre": "Circulos de espejos - 25CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "ESR30",
+    "precioOriginal": "12655,125",
+    "precioGuardado": 12655,
+    "nombre": "Circulos de espejos - 30CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "ESR35",
+    "precioOriginal": "16931,145",
+    "precioGuardado": 16931,
+    "nombre": "Circulos de espejos - 35CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "ESR40",
+    "precioOriginal": "21800,415",
+    "precioGuardado": 21800,
+    "nombre": "Circulos de espejos - 40CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR510",
+    "precioOriginal": "744,261",
+    "precioGuardado": 744,
+    "nombre": "Aros FF5 - 10CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF",
+    "precioOriginal": "",
+    "precioGuardado": 14973.8,
+    "nombre": "Bastidor plegado FF5",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "A307",
+    "precioOriginal": "13463,205",
+    "precioGuardado": 13463,
+    "nombre": "Atril triangular de mesa - De mesa chico",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "B",
+    "precioOriginal": "",
+    "precioGuardado": 430,
+    "nombre": "Bastidor para bordado",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "CL",
+    "precioOriginal": "",
+    "precioGuardado": 239.3,
+    "nombre": "Círculos FF3",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BMB",
+    "precioOriginal": "7167,93",
+    "precioGuardado": 7167,
+    "nombre": "Bastidor para bordado - 20CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BCB",
+    "precioOriginal": "4943,4",
+    "precioGuardado": 4943,
+    "nombre": "Bastidor para bordado - 25CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BGB",
+    "precioOriginal": "10306,59",
+    "precioGuardado": 10306,
+    "nombre": "Bastidor para bordado - 15CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "EMCP",
+    "precioOriginal": "128919",
+    "precioGuardado": 128919,
+    "nombre": "Escritorio melamina y caballetes 140x60x82h",
     "categoria": "Muebles",
     "subcategoria": "Escritorios y tocadores"
   },
   {
-    "sku": "BA1",
-    "nombre": "BASES ACRILICAS 200CC.",
+    "codigo": "BA1",
+    "precioOriginal": "5146,26",
+    "precioGuardado": 5146,
+    "nombre": "Bases EQ 200cc",
     "categoria": "Artística",
     "subcategoria": "Pinturas"
   },
   {
-    "sku": "BPV",
-    "nombre": "BANDEJA C/PORTA VASO",
-    "categoria": "TODO en accesorios para hogar",
-    "subcategoria": "Bandejas y tablas"
+    "codigo": "CL7",
+    "precioOriginal": "306,705",
+    "precioGuardado": 306,
+    "nombre": "Círculos FF3 - 7CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
   },
   {
-    "sku": "BFP",
-    "nombre": "BANDEJA 30 X 45 C/PATAS",
-    "categoria": "TODO en accesorios para hogar",
-    "subcategoria": "Bandejas y tablas"
+    "codigo": "CL10",
+    "precioOriginal": "474,075",
+    "precioGuardado": 474,
+    "nombre": "Círculos FF3 - 10CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
   },
   {
-    "sku": "MPQ180",
-    "nombre": "MESA DE QUINCHO 0.80 X 1.80",
-    "categoria": "Muebles",
-    "subcategoria": "Mesas y barras"
+    "codigo": "CL15",
+    "precioOriginal": "770,385",
+    "precioGuardado": 770,
+    "nombre": "Círculos FF3 - 15CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
   },
   {
-    "sku": "ARCOIRIS",
-    "nombre": "ARCOIRIS/NARANJA MONTESSORI",
-    "categoria": "TODO PARA INFANTILES",
-    "subcategoria": "Juegos didácticos"
+    "codigo": "CL20",
+    "precioOriginal": "986,475",
+    "precioGuardado": 986,
+    "nombre": "Círculos FF3 - 20CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
   },
   {
-    "sku": "MUCM",
-    "nombre": "MULTICUBO DE PINO Y MELAMINA120X30X65",
+    "codigo": "CL25",
+    "precioOriginal": "1997,31",
+    "precioGuardado": 1997,
+    "nombre": "Círculos FF3 - 25CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "CL30",
+    "precioOriginal": "2907,135",
+    "precioGuardado": 2907,
+    "nombre": "Círculos FF3 - 30CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "CL35",
+    "precioOriginal": "3172,05",
+    "precioGuardado": 3172,
+    "nombre": "Círculos FF3 - 35CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "CL55",
+    "precioOriginal": "7487,34",
+    "precioGuardado": 7487,
+    "nombre": "Círculos FF3 - 55CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "CL50",
+    "precioOriginal": "6239,52",
+    "precioGuardado": 6239,
+    "nombre": "Círculos FF3 - 50CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "CL45",
+    "precioOriginal": "4677,855",
+    "precioGuardado": 4677,
+    "nombre": "Círculos FF3 - 45CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "CL40",
+    "precioOriginal": "4088,7",
+    "precioGuardado": 4088,
+    "nombre": "Círculos FF3 - 40CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "CL60",
+    "precioOriginal": "8735,265",
+    "precioGuardado": 8735,
+    "nombre": "Círculos FF3 - 60CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "CL8",
+    "precioOriginal": "359,1",
+    "precioGuardado": 359,
+    "nombre": "Círculos FF3 - 8CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "CL9",
+    "precioOriginal": "393,855",
+    "precioGuardado": 393,
+    "nombre": "Círculos FF3 - 9CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR513",
+    "precioOriginal": "803,04",
+    "precioGuardado": 803,
+    "nombre": "Aros FF5 - 13CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR515",
+    "precioOriginal": "1147,251",
+    "precioGuardado": 1147,
+    "nombre": "Aros FF5 - 15CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR520",
+    "precioOriginal": "1554,462",
+    "precioGuardado": 1554,
+    "nombre": "Aros FF5 - 20CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR525",
+    "precioOriginal": "1962,702",
+    "precioGuardado": 1962,
+    "nombre": "Aros FF5 - 25CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR530",
+    "precioOriginal": "2688,105",
+    "precioGuardado": 2688,
+    "nombre": "Aros FF5 - 30CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR535",
+    "precioOriginal": "2735,208",
+    "precioGuardado": 2735,
+    "nombre": "Aros FF5 - 35CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR527",
+    "precioOriginal": "2628,234",
+    "precioGuardado": 2628,
+    "nombre": "Aros FF5 - 27CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR523",
+    "precioOriginal": "1683,612",
+    "precioGuardado": 1683,
+    "nombre": "Aros FF5 - 23CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR540",
+    "precioOriginal": "3548,5485",
+    "precioGuardado": 3548,
+    "nombre": "Aros FF5 - 40CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR550",
+    "precioOriginal": "4072,4565",
+    "precioGuardado": 4072,
+    "nombre": "Aros FF5 - 50CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR517",
+    "precioOriginal": "1345,533",
+    "precioGuardado": 1345,
+    "nombre": "Aros FF5 - 17CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR310",
+    "precioOriginal": "268,401",
+    "precioGuardado": 268,
+    "nombre": "Aros FF3 - 10CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR313",
+    "precioOriginal": "400,869",
+    "precioGuardado": 400,
+    "nombre": "Aros FF3 - 13CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR315",
+    "precioOriginal": "476,973",
+    "precioGuardado": 476,
+    "nombre": "Aros FF3 - 15CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR320",
+    "precioOriginal": "779,499",
+    "precioGuardado": 779,
+    "nombre": "Aros FF3 - 20CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR325",
+    "precioOriginal": "810,285",
+    "precioGuardado": 810,
+    "nombre": "Aros FF3 - 25CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR330",
+    "precioOriginal": "1491,903",
+    "precioGuardado": 1491,
+    "nombre": "Aros FF3 - 30CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR335",
+    "precioOriginal": "2007,81",
+    "precioGuardado": 2007,
+    "nombre": "Aros FF3 - 35CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR343",
+    "precioOriginal": "2220,6345",
+    "precioGuardado": 2220,
+    "nombre": "Aros FF3 - 45CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "AR340",
+    "precioOriginal": "2130,912",
+    "precioGuardado": 2130,
+    "nombre": "Aros FF3 - 40CM",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "A306",
+    "precioOriginal": "0",
+    "precioGuardado": 0,
+    "nombre": "Atril triangular de mesa - De mesa grande",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "A308",
+    "precioOriginal": "0",
+    "precioGuardado": 0,
+    "nombre": "Atril triangular de mesa - Souvenir",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BB70",
+    "precioOriginal": "75192,6",
+    "precioGuardado": 75192,
+    "nombre": "Biblioteca baja - 30cm x 70cm x 92cm",
     "categoria": "Muebles",
     "subcategoria": "Estanterías"
   },
   {
-    "sku": "EEMC",
-    "nombre": "ESTANTE ESCALONADO DE MB, C/CAJON C/COR",
+    "codigo": "BB60",
+    "precioOriginal": "67772,04",
+    "precioGuardado": 67772,
+    "nombre": "Biblioteca baja - 30cm x 60cm x 92cm",
     "categoria": "Muebles",
     "subcategoria": "Estanterías"
   },
   {
-    "sku": "MPM2C",
-    "nombre": "MESA PINO/MELAMINA 2 CAJONES",
+    "codigo": "BB50",
+    "precioOriginal": "60345,81",
+    "precioGuardado": 60345,
+    "nombre": "Biblioteca baja - 30cm x 50cm x 92cm",
     "categoria": "Muebles",
-    "subcategoria": "Mesas y barras"
+    "subcategoria": "Estanterías"
   },
   {
-    "sku": "MP2C",
-    "nombre": "MESA PINO C/ESTANTE Y 2 CAJONES",
+    "codigo": "BB40",
+    "precioOriginal": "52938,795",
+    "precioGuardado": 52938,
+    "nombre": "Biblioteca baja - 30cm x 40cm x 92cm",
     "categoria": "Muebles",
-    "subcategoria": "Mesas y barras"
+    "subcategoria": "Estanterías"
   },
   {
-    "sku": "TP",
-    "nombre": "TABLA PARA PIZZA",
-    "categoria": "TODO en accesorios para hogar",
-    "subcategoria": "Bandejas y tablas"
+    "codigo": "BB80",
+    "precioOriginal": "94005,66",
+    "precioGuardado": 94005,
+    "nombre": "Biblioteca baja - 30cm x 80cm x 92cm",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
   },
   {
-    "sku": "MRB40",
-    "nombre": "MESA RATONA REDONDA 40CM",
+    "codigo": "BB30",
+    "precioOriginal": "45510,045",
+    "precioGuardado": 45510,
+    "nombre": "Biblioteca baja - 30cm x 30cm x 92cm",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "MR60",
+    "precioOriginal": "69949,005",
+    "precioGuardado": 69949,
+    "nombre": "Mesa ratona triangular 80cm x 80cm x 45cm (alto) - 60cm x 60cm x 45cm (h)",
     "categoria": "Muebles",
     "subcategoria": "Mesas ratonas"
   },
   {
-    "sku": "AAC",
-    "nombre": "ANIMALES APILABLES CALADOS 6U/DINO/GRANJA/SEL",
+    "codigo": "MR80",
+    "precioOriginal": "98848,512",
+    "precioGuardado": 98848,
+    "nombre": "Mesa ratona triangular 80cm x 80cm x 45cm (alto) - 80cm x 80cm x 45cm (h)",
+    "categoria": "Muebles",
+    "subcategoria": "Mesas ratonas"
+  },
+  {
+    "codigo": "BPV",
+    "precioOriginal": "27664,56",
+    "precioGuardado": 27664,
+    "nombre": "Bandeja con patas y porta vaso",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Bandejas y tablas"
+  },
+  {
+    "codigo": "BPG",
+    "precioOriginal": "19066,11",
+    "precioGuardado": 19066,
+    "nombre": "Bandeja de pino recta - 20cm x 30cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "BPC",
+    "precioOriginal": "15701,49",
+    "precioGuardado": 15701,
+    "nombre": "Bandeja de pino recta - 30cm x 40cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "BB2020",
+    "precioOriginal": "2718,87",
+    "precioGuardado": 2718,
+    "nombre": "Bandeja de fibro facil bastidor - 20cm x 20cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "BB2030",
+    "precioOriginal": "3262,665",
+    "precioGuardado": 3262,
+    "nombre": "Bandeja de fibro facil bastidor - 20cm x 30cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "BB2535",
+    "precioOriginal": "4079,67",
+    "precioGuardado": 4079,
+    "nombre": "Bandeja de fibro facil bastidor - 25cm x 35cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "BB3040",
+    "precioOriginal": "5153,295",
+    "precioGuardado": 5153,
+    "nombre": "Bandeja de fibro facil bastidor - 30cm x 40cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "BFP",
+    "precioOriginal": "20055,84",
+    "precioGuardado": 20055,
+    "nombre": "Bandeja FF con patas",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Bandejas y tablas"
+  },
+  {
+    "codigo": "MPQ180",
+    "precioOriginal": "203914,935",
+    "precioGuardado": 203914,
+    "nombre": "Mesa para quincho de melamina y pino",
+    "categoria": "Muebles",
+    "subcategoria": "Mesas y barras"
+  },
+  {
+    "codigo": "CP2020",
+    "precioOriginal": "12642,735",
+    "precioGuardado": 12642,
+    "nombre": "Cubo pino - 20cm x 20cm x 20cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "CP2030",
+    "precioOriginal": "15741,81",
+    "precioGuardado": 15741,
+    "nombre": "Cubo pino - 20cm x 30cm x 20cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "CP2040",
+    "precioOriginal": "16190,685",
+    "precioGuardado": 16190,
+    "nombre": "Cubo pino - 20cm x 40cm x 20cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "CP3030",
+    "precioOriginal": "18896,115",
+    "precioGuardado": 18896,
+    "nombre": "Cubo pino - 30cm x 30cm x 20cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "CP4040",
+    "precioOriginal": "25829,265",
+    "precioGuardado": 25829,
+    "nombre": "Cubo pino - 40cm x 40cm x 20cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "ARCOIRIS",
+    "precioOriginal": "8012,55",
+    "precioGuardado": 8012,
+    "nombre": "Arcoiris Montessori",
     "categoria": "TODO PARA INFANTILES",
     "subcategoria": "Juegos didácticos"
   },
   {
-    "sku": "MO176",
-    "nombre": "TERM. MOLDURADAS 1/4 X 1/2",
+    "codigo": "EV120",
+    "precioOriginal": "339858,225",
+    "precioGuardado": 339858,
+    "nombre": "Espejo de cuerpo entero varillado - 120cm x 183cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "EV80",
+    "precioOriginal": "315388,395",
+    "precioGuardado": 315388,
+    "nombre": "Espejo de cuerpo entero varillado - 80cm x 183cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "MUCM",
+    "precioOriginal": "185377,185",
+    "precioGuardado": 185377,
+    "nombre": "Rack TV multicubo",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "EEMC",
+    "precioOriginal": "157563,945",
+    "precioGuardado": 157563,
+    "nombre": "Estantería escalonada con cajon",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "MPM2C",
+    "precioOriginal": "156334,815",
+    "precioGuardado": 156334,
+    "nombre": "Mesa recibidora melamina y pino",
+    "categoria": "Muebles",
+    "subcategoria": "Mesas y barras"
+  },
+  {
+    "codigo": "MP2C",
+    "precioOriginal": "136491,495",
+    "precioGuardado": 136491,
+    "nombre": "Mesa recibidora pino",
+    "categoria": "Muebles",
+    "subcategoria": "Mesas y barras"
+  },
+  {
+    "codigo": "F10155",
+    "precioOriginal": "6773,76",
+    "precioGuardado": 6773,
+    "nombre": "Caja fibro con broche - 10cm x 15cm x 5cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "F15205",
+    "precioOriginal": "9679,635",
+    "precioGuardado": 9679,
+    "nombre": "Caja fibro con broche - 15cm x 20cm x 5cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "F202010",
+    "precioOriginal": "16347,24",
+    "precioGuardado": 16347,
+    "nombre": "Caja fibro con broche - 20cm x 20cm x 10cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "F20207",
+    "precioOriginal": "16347,24",
+    "precioGuardado": 16347,
+    "nombre": "Caja fibro con broche - 20cm x 20cm x 7cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "F202510",
+    "precioOriginal": "17604,72",
+    "precioGuardado": 17604,
+    "nombre": "Caja fibro con broche - 20cm x 25cm x 10cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "F20257",
+    "precioOriginal": "16347,24",
+    "precioGuardado": 16347,
+    "nombre": "Caja fibro con broche - 20cm x 25cm x 7cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "F203010",
+    "precioOriginal": "17976",
+    "precioGuardado": 17976,
+    "nombre": "Caja fibro con broche - 20cm x 30cm x 10cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "F20307",
+    "precioOriginal": "16852,5",
+    "precioGuardado": 16852,
+    "nombre": "Caja fibro con broche - 20cm x 30cm x 7cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "ORG1",
+    "precioOriginal": "1507,485",
+    "precioGuardado": 1507,
+    "nombre": "Caja organizador - 11cm x 11cm x 7cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "ORG2",
+    "precioOriginal": "1573,005",
+    "precioGuardado": 1573,
+    "nombre": "Caja organizador - 15cm x 15cm x 12cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "ORG3",
+    "precioOriginal": "2693,145",
+    "precioGuardado": 2693,
+    "nombre": "Caja organizador - 22cm x 14cm x 12cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "ORG4",
+    "precioOriginal": "4566,03",
+    "precioGuardado": 4566,
+    "nombre": "Caja organizador - 30cm x 20cm x 16cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "TP",
+    "precioOriginal": "14114,52",
+    "precioGuardado": 14114,
+    "nombre": "Tabla para pizza",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Bandejas y tablas"
+  },
+  {
+    "codigo": "TORNE20",
+    "precioOriginal": "12234,915",
+    "precioGuardado": 12234,
+    "nombre": "Torneta ceramica - 20cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "TORNE25",
+    "precioOriginal": "21750,96",
+    "precioGuardado": 21750,
+    "nombre": "Torneta ceramica - 25cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "TORNE30",
+    "precioOriginal": "24469,83",
+    "precioGuardado": 24469,
+    "nombre": "Torneta ceramica - 30cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "PIZSC",
+    "precioOriginal": "3834,285",
+    "precioGuardado": 3834,
+    "nombre": "Pizarra Mini Caballete - 12cm x 18cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "PIZSM",
+    "precioOriginal": "6901,755",
+    "precioGuardado": 6901,
+    "nombre": "Pizarra Mini Caballete - 20cm x 30cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "MRB40",
+    "precioOriginal": "59320,7055",
+    "precioGuardado": 59320,
+    "nombre": "Mesa Ratona Redonda de Pino y Melamina – Ø40 cm",
+    "categoria": "Muebles",
+    "subcategoria": "Mesas ratonas"
+  },
+  {
+    "codigo": "TE49",
+    "precioOriginal": "7806,645",
+    "precioGuardado": 7806,
+    "nombre": "Cajas de té - Tapa ciega - 4",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "TE29",
+    "precioOriginal": "6661,41",
+    "precioGuardado": 6661,
+    "nombre": "Cajas de té - Tapa ciega - 2",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "TE69",
+    "precioOriginal": "8383,305",
+    "precioGuardado": 8383,
+    "nombre": "Cajas de té - Tapa ciega - 6",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "TE99",
+    "precioOriginal": "10611,3",
+    "precioGuardado": 10611,
+    "nombre": "Cajas de té - Tapa ciega - 9",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "TVF2",
+    "precioOriginal": "10567,095",
+    "precioGuardado": 10567,
+    "nombre": "Caja de te MDF - Tapa con vidrio - 2",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "TVF4",
+    "precioOriginal": "16347,24",
+    "precioGuardado": 16347,
+    "nombre": "Caja de te MDF - Tapa con vidrio - 4",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "TVF6",
+    "precioOriginal": "17944,542",
+    "precioGuardado": 17944,
+    "nombre": "Caja de te MDF - Tapa con vidrio - 6",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "TVF9",
+    "precioOriginal": "18025,455",
+    "precioGuardado": 18025,
+    "nombre": "Caja de te MDF - Tapa con vidrio - 9",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "TVF12",
+    "precioOriginal": "25149,6",
+    "precioGuardado": 25149,
+    "nombre": "Caja de te MDF - Tapa con vidrio - 12",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "TEV4",
+    "precioOriginal": "17604,72",
+    "precioGuardado": 17604,
+    "nombre": "Caja de té pino - Tapa con vidrio - 4",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "TEV6",
+    "precioOriginal": "21377,16",
+    "precioGuardado": 21377,
+    "nombre": "Caja de té pino - Tapa con vidrio - 6",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "TEV12",
+    "precioOriginal": "26407,08",
+    "precioGuardado": 26407,
+    "nombre": "Caja de té pino - Tapa con vidrio - 12",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "P10155",
+    "precioOriginal": "7818,51",
+    "precioGuardado": 7818,
+    "nombre": "Caja de pino c/ broche - 10cm x 15cm x 5cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "P102010",
+    "precioOriginal": "8601,81",
+    "precioGuardado": 8601,
+    "nombre": "Caja de pino c/ broche - 10cm x 20cm x 10cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "P151510",
+    "precioOriginal": "9679,635",
+    "precioGuardado": 9679,
+    "nombre": "Caja de pino c/ broche - 15cm x 15cm x 10cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "P15155",
+    "precioOriginal": "10733,835",
+    "precioGuardado": 10733,
+    "nombre": "Caja de pino c/ broche - 15cm x 15cm x 5cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "P15157",
+    "precioOriginal": "10849,125",
+    "precioGuardado": 10849,
+    "nombre": "Caja de pino c/ broche - 15cm x 15cm x 7cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "P15205",
+    "precioOriginal": "10078,11",
+    "precioGuardado": 10078,
+    "nombre": "Caja de pino c/ broche - 15cm x 20cm x 5cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "P15207",
+    "precioOriginal": "9964,29",
+    "precioGuardado": 9964,
+    "nombre": "Caja de pino c/ broche - 15cm x 20cm x 7cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "P202010",
+    "precioOriginal": "16822,995",
+    "precioGuardado": 16822,
+    "nombre": "Caja de pino c/ broche - 20cm x 20cm x 10cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "P20205",
+    "precioOriginal": "15701,49",
+    "precioGuardado": 15701,
+    "nombre": "Caja de pino c/ broche - 20cm x 20cm x 5cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "P20207",
+    "precioOriginal": "15701,49",
+    "precioGuardado": 15701,
+    "nombre": "Caja de pino c/ broche - 20cm x 20cm x 7cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "P202510",
+    "precioOriginal": "17944,5",
+    "precioGuardado": 17944,
+    "nombre": "Caja de pino c/ broche - 20cm x 25cm x 10cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "P20255",
+    "precioOriginal": "18862,2",
+    "precioGuardado": 18862,
+    "nombre": "Caja de pino c/ broche - 20cm x 25cm x 5cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "P20257",
+    "precioOriginal": "18862,2",
+    "precioGuardado": 18862,
+    "nombre": "Caja de pino c/ broche - 20cm x 25cm x 7cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "P203010",
+    "precioOriginal": "21377,16",
+    "precioGuardado": 21377,
+    "nombre": "Caja de pino c/ broche - 20cm x 30cm x 10cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "P20307",
+    "precioOriginal": "20119,68",
+    "precioGuardado": 20119,
+    "nombre": "Caja de pino c/ broche - 20cm x 30cm x 7cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "OC",
+    "precioOriginal": "3924,795",
+    "precioGuardado": 3924,
+    "nombre": "Cajas octogonales - Chica",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "OM",
+    "precioOriginal": "5349,015",
+    "precioGuardado": 5349,
+    "nombre": "Cajas octogonales - Mediana",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "OG",
+    "precioOriginal": "6385,89",
+    "precioGuardado": 6385,
+    "nombre": "Cajas octogonales - Grande",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "C6",
+    "precioOriginal": "5051,445",
+    "precioGuardado": 5051,
+    "nombre": "Caja cubo MDF - 6cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "C7",
+    "precioOriginal": "5310,375",
+    "precioGuardado": 5310,
+    "nombre": "Caja cubo MDF - 7cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "C15",
+    "precioOriginal": "9852,675",
+    "precioGuardado": 9852,
+    "nombre": "Caja cubo MDF - 15cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "C20",
+    "precioOriginal": "14043,855",
+    "precioGuardado": 14043,
+    "nombre": "Caja cubo MDF - 20cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "C25",
+    "precioOriginal": "17993,745",
+    "precioGuardado": 17993,
+    "nombre": "Caja cubo MDF - 25cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "C30",
+    "precioOriginal": "23918,58",
+    "precioGuardado": 23918,
+    "nombre": "Caja cubo MDF - 30cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "C10",
+    "precioOriginal": "7021,98",
+    "precioGuardado": 7021,
+    "nombre": "Caja cubo MDF - 10cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "Z1010",
+    "precioOriginal": "4669,035",
+    "precioGuardado": 4669,
+    "nombre": "Caja MDF zapato - 10cm x 10cm x 6cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "Z1015",
+    "precioOriginal": "5067,615",
+    "precioGuardado": 5067,
+    "nombre": "Caja MDF zapato - 10cm x 15cm x 6cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "Z1515",
+    "precioOriginal": "5978,7",
+    "precioGuardado": 5978,
+    "nombre": "Caja MDF zapato - 15cm x 15cm x 8cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "Z1520",
+    "precioOriginal": "7570,605",
+    "precioGuardado": 7570,
+    "nombre": "Caja MDF zapato - 15cm x 20cm x 8cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "Z2020",
+    "precioOriginal": "8821,155",
+    "precioGuardado": 8821,
+    "nombre": "Caja MDF zapato - 20cm x 20cm x 9cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "Z2025",
+    "precioOriginal": "9348,045",
+    "precioGuardado": 9348,
+    "nombre": "Caja MDF zapato - 20cm x 25cm x 10cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "Z2030",
+    "precioOriginal": "12617,535",
+    "precioGuardado": 12617,
+    "nombre": "Caja MDF zapato - 20cm x 30cm x 11cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "Z2525",
+    "precioOriginal": "12617,535",
+    "precioGuardado": 12617,
+    "nombre": "Caja MDF zapato - 25cm x 25cm x 11cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "Z2535",
+    "precioOriginal": "15667,785",
+    "precioGuardado": 15667,
+    "nombre": "Caja MDF zapato - 25cm x 25cm x 12cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "Z3030",
+    "precioOriginal": "14702,205",
+    "precioGuardado": 14702,
+    "nombre": "Caja MDF zapato - 30cm x 30cm x 12cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "Z305020",
+    "precioOriginal": "15733,305",
+    "precioGuardado": 15733,
+    "nombre": "Caja MDF zapato - 30cm x 50cm x 20cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "Z3545",
+    "precioOriginal": "12185,145",
+    "precioGuardado": 12185,
+    "nombre": "Caja MDF zapato - 35cm x 45cm x 15cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "Z354520",
+    "precioOriginal": "15733,515",
+    "precioGuardado": 15733,
+    "nombre": "Caja MDF zapato - 35cm x 45cm x 20cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "AAC",
+    "precioOriginal": "5957,175",
+    "precioGuardado": 5957,
+    "nombre": "PACK x6 animalitos apilables",
+    "categoria": "TODO PARA INFANTILES",
+    "subcategoria": "Juegos didácticos"
+  },
+  {
+    "codigo": "CM3030",
+    "precioOriginal": "25707,57",
+    "precioGuardado": 25707,
+    "nombre": "Cubo melamina - 30cm x 30cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "CM3040",
+    "precioOriginal": "28645,89",
+    "precioGuardado": 28645,
+    "nombre": "Cubo melamina - 30cm x 40cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "CM4040",
+    "precioOriginal": "31572,345",
+    "precioGuardado": 31572,
+    "nombre": "Cubo melamina - 40cm x 40cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "CP3040",
+    "precioOriginal": "21984,27",
+    "precioGuardado": 21984,
+    "nombre": "Cubo pino - 30cm x 40cm x20cm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "B10",
+    "precioOriginal": "88,83",
+    "precioGuardado": 88,
+    "nombre": "Bolitas de madera - 10mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "B13",
+    "precioOriginal": "92,4",
+    "precioGuardado": 92,
+    "nombre": "Bolitas de madera - 13mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "B16",
+    "precioOriginal": "114,24",
+    "precioGuardado": 114,
+    "nombre": "Bolitas de madera - 16mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "B19",
+    "precioOriginal": "182,175",
+    "precioGuardado": 182,
+    "nombre": "Bolitas de madera - 19mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "B23",
+    "precioOriginal": "248,22",
+    "precioGuardado": 248,
+    "nombre": "Bolitas de madera - 23mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "B26",
+    "precioOriginal": "360,465",
+    "precioGuardado": 360,
+    "nombre": "Bolitas de madera - 26mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "B29",
+    "precioOriginal": "380,625",
+    "precioGuardado": 380,
+    "nombre": "Bolitas de madera - 29mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "B35",
+    "precioOriginal": "597,03",
+    "precioGuardado": 597,
+    "nombre": "Bolitas de madera - 35mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "B40",
+    "precioOriginal": "1065,015",
+    "precioGuardado": 1065,
+    "nombre": "Bolitas de madera - 40mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "B45",
+    "precioOriginal": "1199,1",
+    "precioGuardado": 1199,
+    "nombre": "Bolitas de madera - 45mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "B60",
+    "precioOriginal": "2644,11",
+    "precioGuardado": 2644,
+    "nombre": "Bolitas de madera - 60mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "AN14",
+    "precioOriginal": "241,185",
+    "precioGuardado": 241,
+    "nombre": "Argollas de madera natural - 14mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "AN22",
+    "precioOriginal": "322,245",
+    "precioGuardado": 322,
+    "nombre": "Argollas de madera natural - 22mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "AN33",
+    "precioOriginal": "484,68",
+    "precioGuardado": 484,
+    "nombre": "Argollas de madera natural - 33mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "AT14",
+    "precioOriginal": "354,69",
+    "precioGuardado": 354,
+    "nombre": "Argollas de madera teñida - 14mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "AT22",
+    "precioOriginal": "449,82",
+    "precioGuardado": 449,
+    "nombre": "Argollas de madera teñida - 22mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "AT33",
+    "precioOriginal": "627,69",
+    "precioGuardado": 627,
+    "nombre": "Argollas de madera teñida - 33mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "MO176",
+    "precioOriginal": "2644,6245",
+    "precioGuardado": 2644,
+    "nombre": "Terminación  1/4 x 3/4",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO102",
-    "nombre": "ZOCALO 1/2 X 3 LISO",
+    "codigo": "MO102",
+    "precioOriginal": "5487,804",
+    "precioGuardado": 5487,
+    "nombre": "Zocalo - 1/2 x 3",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO111",
-    "nombre": "ZOCALO 1/2 X 4",
+    "codigo": "MO111",
+    "precioOriginal": "6665,4273",
+    "precioGuardado": 6665,
+    "nombre": "Zocalo - 1/2 x 4",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO109",
-    "nombre": "ZOCALO 3/4 X 2 PINO",
+    "codigo": "MO109",
+    "precioOriginal": "4545,1161",
+    "precioGuardado": 4545,
+    "nombre": "Zocalo - 3/4 x 2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO110",
-    "nombre": "ZOCALO 3/4 X 3 LISO",
+    "codigo": "MO110",
+    "precioOriginal": "6942,411525",
+    "precioGuardado": 6942,
+    "nombre": "Zocalo - 3/4 x 3",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO152",
-    "nombre": "TERM. MOLDURADA 3/4 X 1/2",
+    "codigo": "MO152",
+    "precioOriginal": "2437,743",
+    "precioGuardado": 2437,
+    "nombre": "Terminación 1/4 x 3/4",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO112",
-    "nombre": "ZOCALO 3/4 X 4 LISO",
+    "codigo": "MO112",
+    "precioOriginal": "9647,7234",
+    "precioGuardado": 9647,
+    "nombre": "Zocalo - 3/4 x 4",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO175",
-    "nombre": "TERMINACION 1/2 X 1",
+    "codigo": "MO175",
+    "precioOriginal": "2437,743",
+    "precioGuardado": 2437,
+    "nombre": "Terminación 1/4 x 1/2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO108",
-    "nombre": "ZOCALO 3/4 X 3 MOLDURADO",
+    "codigo": "MO108",
+    "precioOriginal": "7149,261",
+    "precioGuardado": 7149,
+    "nombre": "Zocalo - 3/4 x 3 - Moldurado",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO173",
-    "nombre": "TERM. MOLDURADA 13X25",
+    "codigo": "MO173",
+    "precioOriginal": "5550,25275",
+    "precioGuardado": 5550,
+    "nombre": "Terminación - 3/4 X 1 1/2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO105",
-    "nombre": "ZOCALO 3/4 X 4 MOLDURADO",
+    "codigo": "MO105",
+    "precioOriginal": "9549,2145",
+    "precioGuardado": 9549,
+    "nombre": "Zocalos - 3/4 x 4 - Moldurado",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO150",
-    "nombre": "CONTRAVIDRIO 1/2 X 3/4 MOLD.",
+    "codigo": "MO150",
+    "precioOriginal": "2393,5485",
+    "precioGuardado": 2393,
+    "nombre": "Terminación 1/2 x 3/4",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO174",
-    "nombre": "CONTRAVIDRIO 3/4 X 1 MOLD.",
+    "codigo": "MO174",
+    "precioOriginal": "4303,83975",
+    "precioGuardado": 4303,
+    "nombre": "Terminación 3/4 x 1",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO170",
-    "nombre": "TERMINACION 1/2 X 1",
+    "codigo": "MO170",
+    "precioOriginal": "2644,6245",
+    "precioGuardado": 2644,
+    "nombre": "Terminación 1/4 x 1",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO160",
-    "nombre": "TAPA JUNTA 3/4 X 2 MOLDURADO",
+    "codigo": "MO160",
+    "precioOriginal": "7721,54775",
+    "precioGuardado": 7721,
+    "nombre": "Terminación 3/4 x 2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO200",
-    "nombre": "CONTRAMARCO LISO 1/2 X 2",
+    "codigo": "MO200",
+    "precioOriginal": "3062,2305",
+    "precioGuardado": 3062,
+    "nombre": "Contramarco - 1/2 x 2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO168",
-    "nombre": "BOTAGUA 1 1/2 X 2",
+    "codigo": "MO168",
+    "precioOriginal": "11885,118",
+    "precioGuardado": 11885,
+    "nombre": "Terminación  1 1/2 x 2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO300",
-    "nombre": "RINCONERO 1 X 1",
+    "codigo": "MO300",
+    "precioOriginal": "3194,814",
+    "precioGuardado": 3194,
+    "nombre": "Rinconero 1 x 1",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO201",
-    "nombre": "CONTRAMARCO LISO 1/2 X 2 1/2",
+    "codigo": "MO201",
+    "precioOriginal": "3885,59325",
+    "precioGuardado": 3885,
+    "nombre": "Contramarcos - 1/2 x 2 1/2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO209",
-    "nombre": "CONTRAMARCO 1/2 X 4 MOLDURADO",
+    "codigo": "MO209",
+    "precioOriginal": "6667,92525",
+    "precioGuardado": 6667,
+    "nombre": "Contramarcos - 1/2 x 4",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO212",
-    "nombre": "CONTRAMARCO 1/2 X 3  MOLDURADO",
+    "codigo": "MO212",
+    "precioOriginal": "5279,96175",
+    "precioGuardado": 5279,
+    "nombre": "Contramarco - 1/2 x 3",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO305",
-    "nombre": "RINCONERO 1 X 11/2 MOLD.",
+    "codigo": "MO305",
+    "precioOriginal": "4996,86075",
+    "precioGuardado": 4996,
+    "nombre": "Rinconero - 1 x 1 1/2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO308",
-    "nombre": "RINCONERO 3/4 X 3/4",
+    "codigo": "MO308",
+    "precioOriginal": "2732,69325",
+    "precioGuardado": 2732,
+    "nombre": "Rinconero - 3/4 x 3/4",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO450",
-    "nombre": "ANTEPECHO 1 X 2 1/2 PINO",
+    "codigo": "MO450",
+    "precioOriginal": "9173,241",
+    "precioGuardado": 9173,
+    "nombre": "Antepecho - 1 x 3",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO453",
-    "nombre": "ANTEPECHO 1 1/2 X 3",
+    "codigo": "MO453",
+    "precioOriginal": "18337,83525",
+    "precioGuardado": 18337,
+    "nombre": "Antepecho - 1 1/2 x 3",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO550",
-    "nombre": "PASAMANO 2 X 3 PINO",
+    "codigo": "MO550",
+    "precioOriginal": "25555,3095",
+    "precioGuardado": 25555,
+    "nombre": "Pasamanos - 2 x 3",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO551",
-    "nombre": "PASAMANO 1 1/2 X 3",
+    "codigo": "MO551",
+    "precioOriginal": "20275,668",
+    "precioGuardado": 20275,
+    "nombre": "Pasamanos - 1 1/2 x 3",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO552",
-    "nombre": "PASAMANO 2 X 2",
+    "codigo": "MO552",
+    "precioOriginal": "18060,49875",
+    "precioGuardado": 18060,
+    "nombre": "Pasamanos - 2 x 2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO407",
-    "nombre": "ESQUINERO 3/4 X 3/4",
+    "codigo": "MO407",
+    "precioOriginal": "3306,261",
+    "precioGuardado": 3306,
+    "nombre": "Esquinero - 3/4 x 3/4",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO400",
-    "nombre": "ESQUINERO 1 X1",
+    "codigo": "MO400",
+    "precioOriginal": "3476,95425",
+    "precioGuardado": 3476,
+    "nombre": "Esquinero - 1 x 1",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO402",
-    "nombre": "ESQUINERO 1 1/2 X 1 1/2",
+    "codigo": "MO402",
+    "precioOriginal": "7368,9525",
+    "precioGuardado": 7368,
+    "nombre": "Esquinero - 1 1/2 x 1 1/2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO406",
-    "nombre": "ESQUINERO 2 X 2",
+    "codigo": "MO406",
+    "precioOriginal": "12729,9375",
+    "precioGuardado": 12729,
+    "nombre": "Esquinero - 2 x 2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO404",
-    "nombre": "ESQUINERO 1 X 11/2 MOLD.Y LISO",
+    "codigo": "MO404",
+    "precioOriginal": "5133,92775",
+    "precioGuardado": 5133,
+    "nombre": "Esquinero - 1 x 1 1/2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO650",
-    "nombre": "GUARDASILLA 3/4 X 4",
+    "codigo": "MO650",
+    "precioOriginal": "10839,1815",
+    "precioGuardado": 10839,
+    "nombre": "Guarda silla - 3/4 x 4",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO651",
-    "nombre": "GUARDASILLA 1/2 X 3 MOLD.",
+    "codigo": "MO651",
+    "precioOriginal": "5207,58525",
+    "precioGuardado": 5207,
+    "nombre": "Guardasilla - 1/2 x 3",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO602",
-    "nombre": "CONTRAVIDRIO 3/4 X 3/4",
+    "codigo": "MO602",
+    "precioOriginal": "2852,1465",
+    "precioGuardado": 2852,
+    "nombre": "Contravidrio - 3/4 x 3/4",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO607",
-    "nombre": "CONTRAVIDRIO 1/2 X 1/2",
+    "codigo": "MO607",
+    "precioOriginal": "2270,5725",
+    "precioGuardado": 2270,
+    "nombre": "Contravidrio -  1/2 x 1/2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO605",
-    "nombre": "CONTRAVIDRIO 1/2 X 1/2 MOLD.",
+    "codigo": "MO605",
+    "precioOriginal": "2270,5725",
+    "precioGuardado": 2270,
+    "nombre": "Contravidrio - 1/2 x 1/2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO600",
-    "nombre": "CONTRAVIDRIO MOLDURADO 1/2 X 3/4",
+    "codigo": "MO600",
+    "precioOriginal": "2292,02925",
+    "precioGuardado": 2292,
+    "nombre": "Contravidrio 1/2 x 3/4",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO603",
-    "nombre": "CONTRAVIDRIO 3/4 X 3/4 MOLD.",
+    "codigo": "MO603",
+    "precioOriginal": "2852,1465",
+    "precioGuardado": 2852,
+    "nombre": "Contravidrio - 3/4 x 3/4 Moldurado.",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO609",
-    "nombre": "CONTRAVIDRIO 1/2 X 1 MOLD.",
+    "codigo": "MO609",
+    "precioOriginal": "2607,4755",
+    "precioGuardado": 2607,
+    "nombre": "Contravidrio - 1/2 x 1",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO801",
-    "nombre": "TAPACINTA 1 X 4 MOLDURADO",
+    "codigo": "MO801",
+    "precioOriginal": "15583,365",
+    "precioGuardado": 15583,
+    "nombre": "Tapacinta - 1x4",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO802",
-    "nombre": "TAPACINTA 1 X 4 LISO",
+    "codigo": "MO802",
+    "precioOriginal": "15585,2865",
+    "precioGuardado": 15585,
+    "nombre": "Tapacinta - 1 x 4",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO510",
-    "nombre": "MEDIA CAÑA 1/2 X 1/2",
+    "codigo": "MO510",
+    "precioOriginal": "1848,483",
+    "precioGuardado": 1848,
+    "nombre": "Tapajunta - 1/4 x 1/2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO500",
-    "nombre": "MEDIA CAÑA 1/2 X 1",
+    "codigo": "MO500",
+    "precioOriginal": "2159,1255",
+    "precioGuardado": 2159,
+    "nombre": "Tapajunta - 1/4 x 1",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO511",
-    "nombre": "MEDIA CAÑA 3/4 X 11/2",
+    "codigo": "MO511",
+    "precioOriginal": "5164,992",
+    "precioGuardado": 5164,
+    "nombre": "Tapajunta - 1/2 x 1 1/2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO506",
-    "nombre": "TAPA JUNTA 1/2 X 3/4 LISA",
+    "codigo": "MO506",
+    "precioOriginal": "2295,23175",
+    "precioGuardado": 2295,
+    "nombre": "Tapajunta - 1/4 x 3/4",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO501",
-    "nombre": "TAPAJUNTA 1/2 X 1",
+    "codigo": "MO501",
+    "precioOriginal": "2906,589",
+    "precioGuardado": 2906,
+    "nombre": "Tapajunta - 1/4 x 1",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO503",
-    "nombre": "TAPAJUNTA 1/2 X 1 1/2",
+    "codigo": "MO503",
+    "precioOriginal": "3468,3075",
+    "precioGuardado": 3468,
+    "nombre": "Tapajunta - 1/4 x 1 1/2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO512",
-    "nombre": "TAPAJUNTA 1/2 X 1 MOLDURADO",
+    "codigo": "MO512",
+    "precioOriginal": "2483,2185",
+    "precioGuardado": 2483,
+    "nombre": "Tapajunta MOLDURADO - 1/4 x 1",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO502",
-    "nombre": "TAPAJUNTA 1/2 X 1 1/2 MOLDURADO",
+    "codigo": "MO502",
+    "precioOriginal": "2912,67375",
+    "precioGuardado": 2912,
+    "nombre": "Tapajunta MOLDURADO - 1/4 x 1 1/2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "MO505",
-    "nombre": "GUARDASILLA 1/2 X 2",
+    "codigo": "MO505",
+    "precioOriginal": "4033,869",
+    "precioGuardado": 4033,
+    "nombre": "Tapajunta - 1/4 x 2",
     "categoria": "Molduras",
     "subcategoria": "Molduras para obra"
   },
   {
-    "sku": "30105",
-    "nombre": "LISTON 1/2 X 1/2",
+    "codigo": "30105",
+    "precioOriginal": "1119,91425",
+    "precioGuardado": 1119,
+    "nombre": "Listón - 1/2 x 1/2",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30107",
-    "nombre": "LISTON 1/2 X 1",
+    "codigo": "30107",
+    "precioOriginal": "1851,36525",
+    "precioGuardado": 1851,
+    "nombre": "Listón – 1/2 x 1",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30108",
-    "nombre": "LISTON 1/2 X 1 1/2",
+    "codigo": "30108",
+    "precioOriginal": "2812,4355",
+    "precioGuardado": 2812,
+    "nombre": "Listón - 1/2 x 1 1/2",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30109",
-    "nombre": "LISTON 1/2 X 2",
+    "codigo": "30109",
+    "precioOriginal": "3569,5065",
+    "precioGuardado": 3569,
+    "nombre": "Listón - 1/2 x 2",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30110",
-    "nombre": "LISTON 1/2 X 3",
+    "codigo": "30110",
+    "precioOriginal": "5333,4435",
+    "precioGuardado": 5333,
+    "nombre": "Listón - 1/2 x 3",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30122",
-    "nombre": "LISTON 3/4 X 3/4",
+    "codigo": "30122",
+    "precioOriginal": "2162,64825",
+    "precioGuardado": 2162,
+    "nombre": "Listón - 3/4 x 3/4",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30123",
-    "nombre": "LISTON 3/4 X 1",
+    "codigo": "30123",
+    "precioOriginal": "2590,182",
+    "precioGuardado": 2590,
+    "nombre": "Listón – 3/4 x 1",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30124",
-    "nombre": "LISTON 3/4 X 1 1/2",
+    "codigo": "30124",
+    "precioOriginal": "4010,49075",
+    "precioGuardado": 4010,
+    "nombre": "Listón – 3/4 x 1 1/2",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30125",
-    "nombre": "LISTON 3/4 X 2",
+    "codigo": "30125",
+    "precioOriginal": "5347,21425",
+    "precioGuardado": 5347,
+    "nombre": "Listón - 3/4 x 2",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30126",
-    "nombre": "LISTON 3/4 X 3",
+    "codigo": "30126",
+    "precioOriginal": "7976,787",
+    "precioGuardado": 7976,
+    "nombre": "Listón - 3/4  x 3",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30138",
-    "nombre": "LISTON 1 X 1",
+    "codigo": "30138",
+    "precioOriginal": "3266,22975",
+    "precioGuardado": 3266,
+    "nombre": "Listón - 1 x 1",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30139",
-    "nombre": "LISTON 1 X 1 1/2",
+    "codigo": "30139",
+    "precioOriginal": "4797,02475",
+    "precioGuardado": 4797,
+    "nombre": "Listón - 1 x 1 1/2",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30140",
-    "nombre": "LISTON 1 X 2",
+    "codigo": "30140",
+    "precioOriginal": "6401,7975",
+    "precioGuardado": 6401,
+    "nombre": "Listón - 1 x 2",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30141",
-    "nombre": "LISTON 1 X 3",
+    "codigo": "30141",
+    "precioOriginal": "9644,32875",
+    "precioGuardado": 9644,
+    "nombre": "Listón - 1 x 3",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30153",
-    "nombre": "LISTON 1 1/2 X 1 1/2",
+    "codigo": "30153",
+    "precioOriginal": "7979,66925",
+    "precioGuardado": 7979,
+    "nombre": "Listón - 1 1/2 x 1 1/2",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30154",
-    "nombre": "LISTON 1 1/2 X 2",
+    "codigo": "30154",
+    "precioOriginal": "10653,4365",
+    "precioGuardado": 10653,
+    "nombre": "Listón - 1 1/2 x 2",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30155",
-    "nombre": "LISTON 11/2 X 3",
+    "codigo": "30155",
+    "precioOriginal": "15961,9005",
+    "precioGuardado": 15961,
+    "nombre": "Listón - 1 1/2 x 3",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30170",
-    "nombre": "LISTON 2 X2",
+    "codigo": "30170",
+    "precioOriginal": "14532,62475",
+    "precioGuardado": 14532,
+    "nombre": "Listón - 2 x 2",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30171",
-    "nombre": "LISTON 2 X 3",
+    "codigo": "30171",
+    "precioOriginal": "21954,09825",
+    "precioGuardado": 21954,
+    "nombre": "Listón - 2 x 3",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30172",
-    "nombre": "LISTON 2 X 4",
+    "codigo": "30172",
+    "precioOriginal": "29071,014",
+    "precioGuardado": 29071,
+    "nombre": "Listón - 2 x 4",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30111",
-    "nombre": "LISTON 1/2 X 4",
+    "codigo": "30111",
+    "precioOriginal": "7088,09325",
+    "precioGuardado": 7088,
+    "nombre": "Listón - 1/2 x 4",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30112",
-    "nombre": "LISTON 1/2 X 5",
+    "codigo": "30112",
+    "precioOriginal": "8870,2845",
+    "precioGuardado": 8870,
+    "nombre": "Listón - 1/2 x 5",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30127",
-    "nombre": "LISTON 3/4 X 4",
+    "codigo": "30127",
+    "precioOriginal": "10635,82275",
+    "precioGuardado": 10635,
+    "nombre": "Listón - 3/4 x 4",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30128",
-    "nombre": "LISTON 3/4 X 5",
+    "codigo": "30128",
+    "precioOriginal": "13356,66675",
+    "precioGuardado": 13356,
+    "nombre": "Listón - 3/4 x  5",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30129",
-    "nombre": "LISTON 3/4 X 6",
+    "codigo": "30129",
+    "precioOriginal": "12991,902",
+    "precioGuardado": 12991,
+    "nombre": "Listón - 3/4 x 6",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30142",
-    "nombre": "LISTON 1 X 4",
+    "codigo": "30142",
+    "precioOriginal": "12825,05175",
+    "precioGuardado": 12825,
+    "nombre": "Listón - 1 x 4",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30143",
-    "nombre": "LISTON 1 X 5",
+    "codigo": "30143",
+    "precioOriginal": "16016,9835",
+    "precioGuardado": 16016,
+    "nombre": "Listón - 1 x 5",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30144",
-    "nombre": "LISTON 1 X 6",
+    "codigo": "30144",
+    "precioOriginal": "19285,13475",
+    "precioGuardado": 19285,
+    "nombre": "Listón - 1 x 6",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "30106",
-    "nombre": "LISTON 1/2 X 3/4",
+    "codigo": "30106",
+    "precioOriginal": "1638,71925",
+    "precioGuardado": 1638,
+    "nombre": "Listón 1/2 x 3/4",
     "categoria": "Listoneria",
     "subcategoria": ""
   },
   {
-    "sku": "BIOMCAL",
-    "nombre": "HOJAS BIOMBO CALADO",
+    "codigo": "BIOMCAL",
+    "precioOriginal": "60450,6",
+    "precioGuardado": 60450,
+    "nombre": "Biombo Separador de ambientes",
     "categoria": "Candy bar y LASER",
     "subcategoria": "Paneles y biombos"
   },
   {
-    "sku": "SDNB",
-    "nombre": "SOPORTE DOBLE NATURAL  C/BASE",
+    "codigo": "STN14",
+    "precioOriginal": "1509,9",
+    "precioGuardado": 1509,
+    "nombre": "Soporte torneado natural - 14mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "STN22",
+    "precioOriginal": "2134,65",
+    "precioGuardado": 2134,
+    "nombre": "Soporte torneado natural - 22mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "STN33",
+    "precioOriginal": "3301,095",
+    "precioGuardado": 3301,
+    "nombre": "Soporte torneado natural - 33m",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "STT14",
+    "precioOriginal": "1988,07",
+    "precioGuardado": 1988,
+    "nombre": "Soporte torneado teñido - 14mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "STT22",
+    "precioOriginal": "2753,1",
+    "precioGuardado": 2753,
+    "nombre": "Soporte torneado teñido - 22mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "STT33",
+    "precioOriginal": "4265,94",
+    "precioGuardado": 4265,
+    "nombre": "Soporte torneado teñido - 33mm",
+    "categoria": "",
+    "subcategoria": ""
+  },
+  {
+    "codigo": "SDNB",
+    "precioOriginal": "7107,45",
+    "precioGuardado": 7107,
+    "nombre": "Soporte doble natural c/base",
     "categoria": "Cortineria",
     "subcategoria": ""
   },
   {
-    "sku": "MR50100",
-    "nombre": "MESA RATONA 50CMX100CM MELAMINA/PINO",
+    "codigo": "R17100",
+    "precioOriginal": "0",
+    "precioGuardado": 0,
+    "nombre": "Repisas melamina - 100cm x 17cm",
+    "categoria": "Muebles",
+    "subcategoria": "Repisas"
+  },
+  {
+    "codigo": "E4MB60",
+    "precioOriginal": "82872,72",
+    "precioGuardado": 82872,
+    "nombre": "Estante cuadrado de melamina - 30CM X 60CM X 100CM",
+    "categoria": "Muebles",
+    "subcategoria": "Estanterías"
+  },
+  {
+    "codigo": "BF1515",
+    "precioOriginal": "1785,357",
+    "precioGuardado": 1785,
+    "nombre": "Bastidor plegado FF5 - 15cm x 15cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF2025",
+    "precioOriginal": "3158,778",
+    "precioGuardado": 3158,
+    "nombre": "Bastidor plegado FF5 - 20cm x 25cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF2525",
+    "precioOriginal": "3699,3915",
+    "precioGuardado": 3699,
+    "nombre": "Bastidor plegado FF5 - 25cm x 25cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF1530",
+    "precioOriginal": "2953,23",
+    "precioGuardado": 2953,
+    "nombre": "Bastidor plegado FF5 - 15cm x 30cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF2530",
+    "precioOriginal": "4257,6555",
+    "precioGuardado": 4257,
+    "nombre": "Bastidor plegado FF5 - 30cm x 25cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF3030",
+    "precioOriginal": "4945,3425",
+    "precioGuardado": 4945,
+    "nombre": "Bastidor plegado FF5 - 30cm x 30cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF2050",
+    "precioOriginal": "5494,4715",
+    "precioGuardado": 5494,
+    "nombre": "Bastidor plegado FF5 - 20cm x 50cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF3040",
+    "precioOriginal": "6181,3605",
+    "precioGuardado": 6181,
+    "nombre": "Bastidor plegado FF5 - 30cm x 40cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF4040",
+    "precioOriginal": "7830,0705",
+    "precioGuardado": 7830,
+    "nombre": "Bastidor plegado FF5 - 40cm x 40cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF3050",
+    "precioOriginal": "7555,1805",
+    "precioGuardado": 7555,
+    "nombre": "Bastidor plegado FF5 - 30cm x 50cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF2070",
+    "precioOriginal": "7830,0705",
+    "precioGuardado": 7830,
+    "nombre": "Bastidor plegado FF5 - 20cm x 70cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF3060",
+    "precioOriginal": "8722,3395",
+    "precioGuardado": 8722,
+    "nombre": "Bastidor plegado FF5 - 30cm x 60cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF3070",
+    "precioOriginal": "10026,2505",
+    "precioGuardado": 10026,
+    "nombre": "Bastidor plegado FF5 - 30cm x 70cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF2060",
+    "precioOriginal": "6456,0405",
+    "precioGuardado": 6456,
+    "nombre": "Bastidor plegado FF5 - 20cm x 60cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF2020",
+    "precioOriginal": "2679,558",
+    "precioGuardado": 2679,
+    "nombre": "Bastidor plegado FF5 - 20cm x 20cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF60",
+    "precioOriginal": "57201,564",
+    "precioGuardado": 57201,
+    "nombre": "Baúl FF - 60cm x 40cm x 40cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Baules"
+  },
+  {
+    "codigo": "BF80",
+    "precioOriginal": "76268,703",
+    "precioGuardado": 76268,
+    "nombre": "Baúl FF - 80cm x 40cm x 40cm",
+    "categoria": "TODO en accesorios para hogar",
+    "subcategoria": "Baules"
+  },
+  {
+    "codigo": "BF80100",
+    "precioOriginal": "32004,9975",
+    "precioGuardado": 32004,
+    "nombre": "Bastidor plegado FF5 - 80cm x 100cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF50100",
+    "precioOriginal": "21291,5115",
+    "precioGuardado": 21291,
+    "nombre": "Bastidor plegado FF5 - 50cm x 100cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF6090",
+    "precioOriginal": "22390,8195",
+    "precioGuardado": 22390,
+    "nombre": "Bastidor plegado FF5 - 60cm x 90cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF6080",
+    "precioOriginal": "20192,7075",
+    "precioGuardado": 20192,
+    "nombre": "Bastidor plegado FF5 - 60cm x 80cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF5080",
+    "precioOriginal": "17171,6055",
+    "precioGuardado": 17171,
+    "nombre": "Bastidor plegado FF5 - 50cm x 80cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF5070",
+    "precioOriginal": "15247,554",
+    "precioGuardado": 15247,
+    "nombre": "Bastidor plegado FF5 - 50cm x 70cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF5060",
+    "precioOriginal": "13324,227",
+    "precioGuardado": 13324,
+    "nombre": "Bastidor plegado FF5 - 50cm x 60cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF4070",
+    "precioOriginal": "12636,771",
+    "precioGuardado": 12636,
+    "nombre": "Bastidor plegado FF5 - 40cm x 70cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF3090",
+    "precioOriginal": "12636,771",
+    "precioGuardado": 12636,
+    "nombre": "Bastidor plegado FF5 - 30cm x 90cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF3080",
+    "precioOriginal": "11334,036",
+    "precioGuardado": 11334,
+    "nombre": "Bastidor plegado FF5 - 30cm x 80cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF5050",
+    "precioOriginal": "11347,0035",
+    "precioGuardado": 11347,
+    "nombre": "Bastidor plegado FF5 - 50cm x 50cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "BF4060",
+    "precioOriginal": "10989,846",
+    "precioGuardado": 10989,
+    "nombre": "Bastidor plegado FF5 - 40cm x 60cm",
+    "categoria": "Artística",
+    "subcategoria": "Productos para artistica"
+  },
+  {
+    "codigo": "MR50100",
+    "precioOriginal": "95160,345",
+    "precioGuardado": 95160,
+    "nombre": "Mesa ratona de melamina 100cm x 50cm x 45cm (h)",
     "categoria": "Muebles",
     "subcategoria": "Mesas ratonas"
   }

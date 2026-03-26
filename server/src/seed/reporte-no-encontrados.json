@@ -1,282 +1,730 @@
 [
   {
-    "sku": "MB25",
+    "codigo": "MB25",
     "nombreCsv": "Baño y ducha para muñecas",
-    "categoriasRaw": "TODO PARA INFANTILES > Casas para muñecas, TODO PARA INFANTILES"
+    "precioOriginal": "0",
+    "precioParseado": 0,
+    "categoriaCsv": "TODO PARA INFANTILES",
+    "subcategoriaCsv": "Casas para muñecas"
   },
   {
-    "sku": "MB30",
+    "codigo": "MB30",
     "nombreCsv": "Vanitory para muñecas",
-    "categoriasRaw": "TODO PARA INFANTILES > Casas para muñecas, TODO PARA INFANTILES"
+    "precioOriginal": "0",
+    "precioParseado": 0,
+    "categoriaCsv": "TODO PARA INFANTILES",
+    "subcategoriaCsv": "Casas para muñecas"
   },
   {
-    "sku": "MB31",
+    "codigo": "MB31",
     "nombreCsv": "Living para muñecas",
-    "categoriasRaw": "TODO PARA INFANTILES > Casas para muñecas, TODO PARA INFANTILES"
+    "precioOriginal": "0",
+    "precioParseado": 0,
+    "categoriaCsv": "TODO PARA INFANTILES",
+    "subcategoriaCsv": "Casas para muñecas"
   },
   {
-    "sku": "MB15",
+    "codigo": "MB15",
     "nombreCsv": "Mesita de luz para muñecas",
-    "categoriasRaw": "TODO PARA INFANTILES > Casas para muñecas, TODO PARA INFANTILES"
+    "precioOriginal": "0",
+    "precioParseado": 0,
+    "categoriaCsv": "TODO PARA INFANTILES",
+    "subcategoriaCsv": "Casas para muñecas"
   },
   {
-    "sku": "MB29",
+    "codigo": "MB29",
     "nombreCsv": "Armario para muñecas",
-    "categoriasRaw": "TODO PARA INFANTILES > Casas para muñecas, TODO PARA INFANTILES"
+    "precioOriginal": "0",
+    "precioParseado": 0,
+    "categoriaCsv": "TODO PARA INFANTILES",
+    "subcategoriaCsv": "Casas para muñecas"
   },
   {
-    "sku": "MB23",
+    "codigo": "MB23",
     "nombreCsv": "Casa para muñecas repisa c/ 3 pisos",
-    "categoriasRaw": "TODO PARA INFANTILES > Casas para muñecas, TODO PARA INFANTILES"
+    "precioOriginal": "0",
+    "precioParseado": 0,
+    "categoriaCsv": "TODO PARA INFANTILES",
+    "subcategoriaCsv": "Casas para muñecas"
   },
   {
-    "sku": "MB19G",
+    "codigo": "MB19G",
     "nombreCsv": "Cocina para barbie completa",
-    "categoriasRaw": "TODO PARA INFANTILES > Casas para muñecas, TODO PARA INFANTILES"
+    "precioOriginal": "0",
+    "precioParseado": 0,
+    "categoriaCsv": "TODO PARA INFANTILES",
+    "subcategoriaCsv": "Casas para muñecas"
   },
   {
-    "sku": "BAN",
+    "codigo": "BAN",
     "nombreCsv": "Banco quincho",
-    "categoriasRaw": "Muebles > Bancos y escaleras, Muebles"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Muebles",
+    "subcategoriaCsv": "Bancos y escaleras"
   },
   {
-    "sku": "MPCF",
+    "codigo": "MPCF",
     "nombreCsv": "Mesa pata curva FF",
-    "categoriasRaw": "Muebles > Mesas y barras, Muebles, Muebles > Muebles recibidores"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Muebles",
+    "subcategoriaCsv": "Mesas y barras"
   },
   {
-    "sku": "BBP",
+    "codigo": "BBP",
     "nombreCsv": "Bandeja batea pino",
-    "categoriasRaw": "TODO en accesorios para hogar > Bandejas y tablas, Especial SAN VALENTÍN♡, TODO en accesorios para hogar"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "TODO en accesorios para hogar",
+    "subcategoriaCsv": "Bandejas y tablas"
   },
   {
-    "sku": "BBCMG",
+    "codigo": "BBCMG",
     "nombreCsv": "Bandeja batea FF",
-    "categoriasRaw": "TODO en accesorios para hogar > Bandejas y tablas, TODO en accesorios para hogar"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "TODO en accesorios para hogar",
+    "subcategoriaCsv": "Bandejas y tablas"
   },
   {
-    "sku": "BFFF",
+    "codigo": "BFFF",
     "nombreCsv": "Baúl FF",
-    "categoriasRaw": "TODO en accesorios para hogar > Baules, TODO en accesorios para hogar"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "TODO en accesorios para hogar",
+    "subcategoriaCsv": "Baules"
   },
   {
-    "sku": "BI",
+    "codigo": "BI",
     "nombreCsv": "Biblioteca alta FF",
-    "categoriasRaw": "Muebles > Estanterías, Muebles"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Muebles",
+    "subcategoriaCsv": "Estanterías"
   },
   {
-    "sku": "MRV",
+    "codigo": "MRV",
     "nombreCsv": "Mesa redonda varillada",
-    "categoriasRaw": "Muebles > Mesas y barras, Muebles"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Muebles",
+    "subcategoriaCsv": "Mesas y barras"
   },
   {
-    "sku": "EJF",
+    "codigo": "EJF",
     "nombreCsv": "Estante en J FF",
-    "categoriasRaw": "Muebles, Muebles > Repisas"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Muebles",
+    "subcategoriaCsv": "Repisas"
   },
   {
-    "sku": "EJP",
+    "codigo": "EJP",
     "nombreCsv": "Estante J pino",
-    "categoriasRaw": "Muebles, Muebles > Repisas"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Muebles",
+    "subcategoriaCsv": "Repisas"
   },
   {
-    "sku": "PERFE",
+    "codigo": "PERFE",
     "nombreCsv": "Perchero de feria plegable",
-    "categoriasRaw": "TODO en accesorios para hogar > Percheros, TODO en accesorios para hogar"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "TODO en accesorios para hogar",
+    "subcategoriaCsv": "Percheros"
   },
   {
-    "sku": "ETMB",
+    "codigo": "ETMB",
     "nombreCsv": "Estantería Triple Melamina",
-    "categoriasRaw": "Muebles > Estanterías, Muebles"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Muebles",
+    "subcategoriaCsv": "Estanterías"
   },
   {
-    "sku": "M",
+    "codigo": "M",
     "nombreCsv": "Ménsula clásica/nórdica",
-    "categoriasRaw": "TODO en accesorios para hogar > Mensulas, TODO en accesorios para hogar"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "TODO en accesorios para hogar",
+    "subcategoriaCsv": "Mensulas"
   },
   {
-    "sku": "PM",
+    "codigo": "PM",
     "nombreCsv": "Pie de maceta",
-    "categoriasRaw": "TODO en accesorios para hogar > Porta macetas, TODO en accesorios para hogar"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "TODO en accesorios para hogar",
+    "subcategoriaCsv": "Porta macetas"
   },
   {
-    "sku": "RH",
+    "codigo": "RH",
     "nombreCsv": "Repisa hexagonal",
-    "categoriasRaw": "Muebles, Muebles > Repisas"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Muebles",
+    "subcategoriaCsv": "Repisas"
   },
   {
-    "sku": "R17",
+    "codigo": "R17",
     "nombreCsv": "Repisas melamina",
-    "categoriasRaw": "Muebles, Muebles > Repisas"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Muebles",
+    "subcategoriaCsv": "Repisas"
   },
   {
-    "sku": "E4MB",
+    "codigo": "E4MB",
     "nombreCsv": "Estante cuadrado de melamina",
-    "categoriasRaw": "Muebles > Estanterías, Muebles"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Muebles",
+    "subcategoriaCsv": "Estanterías"
   },
   {
-    "sku": "VM",
+    "codigo": "VM",
     "nombreCsv": "Vuelta al mundo",
-    "categoriasRaw": "Candy bar y LASER, TODO en accesorios para hogar"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Candy bar y LASER",
+    "subcategoriaCsv": "TODO en accesorios para hogar"
   },
   {
-    "sku": "RTP",
+    "codigo": "RTP",
     "nombreCsv": "Repisa triangulo 12x40",
-    "categoriasRaw": "Muebles, Muebles > Repisas"
+    "precioOriginal": "0",
+    "precioParseado": 0,
+    "categoriaCsv": "Muebles",
+    "subcategoriaCsv": "Repisas"
   },
   {
-    "sku": "CAJ",
+    "codigo": "CAJ",
     "nombreCsv": "Cajonera - 50x50x15",
-    "categoriasRaw": "Muebles > Cajoneras, Muebles"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Muebles",
+    "subcategoriaCsv": "Cajoneras"
   },
   {
-    "sku": "PIZ",
+    "codigo": "PIZ",
     "nombreCsv": "Pizarrón doble",
-    "categoriasRaw": "TODO en accesorios para hogar > Pizarras, TODO en accesorios para hogar"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "TODO en accesorios para hogar",
+    "subcategoriaCsv": "Pizarras"
   },
   {
-    "sku": "RE6",
+    "codigo": "RE6",
     "nombreCsv": "Repisa especiero",
-    "categoriasRaw": "Muebles, Muebles > Repisas"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Muebles",
+    "subcategoriaCsv": "Repisas"
   },
   {
-    "sku": "C",
+    "codigo": "C",
     "nombreCsv": "Caballito de pino",
-    "categoriasRaw": "TODO PARA INFANTILES > Juegos didácticos, TODO PARA INFANTILES"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "TODO PARA INFANTILES",
+    "subcategoriaCsv": "Juegos didácticos"
   },
   {
-    "sku": "ER",
+    "codigo": "ER",
     "nombreCsv": "Estante rejilla pino",
-    "categoriasRaw": "Muebles > Estanterías, Muebles"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Muebles",
+    "subcategoriaCsv": "Estanterías"
   },
   {
-    "sku": "CANDY",
+    "codigo": "CANDY",
     "nombreCsv": "Mesa candy bar FF",
-    "categoriasRaw": "Candy bar y LASER, TODO en accesorios para hogar"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Candy bar y LASER",
+    "subcategoriaCsv": "TODO en accesorios para hogar"
   },
   {
-    "sku": "MAR",
+    "codigo": "MAR",
     "nombreCsv": "Marco repisa pino",
-    "categoriasRaw": "Muebles, Muebles > Repisas"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Muebles",
+    "subcategoriaCsv": "Repisas"
   },
   {
-    "sku": "BB",
+    "codigo": "BB",
     "nombreCsv": "Biblioteca baja",
-    "categoriasRaw": "Muebles > Estanterías, Muebles"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Muebles",
+    "subcategoriaCsv": "Estanterías"
   },
   {
-    "sku": "CIR",
+    "codigo": "CIR",
     "nombreCsv": "Círculos FF5",
-    "categoriasRaw": "Artística, Artística > Productos para artistica"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Artística",
+    "subcategoriaCsv": "Productos para artistica"
   },
   {
-    "sku": "ESR",
+    "codigo": "ESR",
     "nombreCsv": "Circulos de espejos",
-    "categoriasRaw": "Artística, Artística > Productos para artistica"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Artística",
+    "subcategoriaCsv": "Productos para artistica"
   },
   {
-    "sku": "AR3",
+    "codigo": "AR3",
     "nombreCsv": "Aros FF3",
-    "categoriasRaw": "Artística, Artística > Productos para artistica"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Artística",
+    "subcategoriaCsv": "Productos para artistica"
   },
   {
-    "sku": "AR5",
+    "codigo": "AR5",
     "nombreCsv": "Aros FF5",
-    "categoriasRaw": "Artística, Artística > Productos para artistica"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Artística",
+    "subcategoriaCsv": "Productos para artistica"
   },
   {
-    "sku": "A3",
+    "codigo": "A3",
     "nombreCsv": "Atril triangular de mesa",
-    "categoriasRaw": "Artística, Artística > Productos para artistica"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Artística",
+    "subcategoriaCsv": "Productos para artistica"
   },
   {
-    "sku": "PFF3",
+    "codigo": "PFF3",
     "nombreCsv": "Placa MDF 3mm",
-    "categoriasRaw": "Placas de madera y cortes"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Placas de madera y cortes",
+    "subcategoriaCsv": ""
   },
   {
-    "sku": "PMDF5",
+    "codigo": "PMDF5",
     "nombreCsv": "Placa MDF 5.5mm",
-    "categoriasRaw": "Placas de madera y cortes"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Placas de madera y cortes",
+    "subcategoriaCsv": ""
   },
   {
-    "sku": "PMDF9",
+    "codigo": "PMDF9",
     "nombreCsv": "Placa MDF 9mm",
-    "categoriasRaw": "Placas de madera y cortes"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Placas de madera y cortes",
+    "subcategoriaCsv": ""
   },
   {
-    "sku": "PMDF12",
+    "codigo": "PMDF12",
     "nombreCsv": "Placa MDF 12mm",
-    "categoriasRaw": "Placas de madera y cortes"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Placas de madera y cortes",
+    "subcategoriaCsv": ""
   },
   {
-    "sku": "PMDF15",
+    "codigo": "PMDF15",
     "nombreCsv": "Placa MDF 15mm",
-    "categoriasRaw": "Placas de madera y cortes"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Placas de madera y cortes",
+    "subcategoriaCsv": ""
   },
   {
-    "sku": "PMDF18",
+    "codigo": "PMDF18",
     "nombreCsv": "Placa MDF 18mm",
-    "categoriasRaw": "Placas de madera y cortes"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Placas de madera y cortes",
+    "subcategoriaCsv": ""
   },
   {
-    "sku": "PFB3",
+    "codigo": "PFB3",
     "nombreCsv": "Fibro Plus blanco 3mm",
-    "categoriasRaw": "Placas de madera y cortes"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Placas de madera y cortes",
+    "subcategoriaCsv": ""
   },
   {
-    "sku": "PFN3",
+    "codigo": "PFN3",
     "nombreCsv": "Fibro Plus negro 3mm",
-    "categoriasRaw": "Placas de madera y cortes"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Placas de madera y cortes",
+    "subcategoriaCsv": ""
   },
   {
-    "sku": "POSB",
+    "codigo": "POSB",
     "nombreCsv": "Placa OSB 9.5mm",
-    "categoriasRaw": "Placas de madera y cortes"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Placas de madera y cortes",
+    "subcategoriaCsv": ""
   },
   {
-    "sku": "PTB15",
+    "codigo": "PMDF31",
+    "nombreCsv": "Placa MDF 3mm - Placa entera",
+    "precioOriginal": "23506,1",
+    "precioParseado": 23506,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PMDF32",
+    "nombreCsv": "Placa MDF 3mm - 1/2 placa",
+    "precioOriginal": "15278,96",
+    "precioParseado": 15278,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PMDF51",
+    "nombreCsv": "Placa MDF 5.5mm - Placa entera",
+    "precioOriginal": "32679,38",
+    "precioParseado": 32679,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PMDF52",
+    "nombreCsv": "Placa MDF 5.5mm - 1/2 placa",
+    "precioOriginal": "21241,6",
+    "precioParseado": 21241,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PMDF91",
+    "nombreCsv": "Placa MDF 9mm - Placa entera",
+    "precioOriginal": "45313,98",
+    "precioParseado": 45313,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PMDF92",
+    "nombreCsv": "Placa MDF 9mm - 1/2 placa",
+    "precioOriginal": "29454,09",
+    "precioParseado": 29454,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PMDF121",
+    "nombreCsv": "Placa MDF 12mm - Placa entera",
+    "precioOriginal": "58493,52",
+    "precioParseado": 58493,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PMDF122",
+    "nombreCsv": "Placa MDF 12mm - 1/2 placa",
+    "precioOriginal": "38020,79",
+    "precioParseado": 38020,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PTB15",
     "nombreCsv": "Tablero de pino 15mm",
-    "categoriasRaw": "Placas de madera y cortes"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Placas de madera y cortes",
+    "subcategoriaCsv": ""
   },
   {
-    "sku": "PTB18",
+    "codigo": "PTB18",
     "nombreCsv": "Tablero de pino 18mm",
-    "categoriasRaw": "Placas de madera y cortes"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Placas de madera y cortes",
+    "subcategoriaCsv": ""
   },
   {
-    "sku": "PTB21",
+    "codigo": "PTB21",
     "nombreCsv": "Tablero de pino 21mm",
-    "categoriasRaw": "Placas de madera y cortes"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Placas de madera y cortes",
+    "subcategoriaCsv": ""
   },
   {
-    "sku": "PTB30",
+    "codigo": "PTB30",
     "nombreCsv": "Tablero de pino 30mm",
-    "categoriasRaw": "Placas de madera y cortes"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "Placas de madera y cortes",
+    "subcategoriaCsv": ""
   },
   {
-    "sku": "CVS",
+    "codigo": "PMDF151",
+    "nombreCsv": "Placa MDF 15mm - Placa entera",
+    "precioOriginal": "71829,34",
+    "precioParseado": 71829,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PMDF152",
+    "nombreCsv": "Placa MDF 15mm - 1/2 placa",
+    "precioOriginal": "46689,07",
+    "precioParseado": 46689,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PMDF181",
+    "nombreCsv": "Placa MDF 18mm - Placa entera",
+    "precioOriginal": "86290,6",
+    "precioParseado": 86290,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PMDF182",
+    "nombreCsv": "Placa MDF 18mm - 1/2 placa",
+    "precioOriginal": "56088,89",
+    "precioParseado": 56088,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PFB31",
+    "nombreCsv": "Fibro Plus blanco 3mm - Placa entera",
+    "precioOriginal": "38734,36",
+    "precioParseado": 38734,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PFB32",
+    "nombreCsv": "Fibro Plus blanco 3mm - 1/2 placa",
+    "precioOriginal": "25177,33",
+    "precioParseado": 25177,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PFN31",
+    "nombreCsv": "Fibro Plus negro 3mm - Placa entera",
+    "precioOriginal": "42630,01",
+    "precioParseado": 42630,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PFN32",
+    "nombreCsv": "Fibro Plus negro 3mm - 1/2 placa",
+    "precioOriginal": "27709,5",
+    "precioParseado": 27709,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "POSB1",
+    "nombreCsv": "Placa OSB 9.5mm - Placa entera",
+    "precioOriginal": "34612,23",
+    "precioParseado": 34612,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "POSB2",
+    "nombreCsv": "Placa OSB 9.5mm - 1/2 placa",
+    "precioOriginal": "22497,95",
+    "precioParseado": 22497,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PTB151",
+    "nombreCsv": "Tablero de pino 15mm - Placa entera",
+    "precioOriginal": "79113",
+    "precioParseado": 79113,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PTB152",
+    "nombreCsv": "Tablero de pino 15mm - 1/2 placa",
+    "precioOriginal": "51423,45",
+    "precioParseado": 51423,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PTB181",
+    "nombreCsv": "Tablero de pino 18mm - Placa entera",
+    "precioOriginal": "93228",
+    "precioParseado": 93228,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PTB182",
+    "nombreCsv": "Tablero de pino 18mm - 1/2 placa",
+    "precioOriginal": "60598,2",
+    "precioParseado": 60598,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PTB211",
+    "nombreCsv": "Tablero de pino 21mm - Placa entera",
+    "precioOriginal": "97020",
+    "precioParseado": 97020,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PTB212",
+    "nombreCsv": "Tablero de pino 21mm - 1/2 placa",
+    "precioOriginal": "63063",
+    "precioParseado": 63063,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PTB301",
+    "nombreCsv": "Tablero de pino 30mm - Placa entera",
+    "precioOriginal": "158946",
+    "precioParseado": 158946,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "PTB302",
+    "nombreCsv": "Tablero de pino 30mm - 1/2 placa",
+    "precioOriginal": "103314",
+    "precioParseado": 103314,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "CVS",
     "nombreCsv": "Caja porta sahumerio",
-    "categoriasRaw": "TODO en accesorios para hogar > Cajas y organizadores, TODO en accesorios para hogar"
+    "precioOriginal": "8966,6115",
+    "precioParseado": 8966,
+    "categoriaCsv": "TODO en accesorios para hogar",
+    "subcategoriaCsv": "Cajas y organizadores"
   },
   {
-    "sku": "MO153",
+    "codigo": "BO8",
+    "nombreCsv": "Bolitas de madera - 8mm",
+    "precioOriginal": "63",
+    "precioParseado": 63,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "MO153",
     "nombreCsv": "Terminación 1/2 x 1",
-    "categoriasRaw": "Molduras > Molduras para obra > Terminaciones"
+    "precioOriginal": "2644,68855",
+    "precioParseado": 2644,
+    "categoriaCsv": "Molduras",
+    "subcategoriaCsv": "Molduras para obra"
   },
   {
-    "sku": "M0306",
+    "codigo": "M0306",
     "nombreCsv": "Rinconero - 1 1/2 x 1 1/2",
-    "categoriasRaw": "Molduras, Molduras > Molduras para obra, Molduras > Molduras para obra > Rinconeros"
+    "precioOriginal": "7506,46785",
+    "precioParseado": 7506,
+    "categoriaCsv": "Molduras",
+    "subcategoriaCsv": "Molduras para obra"
   },
   {
-    "sku": "SANVAN",
+    "codigo": "TERCIA1/2",
+    "nombreCsv": "Tablero terciado de pino 3mm - 1/2 placa",
+    "precioOriginal": "17960,1975",
+    "precioParseado": 17960,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "TERCIA1",
+    "nombreCsv": "Tablero terciado de pino 3mm - Placa entera",
+    "precioOriginal": "27631,065",
+    "precioParseado": 27631,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "MELA1/2",
+    "nombreCsv": "Placa melamina blanca 18mm - 1/2 placa",
+    "precioOriginal": "63013,692",
+    "precioParseado": 63013,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "MELA1",
+    "nombreCsv": "Placa melamina blanca 18mm - Placa entera",
+    "precioOriginal": "96944,1375",
+    "precioParseado": 96944,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "SANVAN",
     "nombreCsv": "Bandeja Te Amo &#x2764;&#xfe0f;",
-    "categoriasRaw": "TODO en accesorios para hogar > Bandejas y tablas, Especial SAN VALENTÍN♡, TODO en accesorios para hogar"
+    "precioOriginal": "",
+    "precioParseado": null,
+    "categoriaCsv": "TODO en accesorios para hogar",
+    "subcategoriaCsv": "Bandejas y tablas"
   },
   {
-    "sku": "PORTAV15",
+    "codigo": "PORTAV15",
     "nombreCsv": "Porta velas 15cm - Corona",
-    "categoriasRaw": "Candy bar y LASER, Candy bar y LASER > Letras y numeros, Candy bar y LASER > Paneles y biombos, Candy bar y LASER > Productos candy bar"
+    "precioOriginal": "20871,0075",
+    "precioParseado": 20871,
+    "categoriaCsv": "Candy bar y LASER",
+    "subcategoriaCsv": "Letras y numeros"
+  },
+  {
+    "codigo": "CAJM4",
+    "nombreCsv": "Cajonera fibro fácil c/ melamina blanca - 4 cajones",
+    "precioOriginal": "167706",
+    "precioParseado": 167706,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "CAJM5",
+    "nombreCsv": "Cajonera fibro fácil c/ melamina blanca - 5 cajones",
+    "precioOriginal": "199150,875",
+    "precioParseado": 199150,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "CAJM6",
+    "nombreCsv": "Cajonera fibro fácil c/ melamina blanca - 6 cajones",
+    "precioOriginal": "251559",
+    "precioParseado": 251559,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
+  },
+  {
+    "codigo": "EN2C",
+    "nombreCsv": "Escritorio nórdico 1 cajón - 120cm de ancho",
+    "precioOriginal": "207532,5",
+    "precioParseado": 207532,
+    "categoriaCsv": "",
+    "subcategoriaCsv": ""
   }
 ]
