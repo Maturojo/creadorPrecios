@@ -5,6 +5,9 @@ import {
 } from "../services/productos";
 import { imprimirCarteles } from "../utils/imprimirCarteles";
 import "../styles/productos.css";
+import "../styles/productos-header.css";
+import "../styles/producto-card.css";
+import "../styles/carteles-print.css";
 
 export default function Productos() {
   const [productos, setProductos] = useState([]);

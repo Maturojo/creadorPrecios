@@ -1,10 +1,12 @@
+import cartelPrintCssUrl from "../styles/carteles-print.css?url";
+
 export function imprimirCarteles(productos) {
   if (!productos.length) {
     alert("No hay productos seleccionados para imprimir.");
     return;
   }
 
-  const MAX_PRODUCTOS_POR_CARTEL = 6;
+  const MAX_PRODUCTOS_POR_CARTEL = 24; // Probe con productos reales y 24 es un buen número para llenar una página sin que quede muy vacía ni demasiado cargada.
 
   const chunkArray = (array, size) => {
     const resultado = [];
@@ -101,108 +103,7 @@ export function imprimirCarteles(productos) {
     <html>
       <head>
         <title>Carteles</title>
-        <style>
-          * {
-            box-sizing: border-box;
-          }
-
-          html, body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: white;
-          }
-
-          .cartel {
-            width: 100%;
-            min-height: 100vh;
-            page-break-after: always;
-            display: flex;
-            flex-direction: column;
-            background: white;
-          }
-
-          .cartel-header {
-            border-top: 8px solid black;
-            border-bottom: 8px solid black;
-            padding: 34px 50px 24px 50px;
-          }
-
-          .subcategoria {
-            margin: 0;
-            font-size: 72px;
-            font-weight: 900;
-            line-height: 1;
-          }
-
-          .categoria {
-            margin: 10px 0 0 0;
-            font-size: 30px;
-            font-weight: 700;
-            line-height: 1.1;
-          }
-
-          .cartel-info {
-            margin-top: 12px;
-            font-size: 18px;
-            font-weight: 700;
-          }
-
-          .cartel-tabla-wrap {
-            padding: 18px 55px 0 55px;
-            flex: 1;
-          }
-
-          .cartel-tabla {
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
-          }
-
-          .cartel-tabla th,
-          .cartel-tabla td {
-            border: 3px solid black;
-            text-align: center;
-            vertical-align: middle;
-            padding: 10px 12px;
-          }
-
-          .cartel-tabla th {
-            font-size: 36px;
-            font-weight: 900;
-          }
-
-          .cartel-tabla td {
-            font-size: 24px;
-            height: 56px;
-          }
-
-          .cartel-tabla th:nth-child(1),
-          .cartel-tabla td:nth-child(1) {
-            width: 20%;
-          }
-
-          .cartel-tabla th:nth-child(2),
-          .cartel-tabla td:nth-child(2) {
-            width: 57%;
-          }
-
-          .cartel-tabla th:nth-child(3),
-          .cartel-tabla td:nth-child(3) {
-            width: 23%;
-          }
-
-          @media print {
-            html, body {
-              width: 100%;
-              height: auto;
-            }
-
-            .cartel {
-              page-break-after: always;
-            }
-          }
-        </style>
+        <link rel="stylesheet" href="${cartelPrintCssUrl}" />
       </head>
       <body>
         ${gruposPaginados
@@ -210,8 +111,16 @@ export function imprimirCarteles(productos) {
             (grupo) => `
               <section class="cartel">
                 <div class="cartel-header">
-                  <h1 class="subcategoria">${escaparHtml(grupo.subcategoria)}</h1>
-                  <h2 class="categoria">${escaparHtml(grupo.categoria)}</h2>
+                  ${
+                    grupo.subcategoria && grupo.subcategoria !== "Sin subcategoría"
+                      ? `
+                        <h1 class="subcategoria">${escaparHtml(grupo.subcategoria)}</h1>
+                        <h2 class="categoria">${escaparHtml(grupo.categoria)}</h2>
+                      `
+                      : `
+                        <h1 class="subcategoria solo-categoria">${escaparHtml(grupo.categoria)}</h1>
+                      `
+                  }
                   ${
                     grupo.totalCarteles > 1
                       ? `<div class="cartel-info">Cartel ${grupo.numeroCartel} de ${grupo.totalCarteles}</div>`
@@ -237,12 +146,6 @@ export function imprimirCarteles(productos) {
             `
           )
           .join("")}
-
-        <script>
-          window.onload = function () {
-            window.print();
-          };
-        </script>
       </body>
     </html>
   `;
@@ -257,4 +160,9 @@ export function imprimirCarteles(productos) {
   ventana.document.open();
   ventana.document.write(html);
   ventana.document.close();
+
+  ventana.onload = () => {
+    ventana.focus();
+    ventana.print();
+  };
 }
