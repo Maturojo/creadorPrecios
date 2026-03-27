@@ -410,4 +410,92 @@ router.post("/migrar-filtros-desde-productos", async (req, res) => {
   }
 });
 
+router.delete("/categorias/:nombre", async (req, res) => {
+  try {
+    const nombre = decodeURIComponent(req.params.nombre).trim();
+
+    if (!nombre) {
+      return res.status(400).json({ error: "Nombre de categoría inválido" });
+    }
+
+    if (nombre.toLowerCase() === "sin clasificar") {
+      return res
+        .status(400)
+        .json({ error: "No se puede eliminar esa categoría" });
+    }
+
+    await Categoria.deleteOne({ nombre });
+    await Subcategoria.deleteMany({ categoria: nombre });
+
+    const resultadoProductos = await Producto.updateMany(
+      { categoria: nombre },
+      {
+        $set: {
+          categoria: "",
+          subcategoria: "",
+        },
+      }
+    );
+
+    res.json({
+      ok: true,
+      categoriaEliminada: nombre,
+      productosActualizados:
+        resultadoProductos.modifiedCount ?? resultadoProductos.nModified ?? 0,
+    });
+  } catch (error) {
+    console.error("Error al eliminar categoría:", error);
+    res.status(500).json({ error: "Error al eliminar categoría" });
+  }
+});
+
+router.delete("/subcategorias", async (req, res) => {
+  try {
+    const { categoria = "", subcategoria = "" } = req.body;
+
+    const categoriaLimpia = categoria.trim();
+    const subcategoriaLimpia = subcategoria.trim();
+
+    if (!categoriaLimpia || !subcategoriaLimpia) {
+      return res
+        .status(400)
+        .json({ error: "Categoría y subcategoría son obligatorias" });
+    }
+
+    if (subcategoriaLimpia.toLowerCase() === "sin subcategoría") {
+      return res
+        .status(400)
+        .json({ error: "No se puede eliminar esa subcategoría" });
+    }
+
+    await Subcategoria.deleteOne({
+      categoria: categoriaLimpia,
+      nombre: subcategoriaLimpia,
+    });
+
+    const resultadoProductos = await Producto.updateMany(
+      {
+        categoria: categoriaLimpia,
+        subcategoria: subcategoriaLimpia,
+      },
+      {
+        $set: {
+          subcategoria: "",
+        },
+      }
+    );
+
+    res.json({
+      ok: true,
+      categoria: categoriaLimpia,
+      subcategoriaEliminada: subcategoriaLimpia,
+      productosActualizados:
+        resultadoProductos.modifiedCount ?? resultadoProductos.nModified ?? 0,
+    });
+  } catch (error) {
+    console.error("Error al eliminar subcategoría:", error);
+    res.status(500).json({ error: "Error al eliminar subcategoría" });
+  }
+});
+
 module.exports = router;

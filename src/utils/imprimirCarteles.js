@@ -6,7 +6,7 @@ export function imprimirCarteles(productos) {
     return;
   }
 
-  const MAX_PRODUCTOS_POR_CARTEL = 24; // Probe con productos reales y 24 es un buen número para llenar una página sin que quede muy vacía ni demasiado cargada.
+  const MAX_PRODUCTOS_POR_CARTEL = 24;
 
   const chunkArray = (array, size) => {
     const resultado = [];
@@ -51,8 +51,8 @@ export function imprimirCarteles(productos) {
       .replace(/'/g, "&#039;");
   };
 
-  const crearFilas = (items, minFilas = MAX_PRODUCTOS_POR_CARTEL) => {
-    let filas = items
+  const crearFilas = (items) => {
+    return items
       .map(
         (p) => `
           <tr>
@@ -63,20 +63,6 @@ export function imprimirCarteles(productos) {
         `
       )
       .join("");
-
-    const faltantes = Math.max(0, minFilas - items.length);
-
-    for (let i = 0; i < faltantes; i++) {
-      filas += `
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-      `;
-    }
-
-    return filas;
   };
 
   const gruposBase = agruparProductos(productos);

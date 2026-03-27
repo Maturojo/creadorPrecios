@@ -4,6 +4,8 @@ import Swal from "sweetalert2";
 import {
   actualizarClasificacionMultiple,
   crearCategoriaOSubcategoria,
+  eliminarCategoria,
+  eliminarSubcategoria,
   guardarAccionHistorial,
   limpiarHistorialProductos,
   obtenerFiltrosProductos,
@@ -49,6 +51,11 @@ export default function Productos() {
   const [mostrandoHistorial, setMostrandoHistorial] = useState(false);
   const [historialAcciones, setHistorialAcciones] = useState([]);
 
+  const [mostrandoEliminar, setMostrandoEliminar] = useState(false);
+  const [categoriaAEliminar, setCategoriaAEliminar] = useState("");
+  const [subcategoriaAEliminar, setSubcategoriaAEliminar] = useState("");
+  const [eliminandoClasificacion, setEliminandoClasificacion] = useState(false);
+
   const subcategoriasDisponibles = useMemo(() => {
     if (!categoriaSeleccionada) return [];
     return subcategoriasPorCategoria[categoriaSeleccionada] || [];
@@ -58,6 +65,11 @@ export default function Productos() {
     if (!categoriaMultiple) return [];
     return subcategoriasPorCategoria[categoriaMultiple] || [];
   }, [categoriaMultiple, subcategoriasPorCategoria]);
+
+  const subcategoriasEliminarDisponibles = useMemo(() => {
+    if (!categoriaAEliminar) return [];
+    return subcategoriasPorCategoria[categoriaAEliminar] || [];
+  }, [categoriaAEliminar, subcategoriasPorCategoria]);
 
   async function confirmar({ titulo, texto, icon = "warning" }) {
     const result = await Swal.fire({
@@ -440,6 +452,127 @@ export default function Productos() {
     }
   }
 
+  function abrirEliminarClasificacion() {
+    setMostrandoEliminar(true);
+    setCategoriaAEliminar("");
+    setSubcategoriaAEliminar("");
+  }
+
+  function cancelarEliminarClasificacion() {
+    setMostrandoEliminar(false);
+    setCategoriaAEliminar("");
+    setSubcategoriaAEliminar("");
+  }
+
+  async function eliminarCategoriaCompleta() {
+    if (!categoriaAEliminar) {
+      toast.warn("Seleccioná una categoría.");
+      return;
+    }
+
+    const ok = await confirmar({
+      titulo: "¿Eliminar categoría?",
+      texto: `Se eliminará la categoría "${categoriaAEliminar}", sus subcategorías y se limpiarán los productos asociados.`,
+    });
+
+    if (!ok) return;
+
+    try {
+      setEliminandoClasificacion(true);
+
+      const resultado = await eliminarCategoria(categoriaAEliminar);
+
+      await guardarEnHistorial({
+        tipo: "eliminar-categoria",
+        descripcion: `Se eliminó la categoría ${categoriaAEliminar} y se limpiaron ${
+          resultado.productosActualizados || 0
+        } productos`,
+        cantidad: resultado.productosActualizados || 0,
+        categoria: categoriaAEliminar,
+        subcategoria: "",
+      });
+
+      await cargarFiltros();
+      await cargarProductos();
+
+      if (categoriaSeleccionada === categoriaAEliminar) {
+        setCategoriaSeleccionada("");
+        setSubcategoriaSeleccionada("");
+      }
+
+      if (categoriaMultiple === categoriaAEliminar) {
+        setCategoriaMultiple("");
+        setSubcategoriaMultiple("");
+      }
+
+      cancelarEliminarClasificacion();
+      toast.success("Categoría eliminada correctamente.");
+    } catch (err) {
+      console.error(err);
+      toast.error("No se pudo eliminar la categoría.");
+    } finally {
+      setEliminandoClasificacion(false);
+    }
+  }
+
+  async function eliminarSubcategoriaIndividual() {
+    if (!categoriaAEliminar || !subcategoriaAEliminar) {
+      toast.warn("Seleccioná categoría y subcategoría.");
+      return;
+    }
+
+    const ok = await confirmar({
+      titulo: "¿Eliminar subcategoría?",
+      texto: `Se eliminará la subcategoría "${subcategoriaAEliminar}" de "${categoriaAEliminar}" y se limpiarán los productos asociados.`,
+    });
+
+    if (!ok) return;
+
+    try {
+      setEliminandoClasificacion(true);
+
+      const resultado = await eliminarSubcategoria(
+        categoriaAEliminar,
+        subcategoriaAEliminar
+      );
+
+      await guardarEnHistorial({
+        tipo: "eliminar-subcategoria",
+        descripcion: `Se eliminó la subcategoría ${categoriaAEliminar} > ${subcategoriaAEliminar} y se limpiaron ${
+          resultado.productosActualizados || 0
+        } productos`,
+        cantidad: resultado.productosActualizados || 0,
+        categoria: categoriaAEliminar,
+        subcategoria: subcategoriaAEliminar,
+      });
+
+      await cargarFiltros();
+      await cargarProductos();
+
+      if (
+        categoriaSeleccionada === categoriaAEliminar &&
+        subcategoriaSeleccionada === subcategoriaAEliminar
+      ) {
+        setSubcategoriaSeleccionada("");
+      }
+
+      if (
+        categoriaMultiple === categoriaAEliminar &&
+        subcategoriaMultiple === subcategoriaAEliminar
+      ) {
+        setSubcategoriaMultiple("");
+      }
+
+      cancelarEliminarClasificacion();
+      toast.success("Subcategoría eliminada correctamente.");
+    } catch (err) {
+      console.error(err);
+      toast.error("No se pudo eliminar la subcategoría.");
+    } finally {
+      setEliminandoClasificacion(false);
+    }
+  }
+
   return (
     <section className="productos-page">
       <div className="productos-header">
@@ -475,6 +608,13 @@ export default function Productos() {
 
           <button className="btn-secundario" onClick={abrirEditorCategorias}>
             Nueva categoría / subcategoría
+          </button>
+
+          <button
+            className="btn-secundario"
+            onClick={abrirEliminarClasificacion}
+          >
+            Eliminar categoría / subcategoría
           </button>
 
           <button
@@ -524,6 +664,76 @@ export default function Productos() {
           ))}
         </select>
       </div>
+
+      {mostrandoEliminar && (
+        <div className="editor-multiple">
+          <h3>Eliminar categoría o subcategoría</h3>
+
+          <div className="editor-multiple-filtros">
+            <select
+              value={categoriaAEliminar}
+              onChange={(e) => {
+                setCategoriaAEliminar(e.target.value);
+                setSubcategoriaAEliminar("");
+              }}
+            >
+              <option value="">Seleccionar categoría</option>
+              {categorias
+                .filter((cat) => cat !== "Sin clasificar")
+                .map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat}
+                  </option>
+                ))}
+            </select>
+
+            <select
+              value={subcategoriaAEliminar}
+              onChange={(e) => setSubcategoriaAEliminar(e.target.value)}
+              disabled={!categoriaAEliminar}
+            >
+              <option value="">Seleccionar subcategoría (opcional)</option>
+              {subcategoriasEliminarDisponibles
+                .filter((sub) => sub !== "Sin subcategoría")
+                .map((sub) => (
+                  <option key={sub} value={sub}>
+                    {sub}
+                  </option>
+                ))}
+            </select>
+          </div>
+
+          <div className="acciones-edicion">
+            <button
+              className="btn-secundario"
+              onClick={eliminarCategoriaCompleta}
+              disabled={!categoriaAEliminar || eliminandoClasificacion}
+            >
+              Eliminar categoría completa
+            </button>
+
+            <button
+              className="btn-secundario"
+              onClick={eliminarSubcategoriaIndividual}
+              disabled={
+                !categoriaAEliminar ||
+                !subcategoriaAEliminar ||
+                eliminandoClasificacion
+              }
+            >
+              Eliminar solo subcategoría
+            </button>
+
+            <button
+              className="btn-secundario"
+              onClick={cancelarEliminarClasificacion}
+              disabled={eliminandoClasificacion}
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      )}
 
       {mostrandoHistorial && (
         <div className="editor-multiple">

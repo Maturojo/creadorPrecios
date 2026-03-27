@@ -114,3 +114,34 @@ export async function limpiarHistorialProductos() {
 
   return response.json();
 }
+
+export async function eliminarCategoria(nombre) {
+  const response = await fetch(
+    `${API_URL}/categorias/${encodeURIComponent(nombre)}`,
+    {
+      method: "DELETE",
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("No se pudo eliminar la categoría");
+  }
+
+  return response.json();
+}
+
+export async function eliminarSubcategoria(categoria, subcategoria) {
+  const response = await fetch(`${API_URL}/subcategorias`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ categoria, subcategoria }),
+  });
+
+  if (!response.ok) {
+    throw new Error("No se pudo eliminar la subcategoría");
+  }
+
+  return response.json();
+}
