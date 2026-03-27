@@ -61,3 +61,37 @@
     align-items: stretch;
   }
 }
+
+.acciones-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.acciones-header .btn-secundario {
+  height: 40px;
+  padding: 0 14px;
+}
+
+.editor-multiple {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.editor-multiple h3 {
+  margin: 0 0 12px;
+}
+
+.editor-multiple-filtros {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.editor-multiple-filtros select {
+  min-width: 220px;
+}

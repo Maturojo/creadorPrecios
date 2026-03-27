@@ -25,3 +25,38 @@ export async function obtenerFiltrosProductos() {
 
   return response.json();
 }
+
+export async function actualizarClasificacionProducto(id, data) {
+  const response = await fetch(`${API_URL}/${id}/clasificacion`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error("No se pudo actualizar la clasificación");
+  }
+
+  return response.json();
+}
+
+export async function actualizarClasificacionMultiple(ids, data) {
+  const response = await fetch(`${API_URL}/clasificacion-multiple`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      ids,
+      ...data,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error("No se pudo actualizar la clasificación múltiple");
+  }
+
+  return response.json();
+}
