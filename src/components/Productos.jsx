@@ -56,6 +56,8 @@ export default function Productos() {
   const [subcategoriaAEliminar, setSubcategoriaAEliminar] = useState("");
   const [eliminandoClasificacion, setEliminandoClasificacion] = useState(false);
 
+  const [formatoImpresion, setFormatoImpresion] = useState("a4");
+
   const subcategoriasDisponibles = useMemo(() => {
     if (!categoriaSeleccionada) return [];
     return subcategoriasPorCategoria[categoriaSeleccionada] || [];
@@ -573,6 +575,15 @@ export default function Productos() {
     }
   }
 
+  function handleImprimir() {
+    if (!seleccionados.length) {
+      toast.warn("Seleccioná al menos un producto para imprimir.");
+      return;
+    }
+
+    imprimirCarteles(seleccionados, formatoImpresion);
+  }
+
   return (
     <section className="productos-page">
       <div className="productos-header">
@@ -624,12 +635,21 @@ export default function Productos() {
             {mostrandoHistorial ? "Ocultar historial" : "Ver historial"}
           </button>
 
+          <select
+            value={formatoImpresion}
+            onChange={(e) => setFormatoImpresion(e.target.value)}
+            className="btn-secundario"
+          >
+            <option value="a4">A4 completa</option>
+            <option value="media-a4">Media hoja</option>
+          </select>
+
           <button
-            className="btn-imprimir"
-            onClick={() => imprimirCarteles(seleccionados)}
+            className="btn-secundario"
+            onClick={handleImprimir}
             disabled={!seleccionados.length}
           >
-            Imprimir carteles ({seleccionados.length})
+            Imprimir ({seleccionados.length})
           </button>
         </div>
       </div>

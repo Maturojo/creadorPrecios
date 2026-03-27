@@ -1,12 +1,24 @@
 import cartelPrintCssUrl from "../styles/carteles-print.css?url";
 
-export function imprimirCarteles(productos) {
+export function imprimirCarteles(productos, formato = "a4") {
   if (!productos.length) {
     alert("No hay productos seleccionados para imprimir.");
     return;
   }
 
-  const MAX_PRODUCTOS_POR_CARTEL = 24;
+  const CONFIG_FORMATO = {
+    a4: {
+      maxProductosPorCartel: 22,
+      bodyClass: "formato-a4",
+    },
+    "media-a4": {
+      maxProductosPorCartel: 8,
+      bodyClass: "formato-a4",
+    },
+  };
+
+  const config = CONFIG_FORMATO[formato] || CONFIG_FORMATO.a4;
+  const MAX_PRODUCTOS_POR_CARTEL = config.maxProductosPorCartel;
 
   const chunkArray = (array, size) => {
     const resultado = [];
@@ -67,6 +79,7 @@ export function imprimirCarteles(productos) {
 
   const gruposBase = agruparProductos(productos);
 
+  // Cada bloque paginado genera SU PROPIO cartel completo con encabezado repetido
   const gruposPaginados = gruposBase.flatMap((grupo) => {
     const itemsOrdenados = [...grupo.items].sort((a, b) => {
       const nombreA = (a.nombre || a.descripcion || "").trim();
@@ -86,19 +99,23 @@ export function imprimirCarteles(productos) {
   });
 
   const html = `
-    <html>
+    <!DOCTYPE html>
+    <html lang="es">
       <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Carteles</title>
         <link rel="stylesheet" href="${cartelPrintCssUrl}" />
       </head>
-      <body>
+      <body class="${config.bodyClass}">
         ${gruposPaginados
           .map(
             (grupo) => `
               <section class="cartel">
                 <div class="cartel-header">
                   ${
-                    grupo.subcategoria && grupo.subcategoria !== "Sin subcategoría"
+                    grupo.subcategoria &&
+                    grupo.subcategoria !== "Sin subcategoría"
                       ? `
                         <h1 class="subcategoria">${escaparHtml(grupo.subcategoria)}</h1>
                         <h2 class="categoria">${escaparHtml(grupo.categoria)}</h2>
@@ -107,6 +124,7 @@ export function imprimirCarteles(productos) {
                         <h1 class="subcategoria solo-categoria">${escaparHtml(grupo.categoria)}</h1>
                       `
                   }
+
                   ${
                     grupo.totalCarteles > 1
                       ? `<div class="cartel-info">Cartel ${grupo.numeroCartel} de ${grupo.totalCarteles}</div>`
@@ -139,7 +157,9 @@ export function imprimirCarteles(productos) {
   const ventana = window.open("", "_blank");
 
   if (!ventana) {
-    alert("No se pudo abrir la ventana de impresión. Revisá si el navegador está bloqueando popups.");
+    alert(
+      "No se pudo abrir la ventana de impresión. Revisá si el navegador está bloqueando popups."
+    );
     return;
   }
 
@@ -148,7 +168,9 @@ export function imprimirCarteles(productos) {
   ventana.document.close();
 
   ventana.onload = () => {
-    ventana.focus();
-    ventana.print();
+    setTimeout(() => {
+      ventana.focus();
+      ventana.print();
+    }, 500);
   };
 }
