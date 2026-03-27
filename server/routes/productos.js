@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Producto = require("../models/Producto");
+const HistorialAccion = require("../models/HistorialAccion");
 
 // Obtener todos los productos
 router.get("/", async (req, res) => {
@@ -131,6 +132,86 @@ router.get("/sin-clasificar", async (req, res) => {
   }
 });
 
+// Obtener historial
+router.get("/historial", async (req, res) => {
+  try {
+    const historial = await HistorialAccion.find({})
+      .sort({ createdAt: -1 })
+      .limit(100)
+      .lean();
+
+    res.json(
+      historial.map((item) => ({
+        id: item._id,
+        tipo: item.tipo,
+        descripcion: item.descripcion,
+        cantidad: item.cantidad || 0,
+        categoria: item.categoria || "",
+        subcategoria: item.subcategoria || "",
+        fecha: item.createdAt,
+      }))
+    );
+  } catch (error) {
+    console.error("Error al obtener historial:", error);
+    res.status(500).json({ error: "Error al obtener historial" });
+  }
+});
+
+// Guardar acción en historial
+router.post("/historial", async (req, res) => {
+  try {
+    const {
+      tipo,
+      descripcion,
+      cantidad = 0,
+      categoria = "",
+      subcategoria = "",
+    } = req.body;
+
+    if (!tipo?.trim() || !descripcion?.trim()) {
+      return res
+        .status(400)
+        .json({ error: "Tipo y descripción son obligatorios" });
+    }
+
+    const nuevaAccion = await HistorialAccion.create({
+      tipo: tipo.trim(),
+      descripcion: descripcion.trim(),
+      cantidad,
+      categoria: categoria.trim(),
+      subcategoria: subcategoria.trim(),
+    });
+
+    res.status(201).json({
+      id: nuevaAccion._id,
+      tipo: nuevaAccion.tipo,
+      descripcion: nuevaAccion.descripcion,
+      cantidad: nuevaAccion.cantidad,
+      categoria: nuevaAccion.categoria,
+      subcategoria: nuevaAccion.subcategoria,
+      fecha: nuevaAccion.createdAt,
+    });
+  } catch (error) {
+    console.error("Error al guardar historial:", error);
+    res.status(500).json({ error: "Error al guardar historial" });
+  }
+});
+
+// Limpiar historial
+router.delete("/historial", async (req, res) => {
+  try {
+    const resultado = await HistorialAccion.deleteMany({});
+
+    res.json({
+      ok: true,
+      deletedCount: resultado.deletedCount || 0,
+    });
+  } catch (error) {
+    console.error("Error al limpiar historial:", error);
+    res.status(500).json({ error: "Error al limpiar historial" });
+  }
+});
+
 // Actualizar clasificación de múltiples productos
 router.patch("/clasificacion-multiple", async (req, res) => {
   try {
@@ -162,7 +243,7 @@ router.patch("/clasificacion-multiple", async (req, res) => {
   }
 });
 
-// Actualizar manualmente categoría y subcategoría de un producto
+// Actualizar clasificación de un producto
 router.patch("/:id/clasificacion", async (req, res) => {
   try {
     const { id } = req.params;

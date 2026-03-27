@@ -3,15 +3,18 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import {
   actualizarClasificacionMultiple,
+  guardarAccionHistorial,
+  limpiarHistorialProductos,
   obtenerFiltrosProductos,
+  obtenerHistorialProductos,
   obtenerProductos,
 } from "../services/productos";
 import { imprimirCarteles } from "../utils/imprimirCarteles";
 import "../styles/productos.css";
 import "../styles/carteles-print.css";
 import "../styles/productos-header.css";
+import "../styles/producto-card.css";
 
-const HISTORIAL_KEY = "historial-clasificaciones-productos";
 const UMBRAL_CONFIRMACION_MASIVA = 20;
 
 export default function Productos() {
@@ -106,11 +109,23 @@ export default function Productos() {
     }
   }
 
+  async function cargarHistorial() {
+    try {
+      const data = await obtenerHistorialProductos();
+      setHistorialAcciones(data || []);
+    } catch (err) {
+      console.error("No se pudo cargar el historial:", err);
+      toast.error("No se pudo cargar el historial.");
+    }
+  }
+
   useEffect(() => {
     cargarFiltros().catch((err) => {
       console.error(err);
       toast.error("No se pudieron cargar los filtros.");
     });
+
+    cargarHistorial();
   }, []);
 
   useEffect(() => {
@@ -123,29 +138,14 @@ export default function Productos() {
     );
   }, [productos]);
 
-  useEffect(() => {
+  async function guardarEnHistorial(accion) {
     try {
-      const guardado = localStorage.getItem(HISTORIAL_KEY);
-      if (guardado) {
-        setHistorialAcciones(JSON.parse(guardado));
-      }
+      const nuevoRegistro = await guardarAccionHistorial(accion);
+      setHistorialAcciones((prev) => [nuevoRegistro, ...prev].slice(0, 100));
     } catch (err) {
-      console.error("No se pudo cargar el historial:", err);
+      console.error("No se pudo guardar en historial:", err);
+      toast.error("No se pudo guardar en el historial.");
     }
-  }, []);
-
-  function guardarEnHistorial(accion) {
-    const nuevoRegistro = {
-      id: Date.now() + Math.random(),
-      fecha: new Date().toISOString(),
-      ...accion,
-    };
-
-    setHistorialAcciones((prev) => {
-      const actualizado = [nuevoRegistro, ...prev].slice(0, 100);
-      localStorage.setItem(HISTORIAL_KEY, JSON.stringify(actualizado));
-      return actualizado;
-    });
   }
 
   async function limpiarHistorial() {
@@ -156,9 +156,14 @@ export default function Productos() {
 
     if (!ok) return;
 
-    localStorage.removeItem(HISTORIAL_KEY);
-    setHistorialAcciones([]);
-    toast.success("Historial limpiado correctamente.");
+    try {
+      await limpiarHistorialProductos();
+      setHistorialAcciones([]);
+      toast.success("Historial limpiado correctamente.");
+    } catch (err) {
+      console.error(err);
+      toast.error("No se pudo limpiar el historial.");
+    }
   }
 
   function formatearFechaHistorial(fechaISO) {
@@ -276,7 +281,7 @@ export default function Productos() {
         }
       );
 
-      guardarEnHistorial({
+      await guardarEnHistorial({
         tipo: "clasificacion-multiple",
         descripcion: `Se actualizaron ${seleccionados.length} productos a ${categoriaTexto} > ${subcategoriaTexto}`,
         cantidad: seleccionados.length,
@@ -322,7 +327,7 @@ export default function Productos() {
         }
       );
 
-      guardarEnHistorial({
+      await guardarEnHistorial({
         tipo: "quitar-clasificacion-multiple",
         descripcion: `Se quitó la clasificación de ${seleccionados.length} productos`,
         cantidad: seleccionados.length,
@@ -373,7 +378,7 @@ export default function Productos() {
     );
   }
 
-  function guardarNuevaCategoriaOSubcategoria() {
+  async function guardarNuevaCategoriaOSubcategoria() {
     const categoriaExistenteElegida = normalizarTexto(categoriaBaseNuevaSub);
     const categoriaNueva = normalizarTexto(nuevaCategoria);
     const subNueva = normalizarTexto(nuevaSubcategoria);
@@ -439,7 +444,7 @@ export default function Productos() {
     setCategoriaMultiple(categoriaFinal);
     setSubcategoriaMultiple(subNueva || "");
 
-    guardarEnHistorial({
+    await guardarEnHistorial({
       tipo: "crear-categoria-subcategoria",
       descripcion: subNueva
         ? `Se creó ${categoriaFinal} > ${subNueva}`
@@ -557,7 +562,7 @@ export default function Productos() {
           ) : (
             <div className="historial-lista">
               {historialAcciones.map((item) => (
-                <div key={item.id} className="historial-item">
+                <div key={item.id || item._id} className="historial-item">
                   <div className="historial-item-top">
                     <strong>{item.descripcion}</strong>
                   </div>

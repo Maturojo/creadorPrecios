@@ -60,3 +60,41 @@ export async function actualizarClasificacionMultiple(ids, data) {
 
   return response.json();
 }
+
+export async function obtenerHistorialProductos() {
+  const response = await fetch(`${API_URL}/historial`);
+
+  if (!response.ok) {
+    throw new Error("No se pudo obtener el historial");
+  }
+
+  return response.json();
+}
+
+export async function guardarAccionHistorial(data) {
+  const response = await fetch(`${API_URL}/historial`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error("No se pudo guardar la acción en el historial");
+  }
+
+  return response.json();
+}
+
+export async function limpiarHistorialProductos() {
+  const response = await fetch(`${API_URL}/historial`, {
+    method: "DELETE",
+  });
+
+  if (!response.ok) {
+    throw new Error("No se pudo limpiar el historial");
+  }
+
+  return response.json();
+}
