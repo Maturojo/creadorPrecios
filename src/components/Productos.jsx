@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 import {
   actualizarClasificacionMultiple,
   obtenerFiltrosProductos,
@@ -8,6 +10,9 @@ import { imprimirCarteles } from "../utils/imprimirCarteles";
 import "../styles/productos.css";
 import "../styles/carteles-print.css";
 import "../styles/productos-header.css";
+
+const HISTORIAL_KEY = "historial-clasificaciones-productos";
+const UMBRAL_CONFIRMACION_MASIVA = 20;
 
 export default function Productos() {
   const [productos, setProductos] = useState([]);
@@ -30,6 +35,16 @@ export default function Productos() {
   const [subcategoriaMultiple, setSubcategoriaMultiple] = useState("");
   const [guardandoMultiple, setGuardandoMultiple] = useState(false);
 
+  const [mostrandoEditorCategorias, setMostrandoEditorCategorias] =
+    useState(false);
+  const [categoriaBaseNuevaSub, setCategoriaBaseNuevaSub] = useState("");
+  const [nuevaCategoria, setNuevaCategoria] = useState("");
+  const [nuevaSubcategoria, setNuevaSubcategoria] = useState("");
+  const [errorNuevaClasificacion, setErrorNuevaClasificacion] = useState("");
+
+  const [mostrandoHistorial, setMostrandoHistorial] = useState(false);
+  const [historialAcciones, setHistorialAcciones] = useState([]);
+
   const subcategoriasDisponibles = useMemo(() => {
     if (!categoriaSeleccionada) return [];
     return subcategoriasPorCategoria[categoriaSeleccionada] || [];
@@ -39,6 +54,30 @@ export default function Productos() {
     if (!categoriaMultiple) return [];
     return subcategoriasPorCategoria[categoriaMultiple] || [];
   }, [categoriaMultiple, subcategoriasPorCategoria]);
+
+  async function confirmar({ titulo, texto, icon = "warning" }) {
+    const result = await Swal.fire({
+      title: titulo,
+      text: texto,
+      icon,
+      showCancelButton: true,
+      confirmButtonText: "Sí, continuar",
+      cancelButtonText: "Cancelar",
+      reverseButtons: true,
+      focusCancel: true,
+    });
+
+    return result.isConfirmed;
+  }
+
+  async function confirmarAccionMasiva(cantidad, textoAccion) {
+    if (cantidad < UMBRAL_CONFIRMACION_MASIVA) return true;
+
+    return confirmar({
+      titulo: "Acción masiva",
+      texto: `Vas a ${textoAccion} ${cantidad} productos. ¿Continuar?`,
+    });
+  }
 
   async function cargarFiltros() {
     const data = await obtenerFiltrosProductos();
@@ -61,13 +100,17 @@ export default function Productos() {
     } catch (err) {
       console.error(err);
       setError("No se pudieron cargar los productos");
+      toast.error("No se pudieron cargar los productos.");
     } finally {
       setLoading(false);
     }
   }
 
   useEffect(() => {
-    cargarFiltros();
+    cargarFiltros().catch((err) => {
+      console.error(err);
+      toast.error("No se pudieron cargar los filtros.");
+    });
   }, []);
 
   useEffect(() => {
@@ -79,6 +122,55 @@ export default function Productos() {
       prev.filter((sel) => productos.some((p) => p._id === sel._id))
     );
   }, [productos]);
+
+  useEffect(() => {
+    try {
+      const guardado = localStorage.getItem(HISTORIAL_KEY);
+      if (guardado) {
+        setHistorialAcciones(JSON.parse(guardado));
+      }
+    } catch (err) {
+      console.error("No se pudo cargar el historial:", err);
+    }
+  }, []);
+
+  function guardarEnHistorial(accion) {
+    const nuevoRegistro = {
+      id: Date.now() + Math.random(),
+      fecha: new Date().toISOString(),
+      ...accion,
+    };
+
+    setHistorialAcciones((prev) => {
+      const actualizado = [nuevoRegistro, ...prev].slice(0, 100);
+      localStorage.setItem(HISTORIAL_KEY, JSON.stringify(actualizado));
+      return actualizado;
+    });
+  }
+
+  async function limpiarHistorial() {
+    const ok = await confirmar({
+      titulo: "¿Limpiar historial?",
+      texto: "Se eliminarán todas las acciones registradas.",
+    });
+
+    if (!ok) return;
+
+    localStorage.removeItem(HISTORIAL_KEY);
+    setHistorialAcciones([]);
+    toast.success("Historial limpiado correctamente.");
+  }
+
+  function formatearFechaHistorial(fechaISO) {
+    return new Date(fechaISO).toLocaleString("es-AR", {
+      dateStyle: "short",
+      timeStyle: "short",
+    });
+  }
+
+  function normalizarTexto(texto) {
+    return texto.trim().replace(/\s+/g, " ");
+  }
 
   function handleCategoriaChange(e) {
     const nuevaCategoria = e.target.value;
@@ -159,9 +251,19 @@ export default function Productos() {
 
   async function guardarClasificacionMultiple() {
     if (!seleccionados.length) {
-      alert("Seleccioná al menos un producto.");
+      toast.warn("Seleccioná al menos un producto.");
       return;
     }
+
+    const categoriaTexto = categoriaMultiple || "Sin clasificar";
+    const subcategoriaTexto = subcategoriaMultiple || "Sin subcategoría";
+
+    const ok = await confirmarAccionMasiva(
+      seleccionados.length,
+      "actualizar la clasificación de"
+    );
+
+    if (!ok) return;
 
     try {
       setGuardandoMultiple(true);
@@ -174,13 +276,23 @@ export default function Productos() {
         }
       );
 
+      guardarEnHistorial({
+        tipo: "clasificacion-multiple",
+        descripcion: `Se actualizaron ${seleccionados.length} productos a ${categoriaTexto} > ${subcategoriaTexto}`,
+        cantidad: seleccionados.length,
+        categoria: categoriaTexto,
+        subcategoria: subcategoriaTexto,
+      });
+
       await cargarFiltros();
       await cargarProductos();
       setSeleccionados([]);
       cancelarEdicionMultiple();
+
+      toast.success("Clasificación actualizada correctamente.");
     } catch (err) {
       console.error(err);
-      alert("No se pudo actualizar la clasificación múltiple.");
+      toast.error("No se pudo actualizar la clasificación múltiple.");
     } finally {
       setGuardandoMultiple(false);
     }
@@ -188,9 +300,16 @@ export default function Productos() {
 
   async function quitarClasificacionMultiple() {
     if (!seleccionados.length) {
-      alert("Seleccioná al menos un producto.");
+      toast.warn("Seleccioná al menos un producto.");
       return;
     }
+
+    const ok = await confirmarAccionMasiva(
+      seleccionados.length,
+      "quitar la clasificación de"
+    );
+
+    if (!ok) return;
 
     try {
       setGuardandoMultiple(true);
@@ -203,16 +322,135 @@ export default function Productos() {
         }
       );
 
+      guardarEnHistorial({
+        tipo: "quitar-clasificacion-multiple",
+        descripcion: `Se quitó la clasificación de ${seleccionados.length} productos`,
+        cantidad: seleccionados.length,
+        categoria: "Sin clasificar",
+        subcategoria: "Sin subcategoría",
+      });
+
       await cargarFiltros();
       await cargarProductos();
       setSeleccionados([]);
       cancelarEdicionMultiple();
+
+      toast.success("Clasificación eliminada correctamente.");
     } catch (err) {
       console.error(err);
-      alert("No se pudo quitar la clasificación múltiple.");
+      toast.error("No se pudo quitar la clasificación múltiple.");
     } finally {
       setGuardandoMultiple(false);
     }
+  }
+
+  function abrirEditorCategorias() {
+    setMostrandoEditorCategorias(true);
+    setCategoriaBaseNuevaSub("");
+    setNuevaCategoria("");
+    setNuevaSubcategoria("");
+    setErrorNuevaClasificacion("");
+  }
+
+  function cancelarEditorCategorias() {
+    setMostrandoEditorCategorias(false);
+    setCategoriaBaseNuevaSub("");
+    setNuevaCategoria("");
+    setNuevaSubcategoria("");
+    setErrorNuevaClasificacion("");
+  }
+
+  function existeCategoria(nombre) {
+    return categorias.some(
+      (cat) => cat.toLowerCase() === nombre.trim().toLowerCase()
+    );
+  }
+
+  function existeSubcategoriaEnCategoria(categoria, subcategoria) {
+    const lista = subcategoriasPorCategoria[categoria] || [];
+    return lista.some(
+      (sub) => sub.toLowerCase() === subcategoria.trim().toLowerCase()
+    );
+  }
+
+  function guardarNuevaCategoriaOSubcategoria() {
+    const categoriaExistenteElegida = normalizarTexto(categoriaBaseNuevaSub);
+    const categoriaNueva = normalizarTexto(nuevaCategoria);
+    const subNueva = normalizarTexto(nuevaSubcategoria);
+
+    const categoriaFinal = categoriaNueva || categoriaExistenteElegida;
+
+    if (!categoriaFinal) {
+      setErrorNuevaClasificacion("Tenés que elegir o escribir una categoría.");
+      return;
+    }
+
+    if (
+      categoriaFinal.toLowerCase() === "sin clasificar" ||
+      subNueva.toLowerCase() === "sin subcategoría"
+    ) {
+      setErrorNuevaClasificacion("Ese nombre no se puede usar.");
+      return;
+    }
+
+    if (categoriaNueva && existeCategoria(categoriaNueva)) {
+      setErrorNuevaClasificacion("La categoría nueva ya existe.");
+      return;
+    }
+
+    if (subNueva && existeSubcategoriaEnCategoria(categoriaFinal, subNueva)) {
+      setErrorNuevaClasificacion(
+        "Esa subcategoría ya existe en esa categoría."
+      );
+      return;
+    }
+
+    setCategorias((prev) => {
+      const yaExiste = prev.some(
+        (cat) => cat.toLowerCase() === categoriaFinal.toLowerCase()
+      );
+
+      if (yaExiste) return prev;
+
+      return [...prev, categoriaFinal].sort((a, b) => a.localeCompare(b, "es"));
+    });
+
+    setSubcategoriasPorCategoria((prev) => {
+      const actual = { ...prev };
+
+      if (!actual[categoriaFinal]) {
+        actual[categoriaFinal] = [];
+      }
+
+      if (
+        subNueva &&
+        !actual[categoriaFinal].some(
+          (sub) => sub.toLowerCase() === subNueva.toLowerCase()
+        )
+      ) {
+        actual[categoriaFinal] = [...actual[categoriaFinal], subNueva].sort(
+          (a, b) => a.localeCompare(b, "es")
+        );
+      }
+
+      return actual;
+    });
+
+    setCategoriaMultiple(categoriaFinal);
+    setSubcategoriaMultiple(subNueva || "");
+
+    guardarEnHistorial({
+      tipo: "crear-categoria-subcategoria",
+      descripcion: subNueva
+        ? `Se creó ${categoriaFinal} > ${subNueva}`
+        : `Se creó la categoría ${categoriaFinal}`,
+      cantidad: 0,
+      categoria: categoriaFinal,
+      subcategoria: subNueva || "",
+    });
+
+    cancelarEditorCategorias();
+    toast.success("Categoría / subcategoría guardada.");
   }
 
   return (
@@ -246,6 +484,17 @@ export default function Productos() {
             disabled={!seleccionados.length}
           >
             Editar clasificación ({seleccionados.length})
+          </button>
+
+          <button className="btn-secundario" onClick={abrirEditorCategorias}>
+            Nueva categoría / subcategoría
+          </button>
+
+          <button
+            className="btn-secundario"
+            onClick={() => setMostrandoHistorial((prev) => !prev)}
+          >
+            {mostrandoHistorial ? "Ocultar historial" : "Ver historial"}
           </button>
 
           <button
@@ -288,6 +537,95 @@ export default function Productos() {
           ))}
         </select>
       </div>
+
+      {mostrandoHistorial && (
+        <div className="editor-multiple">
+          <div className="historial-header">
+            <h3>Historial de acciones</h3>
+
+            <button
+              className="btn-secundario"
+              onClick={limpiarHistorial}
+              disabled={!historialAcciones.length}
+            >
+              Limpiar historial
+            </button>
+          </div>
+
+          {!historialAcciones.length ? (
+            <p className="estado">Todavía no hay acciones registradas.</p>
+          ) : (
+            <div className="historial-lista">
+              {historialAcciones.map((item) => (
+                <div key={item.id} className="historial-item">
+                  <div className="historial-item-top">
+                    <strong>{item.descripcion}</strong>
+                  </div>
+                  <div className="historial-item-meta">
+                    <span>{formatearFechaHistorial(item.fecha)}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {mostrandoEditorCategorias && (
+        <div className="editor-multiple">
+          <h3>Agregar categoría o subcategoría</h3>
+
+          <div className="editor-multiple-filtros">
+            <select
+              value={categoriaBaseNuevaSub}
+              onChange={(e) => setCategoriaBaseNuevaSub(e.target.value)}
+            >
+              <option value="">Elegir categoría existente</option>
+              {categorias
+                .filter((cat) => cat !== "Sin clasificar")
+                .map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat}
+                  </option>
+                ))}
+            </select>
+
+            <input
+              type="text"
+              placeholder="O escribir categoría nueva"
+              value={nuevaCategoria}
+              onChange={(e) => setNuevaCategoria(e.target.value)}
+            />
+
+            <input
+              type="text"
+              placeholder="Subcategoría nueva (opcional)"
+              value={nuevaSubcategoria}
+              onChange={(e) => setNuevaSubcategoria(e.target.value)}
+            />
+          </div>
+
+          {errorNuevaClasificacion && (
+            <p className="estado error">{errorNuevaClasificacion}</p>
+          )}
+
+          <div className="acciones-edicion">
+            <button
+              className="btn-secundario"
+              onClick={guardarNuevaCategoriaOSubcategoria}
+            >
+              Guardar
+            </button>
+
+            <button
+              className="btn-secundario"
+              onClick={cancelarEditorCategorias}
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      )}
 
       {editandoMultiple && (
         <div className="editor-multiple">

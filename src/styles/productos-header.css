@@ -92,6 +92,47 @@
   margin-bottom: 12px;
 }
 
+.editor-multiple-filtros input,
 .editor-multiple-filtros select {
   min-width: 220px;
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #d7d7d7;
+  border-radius: 10px;
+}
+
+.acciones-edicion {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.historial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.historial-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.historial-item {
+  border: 1px solid #e3e3e3;
+  border-radius: 10px;
+  padding: 12px;
+  background: #fafafa;
+}
+
+.historial-item-top {
+  margin-bottom: 6px;
+}
+
+.historial-item-meta {
+  font-size: 0.9rem;
+  color: #666;
 }
