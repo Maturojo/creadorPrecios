@@ -26,6 +26,22 @@ export async function obtenerFiltrosProductos() {
   return response.json();
 }
 
+export async function crearCategoriaOSubcategoria(data) {
+  const response = await fetch(`${API_URL}/categorias`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error("No se pudo crear la categoría o subcategoría");
+  }
+
+  return response.json();
+}
+
 export async function actualizarClasificacionProducto(id, data) {
   const response = await fetch(`${API_URL}/${id}/clasificacion`, {
     method: "PATCH",

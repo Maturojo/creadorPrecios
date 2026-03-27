@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import {
   actualizarClasificacionMultiple,
+  crearCategoriaOSubcategoria,
   guardarAccionHistorial,
   limpiarHistorialProductos,
   obtenerFiltrosProductos,
@@ -410,52 +411,33 @@ export default function Productos() {
       return;
     }
 
-    setCategorias((prev) => {
-      const yaExiste = prev.some(
-        (cat) => cat.toLowerCase() === categoriaFinal.toLowerCase()
-      );
+    try {
+      await crearCategoriaOSubcategoria({
+        categoria: categoriaFinal,
+        subcategoria: subNueva || "",
+      });
 
-      if (yaExiste) return prev;
+      await cargarFiltros();
 
-      return [...prev, categoriaFinal].sort((a, b) => a.localeCompare(b, "es"));
-    });
+      setCategoriaMultiple(categoriaFinal);
+      setSubcategoriaMultiple(subNueva || "");
 
-    setSubcategoriasPorCategoria((prev) => {
-      const actual = { ...prev };
+      await guardarEnHistorial({
+        tipo: "crear-categoria-subcategoria",
+        descripcion: subNueva
+          ? `Se creó ${categoriaFinal} > ${subNueva}`
+          : `Se creó la categoría ${categoriaFinal}`,
+        cantidad: 0,
+        categoria: categoriaFinal,
+        subcategoria: subNueva || "",
+      });
 
-      if (!actual[categoriaFinal]) {
-        actual[categoriaFinal] = [];
-      }
-
-      if (
-        subNueva &&
-        !actual[categoriaFinal].some(
-          (sub) => sub.toLowerCase() === subNueva.toLowerCase()
-        )
-      ) {
-        actual[categoriaFinal] = [...actual[categoriaFinal], subNueva].sort(
-          (a, b) => a.localeCompare(b, "es")
-        );
-      }
-
-      return actual;
-    });
-
-    setCategoriaMultiple(categoriaFinal);
-    setSubcategoriaMultiple(subNueva || "");
-
-    await guardarEnHistorial({
-      tipo: "crear-categoria-subcategoria",
-      descripcion: subNueva
-        ? `Se creó ${categoriaFinal} > ${subNueva}`
-        : `Se creó la categoría ${categoriaFinal}`,
-      cantidad: 0,
-      categoria: categoriaFinal,
-      subcategoria: subNueva || "",
-    });
-
-    cancelarEditorCategorias();
-    toast.success("Categoría / subcategoría guardada.");
+      cancelarEditorCategorias();
+      toast.success("Categoría / subcategoría guardada.");
+    } catch (err) {
+      console.error(err);
+      toast.error("No se pudo guardar la categoría / subcategoría.");
+    }
   }
 
   return (

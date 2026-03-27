@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Producto = require("../models/Producto");
 const HistorialAccion = require("../models/HistorialAccion");
+const Categoria = require("../models/Categoria");
+const Subcategoria = require("../models/Subcategoria");
 
 // Obtener todos los productos
 router.get("/", async (req, res) => {
@@ -67,11 +69,42 @@ router.get("/", async (req, res) => {
 // Obtener filtros
 router.get("/filtros", async (req, res) => {
   try {
+    const categoriasDb = await Categoria.find({}).lean();
+    const subcategoriasDb = await Subcategoria.find({}).lean();
     const productos = await Producto.find({}, "categoria subcategoria").lean();
 
     const categoriasSet = new Set();
     const subcategoriasPorCategoria = {};
 
+    // 1) categorías creadas manualmente
+    categoriasDb.forEach((c) => {
+      const nombre = c.nombre?.trim();
+      if (!nombre) return;
+
+      categoriasSet.add(nombre);
+
+      if (!subcategoriasPorCategoria[nombre]) {
+        subcategoriasPorCategoria[nombre] = new Set();
+      }
+    });
+
+    // 2) subcategorías creadas manualmente
+    subcategoriasDb.forEach((s) => {
+      const categoria = s.categoria?.trim();
+      const nombre = s.nombre?.trim();
+
+      if (!categoria || !nombre) return;
+
+      categoriasSet.add(categoria);
+
+      if (!subcategoriasPorCategoria[categoria]) {
+        subcategoriasPorCategoria[categoria] = new Set();
+      }
+
+      subcategoriasPorCategoria[categoria].add(nombre);
+    });
+
+    // 3) categorías/subcategorías ya existentes en productos (Excel / sistema viejo)
     productos.forEach((p) => {
       const categoria = p.categoria?.trim() || "Sin clasificar";
       const subcategoria = p.subcategoria?.trim() || "Sin subcategoría";
@@ -85,14 +118,23 @@ router.get("/filtros", async (req, res) => {
       subcategoriasPorCategoria[categoria].add(subcategoria);
     });
 
+    // asegurar que exista Sin clasificar
+    categoriasSet.add("Sin clasificar");
+
+    if (!subcategoriasPorCategoria["Sin clasificar"]) {
+      subcategoriasPorCategoria["Sin clasificar"] = new Set();
+    }
+
+    subcategoriasPorCategoria["Sin clasificar"].add("Sin subcategoría");
+
     const categorias = Array.from(categoriasSet).sort((a, b) =>
       a.localeCompare(b, "es")
     );
 
     const subcategorias = {};
     for (const cat of Object.keys(subcategoriasPorCategoria)) {
-      subcategorias[cat] = Array.from(subcategoriasPorCategoria[cat]).sort((a, b) =>
-        a.localeCompare(b, "es")
+      subcategorias[cat] = Array.from(subcategoriasPorCategoria[cat]).sort(
+        (a, b) => a.localeCompare(b, "es")
       );
     }
 
@@ -103,6 +145,49 @@ router.get("/filtros", async (req, res) => {
   } catch (error) {
     console.error("Error al obtener filtros:", error);
     res.status(500).json({ error: "Error al obtener filtros" });
+  }
+});
+
+// Crear categoría o subcategoría
+router.post("/categorias", async (req, res) => {
+  try {
+    const { categoria = "", subcategoria = "" } = req.body;
+
+    const categoriaLimpia = categoria.trim();
+    const subcategoriaLimpia = subcategoria.trim();
+
+    if (!categoriaLimpia) {
+      return res.status(400).json({ error: "La categoría es obligatoria" });
+    }
+
+    let categoriaDoc = await Categoria.findOne({ nombre: categoriaLimpia });
+
+    if (!categoriaDoc) {
+      categoriaDoc = await Categoria.create({ nombre: categoriaLimpia });
+    }
+
+    if (subcategoriaLimpia) {
+      const subExistente = await Subcategoria.findOne({
+        nombre: subcategoriaLimpia,
+        categoria: categoriaLimpia,
+      });
+
+      if (!subExistente) {
+        await Subcategoria.create({
+          nombre: subcategoriaLimpia,
+          categoria: categoriaLimpia,
+        });
+      }
+    }
+
+    res.status(201).json({
+      ok: true,
+      categoria: categoriaLimpia,
+      subcategoria: subcategoriaLimpia,
+    });
+  } catch (error) {
+    console.error("Error al crear categoría/subcategoría:", error);
+    res.status(500).json({ error: "Error al crear categoría/subcategoría" });
   }
 });
 
@@ -273,6 +358,55 @@ router.patch("/:id/clasificacion", async (req, res) => {
   } catch (error) {
     console.error("Error al actualizar clasificación:", error);
     res.status(500).json({ error: "Error al actualizar clasificación" });
+  }
+});
+
+router.post("/migrar-filtros-desde-productos", async (req, res) => {
+  try {
+    const productos = await Producto.find({}, "categoria subcategoria").lean();
+
+    let categoriasCreadas = 0;
+    let subcategoriasCreadas = 0;
+
+    for (const p of productos) {
+      const categoria = p.categoria?.trim();
+      const subcategoria = p.subcategoria?.trim();
+
+      if (categoria) {
+        const categoriaExistente = await Categoria.findOne({ nombre: categoria });
+
+        if (!categoriaExistente) {
+          await Categoria.create({ nombre: categoria });
+          categoriasCreadas++;
+        }
+      }
+
+      if (categoria && subcategoria) {
+        const subExistente = await Subcategoria.findOne({
+          categoria,
+          nombre: subcategoria,
+        });
+
+        if (!subExistente) {
+          await Subcategoria.create({
+            categoria,
+            nombre: subcategoria,
+          });
+          subcategoriasCreadas++;
+        }
+      }
+    }
+
+    res.json({
+      ok: true,
+      categoriasCreadas,
+      subcategoriasCreadas,
+    });
+  } catch (error) {
+    console.error("Error al migrar filtros desde productos:", error);
+    res.status(500).json({
+      error: "Error al migrar filtros desde productos",
+    });
   }
 });
 
