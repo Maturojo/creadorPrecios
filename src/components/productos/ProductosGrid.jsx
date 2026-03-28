@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { getProductoCardTheme } from "../../utils/productoCardTheme";
 
 export default function ProductosGrid({
@@ -5,6 +6,50 @@ export default function ProductosGrid({
   seleccionadosIds,
   onToggleSeleccion,
 }) {
+  const [preview, setPreview] = useState(null);
+
+  function handlePreviewEnter(event, producto) {
+    if (!producto.imagenUrl) return;
+
+    const rect = event.currentTarget.getBoundingClientRect();
+    const previewWidth = 220;
+    const previewHeight = 220;
+    const offset = 14;
+    const padding = 16;
+
+    let left = rect.right + offset;
+    if (left + previewWidth > window.innerWidth - padding) {
+      left = rect.left - previewWidth - offset;
+    }
+    if (left < padding) {
+      left = Math.max(
+        padding,
+        Math.min(rect.left, window.innerWidth - previewWidth - padding)
+      );
+    }
+
+    let top = rect.top;
+    if (top + previewHeight > window.innerHeight - padding) {
+      top = window.innerHeight - previewHeight - padding;
+    }
+    if (top < padding) {
+      top = padding;
+    }
+
+    setPreview({
+      src: producto.imagenUrl,
+      alt: `Vista previa de ${producto.nombre}`,
+      style: {
+        left: `${left}px`,
+        top: `${top}px`,
+      },
+    });
+  }
+
+  function handlePreviewLeave() {
+    setPreview(null);
+  }
+
   return (
     <>
       <div className="productos-resumen">
@@ -24,17 +69,9 @@ export default function ProductosGrid({
               className={`producto-card ${estaSeleccionado ? "seleccionado" : ""}`}
               key={producto._id}
               style={colorTheme}
+              onMouseEnter={(event) => handlePreviewEnter(event, producto)}
+              onMouseLeave={handlePreviewLeave}
             >
-              {producto.imagenUrl ? (
-                <div className="producto-image-preview" aria-hidden="true">
-                  <img
-                    src={producto.imagenUrl}
-                    alt={`Vista previa de ${producto.nombre}`}
-                    loading="lazy"
-                  />
-                </div>
-              ) : null}
-
               <label className="producto-check">
                 <input
                   type="checkbox"
@@ -68,6 +105,12 @@ export default function ProductosGrid({
           );
         })}
       </div>
+
+      {preview ? (
+        <div className="producto-image-preview producto-image-preview--floating" style={preview.style} aria-hidden="true">
+          <img src={preview.src} alt={preview.alt} loading="lazy" />
+        </div>
+      ) : null}
 
       {!productos.length ? (
         <p className="estado">No hay productos para esos filtros.</p>
