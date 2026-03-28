@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node index.js",
-    "sync:productos": "node src/scripts/sincronizarProductosDesdeExcel.js"
+    "sync:productos": "node src/scripts/sincronizarProductosDesdeExcel.js",
+    "sync:imagenes": "node src/scripts/sincronizarImagenesDesdeExcel.js"
   },
   "keywords": [],
   "author": "",
