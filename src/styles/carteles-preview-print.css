@@ -85,6 +85,60 @@ body.formato-media-a4 {
   color: #5b4c39;
 }
 
+.print-controls {
+  width: min(100%, 920px);
+  margin: 0 auto 14px;
+  padding: 14px 16px;
+  border: 1px solid #eadfce;
+  border-radius: 18px;
+  background: rgba(255, 250, 242, 0.92);
+  box-shadow: 0 12px 28px rgba(46, 32, 18, 0.08);
+}
+
+.print-controls-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+}
+
+.print-input-with-suffix {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.print-input-with-suffix input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #d9ccb8;
+  border-radius: 12px;
+  padding: 11px 13px;
+  font: inherit;
+  font-size: 14px;
+  color: #2f2418;
+  background: #fff;
+}
+
+.print-input-with-suffix strong {
+  font-size: 16px;
+  color: #5b4c39;
+}
+
+.print-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #433422;
+}
+
+.print-check input {
+  width: 18px;
+  height: 18px;
+}
+
 .cartel-shell {
   margin-bottom: 20px;
 }
@@ -202,6 +256,13 @@ body.formato-media-a4 .cartel {
   display: none;
 }
 
+.cartel-note {
+  margin: 0;
+  font-size: 3.4mm;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
 .cartel-info {
   margin-top: 1.4mm;
   font-size: 4mm;
@@ -234,7 +295,7 @@ body.formato-media-a4 .cartel {
   border: 1.5px solid #000;
   font-size: 4.8mm;
   padding: 1.5mm;
-  height: 10mm;
+  min-height: 10mm;
   line-height: 1.05;
   vertical-align: middle;
 }
@@ -258,6 +319,67 @@ body.formato-media-a4 .cartel {
   font-weight: 700;
 }
 
+.cartel-tabla th:nth-child(4),
+.cartel-tabla td:nth-child(4) {
+  width: 24%;
+  text-align: center;
+  font-weight: 700;
+}
+
+.cartel-tabla-con-varilla th:nth-child(1),
+.cartel-tabla-con-varilla td:nth-child(1) {
+  width: 16%;
+}
+
+.cartel-tabla-con-varilla th:nth-child(2),
+.cartel-tabla-con-varilla td:nth-child(2) {
+  width: 42%;
+}
+
+.cartel-tabla-con-varilla th:nth-child(3),
+.cartel-tabla-con-varilla td:nth-child(3),
+.cartel-tabla-con-varilla th:nth-child(4),
+.cartel-tabla-con-varilla td:nth-child(4) {
+  width: 21%;
+}
+
+.precio-celda {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.precio-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1mm;
+  min-height: 100%;
+}
+
+.precio-anterior {
+  font-size: 3.1mm;
+  color: #5f5f5f;
+  text-decoration: line-through;
+  line-height: 1;
+}
+
+.precio-actual {
+  line-height: 1;
+}
+
+.precio-varilla-no-aplica {
+  color: #9b8f81;
+}
+
+.precio-no-aplica {
+  font-size: 4mm;
+}
+
+.oculto {
+  display: none;
+}
+
 .solo-categoria {
   font-size: 18mm;
   text-align: center;
@@ -273,6 +395,10 @@ body.formato-media-a4 .subcategoria {
 
 body.formato-media-a4 .categoria {
   font-size: 4mm;
+}
+
+body.formato-media-a4 .cartel-note {
+  font-size: 2.5mm;
 }
 
 body.formato-media-a4 .cartel-info {
@@ -295,7 +421,11 @@ body.formato-media-a4 .cartel-tabla th {
 body.formato-media-a4 .cartel-tabla td {
   font-size: 3.5mm;
   padding: 1mm;
-  height: 7mm;
+  min-height: 7mm;
+}
+
+body.formato-media-a4 .precio-anterior {
+  font-size: 2.3mm;
 }
 
 @media print {
@@ -343,6 +473,15 @@ body.formato-media-a4 .cartel-tabla td {
 
   .print-helper {
     margin-inline: 16px;
+  }
+
+  .print-controls {
+    margin-inline: 16px;
+    width: auto;
+  }
+
+  .print-controls-grid {
+    grid-template-columns: 1fr;
   }
 
   .cartel-editor {

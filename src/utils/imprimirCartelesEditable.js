@@ -2,6 +2,7 @@ import cartelPrintCssUrl from "../styles/carteles-preview-print.css?url";
 
 const SIN_SUBCATEGORIA = "Sin subcategoria";
 const SIN_TITULO = "Sin titulo";
+const LARGO_VARILLA = 3.05;
 
 function normalizarTexto(valor, fallback = "") {
   return String(valor || "").trim() || fallback;
@@ -14,6 +15,11 @@ function escaparHtml(texto) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+}
+
+function esProductoVarilla(producto) {
+  const categoria = normalizarTexto(producto.categoria).toLowerCase();
+  return categoria === "listoneria" || categoria === "molduras";
 }
 
 function obtenerTamanioTitulo(texto, formato) {
@@ -161,14 +167,50 @@ export function imprimirCarteles(productos, formato = "a4") {
   const formatearPrecio = (valor) =>
     `$${Number(valor || 0).toLocaleString("es-AR")}`;
 
-  const crearFilas = (items) =>
+  const crearFilas = (items, mostrarPrecioVarilla) =>
     items
       .map(
         (producto) => `
-          <tr>
+          <tr data-product-row>
             <td>${escaparHtml(producto.codigo)}</td>
             <td>${escaparHtml(producto.nombre || producto.descripcion || "")}</td>
-            <td>${formatearPrecio(producto.precio)}</td>
+            <td class="precio-celda" data-price-cell data-base-price="${Number(
+              producto.precio || 0
+            )}">
+              <div class="precio-stack">
+                <span class="precio-anterior oculto" data-original-price></span>
+                <span class="precio-actual" data-current-price>${formatearPrecio(
+                  producto.precio
+                )}</span>
+              </div>
+            </td>
+            ${
+              mostrarPrecioVarilla
+                ? `
+                  <td
+                    class="precio-celda precio-varilla-celda${
+                      esProductoVarilla(producto) ? "" : " precio-varilla-no-aplica"
+                    }"
+                    data-rod-price-cell
+                    data-base-price="${Number(producto.precio || 0)}"
+                    data-aplica-varilla="${esProductoVarilla(producto) ? "true" : "false"}"
+                  >
+                    ${
+                      esProductoVarilla(producto)
+                        ? `
+                          <div class="precio-stack">
+                            <span class="precio-anterior oculto" data-original-rod-price></span>
+                            <span class="precio-actual" data-current-rod-price>${formatearPrecio(
+                              Number(producto.precio || 0) * LARGO_VARILLA
+                            )}</span>
+                          </div>
+                        `
+                        : `<span class="precio-no-aplica">-</span>`
+                    }
+                  </td>
+                `
+                : ""
+            }
           </tr>
         `
       )
@@ -188,6 +230,7 @@ export function imprimirCarteles(productos, formato = "a4") {
         categoria: grupo.categoria,
         subcategoria: grupo.subcategoria,
         items: bloque,
+        tienePrecioVarilla: bloque.some((producto) => esProductoVarilla(producto)),
         numeroCartel: index + 1,
         totalCarteles: Math.ceil(
           itemsOrdenados.length / config.maxProductosPorCartel
@@ -226,6 +269,30 @@ export function imprimirCarteles(productos, formato = "a4") {
 
         <div class="print-helper no-print">
           Podes editar el titulo y la categoria de cada cartel antes de imprimir. El encabezado se reajusta solo para evitar que el texto quede encimado.
+        </div>
+
+        <div class="print-controls no-print">
+          <div class="print-controls-grid">
+            <label class="cartel-editor-field">
+              <span>Descuento para el cartel</span>
+              <div class="print-input-with-suffix">
+                <input
+                  type="number"
+                  min="0"
+                  max="99"
+                  step="1"
+                  value="0"
+                  data-discount-input
+                />
+                <strong>%</strong>
+              </div>
+            </label>
+
+            <label class="print-check">
+              <input type="checkbox" data-show-original-toggle />
+              <span>Mostrar precio anterior tachado</span>
+            </label>
+          </div>
         </div>
 
         ${gruposPaginados
@@ -295,6 +362,15 @@ export function imprimirCarteles(productos, formato = "a4") {
                       >
                         ${escaparHtml(categoriaInicial)}
                       </h2>
+                      ${
+                        grupo.tienePrecioVarilla
+                          ? `
+                            <p class="cartel-note" data-rod-note>
+                              Precio por varilla completa (${LARGO_VARILLA.toFixed(2)} m)
+                            </p>
+                          `
+                          : ""
+                      }
                     </div>
 
                     ${
@@ -305,16 +381,25 @@ export function imprimirCarteles(productos, formato = "a4") {
                   </div>
 
                   <div class="cartel-tabla-wrap">
-                    <table class="cartel-tabla">
+                    <table class="cartel-tabla${
+                      grupo.tienePrecioVarilla ? " cartel-tabla-con-varilla" : ""
+                    }">
                       <thead>
                         <tr>
                           <th>Cod.</th>
                           <th>Descripcion</th>
-                          <th>Precio</th>
+                          <th>${
+                            grupo.tienePrecioVarilla ? "Precio por metro" : "Precio"
+                          }</th>
+                          ${
+                            grupo.tienePrecioVarilla
+                              ? `<th>Precio varilla</th>`
+                              : ""
+                          }
                         </tr>
                       </thead>
                       <tbody>
-                        ${crearFilas(grupo.items)}
+                        ${crearFilas(grupo.items, grupo.tienePrecioVarilla)}
                       </tbody>
                     </table>
                   </div>
@@ -332,6 +417,8 @@ export function imprimirCarteles(productos, formato = "a4") {
               : "a4";
             const printButton = document.querySelector('[data-action="print"]');
             const closeButton = document.querySelector('[data-action="close"]');
+            const discountInput = document.querySelector("[data-discount-input]");
+            const showOriginalToggle = document.querySelector("[data-show-original-toggle]");
             const titleInputs = document.querySelectorAll("[data-title-input]");
             const categoryInputs = document.querySelectorAll("[data-category-input]");
             const resetButtons = document.querySelectorAll("[data-reset-button]");
@@ -389,6 +476,60 @@ export function imprimirCarteles(productos, formato = "a4") {
               categoryDisplay.classList.toggle("categoria-oculta", !mostrarCategoria);
             };
 
+            const formatPrice = (valor) =>
+              new Intl.NumberFormat("es-AR", {
+                style: "currency",
+                currency: "ARS",
+                maximumFractionDigits: 2,
+              }).format(Number(valor || 0));
+
+            const getDiscountMultiplier = () => {
+              const descuento = Number(discountInput?.value || 0);
+              const descuentoNormalizado = Math.min(Math.max(descuento, 0), 99);
+              return 1 - descuentoNormalizado / 100;
+            };
+
+            const syncPrices = () => {
+              const multiplier = getDiscountMultiplier();
+              const mostrarAnterior = Boolean(showOriginalToggle?.checked);
+
+              document.querySelectorAll("[data-price-cell]").forEach((cell) => {
+                const basePrice = Number(cell.dataset.basePrice || 0);
+                const currentPrice = cell.querySelector("[data-current-price]");
+                const originalPrice = cell.querySelector("[data-original-price]");
+                const discountedPrice = basePrice * multiplier;
+
+                if (currentPrice) {
+                  currentPrice.textContent = formatPrice(discountedPrice);
+                }
+
+                if (originalPrice) {
+                  originalPrice.textContent = formatPrice(basePrice);
+                  originalPrice.classList.toggle("oculto", !mostrarAnterior || multiplier === 1);
+                }
+              });
+
+              document.querySelectorAll("[data-rod-price-cell]").forEach((cell) => {
+                if (cell.dataset.aplicaVarilla !== "true") {
+                  return;
+                }
+
+                const basePrice = Number(cell.dataset.basePrice || 0) * ${LARGO_VARILLA};
+                const currentPrice = cell.querySelector("[data-current-rod-price]");
+                const originalPrice = cell.querySelector("[data-original-rod-price]");
+                const discountedPrice = basePrice * multiplier;
+
+                if (currentPrice) {
+                  currentPrice.textContent = formatPrice(discountedPrice);
+                }
+
+                if (originalPrice) {
+                  originalPrice.textContent = formatPrice(basePrice);
+                  originalPrice.classList.toggle("oculto", !mostrarAnterior || multiplier === 1);
+                }
+              });
+            };
+
             titleInputs.forEach((input) => {
               input.addEventListener("input", () => {
                 syncCartel(input.dataset.cartelIndex);
@@ -420,6 +561,9 @@ export function imprimirCarteles(productos, formato = "a4") {
             });
 
             titleInputs.forEach((input) => syncCartel(input.dataset.cartelIndex));
+            discountInput?.addEventListener("input", syncPrices);
+            showOriginalToggle?.addEventListener("change", syncPrices);
+            syncPrices();
 
             printButton?.addEventListener("click", () => window.print());
             closeButton?.addEventListener("click", () => window.close());

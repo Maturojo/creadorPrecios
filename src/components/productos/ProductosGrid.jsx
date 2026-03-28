@@ -25,6 +25,16 @@ export default function ProductosGrid({
               key={producto._id}
               style={colorTheme}
             >
+              {producto.imagenUrl ? (
+                <div className="producto-image-preview" aria-hidden="true">
+                  <img
+                    src={producto.imagenUrl}
+                    alt={`Vista previa de ${producto.nombre}`}
+                    loading="lazy"
+                  />
+                </div>
+              ) : null}
+
               <label className="producto-check">
                 <input
                   type="checkbox"
@@ -35,7 +45,14 @@ export default function ProductosGrid({
               </label>
 
               <div className="producto-card-top">
-                <span className="producto-codigo">{producto.codigo}</span>
+                <div className="producto-codigo-wrap">
+                  <span className="producto-codigo">{producto.codigo}</span>
+                  {producto.imagenUrl ? (
+                    <span className="producto-foto-badge" title="Tiene foto">
+                      Foto
+                    </span>
+                  ) : null}
+                </div>
                 <span className="producto-precio">
                   ${Number(producto.precio || 0).toLocaleString("es-AR")}
                 </span>

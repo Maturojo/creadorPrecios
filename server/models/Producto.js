@@ -28,6 +28,11 @@ const productoSchema = new mongoose.Schema(
       default: "",
       trim: true,
     },
+    imagenUrl: {
+      type: String,
+      default: "",
+      trim: true,
+    },
     activo: {
       type: Boolean,
       default: true,
