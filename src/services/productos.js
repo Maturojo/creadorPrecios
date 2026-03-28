@@ -36,23 +36,7 @@ export async function crearCategoriaOSubcategoria(data) {
   });
 
   if (!response.ok) {
-    throw new Error("No se pudo crear la categoría o subcategoría");
-  }
-
-  return response.json();
-}
-
-export async function actualizarClasificacionProducto(id, data) {
-  const response = await fetch(`${API_URL}/${id}/clasificacion`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-
-  if (!response.ok) {
-    throw new Error("No se pudo actualizar la clasificación");
+    throw new Error("No se pudo crear la categoria o subcategoria");
   }
 
   return response.json();
@@ -71,7 +55,7 @@ export async function actualizarClasificacionMultiple(ids, data) {
   });
 
   if (!response.ok) {
-    throw new Error("No se pudo actualizar la clasificación múltiple");
+    throw new Error("No se pudo actualizar la clasificacion multiple");
   }
 
   return response.json();
@@ -97,7 +81,7 @@ export async function guardarAccionHistorial(data) {
   });
 
   if (!response.ok) {
-    throw new Error("No se pudo guardar la acción en el historial");
+    throw new Error("No se pudo guardar la accion en el historial");
   }
 
   return response.json();
@@ -124,7 +108,7 @@ export async function eliminarCategoria(nombre) {
   );
 
   if (!response.ok) {
-    throw new Error("No se pudo eliminar la categoría");
+    throw new Error("No se pudo eliminar la categoria");
   }
 
   return response.json();
@@ -140,7 +124,7 @@ export async function eliminarSubcategoria(categoria, subcategoria) {
   });
 
   if (!response.ok) {
-    throw new Error("No se pudo eliminar la subcategoría");
+    throw new Error("No se pudo eliminar la subcategoria");
   }
 
   return response.json();
