@@ -136,8 +136,8 @@ El proyecto ya cubre el flujo principal de clasificación e impresión, pero tod
 - [ ] Separar la configuración de ESLint entre frontend y backend
 - [ ] Pasar URLs y puertos a variables de entorno
 - [ ] Corregir problemas de encoding en textos con acentos
-- [ ] Dividir `src/components/Productos.jsx` en componentes y hooks más pequeños
-- [ ] Eliminar o rehacer archivos viejos que no coinciden con el flujo actual
+- [x] Dividir `src/components/Productos.jsx` en componentes mas pequenos
+- [x] Eliminar archivos viejos que no coinciden con el flujo actual
 - [ ] Agregar validaciones más claras en backend para altas, bajas y cambios masivos
 - [ ] Agregar tests básicos para rutas críticas
 - [ ] Documentar mejor la estructura de datos de `Producto`, `Categoria`, `Subcategoria` e `HistorialAccion`
@@ -148,3 +148,4 @@ El proyecto ya cubre el flujo principal de clasificación e impresión, pero tod
 - El frontend actualmente consume la API apuntando a `localhost`.
 - El backend espera `MONGODB_URI` o `MONGO_URI`.
 - El proyecto todavía no tiene una estrategia de tests consolidada.
+

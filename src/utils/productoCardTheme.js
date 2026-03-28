@@ -204,6 +204,14 @@ const DEFAULT_PALETTE = [
   },
 ];
 
+const CATEGORY_ALIASES = {
+  "calado y laser": "calados y laser",
+  laser: "calados y laser",
+  "candy bar": "calados y laser",
+  "candy bar y laser": "calados y laser",
+  "todo para infantiles": "productos para chicos",
+};
+
 function normalizeText(value) {
   return String(value || "")
     .normalize("NFD")
@@ -227,8 +235,10 @@ function getHashIndex(value, length) {
 
 export function getProductoCardTheme(categoria, subcategoria) {
   const normalizedCategory = normalizeText(categoria);
+  const resolvedCategory =
+    CATEGORY_ALIASES[normalizedCategory] || normalizedCategory;
   const palette =
-    CATEGORY_PALETTES[normalizedCategory] ||
+    CATEGORY_PALETTES[resolvedCategory] ||
     CATEGORY_PALETTES["productos varios"] ||
     DEFAULT_PALETTE;
 
