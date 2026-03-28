@@ -3,6 +3,9 @@ import { getProductoCardTheme } from "../../utils/productoCardTheme";
 
 export default function ProductosGrid({
   productos,
+  totalProductos,
+  rangoInicio,
+  rangoFin,
   seleccionadosIds,
   onToggleSeleccion,
 }) {
@@ -53,7 +56,16 @@ export default function ProductosGrid({
   return (
     <>
       <div className="productos-resumen">
-        <strong>{productos.length}</strong> productos encontrados
+        {totalProductos ? (
+          <>
+            <strong>{totalProductos}</strong> productos encontrados. Mostrando{" "}
+            {rangoInicio}-{rangoFin}.
+          </>
+        ) : (
+          <>
+            <strong>0</strong> productos encontrados
+          </>
+        )}
       </div>
 
       <div className="productos-grid">

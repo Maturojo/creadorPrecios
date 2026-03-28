@@ -7,10 +7,32 @@ const cors = require("cors");
 const productosRouter = require("./routes/productos");
 
 const app = express();
+const corsOrigins = (process.env.CORS_ORIGIN || "http://localhost:5173")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+function esOrigenPermitido(origin) {
+  if (!origin) return true;
+  if (corsOrigins.includes(origin)) return true;
+
+  try {
+    const { hostname } = new URL(origin);
+    return hostname.endsWith(".vercel.app");
+  } catch {
+    return false;
+  }
+}
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin(origin, callback) {
+      if (esOrigenPermitido(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Origen no permitido por CORS"));
+    },
     credentials: true,
   })
 );
@@ -24,7 +46,7 @@ app.get("/api/health", (req, res) => {
 
 app.use("/api/productos", productosRouter);
 
-const PORT = 4000;
+const PORT = Number(process.env.PORT) || 4000;
 const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI;
 
 if (!mongoUri) {

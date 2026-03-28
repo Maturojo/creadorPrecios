@@ -25,6 +25,8 @@ import "../styles/carteles-print.css";
 import "../styles/productos-header.css";
 import "../styles/producto-card.css";
 
+const PRODUCTOS_POR_PAGINA = 24;
+
 const UMBRAL_CONFIRMACION_MASIVA = 20;
 const SIN_CLASIFICAR = "Sin clasificar";
 const SIN_SUBCATEGORIA = "Sin subcategoría";
@@ -65,6 +67,7 @@ export default function Productos() {
   const [formatoImpresion, setFormatoImpresion] = useState("a4");
   const [modoAgrupacionImpresion, setModoAgrupacionImpresion] =
     useState("clasificacion");
+  const [paginaActual, setPaginaActual] = useState(1);
 
   const subcategoriasDisponibles = useMemo(() => {
     if (!categoriaSeleccionada) return [];
@@ -86,12 +89,38 @@ export default function Productos() {
     [seleccionados]
   );
 
+  const totalPaginas = useMemo(() => {
+    if (!productos.length) return 1;
+    return Math.ceil(productos.length / PRODUCTOS_POR_PAGINA);
+  }, [productos.length]);
+
+  const paginaActualSegura = Math.min(paginaActual, totalPaginas);
+
+  const productosPaginados = useMemo(() => {
+    const inicio = (paginaActualSegura - 1) * PRODUCTOS_POR_PAGINA;
+    return productos.slice(inicio, inicio + PRODUCTOS_POR_PAGINA);
+  }, [paginaActualSegura, productos]);
+
+  const rangoProductos = useMemo(() => {
+    if (!productos.length) {
+      return { inicio: 0, fin: 0 };
+    }
+
+    const inicio = (paginaActualSegura - 1) * PRODUCTOS_POR_PAGINA + 1;
+    const fin = Math.min(
+      paginaActualSegura * PRODUCTOS_POR_PAGINA,
+      productos.length
+    );
+
+    return { inicio, fin };
+  }, [paginaActualSegura, productos.length]);
+
   const todosSeleccionados = useMemo(() => {
     return (
-      productos.length > 0 &&
-      productos.every((producto) => seleccionadosIds.has(producto._id))
+      productosPaginados.length > 0 &&
+      productosPaginados.every((producto) => seleccionadosIds.has(producto._id))
     );
-  }, [productos, seleccionadosIds]);
+  }, [productosPaginados, seleccionadosIds]);
 
   async function confirmar({ titulo, texto, icon = "warning" }) {
     const result = await Swal.fire({
@@ -168,6 +197,16 @@ export default function Productos() {
   }, [cargarProductos]);
 
   useEffect(() => {
+    setPaginaActual(1);
+  }, [busqueda, categoriaSeleccionada, subcategoriaSeleccionada]);
+
+  useEffect(() => {
+    if (paginaActual > totalPaginas) {
+      setPaginaActual(totalPaginas);
+    }
+  }, [paginaActual, totalPaginas]);
+
+  useEffect(() => {
     setSeleccionados((prev) =>
       prev.filter((sel) => productos.some((producto) => producto._id === sel._id))
     );
@@ -237,11 +276,13 @@ export default function Productos() {
   }
 
   function toggleSeleccionTodos() {
-    if (!productos.length) return;
+    if (!productosPaginados.length) return;
 
     if (todosSeleccionados) {
       setSeleccionados((prev) =>
-        prev.filter((sel) => !productos.some((producto) => producto._id === sel._id))
+        prev.filter(
+          (sel) => !productosPaginados.some((producto) => producto._id === sel._id)
+        )
       );
       return;
     }
@@ -252,7 +293,7 @@ export default function Productos() {
       mapa.set(item._id, item);
     });
 
-    productos.forEach((item) => {
+    productosPaginados.forEach((item) => {
       mapa.set(item._id, item);
     });
 
@@ -592,7 +633,7 @@ export default function Productos() {
   return (
     <section className="productos-page">
       <ProductosHeader
-        productosCount={productos.length}
+        productosCount={productosPaginados.length}
         seleccionadosCount={seleccionados.length}
         todosSeleccionados={todosSeleccionados}
         mostrandoHistorial={mostrandoHistorial}
@@ -683,11 +724,50 @@ export default function Productos() {
       {error ? <p className="estado error">{error}</p> : null}
 
       {!loading && !error ? (
-        <ProductosGrid
-          productos={productos}
-          seleccionadosIds={seleccionadosIds}
-          onToggleSeleccion={toggleSeleccion}
-        />
+        <>
+          <ProductosGrid
+            productos={productosPaginados}
+            totalProductos={productos.length}
+            rangoInicio={rangoProductos.inicio}
+            rangoFin={rangoProductos.fin}
+            seleccionadosIds={seleccionadosIds}
+            onToggleSeleccion={toggleSeleccion}
+          />
+
+          <footer className="productos-footer">
+            <div className="productos-footer-resumen">
+              <strong>
+                Pagina {paginaActualSegura} de {totalPaginas}
+              </strong>
+              <span>
+                Mostrando {rangoProductos.inicio}-{rangoProductos.fin} de{" "}
+                {productos.length} productos filtrados
+              </span>
+            </div>
+
+            <div className="productos-footer-acciones">
+              <button
+                type="button"
+                className="btn-outline"
+                onClick={() => setPaginaActual((prev) => Math.max(prev - 1, 1))}
+                disabled={paginaActualSegura === 1}
+              >
+                Anterior
+              </button>
+
+              <button
+                type="button"
+                className="btn-outline"
+                onClick={() =>
+                  setPaginaActual((prev) => Math.min(prev + 1, totalPaginas))
+                }
+                disabled={paginaActualSegura === totalPaginas || !productos.length}
+              >
+                Siguiente
+              </button>
+            </div>
+          </footer>
+        </>
       ) : null}
     </section>
   );

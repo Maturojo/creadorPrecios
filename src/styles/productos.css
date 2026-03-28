@@ -129,6 +129,40 @@
   color: #b00020;
 }
 
+.productos-footer {
+  margin-top: 24px;
+  padding: 18px 20px;
+  border: 1px solid #e7dccf;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fffdfa 0%, #f8f1e8 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.productos-footer-resumen {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #5b4c39;
+}
+
+.productos-footer-resumen strong {
+  font-size: 1rem;
+}
+
+.productos-footer-resumen span {
+  font-size: 0.92rem;
+}
+
+.productos-footer-acciones {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 @media (max-width: 768px) {
   .productos-header {
     flex-direction: column;
@@ -137,6 +171,18 @@
 
   .productos-filtros {
     grid-template-columns: 1fr;
+  }
+
+  .productos-footer {
+    align-items: stretch;
+  }
+
+  .productos-footer-acciones {
+    width: 100%;
+  }
+
+  .productos-footer-acciones .btn-outline {
+    flex: 1;
   }
 }
 

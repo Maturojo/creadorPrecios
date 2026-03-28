@@ -1,4 +1,7 @@
-const API_URL = "http://localhost:4000/api/productos";
+const API_URL = (
+  import.meta.env.VITE_API_URL?.trim() ||
+  (import.meta.env.DEV ? "http://localhost:4000/api/productos" : "/api/productos")
+).replace(/\/$/, "");
 
 export async function obtenerProductos(params = {}) {
   const query = new URLSearchParams();
