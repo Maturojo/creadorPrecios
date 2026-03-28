@@ -33,7 +33,7 @@ export default function EliminarClasificacionPanel({
         >
           <option value="">Seleccionar subcategoria (opcional)</option>
           {subcategoriasEliminarDisponibles
-            .filter((subcategoria) => subcategoria !== "Sin subcategoria")
+            .filter((subcategoria) => subcategoria !== "Sin subcategoría")
             .map((subcategoria) => (
               <option key={subcategoria} value={subcategoria}>
                 {subcategoria}

@@ -31,9 +31,9 @@ export default function EdicionMultiplePanel({
           onChange={(event) => onSubcategoriaChange(event.target.value)}
           disabled={!categoriaMultiple}
         >
-          <option value="">Sin subcategoria</option>
+          <option value="">Sin subcategoría</option>
           {subcategoriasMultiplesDisponibles
-            .filter((subcategoria) => subcategoria !== "Sin subcategoria")
+            .filter((subcategoria) => subcategoria !== "Sin subcategoría")
             .map((subcategoria) => (
               <option key={subcategoria} value={subcategoria}>
                 {subcategoria}

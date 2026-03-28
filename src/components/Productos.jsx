@@ -27,7 +27,7 @@ import "../styles/producto-card.css";
 
 const UMBRAL_CONFIRMACION_MASIVA = 20;
 const SIN_CLASIFICAR = "Sin clasificar";
-const SIN_SUBCATEGORIA = "Sin subcategoria";
+const SIN_SUBCATEGORIA = "Sin subcategoría";
 
 export default function Productos() {
   const [productos, setProductos] = useState([]);
