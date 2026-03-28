@@ -44,7 +44,7 @@ export default function EliminarClasificacionPanel({
 
       <div className="acciones-edicion">
         <button
-          className="btn-secundario"
+          className="btn-text btn-text-danger"
           onClick={onEliminarCategoriaCompleta}
           disabled={!categoriaAEliminar || eliminandoClasificacion}
         >
@@ -52,7 +52,7 @@ export default function EliminarClasificacionPanel({
         </button>
 
         <button
-          className="btn-secundario"
+          className="btn-text btn-text-danger"
           onClick={onEliminarSubcategoriaIndividual}
           disabled={
             !categoriaAEliminar ||
@@ -64,7 +64,7 @@ export default function EliminarClasificacionPanel({
         </button>
 
         <button
-          className="btn-secundario"
+          className="btn-outline"
           onClick={onCancelar}
           disabled={eliminandoClasificacion}
         >
