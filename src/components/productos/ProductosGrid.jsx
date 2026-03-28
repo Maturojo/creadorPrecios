@@ -1,3 +1,5 @@
+import { getProductoCardTheme } from "../../utils/productoCardTheme";
+
 export default function ProductosGrid({
   productos,
   seleccionadosIds,
@@ -12,11 +14,16 @@ export default function ProductosGrid({
       <div className="productos-grid">
         {productos.map((producto) => {
           const estaSeleccionado = seleccionadosIds.has(producto._id);
+          const colorTheme = getProductoCardTheme(
+            producto.categoria,
+            producto.subcategoria
+          );
 
           return (
             <article
               className={`producto-card ${estaSeleccionado ? "seleccionado" : ""}`}
               key={producto._id}
+              style={colorTheme}
             >
               <label className="producto-check">
                 <input

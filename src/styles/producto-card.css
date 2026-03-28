@@ -1,13 +1,20 @@
 .producto-card {
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--producto-card-border, #e5e5e5);
   border-radius: 16px;
   padding: 16px;
-  background: #fff;
+  background: var(--producto-card-bg, #fff);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.producto-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
 }
 
 .producto-card.seleccionado {
   border: 2px solid #111;
+  box-shadow: 0 12px 28px rgba(17, 24, 39, 0.12);
 }
 
 .producto-check {
@@ -28,7 +35,7 @@
 
 .producto-codigo {
   font-size: 0.85rem;
-  color: #777;
+  color: var(--producto-card-code-color, #777);
   font-weight: 600;
 }
 
@@ -53,6 +60,6 @@
   font-size: 0.8rem;
   padding: 6px 10px;
   border-radius: 999px;
-  background: #f3f3f3;
-  color: #555;
+  background: var(--producto-card-tag-bg, #f3f3f3);
+  color: var(--producto-card-tag-color, #555);
 }
