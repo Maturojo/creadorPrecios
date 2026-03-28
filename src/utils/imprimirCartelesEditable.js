@@ -52,6 +52,9 @@ export function imprimirCarteles(productos, formato = "a4") {
     return;
   }
 
+  const opciones =
+    typeof formato === "string" ? { formato, agrupacion: "clasificacion" } : formato;
+
   const configFormato = {
     a4: {
       maxProductosPorCartel: 22,
@@ -65,7 +68,8 @@ export function imprimirCarteles(productos, formato = "a4") {
     },
   };
 
-  const config = configFormato[formato] || configFormato.a4;
+  const config = configFormato[opciones.formato] || configFormato.a4;
+  const agrupacion = opciones.agrupacion || "clasificacion";
 
   const chunkArray = (array, size) => {
     const resultado = [];
@@ -75,7 +79,61 @@ export function imprimirCarteles(productos, formato = "a4") {
     return resultado;
   };
 
+  const obtenerEncabezadoMixto = (lista) => {
+    const categoriasUnicas = [
+      ...new Set(
+        lista.map((producto) =>
+          normalizarTexto(producto.categoria, "Sin clasificar")
+        )
+      ),
+    ];
+    const subcategoriasUnicas = [
+      ...new Set(
+        lista.map((producto) =>
+          normalizarTexto(producto.subcategoria, SIN_SUBCATEGORIA)
+        )
+      ),
+    ];
+
+    const categoriaComun =
+      categoriasUnicas.length === 1 ? categoriasUnicas[0] : "";
+    const subcategoriaComun =
+      subcategoriasUnicas.length === 1 ? subcategoriasUnicas[0] : "";
+
+    if (
+      categoriaComun &&
+      subcategoriaComun &&
+      subcategoriaComun !== SIN_SUBCATEGORIA
+    ) {
+      return {
+        categoria: categoriaComun,
+        subcategoria: subcategoriaComun,
+      };
+    }
+
+    if (categoriaComun) {
+      return {
+        categoria: categoriaComun,
+        subcategoria: SIN_SUBCATEGORIA,
+      };
+    }
+
+    return {
+      categoria: "",
+      subcategoria: "Seleccion combinada",
+    };
+  };
+
   const agruparProductos = (lista) => {
+    if (agrupacion === "mezclar") {
+      return [
+        {
+          ...obtenerEncabezadoMixto(lista),
+          items: lista,
+        },
+      ];
+    }
+
     const grupos = {};
 
     lista.forEach((producto) => {
@@ -151,7 +209,9 @@ export function imprimirCarteles(productos, formato = "a4") {
         <div class="print-toolbar no-print">
           <div class="print-toolbar-copy">
             <strong>Vista previa de impresion</strong>
-            <span>${productos.length} producto(s), ${gruposPaginados.length} cartel(es), ${config.descripcion}</span>
+            <span>${productos.length} producto(s), ${gruposPaginados.length} cartel(es), ${config.descripcion}, ${
+              agrupacion === "mezclar" ? "mezclando categorias" : "separando por clasificacion"
+            }</span>
           </div>
 
           <div class="print-toolbar-actions">

@@ -6,6 +6,7 @@ export default function ProductosHeader({
   todosSeleccionados,
   mostrandoHistorial,
   formatoImpresion,
+  modoAgrupacionImpresion,
   onToggleSeleccionTodos,
   onDeseleccionarTodos,
   onAbrirEditorMultiple,
@@ -13,6 +14,7 @@ export default function ProductosHeader({
   onAbrirEliminarClasificacion,
   onToggleHistorial,
   onFormatoImpresionChange,
+  onModoAgrupacionImpresionChange,
   onImprimir,
 }) {
   const [menuAbierto, setMenuAbierto] = useState(false);
@@ -80,6 +82,20 @@ export default function ProductosHeader({
             >
               <option value="a4">A4 completa</option>
               <option value="media-a4">Media hoja</option>
+            </select>
+          </label>
+
+          <label className="print-config">
+            <span>Agrupacion</span>
+            <select
+              value={modoAgrupacionImpresion}
+              onChange={(event) =>
+                onModoAgrupacionImpresionChange(event.target.value)
+              }
+              className="select-impresion"
+            >
+              <option value="clasificacion">Separar por categoria</option>
+              <option value="mezclar">Mezclar seleccion</option>
             </select>
           </label>
 
