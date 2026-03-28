@@ -71,14 +71,17 @@ export default function ProductosHeader({
         </div>
 
         <div className="acciones-header-group acciones-header-group--secondary">
-          <select
-            value={formatoImpresion}
-            onChange={(event) => onFormatoImpresionChange(event.target.value)}
-            className="select-impresion"
-          >
-            <option value="a4">A4 completa</option>
-            <option value="media-a4">Media hoja</option>
-          </select>
+          <label className="print-config">
+            <span>Formato de cartel</span>
+            <select
+              value={formatoImpresion}
+              onChange={(event) => onFormatoImpresionChange(event.target.value)}
+              className="select-impresion"
+            >
+              <option value="a4">A4 completa</option>
+              <option value="media-a4">Media hoja</option>
+            </select>
+          </label>
 
           <div className="menu-acciones" ref={menuRef}>
             <button
@@ -136,7 +139,7 @@ export default function ProductosHeader({
           onClick={onImprimir}
           disabled={!seleccionadosCount}
         >
-          Imprimir seleccion ({seleccionadosCount})
+          Preparar impresion ({seleccionadosCount})
         </button>
       </div>
     </div>

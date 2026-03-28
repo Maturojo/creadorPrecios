@@ -12,7 +12,7 @@ import {
   obtenerHistorialProductos,
   obtenerProductos,
 } from "../services/productos";
-import { imprimirCarteles } from "../utils/imprimirCarteles";
+import { imprimirCarteles } from "../utils/imprimirCartelesPreview";
 import EdicionMultiplePanel from "./productos/EdicionMultiplePanel";
 import EditorCategoriasPanel from "./productos/EditorCategoriasPanel";
 import EliminarClasificacionPanel from "./productos/EliminarClasificacionPanel";

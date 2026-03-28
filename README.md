@@ -142,6 +142,9 @@ El proyecto ya cubre el flujo principal de clasificación e impresión, pero tod
 - [ ] Agregar tests básicos para rutas críticas
 - [ ] Documentar mejor la estructura de datos de `Producto`, `Categoria`, `Subcategoria` e `HistorialAccion`
 - [ ] Mejorar la experiencia de impresión y vista previa de carteles
+- [ ] Subir proyecto a la web
+- [ ] Clave de usuario para entrar
+
 
 ## Notas
 

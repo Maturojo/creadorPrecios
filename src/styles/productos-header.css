@@ -48,6 +48,16 @@
   transition: 0.2s ease;
 }
 
+.print-config {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+  color: #6b5a45;
+  font-size: 12px;
+  font-weight: 700;
+}
+
 .btn-outline {
   background: #fffdfa;
   color: #433422;
@@ -182,6 +192,10 @@
 
   .acciones-header-group {
     justify-content: flex-start;
+  }
+
+  .print-config {
+    width: 100%;
   }
 
   .btn-print {
