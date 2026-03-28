@@ -85,6 +85,63 @@ body.formato-media-a4 {
   color: #5b4c39;
 }
 
+.cartel-shell {
+  margin-bottom: 20px;
+}
+
+.cartel-editor {
+  width: min(100%, 920px);
+  margin: 0 auto 10px;
+  padding: 14px 16px;
+  border: 1px solid #eadfce;
+  border-radius: 18px;
+  background: rgba(255, 250, 242, 0.92);
+  box-shadow: 0 12px 28px rgba(46, 32, 18, 0.08);
+}
+
+.cartel-editor-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.cartel-editor-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cartel-editor-field span {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b5a45;
+}
+
+.cartel-editor-field input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #d9ccb8;
+  border-radius: 12px;
+  padding: 11px 13px;
+  font: inherit;
+  font-size: 14px;
+  color: #2f2418;
+  background: #fff;
+}
+
+.cartel-editor-reset {
+  border: none;
+  border-radius: 999px;
+  padding: 11px 16px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: #5b4c39;
+  background: #f3eadf;
+  cursor: pointer;
+}
+
 body.formato-a4 .cartel {
   width: 100%;
   min-height: 287mm;
@@ -112,24 +169,41 @@ body.formato-media-a4 .cartel {
   text-align: center;
 }
 
+.cartel-header-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4mm;
+}
+
 .subcategoria {
   margin: 0;
   font-size: 16mm;
   font-weight: 700;
-  letter-spacing: -0.05em;
-  line-height: 0.9;
+  letter-spacing: -0.04em;
+  line-height: 0.94;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
 }
 
 .categoria {
-  margin: 0.5mm 0 0;
+  margin: 0;
   font-size: 5.5mm;
   font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.categoria-oculta {
+  display: none;
 }
 
 .cartel-info {
-  margin-top: 1mm;
+  margin-top: 1.4mm;
   font-size: 4mm;
   font-weight: 700;
   line-height: 1;
@@ -269,6 +343,15 @@ body.formato-media-a4 .cartel-tabla td {
 
   .print-helper {
     margin-inline: 16px;
+  }
+
+  .cartel-editor {
+    margin-inline: 16px;
+    width: auto;
+  }
+
+  .cartel-editor-grid {
+    grid-template-columns: 1fr;
   }
 }
 
