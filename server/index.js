@@ -4,6 +4,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
+const authRouter = require("./routes/auth");
+const { requireGoogleAuth } = require("./auth/googleAuth");
 const productosRouter = require("./routes/productos");
 
 const app = express();
@@ -44,7 +46,8 @@ app.get("/api/health", (req, res) => {
   res.json({ ok: true });
 });
 
-app.use("/api/productos", productosRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/productos", requireGoogleAuth, productosRouter);
 
 const PORT = Number(process.env.PORT) || 4000;
 const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI;

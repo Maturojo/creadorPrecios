@@ -1,7 +1,4 @@
-const API_URL = (
-  import.meta.env.VITE_API_URL?.trim() ||
-  (import.meta.env.DEV ? "http://localhost:4000/api/productos" : "/api/productos")
-).replace(/\/$/, "");
+import { apiFetch, PRODUCTOS_API_BASE_URL as API_URL } from "./api";
 
 export async function obtenerProductos(params = {}) {
   const query = new URLSearchParams();
@@ -10,7 +7,7 @@ export async function obtenerProductos(params = {}) {
   if (params.subcategoria) query.set("subcategoria", params.subcategoria);
   if (params.q) query.set("q", params.q);
 
-  const response = await fetch(`${API_URL}?${query.toString()}`);
+  const response = await apiFetch(`${API_URL}?${query.toString()}`);
 
   if (!response.ok) {
     throw new Error("No se pudieron obtener los productos");
@@ -20,7 +17,7 @@ export async function obtenerProductos(params = {}) {
 }
 
 export async function obtenerFiltrosProductos() {
-  const response = await fetch(`${API_URL}/filtros`);
+  const response = await apiFetch(`${API_URL}/filtros`);
 
   if (!response.ok) {
     throw new Error("No se pudieron obtener los filtros");
@@ -30,7 +27,7 @@ export async function obtenerFiltrosProductos() {
 }
 
 export async function crearCategoriaOSubcategoria(data) {
-  const response = await fetch(`${API_URL}/categorias`, {
+  const response = await apiFetch(`${API_URL}/categorias`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -46,7 +43,7 @@ export async function crearCategoriaOSubcategoria(data) {
 }
 
 export async function actualizarClasificacionMultiple(ids, data) {
-  const response = await fetch(`${API_URL}/clasificacion-multiple`, {
+  const response = await apiFetch(`${API_URL}/clasificacion-multiple`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -65,7 +62,7 @@ export async function actualizarClasificacionMultiple(ids, data) {
 }
 
 export async function obtenerHistorialProductos() {
-  const response = await fetch(`${API_URL}/historial`);
+  const response = await apiFetch(`${API_URL}/historial`);
 
   if (!response.ok) {
     throw new Error("No se pudo obtener el historial");
@@ -75,7 +72,7 @@ export async function obtenerHistorialProductos() {
 }
 
 export async function guardarAccionHistorial(data) {
-  const response = await fetch(`${API_URL}/historial`, {
+  const response = await apiFetch(`${API_URL}/historial`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -91,7 +88,7 @@ export async function guardarAccionHistorial(data) {
 }
 
 export async function limpiarHistorialProductos() {
-  const response = await fetch(`${API_URL}/historial`, {
+  const response = await apiFetch(`${API_URL}/historial`, {
     method: "DELETE",
   });
 
@@ -103,7 +100,7 @@ export async function limpiarHistorialProductos() {
 }
 
 export async function eliminarCategoria(nombre) {
-  const response = await fetch(
+  const response = await apiFetch(
     `${API_URL}/categorias/${encodeURIComponent(nombre)}`,
     {
       method: "DELETE",
@@ -118,7 +115,7 @@ export async function eliminarCategoria(nombre) {
 }
 
 export async function eliminarSubcategoria(categoria, subcategoria) {
-  const response = await fetch(`${API_URL}/subcategorias`, {
+  const response = await apiFetch(`${API_URL}/subcategorias`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

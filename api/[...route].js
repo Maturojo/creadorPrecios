@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import { createRequire } from "node:module";
 
 const require = createRequire(import.meta.url);
+const authRouter = require("../server/routes/auth");
+const { requireGoogleAuth } = require("../server/auth/googleAuth");
 const productosRouter = require("../server/routes/productos");
 
 const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI;
@@ -53,7 +55,8 @@ app.get("/api/health", (req, res) => {
   res.json({ ok: true });
 });
 
-app.use("/api/productos", productosRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/productos", requireGoogleAuth, productosRouter);
 
 async function connectToDatabase() {
   if (!mongoUri) {

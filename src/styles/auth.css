@@ -1,0 +1,128 @@
+.app-shell {
+  min-height: 100vh;
+}
+
+.session-bar {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 18px 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.session-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.session-user strong,
+.session-user span {
+  display: block;
+}
+
+.session-user span {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.session-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid #e5d4ba;
+}
+
+.session-avatar--fallback {
+  display: grid;
+  place-items: center;
+  background: #5b4c39;
+  color: #fff;
+  font-weight: 700;
+}
+
+.login-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at top left, rgba(183, 145, 92, 0.22), transparent 32%),
+    linear-gradient(135deg, #f5efe6 0%, #f8fafc 100%);
+}
+
+.login-card {
+  width: min(100%, 430px);
+  padding: 36px 32px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(203, 174, 134, 0.45);
+  box-shadow: 0 24px 70px rgba(70, 49, 24, 0.12);
+}
+
+.login-card h1 {
+  margin: 0 0 12px;
+  font-size: 2rem;
+  color: #2f2418;
+}
+
+.login-card p {
+  margin: 0;
+  color: #5f5b56;
+  line-height: 1.5;
+}
+
+.login-eyebrow {
+  display: inline-flex;
+  margin-bottom: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #fff4e5;
+  color: #7c4a03;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.google-login-slot {
+  margin: 28px 0 14px;
+  min-height: 44px;
+}
+
+.login-helper,
+.login-error,
+.login-note {
+  margin-top: 14px;
+  font-size: 0.95rem;
+}
+
+.login-helper {
+  color: #5b4c39;
+}
+
+.login-error {
+  color: #b42318;
+}
+
+.login-note {
+  color: #7b6f61;
+}
+
+@media (max-width: 768px) {
+  .session-bar {
+    padding-top: 14px;
+  }
+
+  .session-user {
+    align-items: flex-start;
+  }
+
+  .login-card {
+    padding: 30px 22px;
+  }
+}
