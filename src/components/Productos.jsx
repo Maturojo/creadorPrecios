@@ -207,9 +207,17 @@ export default function Productos() {
   }, [paginaActual, totalPaginas]);
 
   useEffect(() => {
-    setSeleccionados((prev) =>
-      prev.filter((sel) => productos.some((producto) => producto._id === sel._id))
-    );
+    setSeleccionados((prev) => {
+      if (!prev.length || !productos.length) return prev;
+
+      const productosPorId = new Map(
+        productos.map((producto) => [producto._id, producto])
+      );
+
+      return prev.map((seleccionado) => {
+        return productosPorId.get(seleccionado._id) || seleccionado;
+      });
+    });
   }, [productos]);
 
   async function guardarEnHistorial(accion) {
