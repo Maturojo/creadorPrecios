@@ -8,12 +8,15 @@ import "./styles/auth.css";
 function App() {
   const [estadoSesion, setEstadoSesion] = useState("cargando");
   const [usuario, setUsuario] = useState(null);
+  const [errorAcceso, setErrorAcceso] = useState(null);
+  const [emailIntento, setEmailIntento] = useState("");
 
   const restaurarSesion = useCallback(async () => {
     const token = getAuthToken();
 
     if (!token) {
       setUsuario(null);
+      setErrorAcceso(null);
       setEstadoSesion("anonimo");
       return;
     }
@@ -21,11 +24,17 @@ function App() {
     try {
       const user = await validarSesionGoogle(token);
       setUsuario(user);
+      setErrorAcceso(null);
+      setEmailIntento(user?.email || "");
       setEstadoSesion("autenticado");
     } catch (error) {
       console.error(error);
       cerrarSesionGoogle();
       setUsuario(null);
+      setEmailIntento(error.email || "");
+      setErrorAcceso(
+        error.code === "access_denied" ? "denegado" : "error-validacion"
+      );
       setEstadoSesion("anonimo");
     }
   }, []);
@@ -38,6 +47,7 @@ function App() {
     function handleUnauthorized() {
       cerrarSesionGoogle();
       setUsuario(null);
+      setErrorAcceso(null);
       setEstadoSesion("anonimo");
     }
 
@@ -50,14 +60,28 @@ function App() {
 
   const handleLogin = useCallback(async (credential) => {
     setEstadoSesion("validando");
-    const user = await validarSesionGoogle(credential);
-    setUsuario(user);
-    setEstadoSesion("autenticado");
+    try {
+      const user = await validarSesionGoogle(credential);
+      setUsuario(user);
+      setErrorAcceso(null);
+      setEmailIntento(user?.email || "");
+      setEstadoSesion("autenticado");
+    } catch (error) {
+      setUsuario(null);
+      setEmailIntento(error.email || "");
+      setErrorAcceso(
+        error.code === "access_denied" ? "denegado" : "error-validacion"
+      );
+      setEstadoSesion("anonimo");
+      throw error;
+    }
   }, []);
 
   const handleLogout = useCallback(() => {
     cerrarSesionGoogle();
     setUsuario(null);
+    setErrorAcceso(null);
+    setEmailIntento("");
     setEstadoSesion("anonimo");
   }, []);
 
@@ -66,12 +90,21 @@ function App() {
       <LoginScreen
         onLogin={handleLogin}
         cargando={estadoSesion === "validando"}
+        estadoAcceso={errorAcceso}
+        emailIntento={emailIntento}
       />
     );
   }
 
   if (estadoSesion !== "autenticado") {
-    return <LoginScreen onLogin={handleLogin} cargando={false} />;
+    return (
+      <LoginScreen
+        onLogin={handleLogin}
+        cargando={false}
+        estadoAcceso={errorAcceso}
+        emailIntento={emailIntento}
+      />
+    );
   }
 
   return (

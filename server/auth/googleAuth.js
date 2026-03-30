@@ -67,6 +67,7 @@ async function verifyGoogleUserFromRequest(req) {
   if (!allowedEmails.includes(email)) {
     const error = new Error("Tu cuenta no tiene permiso para entrar");
     error.statusCode = 403;
+    error.email = email;
     throw error;
   }
 
@@ -86,6 +87,7 @@ async function requireGoogleAuth(req, res, next) {
 
     res.status(statusCode).json({
       error: error.message || "No autorizado",
+      email: error.email || "",
     });
   }
 }
