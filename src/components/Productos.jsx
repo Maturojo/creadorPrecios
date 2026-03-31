@@ -12,6 +12,7 @@ import {
   obtenerHistorialProductos,
   obtenerProductos,
 } from "../services/productos";
+import { exportarProductosCsv } from "../utils/exportarProductosCsv";
 import { imprimirCarteles } from "../utils/imprimirCartelesEditable";
 import EdicionMultiplePanel from "./productos/EdicionMultiplePanel";
 import EditorCategoriasPanel from "./productos/EditorCategoriasPanel";
@@ -44,6 +45,7 @@ export default function Productos() {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [exportandoProductos, setExportandoProductos] = useState(false);
 
   const [editandoMultiple, setEditandoMultiple] = useState(false);
   const [categoriaMultiple, setCategoriaMultiple] = useState("");
@@ -675,6 +677,28 @@ export default function Productos() {
     });
   }
 
+  async function handleExportarProductos() {
+    try {
+      setExportandoProductos(true);
+      const todosLosProductos = await obtenerProductos();
+
+      if (!todosLosProductos.length) {
+        toast.warn("No hay productos para exportar.");
+        return;
+      }
+
+      exportarProductosCsv(todosLosProductos);
+      toast.success(
+        `Se exportaron ${todosLosProductos.length} productos en CSV.`
+      );
+    } catch (err) {
+      console.error(err);
+      toast.error("No se pudo exportar el CSV de productos.");
+    } finally {
+      setExportandoProductos(false);
+    }
+  }
+
   return (
     <section className="productos-page">
       <ProductosHeader
@@ -686,12 +710,14 @@ export default function Productos() {
         mostrandoHistorial={mostrandoHistorial}
         formatoImpresion={formatoImpresion}
         modoAgrupacionImpresion={modoAgrupacionImpresion}
+        exportandoProductos={exportandoProductos}
         onToggleSeleccionTodos={toggleSeleccionTodos}
         onToggleSeleccionFiltrados={toggleSeleccionFiltrados}
         onDeseleccionarTodos={deseleccionarTodos}
         onAbrirEditorMultiple={abrirEditorMultiple}
         onAbrirEditorCategorias={abrirEditorCategorias}
         onAbrirEliminarClasificacion={abrirEliminarClasificacion}
+        onExportarProductos={handleExportarProductos}
         onToggleHistorial={() => setMostrandoHistorial((prev) => !prev)}
         onFormatoImpresionChange={setFormatoImpresion}
         onModoAgrupacionImpresionChange={setModoAgrupacionImpresion}

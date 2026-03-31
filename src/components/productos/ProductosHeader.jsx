@@ -9,12 +9,14 @@ export default function ProductosHeader({
   mostrandoHistorial,
   formatoImpresion,
   modoAgrupacionImpresion,
+  exportandoProductos,
   onToggleSeleccionTodos,
   onToggleSeleccionFiltrados,
   onDeseleccionarTodos,
   onAbrirEditorMultiple,
   onAbrirEditorCategorias,
   onAbrirEliminarClasificacion,
+  onExportarProductos,
   onToggleHistorial,
   onFormatoImpresionChange,
   onModoAgrupacionImpresionChange,
@@ -82,6 +84,14 @@ export default function ProductosHeader({
 
           <button className="btn-outline" onClick={onAbrirEditorCategorias}>
             Nueva categoria
+          </button>
+
+          <button
+            className="btn-outline"
+            onClick={onExportarProductos}
+            disabled={exportandoProductos}
+          >
+            {exportandoProductos ? "Exportando..." : "Exportar CSV"}
           </button>
         </div>
 
