@@ -2,12 +2,15 @@ import { useEffect, useRef, useState } from "react";
 
 export default function ProductosHeader({
   productosCount,
+  totalFiltradosCount,
   seleccionadosCount,
   todosSeleccionados,
+  todosFiltradosSeleccionados,
   mostrandoHistorial,
   formatoImpresion,
   modoAgrupacionImpresion,
   onToggleSeleccionTodos,
+  onToggleSeleccionFiltrados,
   onDeseleccionarTodos,
   onAbrirEditorMultiple,
   onAbrirEditorCategorias,
@@ -57,6 +60,16 @@ export default function ProductosHeader({
             disabled={!productosCount}
           >
             {todosSeleccionados ? "Deseleccionar todos" : "Seleccionar todos"}
+          </button>
+
+          <button
+            className="btn-outline"
+            onClick={onToggleSeleccionFiltrados}
+            disabled={!totalFiltradosCount}
+          >
+            {todosFiltradosSeleccionados
+              ? "Deseleccionar filtrados"
+              : "Seleccionar filtrados"}
           </button>
 
           <button

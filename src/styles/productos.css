@@ -129,6 +129,139 @@
   color: #b00020;
 }
 
+.seleccion-resumen {
+  margin-bottom: 24px;
+  padding: 18px 20px;
+  border: 1px solid #d8e6dd;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #f7fcf8 0%, #eef8f1 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.seleccion-resumen-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.seleccion-resumen-copy strong {
+  color: #1f5131;
+  font-size: 1rem;
+}
+
+.seleccion-resumen-copy span {
+  color: #4e6a59;
+  font-size: 0.92rem;
+}
+
+.seleccion-resumen-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.seleccion-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid #b7d5c2;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #244430;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.seleccion-tag:hover {
+  background: #f3fbf5;
+  transform: translateY(-1px);
+}
+
+.seleccion-tag span {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #35634a;
+}
+
+.seleccion-tag strong {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.seleccion-tag--ghost {
+  cursor: default;
+  background: rgba(60, 111, 80, 0.08);
+}
+
+.seleccion-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.seleccion-panel-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.seleccion-panel-header strong {
+  color: #234833;
+}
+
+.seleccion-panel-header span {
+  color: #5c7867;
+  font-size: 0.92rem;
+}
+
+.seleccion-panel-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.seleccion-panel-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid #d4e6da;
+}
+
+.seleccion-panel-item-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.seleccion-panel-item-copy strong,
+.seleccion-panel-item-copy span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.seleccion-panel-item-copy strong {
+  color: #20402d;
+  font-size: 0.95rem;
+}
+
+.seleccion-panel-item-copy span {
+  color: #5d7767;
+  font-size: 0.87rem;
+}
+
 .productos-footer {
   margin-top: 24px;
   padding: 18px 20px;
@@ -183,6 +316,11 @@
 
   .productos-footer-acciones .btn-outline {
     flex: 1;
+  }
+
+  .seleccion-panel-item {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 

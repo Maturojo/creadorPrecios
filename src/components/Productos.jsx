@@ -122,6 +122,17 @@ export default function Productos() {
     );
   }, [productosPaginados, seleccionadosIds]);
 
+  const todosFiltradosSeleccionados = useMemo(() => {
+    return (
+      productos.length > 0 &&
+      productos.every((producto) => seleccionadosIds.has(producto._id))
+    );
+  }, [productos, seleccionadosIds]);
+
+  const seleccionadosPreview = useMemo(() => {
+    return seleccionados.slice(0, 6);
+  }, [seleccionados]);
+
   async function confirmar({ titulo, texto, icon = "warning" }) {
     const result = await Swal.fire({
       title: titulo,
@@ -302,6 +313,32 @@ export default function Productos() {
     });
 
     productosPaginados.forEach((item) => {
+      mapa.set(item._id, item);
+    });
+
+    setSeleccionados(Array.from(mapa.values()));
+  }
+
+  function toggleSeleccionFiltrados() {
+    if (!productos.length) return;
+
+    if (todosFiltradosSeleccionados) {
+      setSeleccionados((prev) =>
+        prev.filter(
+          (seleccionado) =>
+            !productos.some((producto) => producto._id === seleccionado._id)
+        )
+      );
+      return;
+    }
+
+    const mapa = new Map();
+
+    seleccionados.forEach((item) => {
+      mapa.set(item._id, item);
+    });
+
+    productos.forEach((item) => {
       mapa.set(item._id, item);
     });
 
@@ -642,12 +679,15 @@ export default function Productos() {
     <section className="productos-page">
       <ProductosHeader
         productosCount={productosPaginados.length}
+        totalFiltradosCount={productos.length}
         seleccionadosCount={seleccionados.length}
         todosSeleccionados={todosSeleccionados}
+        todosFiltradosSeleccionados={todosFiltradosSeleccionados}
         mostrandoHistorial={mostrandoHistorial}
         formatoImpresion={formatoImpresion}
         modoAgrupacionImpresion={modoAgrupacionImpresion}
         onToggleSeleccionTodos={toggleSeleccionTodos}
+        onToggleSeleccionFiltrados={toggleSeleccionFiltrados}
         onDeseleccionarTodos={deseleccionarTodos}
         onAbrirEditorMultiple={abrirEditorMultiple}
         onAbrirEditorCategorias={abrirEditorCategorias}
@@ -668,6 +708,70 @@ export default function Productos() {
         onCategoriaChange={handleCategoriaChange}
         onSubcategoriaChange={setSubcategoriaSeleccionada}
       />
+
+      {seleccionados.length ? (
+        <section className="seleccion-resumen">
+          <div className="seleccion-resumen-copy">
+            <strong>{seleccionados.length} productos seleccionados</strong>
+            <span>
+              La seleccion se mantiene aunque cambies categoria, subcategoria o
+              busqueda.
+            </span>
+          </div>
+
+          <div className="seleccion-resumen-tags">
+            {seleccionadosPreview.map((producto) => (
+              <button
+                key={producto._id}
+                type="button"
+                className="seleccion-tag"
+                onClick={() => toggleSeleccion(producto)}
+                title="Quitar de la seleccion"
+              >
+                <span>{producto.codigo}</span>
+                <strong>{producto.nombre}</strong>
+              </button>
+            ))}
+
+            {seleccionados.length > seleccionadosPreview.length ? (
+              <span className="seleccion-tag seleccion-tag--ghost">
+                +{seleccionados.length - seleccionadosPreview.length} mas
+              </span>
+            ) : null}
+          </div>
+
+          <div className="seleccion-panel">
+            <div className="seleccion-panel-header">
+              <strong>Seleccion completa</strong>
+              <span>
+                Revisa la tanda antes de imprimir o cambiar clasificaciones.
+              </span>
+            </div>
+
+            <div className="seleccion-panel-lista">
+              {seleccionados.map((producto) => (
+                <article key={producto._id} className="seleccion-panel-item">
+                  <div className="seleccion-panel-item-copy">
+                    <strong>{producto.nombre}</strong>
+                    <span>
+                      {producto.codigo} · {producto.categoria} ·{" "}
+                      {producto.subcategoria}
+                    </span>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="btn-text btn-text-danger"
+                    onClick={() => toggleSeleccion(producto)}
+                  >
+                    Quitar
+                  </button>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {mostrandoEliminar ? (
         <EliminarClasificacionPanel
