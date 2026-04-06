@@ -1,4 +1,4 @@
-const express = require("express");
+﻿const express = require("express");
 const router = express.Router();
 const Producto = require("../models/Producto");
 const HistorialAccion = require("../models/HistorialAccion");
@@ -17,6 +17,26 @@ const CATEGORY_COLOR_POOL = [
   "cobre",
   "oceano",
 ];
+
+const BUILT_IN_CATEGORY_PALETTES = {
+  artistica: "artistica",
+  "productos para chicos": "productos para chicos",
+  muebles: "muebles",
+  listoneria: "listoneria",
+  cortineria: "cortineria",
+  molduras: "molduras",
+  "calados y laser": "calados y laser",
+  "productos varios": "productos varios",
+  "sin clasificar": "sin clasificar",
+};
+
+const CATEGORY_ALIASES = {
+  "calado y laser": "calados y laser",
+  laser: "calados y laser",
+  "candy bar": "calados y laser",
+  "candy bar y laser": "calados y laser",
+  "todo para infantiles": "productos para chicos",
+};
 
 function normalizeText(value = "") {
   return String(value)
@@ -48,6 +68,54 @@ function pickUnusedCategoryPalette(categorias = [], categoriaNombre = "") {
   if (libre) return libre;
 
   return CATEGORY_COLOR_POOL[getHashIndex(categoriaNombre, CATEGORY_COLOR_POOL.length)];
+}
+
+function resolveCategoryPaletteKey(nombre = "") {
+  const normalized = normalizeText(nombre);
+  const resolved = CATEGORY_ALIASES[normalized] || normalized;
+
+  return BUILT_IN_CATEGORY_PALETTES[resolved] || "";
+}
+
+async function ensureCategoryDocumentsWithPalette(categoryNames = []) {
+  const nombres = Array.from(
+    new Set(categoryNames.map((nombre) => String(nombre || "").trim()).filter(Boolean))
+  );
+
+  const categoriasDb = await Categoria.find({}).lean();
+  const categoriasPorNombre = new Map(
+    categoriasDb.map((categoria) => [categoria.nombre?.trim(), categoria])
+  );
+
+  for (const nombre of nombres) {
+    const paletteKey = resolveCategoryPaletteKey(nombre);
+    const existente = categoriasPorNombre.get(nombre);
+
+    if (existente) {
+      if (!existente.colorPalette && paletteKey) {
+        const actualizada = await Categoria.findOneAndUpdate(
+          { nombre },
+          { $set: { colorPalette: paletteKey } },
+          { new: true }
+        ).lean();
+        categoriasPorNombre.set(nombre, actualizada);
+      }
+      continue;
+    }
+
+    const categoriasExistentes = Array.from(categoriasPorNombre.values());
+    const colorPalette =
+      paletteKey || pickUnusedCategoryPalette(categoriasExistentes, nombre);
+
+    const creada = await Categoria.create({
+      nombre,
+      colorPalette,
+    });
+
+    categoriasPorNombre.set(nombre, creada.toObject());
+  }
+
+  return Array.from(categoriasPorNombre.values());
 }
 
 function esSinSubcategoria(valor = "") {
@@ -110,7 +178,7 @@ router.get("/", async (req, res) => {
     const normalizados = productos.map((p) => ({
       ...p,
       categoria: p.categoria?.trim() || "Sin clasificar",
-      subcategoria: p.subcategoria?.trim() || "Sin subcategoría",
+      subcategoria: p.subcategoria?.trim() || "Sin subcategorÃ­a",
     }));
 
     res.json(normalizados);
@@ -130,7 +198,7 @@ router.get("/filtros", async (req, res) => {
     const categoriasSet = new Set();
     const subcategoriasPorCategoria = {};
 
-    // 1) categorías creadas manualmente
+    // 1) categorÃ­as creadas manualmente
     categoriasDb.forEach((c) => {
       const nombre = c.nombre?.trim();
       if (!nombre) return;
@@ -142,7 +210,7 @@ router.get("/filtros", async (req, res) => {
       }
     });
 
-    // 2) subcategorías creadas manualmente
+    // 2) subcategorÃ­as creadas manualmente
     subcategoriasDb.forEach((s) => {
       const categoria = s.categoria?.trim();
       const nombre = s.nombre?.trim();
@@ -158,10 +226,10 @@ router.get("/filtros", async (req, res) => {
       subcategoriasPorCategoria[categoria].add(nombre);
     });
 
-    // 3) categorías/subcategorías ya existentes en productos (Excel / sistema viejo)
+    // 3) categorÃ­as/subcategorÃ­as ya existentes en productos (Excel / sistema viejo)
     productos.forEach((p) => {
       const categoria = p.categoria?.trim() || "Sin clasificar";
-      const subcategoria = p.subcategoria?.trim() || "Sin subcategoría";
+      const subcategoria = p.subcategoria?.trim() || "Sin subcategorÃ­a";
 
       categoriasSet.add(categoria);
 
@@ -179,7 +247,7 @@ router.get("/filtros", async (req, res) => {
       subcategoriasPorCategoria["Sin clasificar"] = new Set();
     }
 
-    subcategoriasPorCategoria["Sin clasificar"].add("Sin subcategoría");
+    subcategoriasPorCategoria["Sin clasificar"].add("Sin subcategorÃ­a");
 
     const categorias = Array.from(categoriasSet).sort((a, b) =>
       a.localeCompare(b, "es")
@@ -214,7 +282,7 @@ router.get("/filtros", async (req, res) => {
   }
 });
 
-// Crear categoría o subcategoría
+// Crear categorÃ­a o subcategorÃ­a
 router.post("/categorias", async (req, res) => {
   try {
     const { categoria = "", subcategoria = "" } = req.body;
@@ -223,7 +291,7 @@ router.post("/categorias", async (req, res) => {
     const subcategoriaLimpia = subcategoria.trim();
 
     if (!categoriaLimpia) {
-      return res.status(400).json({ error: "La categoría es obligatoria" });
+      return res.status(400).json({ error: "La categorÃ­a es obligatoria" });
     }
 
     let categoriaDoc = await Categoria.findOne({ nombre: categoriaLimpia });
@@ -262,8 +330,8 @@ router.post("/categorias", async (req, res) => {
       colorPalette: categoriaDoc.colorPalette || "",
     });
   } catch (error) {
-    console.error("Error al crear categoría/subcategoría:", error);
-    res.status(500).json({ error: "Error al crear categoría/subcategoría" });
+    console.error("Error al crear categorÃ­a/subcategorÃ­a:", error);
+    res.status(500).json({ error: "Error al crear categorÃ­a/subcategorÃ­a" });
   }
 });
 
@@ -279,7 +347,7 @@ router.patch("/categorias/:nombre", async (req, res) => {
     if (normalizeText(nombreActual) === "sin clasificar") {
       return res
         .status(400)
-        .json({ error: "No se puede editar esa categoría" });
+        .json({ error: "No se puede editar esa categorÃ­a" });
     }
 
     if (normalizeText(nuevoNombre) === "sin clasificar") {
@@ -297,7 +365,7 @@ router.patch("/categorias/:nombre", async (req, res) => {
     });
 
     if (!categoriaActual && !productosConCategoria && !subcategoriasConCategoria) {
-      return res.status(404).json({ error: "Categoría no encontrada" });
+      return res.status(404).json({ error: "CategorÃ­a no encontrada" });
     }
 
     const categoriaDuplicada = await Categoria.findOne({ nombre: nuevoNombre });
@@ -312,7 +380,7 @@ router.patch("/categorias/:nombre", async (req, res) => {
       normalizeText(nombreActual) !== normalizeText(nuevoNombre) &&
       (categoriaDuplicada || productosConNuevoNombre || subcategoriasConNuevoNombre)
     ) {
-      return res.status(400).json({ error: "La categoría ya existe" });
+      return res.status(400).json({ error: "La categorÃ­a ya existe" });
     }
 
     if (categoriaActual) {
@@ -344,8 +412,8 @@ router.patch("/categorias/:nombre", async (req, res) => {
         resultadoProductos.modifiedCount ?? resultadoProductos.nModified ?? 0,
     });
   } catch (error) {
-    console.error("Error al actualizar categoría:", error);
-    res.status(500).json({ error: "Error al actualizar categoría" });
+    console.error("Error al actualizar categorÃ­a:", error);
+    res.status(500).json({ error: "Error al actualizar categorÃ­a" });
   }
 });
 
@@ -365,7 +433,7 @@ router.get("/sin-clasificar", async (req, res) => {
     const normalizados = productos.map((p) => ({
       ...p,
       categoria: p.categoria?.trim() || "Sin clasificar",
-      subcategoria: p.subcategoria?.trim() || "Sin subcategoría",
+      subcategoria: p.subcategoria?.trim() || "Sin subcategorÃ­a",
     }));
 
     res.json(normalizados);
@@ -400,7 +468,7 @@ router.get("/historial", async (req, res) => {
   }
 });
 
-// Guardar acción en historial
+// Guardar acciÃ³n en historial
 router.post("/historial", async (req, res) => {
   try {
     const {
@@ -414,7 +482,7 @@ router.post("/historial", async (req, res) => {
     if (!tipo?.trim() || !descripcion?.trim()) {
       return res
         .status(400)
-        .json({ error: "Tipo y descripción son obligatorios" });
+        .json({ error: "Tipo y descripciÃ³n son obligatorios" });
     }
 
     const nuevaAccion = await HistorialAccion.create({
@@ -455,7 +523,7 @@ router.delete("/historial", async (req, res) => {
   }
 });
 
-// Actualizar clasificación de múltiples productos
+// Actualizar clasificaciÃ³n de mÃºltiples productos
 router.patch("/clasificacion-multiple", async (req, res) => {
   try {
     const { ids, categoria, subcategoria } = req.body;
@@ -476,17 +544,17 @@ router.patch("/clasificacion-multiple", async (req, res) => {
 
     res.json({
       ok: true,
-      message: "Clasificación múltiple actualizada correctamente",
+      message: "ClasificaciÃ³n mÃºltiple actualizada correctamente",
       modifiedCount: resultado.modifiedCount ?? resultado.nModified ?? 0,
       matchedCount: resultado.matchedCount ?? resultado.n ?? 0,
     });
   } catch (error) {
-    console.error("Error al actualizar clasificación múltiple:", error);
-    res.status(500).json({ error: "Error al actualizar clasificación múltiple" });
+    console.error("Error al actualizar clasificaciÃ³n mÃºltiple:", error);
+    res.status(500).json({ error: "Error al actualizar clasificaciÃ³n mÃºltiple" });
   }
 });
 
-// Actualizar clasificación de un producto
+// Actualizar clasificaciÃ³n de un producto
 router.patch("/:id/clasificacion", async (req, res) => {
   try {
     const { id } = req.params;
@@ -511,11 +579,11 @@ router.patch("/:id/clasificacion", async (req, res) => {
       ...productoActualizado,
       categoria: productoActualizado.categoria?.trim() || "Sin clasificar",
       subcategoria:
-        productoActualizado.subcategoria?.trim() || "Sin subcategoría",
+        productoActualizado.subcategoria?.trim() || "Sin subcategorÃ­a",
     });
   } catch (error) {
-    console.error("Error al actualizar clasificación:", error);
-    res.status(500).json({ error: "Error al actualizar clasificación" });
+    console.error("Error al actualizar clasificaciÃ³n:", error);
+    res.status(500).json({ error: "Error al actualizar clasificaciÃ³n" });
   }
 });
 
@@ -573,13 +641,13 @@ router.delete("/categorias/:nombre", async (req, res) => {
     const nombre = decodeURIComponent(req.params.nombre).trim();
 
     if (!nombre) {
-      return res.status(400).json({ error: "Nombre de categoría inválido" });
+      return res.status(400).json({ error: "Nombre de categorÃ­a invÃ¡lido" });
     }
 
     if (nombre.toLowerCase() === "sin clasificar") {
       return res
         .status(400)
-        .json({ error: "No se puede eliminar esa categoría" });
+        .json({ error: "No se puede eliminar esa categorÃ­a" });
     }
 
     await Categoria.deleteOne({ nombre });
@@ -602,8 +670,8 @@ router.delete("/categorias/:nombre", async (req, res) => {
         resultadoProductos.modifiedCount ?? resultadoProductos.nModified ?? 0,
     });
   } catch (error) {
-    console.error("Error al eliminar categoría:", error);
-    res.status(500).json({ error: "Error al eliminar categoría" });
+    console.error("Error al eliminar categorÃ­a:", error);
+    res.status(500).json({ error: "Error al eliminar categorÃ­a" });
   }
 });
 
@@ -628,14 +696,14 @@ router.patch("/subcategorias", async (req, res) => {
       !nuevoNombreLimpio
     ) {
       return res.status(400).json({
-        error: "Categoría y subcategoría actuales, más los nuevos datos, son obligatorios",
+        error: "CategorÃ­a y subcategorÃ­a actuales, mÃ¡s los nuevos datos, son obligatorios",
       });
     }
 
     if (esSinSubcategoria(subcategoriaActualLimpia) || esSinSubcategoria(nuevoNombreLimpio)) {
       return res
         .status(400)
-        .json({ error: "Ese nombre no se puede usar para una subcategoría" });
+        .json({ error: "Ese nombre no se puede usar para una subcategorÃ­a" });
     }
 
     const subcategoriaDoc = await Subcategoria.findOne({
@@ -648,7 +716,7 @@ router.patch("/subcategorias", async (req, res) => {
     });
 
     if (!subcategoriaDoc && !productosConSubcategoria) {
-      return res.status(404).json({ error: "Subcategoría no encontrada" });
+      return res.status(404).json({ error: "SubcategorÃ­a no encontrada" });
     }
 
     const subcategoriaDuplicada = await Subcategoria.findOne({
@@ -664,7 +732,7 @@ router.patch("/subcategorias", async (req, res) => {
       )
     ) {
       return res.status(400).json({
-        error: "Ya existe una subcategoría con ese nombre en la categoría destino",
+        error: "Ya existe una subcategorÃ­a con ese nombre en la categorÃ­a destino",
       });
     }
 
@@ -715,8 +783,8 @@ router.patch("/subcategorias", async (req, res) => {
       colorPalette: categoriaDestino.colorPalette || "",
     });
   } catch (error) {
-    console.error("Error al actualizar subcategoría:", error);
-    res.status(500).json({ error: "Error al actualizar subcategoría" });
+    console.error("Error al actualizar subcategorÃ­a:", error);
+    res.status(500).json({ error: "Error al actualizar subcategorÃ­a" });
   }
 });
 
@@ -730,13 +798,13 @@ router.delete("/subcategorias", async (req, res) => {
     if (!categoriaLimpia || !subcategoriaLimpia) {
       return res
         .status(400)
-        .json({ error: "Categoría y subcategoría son obligatorias" });
+        .json({ error: "CategorÃ­a y subcategorÃ­a son obligatorias" });
     }
 
-    if (subcategoriaLimpia.toLowerCase() === "sin subcategoría") {
+    if (subcategoriaLimpia.toLowerCase() === "sin subcategorÃ­a") {
       return res
         .status(400)
-        .json({ error: "No se puede eliminar esa subcategoría" });
+        .json({ error: "No se puede eliminar esa subcategorÃ­a" });
     }
 
     await Subcategoria.deleteOne({
@@ -764,9 +832,10 @@ router.delete("/subcategorias", async (req, res) => {
         resultadoProductos.modifiedCount ?? resultadoProductos.nModified ?? 0,
     });
   } catch (error) {
-    console.error("Error al eliminar subcategoría:", error);
-    res.status(500).json({ error: "Error al eliminar subcategoría" });
+    console.error("Error al eliminar subcategorÃ­a:", error);
+    res.status(500).json({ error: "Error al eliminar subcategorÃ­a" });
   }
 });
 
 module.exports = router;
+
