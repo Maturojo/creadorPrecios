@@ -80,18 +80,6 @@ export default function ProductosHeader({
           >
             Limpiar seleccion
           </button>
-
-          <button className="btn-outline" onClick={onAbrirEditorCategorias}>
-            Editar categorias
-          </button>
-
-          <button
-            className="btn-outline"
-            onClick={onExportarProductos}
-            disabled={exportandoProductos}
-          >
-            {exportandoProductos ? "Exportando..." : "Exportar CSV"}
-          </button>
         </div>
 
         <div className="acciones-header-group acciones-header-group--secondary">
@@ -144,6 +132,29 @@ export default function ProductosHeader({
                   disabled={!seleccionadosCount}
                 >
                   Editar clasificacion ({seleccionadosCount})
+                </button>
+
+                <button
+                  type="button"
+                  className="menu-acciones-item"
+                  onClick={() => {
+                    setMenuAbierto(false);
+                    onAbrirEditorCategorias();
+                  }}
+                >
+                  Editar categorias
+                </button>
+
+                <button
+                  type="button"
+                  className="menu-acciones-item"
+                  onClick={() => {
+                    setMenuAbierto(false);
+                    onExportarProductos();
+                  }}
+                  disabled={exportandoProductos}
+                >
+                  {exportandoProductos ? "Exportando CSV..." : "Exportar CSV"}
                 </button>
 
                 <button

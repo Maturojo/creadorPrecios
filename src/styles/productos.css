@@ -452,6 +452,34 @@
   border-radius: 10px;
 }
 
+.editor-categorias-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.editor-categorias-tab {
+  border: 1px solid #dccfbe;
+  background: #fffaf4;
+  color: #5b4c39;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.editor-categorias-tab:hover {
+  background: #fff4e8;
+}
+
+.editor-categorias-tab--activa {
+  background: #2f2418;
+  border-color: #2f2418;
+  color: #fff;
+}
 .editor-categorias-layout {
   display: flex;
   flex-direction: column;
@@ -516,6 +544,7 @@
   font-size: 0.9rem;
   color: #666;
 }
+
 
 
 
