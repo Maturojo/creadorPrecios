@@ -1,4 +1,5 @@
 ﻿import { useEffect, useState } from "react";
+import { getCategoryPalettePreview } from "../../utils/productoCardTheme";
 
 export default function EditorCategoriasPanel({
   categorias,
@@ -40,6 +41,10 @@ export default function EditorCategoriasPanel({
   onCancelar,
 }) {
   const [seccionActiva, setSeccionActiva] = useState("crear");
+  const colorActualCategoria = categoriaEditar
+    ? coloresCategorias[categoriaEditar] || ""
+    : "";
+  const colorSeleccionado = colorCategoriaEditar || colorActualCategoria;
 
   useEffect(() => {
     function handleEscape(event) {
@@ -200,30 +205,76 @@ export default function EditorCategoriasPanel({
                   }
                   disabled={!categoriaEditar}
                 />
+              </div>
 
-                <select
-                  value={colorCategoriaEditar}
-                  onChange={(event) =>
-                    onColorCategoriaEditarChange(event.target.value)
-                  }
-                  disabled={!categoriaEditar}
-                >
-                  <option value="">Mantener color actual</option>
+              <div className="editor-colores">
+                <div className="editor-colores-header">
+                  <strong>Color de la categoria</strong>
+                  <span>
+                    Elegi una paleta. A la derecha aparece la categoria que ya la usa.
+                  </span>
+                </div>
+
+                <div className="editor-colores-lista">
+                  <button
+                    type="button"
+                    className={`editor-color-option ${
+                      !colorCategoriaEditar ? "editor-color-option--selected" : ""
+                    }`}
+                    onClick={() => onColorCategoriaEditarChange("")}
+                    disabled={!categoriaEditar}
+                  >
+                    <span className="editor-color-option-copy">
+                      <strong>Mantener color actual</strong>
+                      <span>
+                        {colorActualCategoria
+                          ? `Se conserva la paleta actual de ${categoriaEditar}`
+                          : "La categoria mantiene su color actual"}
+                      </span>
+                    </span>
+                  </button>
+
                   {categoryColorOptions.map((option) => {
                     const categoriaEnUso = Object.entries(coloresCategorias).find(
                       ([nombre, color]) =>
                         color === option.value && nombre !== categoriaEditar
                     );
+                    const preview = getCategoryPalettePreview(option.value);
+
                     return (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                        {categoriaEnUso
-                          ? ` (en uso por ${categoriaEnUso[0]})`
-                          : " (libre)"}
-                      </option>
+                      <button
+                        key={option.value}
+                        type="button"
+                        className={`editor-color-option ${
+                          colorSeleccionado === option.value
+                            ? "editor-color-option--selected"
+                            : ""
+                        }`}
+                        onClick={() => onColorCategoriaEditarChange(option.value)}
+                        disabled={!categoriaEditar}
+                      >
+                        <span
+                          className="editor-color-swatch"
+                          style={{
+                            "--swatch-bg": preview.background,
+                            "--swatch-border": preview.border,
+                            "--swatch-accent": preview.tagBackground,
+                          }}
+                          aria-hidden="true"
+                        />
+
+                        <span className="editor-color-option-copy">
+                          <strong>{option.label}</strong>
+                          <span>{option.value}</span>
+                        </span>
+
+                        <span className="editor-color-option-usage">
+                          {categoriaEnUso ? categoriaEnUso[0] : "Libre"}
+                        </span>
+                      </button>
                     );
                   })}
-                </select>
+                </div>
               </div>
 
               <div className="acciones-edicion">
@@ -400,3 +451,4 @@ export default function EditorCategoriasPanel({
     </div>
   );
 }
+

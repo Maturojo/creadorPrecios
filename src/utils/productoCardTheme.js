@@ -375,6 +375,16 @@ export const CATEGORY_COLOR_OPTIONS = [
   { value: "oceano", label: "Oceano" },
 ];
 
+export function getCategoryPalettePreview(colorKey) {
+  const normalizedColorKey = normalizeText(colorKey);
+  const palette =
+    CATEGORY_PALETTES[normalizedColorKey] ||
+    CATEGORY_PALETTES["productos varios"] ||
+    DEFAULT_PALETTE;
+
+  return palette[0];
+}
+
 const DEFAULT_PALETTE = [
   {
     background: "#fff7ed",

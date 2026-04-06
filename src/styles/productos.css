@@ -550,3 +550,121 @@
 
 
 
+
+.editor-categorias-ayuda {
+  margin: 0 0 14px;
+  color: #766755;
+  font-size: 0.92rem;
+}
+
+.editor-colores {
+  margin-bottom: 14px;
+  padding: 14px;
+  border: 1px solid #eadfce;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.editor-colores-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.editor-colores-header strong {
+  color: #4f4130;
+}
+
+.editor-colores-header span {
+  color: #7b6a57;
+  font-size: 0.88rem;
+}
+
+.editor-colores-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.editor-color-option {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #dbcdbb;
+  border-radius: 14px;
+  background: #fffdfa;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.editor-color-option:hover:not(:disabled) {
+  border-color: #c9ad86;
+  background: #fff8ef;
+}
+
+.editor-color-option:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.editor-color-option--selected {
+  border-color: #2f2418;
+  box-shadow: 0 0 0 1px #2f2418 inset;
+  background: #fff6ea;
+}
+
+.editor-color-option-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.editor-color-option-copy strong {
+  color: #2f2418;
+  font-size: 0.96rem;
+}
+
+.editor-color-option-copy span {
+  color: #7a6852;
+  font-size: 0.84rem;
+  text-transform: capitalize;
+}
+
+.editor-color-option-usage {
+  color: #5f513f;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+.editor-color-swatch {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 2px solid var(--swatch-border);
+  background: var(--swatch-bg);
+  box-shadow: inset 0 0 0 4px var(--swatch-accent);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .editor-color-option {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .editor-color-option-usage {
+    grid-column: 2;
+    text-align: left;
+  }
+}
+
