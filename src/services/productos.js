@@ -42,6 +42,41 @@ export async function crearCategoriaOSubcategoria(data) {
   return response.json();
 }
 
+export async function actualizarCategoria(nombreActual, data) {
+  const response = await apiFetch(
+    `${API_URL}/categorias/${encodeURIComponent(nombreActual)}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("No se pudo actualizar la categoria");
+  }
+
+  return response.json();
+}
+
+export async function actualizarSubcategoria(data) {
+  const response = await apiFetch(`${API_URL}/subcategorias`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error("No se pudo actualizar la subcategoria");
+  }
+
+  return response.json();
+}
+
 export async function actualizarClasificacionMultiple(ids, data) {
   const response = await apiFetch(`${API_URL}/clasificacion-multiple`, {
     method: "PATCH",

@@ -5,12 +5,53 @@ const HistorialAccion = require("../models/HistorialAccion");
 const Categoria = require("../models/Categoria");
 const Subcategoria = require("../models/Subcategoria");
 
-function esSinSubcategoria(valor = "") {
-  const normalizado = valor
+const CATEGORY_COLOR_POOL = [
+  "ambar",
+  "frambuesa",
+  "bosque",
+  "petroleo",
+  "mostaza",
+  "ciruela",
+  "coral",
+  "oliva",
+  "cobre",
+  "oceano",
+];
+
+function normalizeText(value = "") {
+  return String(value)
     .trim()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase();
+}
+
+function getHashIndex(value, length) {
+  const normalized = normalizeText(value);
+
+  if (!normalized || length <= 1) return 0;
+
+  let hash = 0;
+  for (let index = 0; index < normalized.length; index += 1) {
+    hash = (hash * 31 + normalized.charCodeAt(index)) >>> 0;
+  }
+
+  return hash % length;
+}
+
+function pickUnusedCategoryPalette(categorias = [], categoriaNombre = "") {
+  const usados = new Set(
+    categorias.map((categoria) => categoria.colorPalette).filter(Boolean)
+  );
+
+  const libre = CATEGORY_COLOR_POOL.find((palette) => !usados.has(palette));
+  if (libre) return libre;
+
+  return CATEGORY_COLOR_POOL[getHashIndex(categoriaNombre, CATEGORY_COLOR_POOL.length)];
+}
+
+function esSinSubcategoria(valor = "") {
+  const normalizado = normalizeText(valor);
 
   return (
     normalizado === "sin subcategoria" ||
@@ -151,9 +192,21 @@ router.get("/filtros", async (req, res) => {
       );
     }
 
+    const coloresCategorias = categoriasDb.reduce((acc, categoria) => {
+      const nombre = categoria.nombre?.trim();
+      const colorPalette = categoria.colorPalette?.trim();
+
+      if (nombre && colorPalette) {
+        acc[nombre] = colorPalette;
+      }
+
+      return acc;
+    }, {});
+
     res.json({
       categorias,
       subcategorias,
+      coloresCategorias,
     });
   } catch (error) {
     console.error("Error al obtener filtros:", error);
@@ -176,7 +229,16 @@ router.post("/categorias", async (req, res) => {
     let categoriaDoc = await Categoria.findOne({ nombre: categoriaLimpia });
 
     if (!categoriaDoc) {
-      categoriaDoc = await Categoria.create({ nombre: categoriaLimpia });
+      const categoriasExistentes = await Categoria.find({}, "colorPalette").lean();
+      const colorPalette = pickUnusedCategoryPalette(
+        categoriasExistentes,
+        categoriaLimpia
+      );
+
+      categoriaDoc = await Categoria.create({
+        nombre: categoriaLimpia,
+        colorPalette,
+      });
     }
 
     if (subcategoriaLimpia) {
@@ -197,10 +259,93 @@ router.post("/categorias", async (req, res) => {
       ok: true,
       categoria: categoriaLimpia,
       subcategoria: subcategoriaLimpia,
+      colorPalette: categoriaDoc.colorPalette || "",
     });
   } catch (error) {
     console.error("Error al crear categoría/subcategoría:", error);
     res.status(500).json({ error: "Error al crear categoría/subcategoría" });
+  }
+});
+
+router.patch("/categorias/:nombre", async (req, res) => {
+  try {
+    const nombreActual = decodeURIComponent(req.params.nombre).trim();
+    const nuevoNombre = (req.body.nuevoNombre || "").trim();
+
+    if (!nombreActual || !nuevoNombre) {
+      return res.status(400).json({ error: "Los nombres son obligatorios" });
+    }
+
+    if (normalizeText(nombreActual) === "sin clasificar") {
+      return res
+        .status(400)
+        .json({ error: "No se puede editar esa categoría" });
+    }
+
+    if (normalizeText(nuevoNombre) === "sin clasificar") {
+      return res
+        .status(400)
+        .json({ error: "Ese nombre no se puede usar" });
+    }
+
+    const categoriaActual = await Categoria.findOne({ nombre: nombreActual });
+    const productosConCategoria = await Producto.countDocuments({
+      categoria: nombreActual,
+    });
+    const subcategoriasConCategoria = await Subcategoria.countDocuments({
+      categoria: nombreActual,
+    });
+
+    if (!categoriaActual && !productosConCategoria && !subcategoriasConCategoria) {
+      return res.status(404).json({ error: "Categoría no encontrada" });
+    }
+
+    const categoriaDuplicada = await Categoria.findOne({ nombre: nuevoNombre });
+    const productosConNuevoNombre = await Producto.countDocuments({
+      categoria: nuevoNombre,
+    });
+    const subcategoriasConNuevoNombre = await Subcategoria.countDocuments({
+      categoria: nuevoNombre,
+    });
+
+    if (
+      normalizeText(nombreActual) !== normalizeText(nuevoNombre) &&
+      (categoriaDuplicada || productosConNuevoNombre || subcategoriasConNuevoNombre)
+    ) {
+      return res.status(400).json({ error: "La categoría ya existe" });
+    }
+
+    if (categoriaActual) {
+      categoriaActual.nombre = nuevoNombre;
+      await categoriaActual.save();
+    } else if (!categoriaDuplicada) {
+      const categoriasExistentes = await Categoria.find({}, "colorPalette").lean();
+      await Categoria.create({
+        nombre: nuevoNombre,
+        colorPalette: pickUnusedCategoryPalette(categoriasExistentes, nuevoNombre),
+      });
+    }
+
+    await Subcategoria.updateMany(
+      { categoria: nombreActual },
+      { $set: { categoria: nuevoNombre } }
+    );
+
+    const resultadoProductos = await Producto.updateMany(
+      { categoria: nombreActual },
+      { $set: { categoria: nuevoNombre } }
+    );
+
+    res.json({
+      ok: true,
+      categoriaAnterior: nombreActual,
+      categoriaActualizada: nuevoNombre,
+      productosActualizados:
+        resultadoProductos.modifiedCount ?? resultadoProductos.nModified ?? 0,
+    });
+  } catch (error) {
+    console.error("Error al actualizar categoría:", error);
+    res.status(500).json({ error: "Error al actualizar categoría" });
   }
 });
 
@@ -459,6 +604,119 @@ router.delete("/categorias/:nombre", async (req, res) => {
   } catch (error) {
     console.error("Error al eliminar categoría:", error);
     res.status(500).json({ error: "Error al eliminar categoría" });
+  }
+});
+
+router.patch("/subcategorias", async (req, res) => {
+  try {
+    const {
+      categoriaActual = "",
+      subcategoriaActual = "",
+      nuevaCategoria = "",
+      nuevoNombre = "",
+    } = req.body;
+
+    const categoriaActualLimpia = categoriaActual.trim();
+    const subcategoriaActualLimpia = subcategoriaActual.trim();
+    const nuevaCategoriaLimpia = nuevaCategoria.trim();
+    const nuevoNombreLimpio = nuevoNombre.trim();
+
+    if (
+      !categoriaActualLimpia ||
+      !subcategoriaActualLimpia ||
+      !nuevaCategoriaLimpia ||
+      !nuevoNombreLimpio
+    ) {
+      return res.status(400).json({
+        error: "Categoría y subcategoría actuales, más los nuevos datos, son obligatorios",
+      });
+    }
+
+    if (esSinSubcategoria(subcategoriaActualLimpia) || esSinSubcategoria(nuevoNombreLimpio)) {
+      return res
+        .status(400)
+        .json({ error: "Ese nombre no se puede usar para una subcategoría" });
+    }
+
+    const subcategoriaDoc = await Subcategoria.findOne({
+      categoria: categoriaActualLimpia,
+      nombre: subcategoriaActualLimpia,
+    });
+    const productosConSubcategoria = await Producto.countDocuments({
+      categoria: categoriaActualLimpia,
+      subcategoria: subcategoriaActualLimpia,
+    });
+
+    if (!subcategoriaDoc && !productosConSubcategoria) {
+      return res.status(404).json({ error: "Subcategoría no encontrada" });
+    }
+
+    const subcategoriaDuplicada = await Subcategoria.findOne({
+      categoria: nuevaCategoriaLimpia,
+      nombre: nuevoNombreLimpio,
+    });
+
+    if (
+      subcategoriaDuplicada &&
+      !(
+        subcategoriaDuplicada.categoria === categoriaActualLimpia &&
+        subcategoriaDuplicada.nombre === subcategoriaActualLimpia
+      )
+    ) {
+      return res.status(400).json({
+        error: "Ya existe una subcategoría con ese nombre en la categoría destino",
+      });
+    }
+
+    let categoriaDestino = await Categoria.findOne({ nombre: nuevaCategoriaLimpia });
+    if (!categoriaDestino) {
+      const categoriasExistentes = await Categoria.find({}, "colorPalette").lean();
+      categoriaDestino = await Categoria.create({
+        nombre: nuevaCategoriaLimpia,
+        colorPalette: pickUnusedCategoryPalette(
+          categoriasExistentes,
+          nuevaCategoriaLimpia
+        ),
+      });
+    }
+
+    if (subcategoriaDoc) {
+      subcategoriaDoc.categoria = nuevaCategoriaLimpia;
+      subcategoriaDoc.nombre = nuevoNombreLimpio;
+      await subcategoriaDoc.save();
+    } else if (!subcategoriaDuplicada) {
+      await Subcategoria.create({
+        categoria: nuevaCategoriaLimpia,
+        nombre: nuevoNombreLimpio,
+      });
+    }
+
+    const resultadoProductos = await Producto.updateMany(
+      {
+        categoria: categoriaActualLimpia,
+        subcategoria: subcategoriaActualLimpia,
+      },
+      {
+        $set: {
+          categoria: nuevaCategoriaLimpia,
+          subcategoria: nuevoNombreLimpio,
+        },
+      }
+    );
+
+    res.json({
+      ok: true,
+      categoriaAnterior: categoriaActualLimpia,
+      subcategoriaAnterior: subcategoriaActualLimpia,
+      categoriaNueva: nuevaCategoriaLimpia,
+      subcategoriaNueva: nuevoNombreLimpio,
+      productosActualizados:
+        resultadoProductos.modifiedCount ?? resultadoProductos.nModified ?? 0,
+      colorPalette: categoriaDestino.colorPalette || "",
+    });
+  } catch (error) {
+    console.error("Error al actualizar subcategoría:", error);
+    res.status(500).json({ error: "Error al actualizar subcategoría" });
   }
 });
 

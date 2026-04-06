@@ -6,6 +6,7 @@ export default function ProductosGrid({
   totalProductos,
   rangoInicio,
   rangoFin,
+  coloresCategorias,
   seleccionadosIds,
   onToggleSeleccion,
 }) {
@@ -73,7 +74,8 @@ export default function ProductosGrid({
           const estaSeleccionado = seleccionadosIds.has(producto._id);
           const colorTheme = getProductoCardTheme(
             producto.categoria,
-            producto.subcategoria
+            producto.subcategoria,
+            coloresCategorias?.[producto.categoria] || ""
           );
 
           return (

@@ -15,7 +15,6 @@ export default function ProductosHeader({
   onDeseleccionarTodos,
   onAbrirEditorMultiple,
   onAbrirEditorCategorias,
-  onAbrirEliminarClasificacion,
   onExportarProductos,
   onToggleHistorial,
   onFormatoImpresionChange,
@@ -83,7 +82,7 @@ export default function ProductosHeader({
           </button>
 
           <button className="btn-outline" onClick={onAbrirEditorCategorias}>
-            Nueva categoria
+            Editar categorias
           </button>
 
           <button
@@ -156,17 +155,6 @@ export default function ProductosHeader({
                   }}
                 >
                   {mostrandoHistorial ? "Ocultar historial" : "Ver historial"}
-                </button>
-
-                <button
-                  type="button"
-                  className="menu-acciones-item menu-acciones-item-danger"
-                  onClick={() => {
-                    setMenuAbierto(false);
-                    onAbrirEliminarClasificacion();
-                  }}
-                >
-                  Eliminar categoria
                 </button>
               </div>
             ) : null}

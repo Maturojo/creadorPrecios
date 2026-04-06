@@ -8,6 +8,11 @@ const categoriaSchema = new mongoose.Schema(
       unique: true,
       trim: true,
     },
+    colorPalette: {
+      type: String,
+      default: "",
+      trim: true,
+    },
   },
   {
     timestamps: true,

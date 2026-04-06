@@ -3,6 +3,8 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import {
   actualizarClasificacionMultiple,
+  actualizarCategoria,
+  actualizarSubcategoria,
   crearCategoriaOSubcategoria,
   eliminarCategoria,
   eliminarSubcategoria,
@@ -16,7 +18,6 @@ import { exportarProductosCsv } from "../utils/exportarProductosCsv";
 import { imprimirCarteles } from "../utils/imprimirCartelesEditable";
 import EdicionMultiplePanel from "./productos/EdicionMultiplePanel";
 import EditorCategoriasPanel from "./productos/EditorCategoriasPanel";
-import EliminarClasificacionPanel from "./productos/EliminarClasificacionPanel";
 import HistorialPanel from "./productos/HistorialPanel";
 import ProductosFiltros from "./productos/ProductosFiltros";
 import ProductosGrid from "./productos/ProductosGrid";
@@ -36,6 +37,7 @@ export default function Productos() {
   const [productos, setProductos] = useState([]);
   const [categorias, setCategorias] = useState([]);
   const [subcategoriasPorCategoria, setSubcategoriasPorCategoria] = useState({});
+  const [coloresCategorias, setColoresCategorias] = useState({});
 
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
   const [subcategoriaSeleccionada, setSubcategoriaSeleccionada] = useState("");
@@ -57,11 +59,18 @@ export default function Productos() {
   const [nuevaCategoria, setNuevaCategoria] = useState("");
   const [nuevaSubcategoria, setNuevaSubcategoria] = useState("");
   const [errorNuevaClasificacion, setErrorNuevaClasificacion] = useState("");
+  const [categoriaEditar, setCategoriaEditar] = useState("");
+  const [nuevoNombreCategoria, setNuevoNombreCategoria] = useState("");
+  const [categoriaSubcategoriaEditar, setCategoriaSubcategoriaEditar] =
+    useState("");
+  const [subcategoriaEditar, setSubcategoriaEditar] = useState("");
+  const [nuevaCategoriaSubcategoria, setNuevaCategoriaSubcategoria] =
+    useState("");
+  const [nuevoNombreSubcategoria, setNuevoNombreSubcategoria] = useState("");
 
   const [mostrandoHistorial, setMostrandoHistorial] = useState(false);
   const [historialAcciones, setHistorialAcciones] = useState([]);
 
-  const [mostrandoEliminar, setMostrandoEliminar] = useState(false);
   const [categoriaAEliminar, setCategoriaAEliminar] = useState("");
   const [subcategoriaAEliminar, setSubcategoriaAEliminar] = useState("");
   const [eliminandoClasificacion, setEliminandoClasificacion] = useState(false);
@@ -163,6 +172,7 @@ export default function Productos() {
     const data = await obtenerFiltrosProductos();
     setCategorias(data.categorias || []);
     setSubcategoriasPorCategoria(data.subcategorias || {});
+    setColoresCategorias(data.coloresCategorias || {});
   }, []);
 
   const cargarProductos = useCallback(async () => {
@@ -459,6 +469,12 @@ export default function Productos() {
     setCategoriaBaseNuevaSub("");
     setNuevaCategoria("");
     setNuevaSubcategoria("");
+    setCategoriaEditar("");
+    setNuevoNombreCategoria("");
+    setCategoriaSubcategoriaEditar("");
+    setSubcategoriaEditar("");
+    setNuevaCategoriaSubcategoria("");
+    setNuevoNombreSubcategoria("");
     setErrorNuevaClasificacion("");
   }
 
@@ -467,6 +483,12 @@ export default function Productos() {
     setCategoriaBaseNuevaSub("");
     setNuevaCategoria("");
     setNuevaSubcategoria("");
+    setCategoriaEditar("");
+    setNuevoNombreCategoria("");
+    setCategoriaSubcategoriaEditar("");
+    setSubcategoriaEditar("");
+    setNuevaCategoriaSubcategoria("");
+    setNuevoNombreSubcategoria("");
     setErrorNuevaClasificacion("");
   }
 
@@ -544,14 +566,144 @@ export default function Productos() {
     }
   }
 
-  function abrirEliminarClasificacion() {
-    setMostrandoEliminar(true);
-    setCategoriaAEliminar("");
-    setSubcategoriaAEliminar("");
+  async function guardarCategoriaEditada() {
+    const categoriaActual = normalizarTexto(categoriaEditar);
+    const categoriaNuevaTexto = normalizarTexto(nuevoNombreCategoria);
+
+    if (!categoriaActual || !categoriaNuevaTexto) {
+      setErrorNuevaClasificacion("Selecciona una categoria y escribe el nuevo nombre.");
+      return;
+    }
+
+    if (categoriaNuevaTexto.toLowerCase() === SIN_CLASIFICAR.toLowerCase()) {
+      setErrorNuevaClasificacion("Ese nombre no se puede usar.");
+      return;
+    }
+
+    if (
+      categoriaActual.toLowerCase() !== categoriaNuevaTexto.toLowerCase() &&
+      existeCategoria(categoriaNuevaTexto)
+    ) {
+      setErrorNuevaClasificacion("La categoria nueva ya existe.");
+      return;
+    }
+
+    try {
+      await actualizarCategoria(categoriaActual, {
+        nuevoNombre: categoriaNuevaTexto,
+      });
+
+      await cargarFiltros();
+      await cargarProductos();
+
+      if (categoriaSeleccionada === categoriaActual) {
+        setCategoriaSeleccionada(categoriaNuevaTexto);
+      }
+
+      if (categoriaMultiple === categoriaActual) {
+        setCategoriaMultiple(categoriaNuevaTexto);
+      }
+
+      await guardarEnHistorial({
+        tipo: "editar-categoria",
+        descripcion: `Se renombro la categoria ${categoriaActual} a ${categoriaNuevaTexto}`,
+        cantidad: 0,
+        categoria: categoriaNuevaTexto,
+        subcategoria: "",
+      });
+
+      setCategoriaEditar(categoriaNuevaTexto);
+      setNuevoNombreCategoria(categoriaNuevaTexto);
+      setErrorNuevaClasificacion("");
+      toast.success("Categoria actualizada correctamente.");
+    } catch (err) {
+      console.error(err);
+      toast.error("No se pudo actualizar la categoria.");
+    }
   }
 
-  function cancelarEliminarClasificacion() {
-    setMostrandoEliminar(false);
+  async function guardarSubcategoriaEditada() {
+    const categoriaActual = normalizarTexto(categoriaSubcategoriaEditar);
+    const subcategoriaActual = normalizarTexto(subcategoriaEditar);
+    const categoriaNuevaTexto = normalizarTexto(nuevaCategoriaSubcategoria);
+    const subcategoriaNuevaTexto = normalizarTexto(nuevoNombreSubcategoria);
+
+    if (
+      !categoriaActual ||
+      !subcategoriaActual ||
+      !categoriaNuevaTexto ||
+      !subcategoriaNuevaTexto
+    ) {
+      setErrorNuevaClasificacion(
+        "Completa la categoria y subcategoria actuales, y tambien los nuevos datos."
+      );
+      return;
+    }
+
+    if (subcategoriaNuevaTexto.toLowerCase() === SIN_SUBCATEGORIA.toLowerCase()) {
+      setErrorNuevaClasificacion("Ese nombre no se puede usar.");
+      return;
+    }
+
+    if (
+      (categoriaActual.toLowerCase() !== categoriaNuevaTexto.toLowerCase() ||
+        subcategoriaActual.toLowerCase() !== subcategoriaNuevaTexto.toLowerCase()) &&
+      existeSubcategoriaEnCategoria(categoriaNuevaTexto, subcategoriaNuevaTexto)
+    ) {
+      setErrorNuevaClasificacion(
+        "Esa subcategoria ya existe en la categoria de destino."
+      );
+      return;
+    }
+
+    try {
+      await actualizarSubcategoria({
+        categoriaActual,
+        subcategoriaActual,
+        nuevaCategoria: categoriaNuevaTexto,
+        nuevoNombre: subcategoriaNuevaTexto,
+      });
+
+      await cargarFiltros();
+      await cargarProductos();
+
+      if (
+        categoriaSeleccionada === categoriaActual &&
+        subcategoriaSeleccionada === subcategoriaActual
+      ) {
+        setCategoriaSeleccionada(categoriaNuevaTexto);
+        setSubcategoriaSeleccionada(subcategoriaNuevaTexto);
+      }
+
+      if (
+        categoriaMultiple === categoriaActual &&
+        subcategoriaMultiple === subcategoriaActual
+      ) {
+        setCategoriaMultiple(categoriaNuevaTexto);
+        setSubcategoriaMultiple(subcategoriaNuevaTexto);
+      }
+
+      await guardarEnHistorial({
+        tipo: "editar-subcategoria",
+        descripcion: `Se actualizo ${categoriaActual} > ${subcategoriaActual} a ${categoriaNuevaTexto} > ${subcategoriaNuevaTexto}`,
+        cantidad: 0,
+        categoria: categoriaNuevaTexto,
+        subcategoria: subcategoriaNuevaTexto,
+      });
+
+      setCategoriaSubcategoriaEditar(categoriaNuevaTexto);
+      setSubcategoriaEditar(subcategoriaNuevaTexto);
+      setNuevaCategoriaSubcategoria(categoriaNuevaTexto);
+      setNuevoNombreSubcategoria(subcategoriaNuevaTexto);
+      setErrorNuevaClasificacion("");
+      toast.success("Subcategoria actualizada correctamente.");
+    } catch (err) {
+      console.error(err);
+      toast.error("No se pudo actualizar la subcategoria.");
+    }
+  }
+
+  function resetEliminarClasificacion() {
     setCategoriaAEliminar("");
     setSubcategoriaAEliminar("");
   }
@@ -597,7 +749,7 @@ export default function Productos() {
         setSubcategoriaMultiple("");
       }
 
-      cancelarEliminarClasificacion();
+      resetEliminarClasificacion();
       toast.success("Categoria eliminada correctamente.");
     } catch (err) {
       console.error(err);
@@ -655,7 +807,7 @@ export default function Productos() {
         setSubcategoriaMultiple("");
       }
 
-      cancelarEliminarClasificacion();
+      resetEliminarClasificacion();
       toast.success("Subcategoria eliminada correctamente.");
     } catch (err) {
       console.error(err);
@@ -716,7 +868,6 @@ export default function Productos() {
         onDeseleccionarTodos={deseleccionarTodos}
         onAbrirEditorMultiple={abrirEditorMultiple}
         onAbrirEditorCategorias={abrirEditorCategorias}
-        onAbrirEliminarClasificacion={abrirEliminarClasificacion}
         onExportarProductos={handleExportarProductos}
         onToggleHistorial={() => setMostrandoHistorial((prev) => !prev)}
         onFormatoImpresionChange={setFormatoImpresion}
@@ -799,24 +950,6 @@ export default function Productos() {
         </section>
       ) : null}
 
-      {mostrandoEliminar ? (
-        <EliminarClasificacionPanel
-          categorias={categorias}
-          categoriaAEliminar={categoriaAEliminar}
-          subcategoriaAEliminar={subcategoriaAEliminar}
-          subcategoriasEliminarDisponibles={subcategoriasEliminarDisponibles}
-          eliminandoClasificacion={eliminandoClasificacion}
-          onCategoriaChange={(event) => {
-            setCategoriaAEliminar(event.target.value);
-            setSubcategoriaAEliminar("");
-          }}
-          onSubcategoriaChange={setSubcategoriaAEliminar}
-          onEliminarCategoriaCompleta={eliminarCategoriaCompleta}
-          onEliminarSubcategoriaIndividual={eliminarSubcategoriaIndividual}
-          onCancelar={cancelarEliminarClasificacion}
-        />
-      ) : null}
-
       {mostrandoHistorial ? (
         <HistorialPanel
           historialAcciones={historialAcciones}
@@ -829,14 +962,54 @@ export default function Productos() {
       {mostrandoEditorCategorias ? (
         <EditorCategoriasPanel
           categorias={categorias}
+          subcategoriasPorCategoria={subcategoriasPorCategoria}
           categoriaBaseNuevaSub={categoriaBaseNuevaSub}
           nuevaCategoria={nuevaCategoria}
           nuevaSubcategoria={nuevaSubcategoria}
           errorNuevaClasificacion={errorNuevaClasificacion}
+          categoriaEditar={categoriaEditar}
+          nuevoNombreCategoria={nuevoNombreCategoria}
+          categoriaSubcategoriaEditar={categoriaSubcategoriaEditar}
+          subcategoriaEditar={subcategoriaEditar}
+          nuevaCategoriaSubcategoria={nuevaCategoriaSubcategoria}
+          nuevoNombreSubcategoria={nuevoNombreSubcategoria}
+          categoriaAEliminar={categoriaAEliminar}
+          subcategoriaAEliminar={subcategoriaAEliminar}
+          subcategoriasEliminarDisponibles={subcategoriasEliminarDisponibles}
+          eliminandoClasificacion={eliminandoClasificacion}
           onCategoriaBaseChange={setCategoriaBaseNuevaSub}
           onNuevaCategoriaChange={setNuevaCategoria}
           onNuevaSubcategoriaChange={setNuevaSubcategoria}
+          onCategoriaEditarChange={(value) => {
+            setCategoriaEditar(value);
+            setNuevoNombreCategoria(value);
+            setErrorNuevaClasificacion("");
+          }}
+          onNuevoNombreCategoriaChange={setNuevoNombreCategoria}
+          onCategoriaSubcategoriaEditarChange={(value) => {
+            setCategoriaSubcategoriaEditar(value);
+            setSubcategoriaEditar("");
+            setNuevaCategoriaSubcategoria(value);
+            setNuevoNombreSubcategoria("");
+            setErrorNuevaClasificacion("");
+          }}
+          onSubcategoriaEditarChange={(value) => {
+            setSubcategoriaEditar(value);
+            setNuevoNombreSubcategoria(value);
+            setErrorNuevaClasificacion("");
+          }}
+          onNuevaCategoriaSubcategoriaChange={setNuevaCategoriaSubcategoria}
+          onNuevoNombreSubcategoriaChange={setNuevoNombreSubcategoria}
+          onCategoriaEliminarChange={(value) => {
+            setCategoriaAEliminar(value);
+            setSubcategoriaAEliminar("");
+          }}
+          onSubcategoriaEliminarChange={setSubcategoriaAEliminar}
           onGuardar={guardarNuevaCategoriaOSubcategoria}
+          onGuardarCategoriaEditada={guardarCategoriaEditada}
+          onGuardarSubcategoriaEditada={guardarSubcategoriaEditada}
+          onEliminarCategoriaCompleta={eliminarCategoriaCompleta}
+          onEliminarSubcategoriaIndividual={eliminarSubcategoriaIndividual}
           onCancelar={cancelarEditorCategorias}
         />
       ) : null}
@@ -869,6 +1042,7 @@ export default function Productos() {
             totalProductos={productos.length}
             rangoInicio={rangoProductos.inicio}
             rangoFin={rangoProductos.fin}
+            coloresCategorias={coloresCategorias}
             seleccionadosIds={seleccionadosIds}
             onToggleSeleccion={toggleSeleccion}
           />

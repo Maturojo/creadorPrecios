@@ -452,6 +452,30 @@
   border-radius: 10px;
 }
 
+.editor-categorias-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.editor-categorias-bloque {
+  padding: 16px;
+  border: 1px solid #e7dccf;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fffdfa 0%, #faf4ec 100%);
+}
+
+.editor-categorias-bloque--danger {
+  border-color: #f1c7c3;
+  background: linear-gradient(180deg, #fff8f7 0%, #fff1ef 100%);
+}
+
+.editor-categorias-bloque h4 {
+  margin: 0 0 12px;
+  color: #5b4c39;
+  font-size: 1rem;
+}
+
 .acciones-edicion {
   display: flex;
   gap: 10px;

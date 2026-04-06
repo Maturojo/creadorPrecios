@@ -192,6 +192,166 @@ const CATEGORY_PALETTES = {
       codeColor: "#64748b",
     },
   ],
+  ambar: [
+    {
+      background: "#fff8e1",
+      border: "#f6c453",
+      tagBackground: "#ffecb3",
+      tagColor: "#8a5a00",
+      codeColor: "#a16207",
+    },
+    {
+      background: "#fffaf0",
+      border: "#eab308",
+      tagBackground: "#fef3c7",
+      tagColor: "#92400e",
+      codeColor: "#ca8a04",
+    },
+  ],
+  frambuesa: [
+    {
+      background: "#fff1f7",
+      border: "#f472b6",
+      tagBackground: "#fbcfe8",
+      tagColor: "#9d174d",
+      codeColor: "#be185d",
+    },
+    {
+      background: "#fdf2f8",
+      border: "#ec4899",
+      tagBackground: "#f9a8d4",
+      tagColor: "#9f1239",
+      codeColor: "#db2777",
+    },
+  ],
+  bosque: [
+    {
+      background: "#eefbf3",
+      border: "#52b788",
+      tagBackground: "#d8f3dc",
+      tagColor: "#2d6a4f",
+      codeColor: "#40916c",
+    },
+    {
+      background: "#f3fff6",
+      border: "#74c69d",
+      tagBackground: "#d8f3dc",
+      tagColor: "#1b4332",
+      codeColor: "#2d6a4f",
+    },
+  ],
+  petroleo: [
+    {
+      background: "#eef9fb",
+      border: "#38b2ac",
+      tagBackground: "#c8f1ef",
+      tagColor: "#0f4c5c",
+      codeColor: "#147a8a",
+    },
+    {
+      background: "#f0fdff",
+      border: "#22c1c3",
+      tagBackground: "#ccfbf1",
+      tagColor: "#155e75",
+      codeColor: "#0f766e",
+    },
+  ],
+  mostaza: [
+    {
+      background: "#fffbea",
+      border: "#d4a017",
+      tagBackground: "#fef08a",
+      tagColor: "#854d0e",
+      codeColor: "#a16207",
+    },
+    {
+      background: "#fffdf3",
+      border: "#eab308",
+      tagBackground: "#fde68a",
+      tagColor: "#713f12",
+      codeColor: "#ca8a04",
+    },
+  ],
+  ciruela: [
+    {
+      background: "#faf5ff",
+      border: "#c084fc",
+      tagBackground: "#ead7ff",
+      tagColor: "#6b21a8",
+      codeColor: "#7e22ce",
+    },
+    {
+      background: "#fff5ff",
+      border: "#d946ef",
+      tagBackground: "#f5d0fe",
+      tagColor: "#86198f",
+      codeColor: "#a21caf",
+    },
+  ],
+  coral: [
+    {
+      background: "#fff4f1",
+      border: "#fb7185",
+      tagBackground: "#ffe4e6",
+      tagColor: "#9f1239",
+      codeColor: "#e11d48",
+    },
+    {
+      background: "#fff7ed",
+      border: "#f97316",
+      tagBackground: "#ffedd5",
+      tagColor: "#9a3412",
+      codeColor: "#ea580c",
+    },
+  ],
+  oliva: [
+    {
+      background: "#f7fee7",
+      border: "#a3b18a",
+      tagBackground: "#ecfccb",
+      tagColor: "#4d7c0f",
+      codeColor: "#5f8f1f",
+    },
+    {
+      background: "#fbffe9",
+      border: "#84cc16",
+      tagBackground: "#d9f99d",
+      tagColor: "#3f6212",
+      codeColor: "#65a30d",
+    },
+  ],
+  cobre: [
+    {
+      background: "#fff7f2",
+      border: "#d97706",
+      tagBackground: "#fed7aa",
+      tagColor: "#9a3412",
+      codeColor: "#c2410c",
+    },
+    {
+      background: "#fff4eb",
+      border: "#f59e0b",
+      tagBackground: "#fde68a",
+      tagColor: "#92400e",
+      codeColor: "#b45309",
+    },
+  ],
+  oceano: [
+    {
+      background: "#eff6ff",
+      border: "#60a5fa",
+      tagBackground: "#dbeafe",
+      tagColor: "#1d4ed8",
+      codeColor: "#2563eb",
+    },
+    {
+      background: "#eef4ff",
+      border: "#818cf8",
+      tagBackground: "#e0e7ff",
+      tagColor: "#3730a3",
+      codeColor: "#4338ca",
+    },
+  ],
 };
 
 const DEFAULT_PALETTE = [
@@ -233,11 +393,13 @@ function getHashIndex(value, length) {
   return hash % length;
 }
 
-export function getProductoCardTheme(categoria, subcategoria) {
+export function getProductoCardTheme(categoria, subcategoria, categoryColorKey = "") {
   const normalizedCategory = normalizeText(categoria);
   const resolvedCategory =
     CATEGORY_ALIASES[normalizedCategory] || normalizedCategory;
+  const normalizedColorKey = normalizeText(categoryColorKey);
   const palette =
+    CATEGORY_PALETTES[normalizedColorKey] ||
     CATEGORY_PALETTES[resolvedCategory] ||
     CATEGORY_PALETTES["productos varios"] ||
     DEFAULT_PALETTE;
