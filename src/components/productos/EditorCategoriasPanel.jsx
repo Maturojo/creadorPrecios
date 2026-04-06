@@ -9,6 +9,9 @@ export default function EditorCategoriasPanel({
   errorNuevaClasificacion,
   categoriaEditar,
   nuevoNombreCategoria,
+  colorCategoriaEditar,
+  coloresCategorias,
+  categoryColorOptions,
   categoriaSubcategoriaEditar,
   subcategoriaEditar,
   nuevaCategoriaSubcategoria,
@@ -22,6 +25,7 @@ export default function EditorCategoriasPanel({
   onNuevaSubcategoriaChange,
   onCategoriaEditarChange,
   onNuevoNombreCategoriaChange,
+  onColorCategoriaEditarChange,
   onCategoriaSubcategoriaEditarChange,
   onSubcategoriaEditarChange,
   onNuevaCategoriaSubcategoriaChange,
@@ -196,6 +200,30 @@ export default function EditorCategoriasPanel({
                   }
                   disabled={!categoriaEditar}
                 />
+
+                <select
+                  value={colorCategoriaEditar}
+                  onChange={(event) =>
+                    onColorCategoriaEditarChange(event.target.value)
+                  }
+                  disabled={!categoriaEditar}
+                >
+                  <option value="">Mantener color actual</option>
+                  {categoryColorOptions.map((option) => {
+                    const categoriaEnUso = Object.entries(coloresCategorias).find(
+                      ([nombre, color]) =>
+                        color === option.value && nombre !== categoriaEditar
+                    );
+                    return (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                        {categoriaEnUso
+                          ? ` (en uso por ${categoriaEnUso[0]})`
+                          : " (libre)"}
+                      </option>
+                    );
+                  })}
+                </select>
               </div>
 
               <div className="acciones-edicion">

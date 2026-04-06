@@ -17,6 +17,18 @@ const CATEGORY_COLOR_POOL = [
   "cobre",
   "oceano",
 ];
+const AVAILABLE_CATEGORY_PALETTES = new Set([
+  ...CATEGORY_COLOR_POOL,
+  "artistica",
+  "productos para chicos",
+  "muebles",
+  "listoneria",
+  "cortineria",
+  "molduras",
+  "calados y laser",
+  "productos varios",
+  "sin clasificar",
+]);
 
 const BUILT_IN_CATEGORY_PALETTES = {
   artistica: "artistica",
@@ -339,6 +351,7 @@ router.patch("/categorias/:nombre", async (req, res) => {
   try {
     const nombreActual = decodeURIComponent(req.params.nombre).trim();
     const nuevoNombre = (req.body.nuevoNombre || "").trim();
+    const colorPalette = (req.body.colorPalette || "").trim();
 
     if (!nombreActual || !nuevoNombre) {
       return res.status(400).json({ error: "Los nombres son obligatorios" });
@@ -354,6 +367,10 @@ router.patch("/categorias/:nombre", async (req, res) => {
       return res
         .status(400)
         .json({ error: "Ese nombre no se puede usar" });
+    }
+
+    if (colorPalette && !AVAILABLE_CATEGORY_PALETTES.has(colorPalette)) {
+      return res.status(400).json({ error: "Color de categoría inválido" });
     }
 
     const categoriaActual = await Categoria.findOne({ nombre: nombreActual });
@@ -385,12 +402,17 @@ router.patch("/categorias/:nombre", async (req, res) => {
 
     if (categoriaActual) {
       categoriaActual.nombre = nuevoNombre;
+      if (colorPalette) {
+        categoriaActual.colorPalette = colorPalette;
+      }
       await categoriaActual.save();
     } else if (!categoriaDuplicada) {
       const categoriasExistentes = await Categoria.find({}, "colorPalette").lean();
       await Categoria.create({
         nombre: nuevoNombre,
-        colorPalette: pickUnusedCategoryPalette(categoriasExistentes, nuevoNombre),
+        colorPalette:
+          colorPalette ||
+          pickUnusedCategoryPalette(categoriasExistentes, nuevoNombre),
       });
     }
 
@@ -408,6 +430,8 @@ router.patch("/categorias/:nombre", async (req, res) => {
       ok: true,
       categoriaAnterior: nombreActual,
       categoriaActualizada: nuevoNombre,
+      colorPalette:
+        (categoriaActual && categoriaActual.colorPalette) || colorPalette || "",
       productosActualizados:
         resultadoProductos.modifiedCount ?? resultadoProductos.nModified ?? 0,
     });

@@ -354,6 +354,27 @@ const CATEGORY_PALETTES = {
   ],
 };
 
+export const CATEGORY_COLOR_OPTIONS = [
+  { value: "artistica", label: "Artistica" },
+  { value: "productos para chicos", label: "Productos para chicos" },
+  { value: "muebles", label: "Muebles" },
+  { value: "listoneria", label: "Listoneria" },
+  { value: "cortineria", label: "Cortineria" },
+  { value: "molduras", label: "Molduras" },
+  { value: "calados y laser", label: "Calados y laser" },
+  { value: "productos varios", label: "Productos varios" },
+  { value: "ambar", label: "Ambar" },
+  { value: "frambuesa", label: "Frambuesa" },
+  { value: "bosque", label: "Bosque" },
+  { value: "petroleo", label: "Petroleo" },
+  { value: "mostaza", label: "Mostaza" },
+  { value: "ciruela", label: "Ciruela" },
+  { value: "coral", label: "Coral" },
+  { value: "oliva", label: "Oliva" },
+  { value: "cobre", label: "Cobre" },
+  { value: "oceano", label: "Oceano" },
+];
+
 const DEFAULT_PALETTE = [
   {
     background: "#fff7ed",

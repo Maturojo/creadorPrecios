@@ -2,6 +2,9 @@
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import {
+  CATEGORY_COLOR_OPTIONS,
+} from "../utils/productoCardTheme";
+import {
   actualizarClasificacionMultiple,
   actualizarCategoria,
   actualizarSubcategoria,
@@ -61,6 +64,7 @@ export default function Productos() {
   const [errorNuevaClasificacion, setErrorNuevaClasificacion] = useState("");
   const [categoriaEditar, setCategoriaEditar] = useState("");
   const [nuevoNombreCategoria, setNuevoNombreCategoria] = useState("");
+  const [colorCategoriaEditar, setColorCategoriaEditar] = useState("");
   const [categoriaSubcategoriaEditar, setCategoriaSubcategoriaEditar] =
     useState("");
   const [subcategoriaEditar, setSubcategoriaEditar] = useState("");
@@ -471,6 +475,7 @@ export default function Productos() {
     setNuevaSubcategoria("");
     setCategoriaEditar("");
     setNuevoNombreCategoria("");
+    setColorCategoriaEditar("");
     setCategoriaSubcategoriaEditar("");
     setSubcategoriaEditar("");
     setNuevaCategoriaSubcategoria("");
@@ -485,6 +490,7 @@ export default function Productos() {
     setNuevaSubcategoria("");
     setCategoriaEditar("");
     setNuevoNombreCategoria("");
+    setColorCategoriaEditar("");
     setCategoriaSubcategoriaEditar("");
     setSubcategoriaEditar("");
     setNuevaCategoriaSubcategoria("");
@@ -591,6 +597,7 @@ export default function Productos() {
     try {
       await actualizarCategoria(categoriaActual, {
         nuevoNombre: categoriaNuevaTexto,
+        colorPalette: colorCategoriaEditar,
       });
 
       await cargarFiltros();
@@ -614,6 +621,9 @@ export default function Productos() {
 
       setCategoriaEditar(categoriaNuevaTexto);
       setNuevoNombreCategoria(categoriaNuevaTexto);
+      setColorCategoriaEditar(
+        colorCategoriaEditar || coloresCategorias[categoriaActual] || ""
+      );
       setErrorNuevaClasificacion("");
       toast.success("Categoria actualizada correctamente.");
     } catch (err) {
@@ -969,6 +979,9 @@ export default function Productos() {
           errorNuevaClasificacion={errorNuevaClasificacion}
           categoriaEditar={categoriaEditar}
           nuevoNombreCategoria={nuevoNombreCategoria}
+          colorCategoriaEditar={colorCategoriaEditar}
+          coloresCategorias={coloresCategorias}
+          categoryColorOptions={CATEGORY_COLOR_OPTIONS}
           categoriaSubcategoriaEditar={categoriaSubcategoriaEditar}
           subcategoriaEditar={subcategoriaEditar}
           nuevaCategoriaSubcategoria={nuevaCategoriaSubcategoria}
@@ -983,9 +996,11 @@ export default function Productos() {
           onCategoriaEditarChange={(value) => {
             setCategoriaEditar(value);
             setNuevoNombreCategoria(value);
+            setColorCategoriaEditar(coloresCategorias[value] || "");
             setErrorNuevaClasificacion("");
           }}
           onNuevoNombreCategoriaChange={setNuevoNombreCategoria}
+          onColorCategoriaEditarChange={setColorCategoriaEditar}
           onCategoriaSubcategoriaEditarChange={(value) => {
             setCategoriaSubcategoriaEditar(value);
             setSubcategoriaEditar("");
