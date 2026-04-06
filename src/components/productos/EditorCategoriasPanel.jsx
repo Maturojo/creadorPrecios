@@ -265,11 +265,13 @@ export default function EditorCategoriasPanel({
 
                         <span className="editor-color-option-copy">
                           <strong>{option.label}</strong>
-                          <span>{option.value}</span>
+                          <span>Paleta disponible</span>
                         </span>
 
                         <span className="editor-color-option-usage">
-                          {categoriaEnUso ? categoriaEnUso[0] : "Libre"}
+                          {categoriaEnUso
+                            ? `En uso por ${categoriaEnUso[0]}`
+                            : "Libre"}
                         </span>
                       </button>
                     );
