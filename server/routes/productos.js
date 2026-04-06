@@ -5,6 +5,19 @@ const HistorialAccion = require("../models/HistorialAccion");
 const Categoria = require("../models/Categoria");
 const Subcategoria = require("../models/Subcategoria");
 
+function esSinSubcategoria(valor = "") {
+  const normalizado = valor
+    .trim()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+
+  return (
+    normalizado === "sin subcategoria" ||
+    normalizado === "sin subcategora"
+  );
+}
+
 // Obtener todos los productos
 router.get("/", async (req, res) => {
   try {
@@ -36,7 +49,7 @@ router.get("/", async (req, res) => {
     }
 
     if (subcategoria.trim()) {
-      if (subcategoria === "Sin subcategoría") {
+      if (esSinSubcategoria(subcategoria)) {
         condiciones.push({
           $or: [
             { subcategoria: { $exists: false } },

@@ -30,7 +30,7 @@ const PRODUCTOS_POR_PAGINA = 24;
 
 const UMBRAL_CONFIRMACION_MASIVA = 20;
 const SIN_CLASIFICAR = "Sin clasificar";
-const SIN_SUBCATEGORIA = "Sin subcategorÃ­a";
+const SIN_SUBCATEGORIA = "Sin subcategoría";
 
 export default function Productos() {
   const [productos, setProductos] = useState([]);

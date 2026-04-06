@@ -389,6 +389,10 @@
   backdrop-filter: blur(3px);
 }
 
+.swal2-container {
+  z-index: 2000 !important;
+}
+
 .editor-multiple-modal {
   width: min(680px, 100%);
   margin: 0;
