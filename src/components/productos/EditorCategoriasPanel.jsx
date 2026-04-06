@@ -1,3 +1,5 @@
+﻿import { useEffect } from "react";
+
 export default function EditorCategoriasPanel({
   categorias,
   categoriaBaseNuevaSub,
@@ -10,52 +12,85 @@ export default function EditorCategoriasPanel({
   onGuardar,
   onCancelar,
 }) {
+  useEffect(() => {
+    function handleEscape(event) {
+      if (event.key === "Escape") {
+        onCancelar();
+      }
+    }
+
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [onCancelar]);
+
   return (
-    <div className="editor-multiple">
-      <h3>Agregar categoria o subcategoria</h3>
+    <div className="modal-overlay" onClick={onCancelar}>
+      <div
+        className="editor-multiple editor-multiple-modal"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="editor-multiple-header">
+          <div>
+            <h3>Agregar categoria o subcategoria</h3>
+            <p>Crea una categoria nueva o sumale una subcategoria a una existente.</p>
+          </div>
 
-      <div className="editor-multiple-filtros">
-        <select
-          value={categoriaBaseNuevaSub}
-          onChange={(event) => onCategoriaBaseChange(event.target.value)}
-        >
-          <option value="">Elegir categoria existente</option>
-          {categorias
-            .filter((categoria) => categoria !== "Sin clasificar")
-            .map((categoria) => (
-              <option key={categoria} value={categoria}>
-                {categoria}
-              </option>
-            ))}
-        </select>
+          <button
+            type="button"
+            className="btn-cerrar-modal"
+            onClick={onCancelar}
+            aria-label="Cerrar ventana"
+          >
+            ×
+          </button>
+        </div>
 
-        <input
-          type="text"
-          placeholder="O escribir categoria nueva"
-          value={nuevaCategoria}
-          onChange={(event) => onNuevaCategoriaChange(event.target.value)}
-        />
+        <div className="editor-multiple-filtros">
+          <select
+            value={categoriaBaseNuevaSub}
+            onChange={(event) => onCategoriaBaseChange(event.target.value)}
+          >
+            <option value="">Elegir categoria existente</option>
+            {categorias
+              .filter((categoria) => categoria !== "Sin clasificar")
+              .map((categoria) => (
+                <option key={categoria} value={categoria}>
+                  {categoria}
+                </option>
+              ))}
+          </select>
 
-        <input
-          type="text"
-          placeholder="Subcategoria nueva (opcional)"
-          value={nuevaSubcategoria}
-          onChange={(event) => onNuevaSubcategoriaChange(event.target.value)}
-        />
-      </div>
+          <input
+            type="text"
+            placeholder="O escribir categoria nueva"
+            value={nuevaCategoria}
+            onChange={(event) => onNuevaCategoriaChange(event.target.value)}
+          />
 
-      {errorNuevaClasificacion ? (
-        <p className="estado error">{errorNuevaClasificacion}</p>
-      ) : null}
+          <input
+            type="text"
+            placeholder="Subcategoria nueva (opcional)"
+            value={nuevaSubcategoria}
+            onChange={(event) => onNuevaSubcategoriaChange(event.target.value)}
+          />
+        </div>
 
-      <div className="acciones-edicion">
-        <button className="btn-secundario" onClick={onGuardar}>
-          Guardar
-        </button>
+        {errorNuevaClasificacion ? (
+          <p className="estado error">{errorNuevaClasificacion}</p>
+        ) : null}
 
-        <button className="btn-secundario" onClick={onCancelar}>
-          Cancelar
-        </button>
+        <div className="acciones-edicion">
+          <button className="btn-secundario" onClick={onGuardar}>
+            Guardar
+          </button>
+
+          <button className="btn-secundario" onClick={onCancelar}>
+            Cancelar
+          </button>
+        </div>
       </div>
     </div>
   );

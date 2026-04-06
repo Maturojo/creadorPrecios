@@ -453,10 +453,15 @@
   gap: 10px;
   flex-wrap: wrap;
 }
+.historial-modal {
+  max-height: min(80vh, 720px);
+  overflow-y: auto;
+}
+
 
 .historial-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   gap: 12px;
   margin-bottom: 12px;
@@ -483,6 +488,8 @@
   font-size: 0.9rem;
   color: #666;
 }
+
+
 
 
 

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+﻿import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import {
@@ -30,7 +30,7 @@ const PRODUCTOS_POR_PAGINA = 24;
 
 const UMBRAL_CONFIRMACION_MASIVA = 20;
 const SIN_CLASIFICAR = "Sin clasificar";
-const SIN_SUBCATEGORIA = "Sin subcategoría";
+const SIN_SUBCATEGORIA = "Sin subcategorÃ­a";
 
 export default function Productos() {
   const [productos, setProductos] = useState([]);
@@ -780,7 +780,7 @@ export default function Productos() {
                   <div className="seleccion-panel-item-copy">
                     <strong>{producto.nombre}</strong>
                     <span>
-                      {producto.codigo} · {producto.categoria} ·{" "}
+                      {producto.codigo} Â· {producto.categoria} Â·{" "}
                       {producto.subcategoria}
                     </span>
                   </div>
@@ -822,6 +822,7 @@ export default function Productos() {
           historialAcciones={historialAcciones}
           onLimpiarHistorial={limpiarHistorial}
           formatearFechaHistorial={formatearFechaHistorial}
+          onCancelar={() => setMostrandoHistorial(false)}
         />
       ) : null}
 
@@ -910,3 +911,4 @@ export default function Productos() {
     </section>
   );
 }
+
