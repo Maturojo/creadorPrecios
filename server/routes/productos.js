@@ -15,6 +15,8 @@ const CATEGORY_COLOR_POOL = [
   "coral",
   "oliva",
   "cobre",
+  "lima",
+  "grafito",
   "oceano",
 ];
 const AVAILABLE_CATEGORY_PALETTES = new Set([

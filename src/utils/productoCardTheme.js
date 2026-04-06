@@ -336,6 +336,38 @@ const CATEGORY_PALETTES = {
       codeColor: "#b45309",
     },
   ],
+  lima: [
+    {
+      background: "#f7fee7",
+      border: "#65a30d",
+      tagBackground: "#d9f99d",
+      tagColor: "#365314",
+      codeColor: "#4d7c0f",
+    },
+    {
+      background: "#ecfccb",
+      border: "#84cc16",
+      tagBackground: "#bef264",
+      tagColor: "#3f6212",
+      codeColor: "#4d7c0f",
+    },
+  ],
+  grafito: [
+    {
+      background: "#f3f4f6",
+      border: "#111827",
+      tagBackground: "#d1d5db",
+      tagColor: "#1f2937",
+      codeColor: "#111827",
+    },
+    {
+      background: "#e5e7eb",
+      border: "#374151",
+      tagBackground: "#cbd5e1",
+      tagColor: "#111827",
+      codeColor: "#1f2937",
+    },
+  ],
   oceano: [
     {
       background: "#eff6ff",
@@ -372,6 +404,8 @@ export const CATEGORY_COLOR_OPTIONS = [
   { value: "coral", label: "Coral" },
   { value: "oliva", label: "Oliva" },
   { value: "cobre", label: "Cobre" },
+  { value: "lima", label: "Lima" },
+  { value: "grafito", label: "Grafito" },
   { value: "oceano", label: "Oceano" },
 ];
 
