@@ -5,6 +5,10 @@ import { cerrarSesionGoogle, validarSesionGoogle } from "./services/auth";
 import { getAuthToken } from "./services/api";
 import "./styles/auth.css";
 
+const GOOGLE_AUTH_DESACTIVADO =
+  String(import.meta.env.VITE_DISABLE_GOOGLE_AUTH || "").toLowerCase() ===
+  "true";
+
 function App() {
   const [estadoSesion, setEstadoSesion] = useState("cargando");
   const [usuario, setUsuario] = useState(null);
@@ -12,6 +16,18 @@ function App() {
   const [emailIntento, setEmailIntento] = useState("");
 
   const restaurarSesion = useCallback(async () => {
+    if (GOOGLE_AUTH_DESACTIVADO) {
+      setUsuario({
+        nombre: "Acceso temporal habilitado",
+        email: "auth-desactivado@surmaderas.local",
+        imagenUrl: "",
+      });
+      setErrorAcceso(null);
+      setEmailIntento("");
+      setEstadoSesion("autenticado");
+      return;
+    }
+
     const token = getAuthToken();
 
     if (!token) {
@@ -59,6 +75,18 @@ function App() {
   }, []);
 
   const handleLogin = useCallback(async (credential) => {
+    if (GOOGLE_AUTH_DESACTIVADO) {
+      setUsuario({
+        nombre: "Acceso temporal habilitado",
+        email: "auth-desactivado@surmaderas.local",
+        imagenUrl: "",
+      });
+      setErrorAcceso(null);
+      setEmailIntento("");
+      setEstadoSesion("autenticado");
+      return;
+    }
+
     setEstadoSesion("validando");
     try {
       const user = await validarSesionGoogle(credential);
@@ -78,6 +106,12 @@ function App() {
   }, []);
 
   const handleLogout = useCallback(() => {
+    if (GOOGLE_AUTH_DESACTIVADO) {
+      setErrorAcceso(null);
+      setEmailIntento("");
+      return;
+    }
+
     cerrarSesionGoogle();
     setUsuario(null);
     setErrorAcceso(null);

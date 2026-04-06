@@ -1,5 +1,9 @@
 const { OAuth2Client } = require("google-auth-library");
 
+function isGoogleAuthDisabled() {
+  return String(process.env.DISABLE_GOOGLE_AUTH || "").trim().toLowerCase() === "true";
+}
+
 function getGoogleClientId() {
   return (
     process.env.GOOGLE_CLIENT_ID ||
@@ -26,6 +30,14 @@ function getBearerToken(req) {
 }
 
 async function verifyGoogleUserFromRequest(req) {
+  if (isGoogleAuthDisabled()) {
+    return {
+      email: "auth-desactivado@surmaderas.local",
+      nombre: "Acceso temporal habilitado",
+      imagenUrl: "",
+    };
+  }
+
   const token = getBearerToken(req);
 
   if (!token) {
@@ -94,6 +106,7 @@ async function requireGoogleAuth(req, res, next) {
 
 module.exports = {
   getGoogleClientId,
+  isGoogleAuthDisabled,
   requireGoogleAuth,
   verifyGoogleUserFromRequest,
 };
