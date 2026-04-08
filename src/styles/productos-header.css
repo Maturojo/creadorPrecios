@@ -359,13 +359,12 @@
 .acciones-header-group--primary,
 .acciones-header-group--secondary {
   padding: 12px;
-  border: 1px solid rgba(222, 208, 188, 0.56);
-  border-radius: 26px;
-  background: rgba(255, 252, 247, 0.92);
-  box-shadow:
-    0 18px 34px rgba(69, 49, 24, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(14px);
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  filter: drop-shadow(0 14px 28px rgba(69, 49, 24, 0.1));
 }
 
 .acciones-header-group--primary {
@@ -387,13 +386,23 @@
 .btn-outline,
 .select-impresion,
 .icon-action-btn {
-  border-color: rgba(182, 152, 114, 0.55);
-  background: rgba(255, 252, 247, 0.92);
+  border-color: rgba(182, 152, 114, 0.48);
+  background: rgba(255, 252, 247, 0.96);
+  box-shadow:
+    0 14px 26px rgba(69, 49, 24, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
 }
 
 .btn-outline:hover,
 .icon-action-btn:hover:not(:disabled) {
   box-shadow: 0 12px 24px rgba(91, 76, 57, 0.1);
+}
+
+.select-impresion:hover,
+.select-impresion:focus {
+  box-shadow:
+    0 16px 28px rgba(91, 76, 57, 0.11),
+    0 0 0 4px rgba(184, 138, 71, 0.12);
 }
 
 .btn-print {
