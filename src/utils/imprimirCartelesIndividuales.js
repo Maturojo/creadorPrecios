@@ -53,7 +53,7 @@ function obtenerTamanioCategoria(texto, formato) {
 }
 
 function obtenerTamanioTituloBase(formato) {
-  return formato === "media-a4" ? 2.1 : 2.4;
+  return 7;
 }
 
 export function imprimirCartelesIndividuales(productos, opciones) {
