@@ -323,20 +323,19 @@
 .productos-header {
   align-items: stretch;
   margin-bottom: 26px;
-  padding: 24px 26px;
-  border: 1px solid rgba(214, 199, 177, 0.72);
-  border-radius: 30px;
-  background:
-    radial-gradient(circle at top left, rgba(191, 152, 91, 0.14), transparent 32%),
-    linear-gradient(145deg, rgba(255, 250, 244, 0.92) 0%, rgba(255, 255, 255, 0.84) 100%);
-  box-shadow:
-    0 22px 46px rgba(59, 43, 22, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(16px);
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 .productos-header-copy {
   max-width: 500px;
+  padding: 10px 6px 10px 2px;
+  align-self: flex-start;
+  filter: drop-shadow(0 18px 30px rgba(71, 50, 25, 0.12));
 }
 
 .productos-header h1 {
@@ -354,15 +353,19 @@
 
 .acciones-header {
   gap: 14px;
+  align-items: flex-end;
 }
 
 .acciones-header-group--primary,
 .acciones-header-group--secondary {
   padding: 12px;
-  border: 1px solid rgba(220, 207, 188, 0.82);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.68);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(222, 208, 188, 0.56);
+  border-radius: 26px;
+  background: rgba(255, 252, 247, 0.92);
+  box-shadow:
+    0 18px 34px rgba(69, 49, 24, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(14px);
 }
 
 .acciones-header-group--primary {
@@ -371,6 +374,7 @@
   border-radius: 0;
   background: transparent;
   box-shadow: none;
+  filter: drop-shadow(0 12px 24px rgba(73, 51, 25, 0.09));
 }
 
 .btn-outline,
@@ -397,6 +401,12 @@
   border-radius: 16px;
   background: linear-gradient(135deg, #1b1a18 0%, #2c2a26 100%);
   box-shadow: 0 16px 30px rgba(17, 17, 17, 0.2);
+}
+
+.acciones-header > .btn-print {
+  box-shadow:
+    0 18px 34px rgba(17, 17, 17, 0.2),
+    0 10px 22px rgba(71, 50, 25, 0.08);
 }
 
 .btn-print:hover:not(:disabled) {
