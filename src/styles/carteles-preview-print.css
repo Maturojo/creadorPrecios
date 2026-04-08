@@ -204,7 +204,7 @@ body.formato-media-a4 {
 
 .cartel--individual {
   width: 100%;
-  min-height: auto;
+  height: 71.75mm;
   padding: 0;
   justify-content: center;
   align-items: center;
@@ -222,8 +222,9 @@ body.formato-media-a4 {
 
 .cartel-individual-label {
   width: 100%;
-  min-height: 60mm;
-  padding: 4.5mm 5.5mm 5mm;
+  height: 100%;
+  min-height: 0;
+  padding: 3mm 3.8mm 3.2mm;
   border: 0.6mm solid #76808a;
   box-shadow: 0 0 0 0.6mm #d8dee4 inset;
   background: #ffffff;
@@ -238,13 +239,13 @@ body.formato-media-a4 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 3mm;
-  margin-bottom: 2.5mm;
+  gap: 1.8mm;
+  margin-bottom: 1.2mm;
 }
 
 .cartel-individual-kicker,
 .cartel-individual-secuencia {
-  font-size: 2.8mm;
+  font-size: 1.75mm;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: #6a7380;
@@ -257,15 +258,16 @@ body.formato-media-a4 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.6mm;
+  gap: 0.9mm;
+  flex: 1;
 }
 
 .cartel-individual-title {
   margin: 0;
-  font-size: 8.8mm;
+  font-size: 5.6mm;
   font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 1.02;
+  line-height: 0.98;
   color: #2a3441;
   text-wrap: balance;
   overflow-wrap: anywhere;
@@ -273,7 +275,7 @@ body.formato-media-a4 {
 
 .cartel-individual-category {
   margin: 0;
-  font-size: 4mm;
+  font-size: 2.15mm;
   font-weight: 600;
   letter-spacing: 0;
   color: #556171;
@@ -282,7 +284,7 @@ body.formato-media-a4 {
 .cartel-individual-divider {
   width: 100%;
   height: 0.4mm;
-  margin: 3.4mm 0 3mm;
+  margin: 1.2mm 0 1.1mm;
   background: #ccd5df;
 }
 
@@ -290,7 +292,7 @@ body.formato-media-a4 {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2.2mm;
+  gap: 0.9mm;
   align-items: center;
 }
 
@@ -308,7 +310,7 @@ body.formato-media-a4 {
 }
 
 .cartel-individual-price-label {
-  font-size: 3.1mm;
+  font-size: 1.8mm;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -316,24 +318,24 @@ body.formato-media-a4 {
 }
 
 .cartel-individual-price-value {
-  font-size: 13.6mm;
+  font-size: 6.4mm;
   line-height: 1;
   letter-spacing: -0.05em;
   color: #111827;
 }
 
 .cartel-individual-price-value--secondary {
-  font-size: 7.2mm;
+  font-size: 3.9mm;
   letter-spacing: -0.03em;
 }
 
 .precio-stack--individual {
   align-items: center;
-  gap: 1.4mm;
+  gap: 0.7mm;
 }
 
 .precio-stack--individual .precio-anterior {
-  font-size: 3.1mm;
+  font-size: 1.8mm;
 }
 
 .precio-stack--secondary {
@@ -343,18 +345,21 @@ body.formato-media-a4 {
 .individual-pages {
   display: flex;
   flex-direction: column;
-  gap: 12mm;
+  gap: 0;
 }
 
 .individual-page {
   width: 100%;
   min-height: 287mm;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-rows: minmax(0, 1fr);
-  gap: 6mm;
-  padding: 6mm;
+  grid-template-columns: repeat(2, 100mm);
+  grid-template-rows: repeat(4, 71.75mm);
+  justify-content: center;
+  align-content: start;
+  gap: 0;
+  padding: 0;
   page-break-after: always;
+  overflow: hidden;
 }
 
 .individual-page:last-child {
@@ -594,15 +599,16 @@ body.formato-media-a4 .cartel--individual {
 }
 
 body.formato-media-a4 .cartel-individual-label {
-  min-height: 38mm;
-  padding: 3mm 3.8mm 3.4mm;
+  height: 100%;
+  min-height: 0;
+  padding: 2.4mm 3mm 2.6mm;
   border-width: 0.45mm;
   box-shadow: 0 0 0 0.45mm #d8dee4 inset;
 }
 
 body.formato-media-a4 .cartel-individual-kicker,
 body.formato-media-a4 .cartel-individual-secuencia {
-  font-size: 1.9mm;
+  font-size: 1.55mm;
 }
 
 body.formato-media-a4 .cartel-individual-copy {
@@ -610,38 +616,40 @@ body.formato-media-a4 .cartel-individual-copy {
 }
 
 body.formato-media-a4 .cartel-individual-category {
-  font-size: 2.5mm;
+  font-size: 1.85mm;
 }
 
 body.formato-media-a4 .cartel-individual-title {
-  font-size: 5.9mm;
+  font-size: 4.8mm;
 }
 
 body.formato-media-a4 .cartel-individual-divider {
-  margin: 2.2mm 0 2mm;
+  margin: 1mm 0 0.9mm;
 }
 
 body.formato-media-a4 .cartel-individual-price-label {
-  font-size: 2mm;
+  font-size: 1.55mm;
 }
 
 body.formato-media-a4 .cartel-individual-price-value {
-  font-size: 7mm;
+  font-size: 5.2mm;
 }
 
 body.formato-media-a4 .cartel-individual-price-value--secondary {
-  font-size: 4.3mm;
+  font-size: 3.2mm;
 }
 
 body.formato-media-a4 .precio-stack--individual .precio-anterior {
-  font-size: 2mm;
+  font-size: 1.5mm;
 }
 
 body.formato-media-a4 .individual-page {
   min-height: 138mm;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 4mm;
-  padding: 4mm;
+  grid-template-columns: repeat(2, 69mm);
+  grid-template-rows: repeat(2, 64mm);
+  justify-content: center;
+  gap: 0;
+  padding: 0;
 }
 
 body.formato-media-a4 .precio-anterior {
