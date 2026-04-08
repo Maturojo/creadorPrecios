@@ -1,126 +1,105 @@
 # Creador de Precios
 
-Aplicacion interna para Sur Maderas orientada a ordenar productos, mantener clasificaciones comerciales y preparar carteles listos para imprimir.
+Herramienta interna para Sur Maderas pensada para ordenar productos, mantener categorias y preparar carteles listos para imprimir.
 
-Hoy el proyecto ya permite trabajar sobre una base real de productos en MongoDB desde una interfaz web publicada y protegida.
+## Estado actual
 
-## Que hace hoy
-
-- Ver productos cargados en MongoDB.
-- Buscar por nombre o codigo.
-- Filtrar por categoria y subcategoria.
-- Mantener seleccion de productos entre filtros para armar tandas de impresion.
-- Clasificar productos de forma individual o masiva.
-- Crear y eliminar categorias y subcategorias.
-- Ver historial de acciones.
-- Preparar carteles en `A4 completa` o `Media hoja`.
-- Agrupar carteles por clasificacion o mezclar seleccion.
-- Aplicar descuento porcentual solo al cartel.
-- Mostrar precio anterior tachado al imprimir.
-- Mostrar columna `Precio varilla` para Listoneria y Molduras.
-- Editar encabezados y datos antes de imprimir.
-- Sincronizar productos desde CSV sin romper datos existentes.
-- Sincronizar imagenes desde CSV sin tocar otros campos.
-- Previsualizar fotos en hover y mostrar badge `Foto` en cards.
-- Iniciar sesion con Google antes de entrar.
-- Restringir acceso a cuentas autorizadas.
-- Usar la app desplegada en Vercel.
+- URL actual: [https://precios-seven.vercel.app](https://precios-seven.vercel.app)
+- Rama de trabajo: `codex/pruebas-cambios`
+- Deploy: Vercel
+- Acceso con Google: temporalmente desactivado
+- Variables activas en Vercel:
+  - `VITE_DISABLE_GOOGLE_AUTH=true`
+  - `DISABLE_GOOGLE_AUTH=true`
+- Flujo actual de acceso:
+  - la app entra directo sin login
+  - quedo preparada para reactivar Google mas adelante sin romper el flujo
 
 ## Stack
 
 - Frontend: React + Vite
-- Backend: Express
-- Base de datos: MongoDB + Mongoose
-- UI y feedback: SweetAlert2 + React Toastify
-- Auth: Google Identity Services + validacion de token en backend
-- Utilidades: `xlsx`
+- Backend: Express + MongoDB/Mongoose
+- UI: `react-toastify`, `sweetalert2`
 - Deploy: Vercel
 
 ## Estructura
 
 ```text
 precios/
-|-- src/
-|   |-- components/
-|   |   |-- auth/
-|   |   `-- productos/
-|   |-- services/
-|   |-- styles/
-|   `-- utils/
-|-- public/
-|-- api/                    # entrada serverless para Vercel
-|-- server/
+|-- src/                  # Frontend React
+|-- public/               # Assets publicos
+|-- server/               # API Express + modelos MongoDB
 |   |-- auth/
 |   |-- models/
 |   |-- routes/
-|   |-- src/scripts/
 |   `-- .env.example
-|-- .env.example
-|-- vercel.json
+|-- package.json
 `-- README.md
 ```
 
-## Funcionalidades principales
+## Funcionalidades implementadas
 
-### Gestion de productos
+### Catalogo y filtros
 
-- Listado de productos con cards.
-- Colores por categoria y subcategoria.
-- Filtros por texto, categoria y subcategoria.
-- Paginacion en la vista.
-- Seleccion multiple persistente entre categorias y filtros.
-- Edicion masiva de clasificacion.
+- Gestion de productos cargados en MongoDB.
+- Busqueda por nombre o codigo.
+- Filtros por categoria y subcategoria.
+- Persistencia de seleccion entre filtros, categorias y busqueda.
+- Paginacion en la vista de productos.
+- Seleccionar todos los productos de la pagina.
+- Seleccionar todos los productos filtrados.
+- Panel para revisar la seleccion completa antes de imprimir o reclasificar.
+- Exportacion CSV de productos filtrados.
+- Hover preview de imagenes en cards.
+- UI renovada con estilo mas moderno para shell, header, filtros, cards y paneles.
 
-### Categorias y subcategorias
+### Clasificacion
 
-- Alta manual de categorias.
-- Alta manual de subcategorias.
-- Eliminacion de categorias completas.
-- Eliminacion de subcategorias individuales.
-- Soporte para `Sin clasificar` y `Sin subcategoria`.
+- Edicion manual por producto.
+- Edicion multiple de clasificacion.
+- Creacion de categorias y subcategorias.
+- Edicion de categorias.
+- Eliminacion de categorias.
+- Edicion, renombre y movimiento de subcategorias.
+- Colores por categoria persistidos en MongoDB.
+- Selector visual de colores para categorias.
+- Paleta ampliada a 20 colores.
 
 ### Historial
 
-- Registro de acciones relevantes.
-- Consulta de historial desde la UI.
+- Registro de acciones de productos.
+- Vista de historial dentro de la app.
 - Limpieza manual del historial.
+- Los registros nuevos muestran quien hizo cada cambio.
 
 ### Impresion
 
-- Preparacion de carteles desde seleccion multiple.
-- Formatos `A4 completa` y `Media hoja`.
-- Agrupacion por clasificacion o mezcla libre.
-- Descuento opcional solo para la impresion.
-- Precio anterior tachado opcional.
-- Encabezados editables.
-- Precio varilla para categorias especificas.
+- Preview de impresion.
+- Controles de formato para carteles.
+- Impresion agrupada por seleccion.
+- Modo individual por producto.
+- Carteles individuales acomodados por hoja.
+- Hoja A4 vertical para etiquetas individuales.
+- Ajuste manual del tamano del titulo por etiqueta.
+- Tamano inicial del titulo en individual: `7 mm`.
+- Autoajuste del titulo cuando un nombre largo rompe el layout.
+- Diseno de etiqueta individual tipo mostrador.
+- Leyenda automatica `Consulta por 6 cuotas sin interes` para productos cuyo precio final supere `$200.000`.
 
-### Imagenes
+### Integraciones y auth
 
-- Sincronizacion de `imagenUrl` desde CSV.
-- No modifica nombre, precio ni clasificacion al sincronizar imagenes.
-- Preview flotante en hover.
-- Badge visual para productos con foto.
+- Login con Google preparado en backend y frontend.
+- Desactivacion temporal del acceso Google por variable de entorno.
+- Sesion temporal local visible en la barra superior.
 
-### Sincronizacion de productos
+### Sync y mantenimiento
 
-- Actualiza precio de productos existentes.
-- Crea productos nuevos si no existen.
-- No pisa nombre, categoria ni subcategoria existentes.
-- Scripts preparados para correr con archivo por defecto o ruta explicita.
+- Sync seguro de productos desde CSV.
+- Sync de imagenes desde CSV.
 
-### Seguridad y acceso
-
-- Pantalla de acceso previa a la app.
-- Login con Google.
-- Validacion del token en backend.
-- Lista blanca de emails autorizados.
-- Proteccion de rutas `/api/productos/*`.
-
-## Endpoints disponibles
+## Endpoints principales
 
 - `GET /api/health`
-- `GET /api/auth/session`
 - `GET /api/productos`
 - `GET /api/productos/filtros`
 - `GET /api/productos/historial`
@@ -134,28 +113,24 @@ precios/
 
 ## Variables de entorno
 
-### Frontend (`.env`)
+El backend usa un archivo `.env` dentro de `server/`.
 
-```env
-VITE_GOOGLE_CLIENT_ID=tu-google-client-id.apps.googleusercontent.com
-VITE_API_URL=http://localhost:4000/api/productos
-```
+Base sugerida: [server/.env.example](C:\Users\matur\OneDrive\Escritorio Lenovo Javi\Sur_Maderas\creadorPrecios\precios\server\.env.example)
 
-### Backend (`server/.env`)
+Ejemplo minimo:
 
 ```env
 MONGODB_URI=mongodb://localhost:27017/precios
-GOOGLE_CLIENT_ID=tu-google-client-id.apps.googleusercontent.com
-ALLOWED_GOOGLE_EMAILS=tuusuario@gmail.com,otro@mail.com
-CORS_ORIGIN=http://localhost:5173
 ```
 
-Tomar como base:
+Variables relevantes para auth:
 
-- [.env.example](C:\Users\matur\OneDrive\Escritorio Lenovo Javi\Sur_Maderas\creadorPrecios\precios\.env.example)
-- [server/.env.example](C:\Users\matur\OneDrive\Escritorio Lenovo Javi\Sur_Maderas\creadorPrecios\precios\server\.env.example)
+```env
+VITE_DISABLE_GOOGLE_AUTH=true
+DISABLE_GOOGLE_AUTH=true
+```
 
-## Como levantar el proyecto
+## Desarrollo local
 
 ### 1. Instalar dependencias del frontend
 
@@ -163,29 +138,28 @@ Tomar como base:
 npm install
 ```
 
-### 2. Instalar dependencias del backend local
+### 2. Instalar dependencias del backend
 
 ```bash
 cd server
 npm install
 ```
 
-### 3. Configurar variables de entorno
+### 3. Configurar entorno
 
-- Crear `.env` en la raiz usando `.env.example`.
-- Crear `server/.env` usando `server/.env.example`.
+Crear `server/.env` usando `server/.env.example` como guia.
 
-### 4. Levantar backend local
+### 4. Levantar backend
 
 Desde `server/`:
 
 ```bash
-npm run dev
+node index.js
 ```
 
-Disponible en `http://localhost:4000`.
+El backend corre en `http://localhost:4000`.
 
-### 5. Levantar frontend local
+### 5. Levantar frontend
 
 Desde la raiz:
 
@@ -193,9 +167,9 @@ Desde la raiz:
 npm run dev
 ```
 
-Disponible en `http://localhost:5173`.
+El frontend corre en `http://localhost:5173`.
 
-## Scripts utiles
+## Comandos utiles
 
 ### Frontend
 
@@ -204,56 +178,41 @@ npm run dev
 npm run build
 ```
 
-### Backend / datos
-
-Desde `server/`:
+### Backend
 
 ```bash
-npm run dev
+cd server
+node index.js
 npm run sync:productos
 npm run sync:imagenes
 ```
 
-Tambien se puede correr la sync de imagenes con archivo explicito:
+## Archivos clave
 
-```bash
-node src/scripts/sincronizarImagenesDesdeExcel.js "C:\ruta\archivo.csv"
-```
-
-## Estado actual
-
-La aplicacion ya cubre el flujo principal del negocio:
-
-- catalogo de productos
-- clasificacion manual y masiva
-- mantenimiento de categorias
-- historial
-- impresion
-- sincronizacion de productos e imagenes
-- autenticacion con Google
-- deploy web operativo
-
-Todavia quedan mejoras tecnicas y de calidad para seguir ordenando el proyecto.
-
-## To do list
-
-- [x] Proteger secretos con `.gitignore` y archivos `.env.example`
-- [x] Corregir el `README` para documentar el proyecto real
-- [ ] Separar la configuracion de ESLint entre frontend y backend
-- [x] Pasar URLs y auth principal a variables de entorno
-- [ ] Corregir problemas de encoding en textos con acentos
-- [x] Dividir `src/components/Productos.jsx` en componentes mas pequenos
-- [x] Eliminar archivos viejos que no coinciden con el flujo actual
-- [ ] Agregar validaciones mas claras en backend para altas, bajas y cambios masivos
-- [ ] Agregar tests basicos para rutas criticas
-- [ ] Documentar mejor la estructura de datos de `Producto`, `Categoria`, `Subcategoria` e `HistorialAccion`
-- [x] Mejorar la experiencia de impresion y vista previa de carteles
-- [x] Subir proyecto a la web
-- [x] Clave de usuario para entrar
+- [src/components/Productos.jsx](C:\Users\matur\OneDrive\Escritorio Lenovo Javi\Sur_Maderas\creadorPrecios\precios\src\components\Productos.jsx)
+- [src/components/productos/ProductosHeader.jsx](C:\Users\matur\OneDrive\Escritorio Lenovo Javi\Sur_Maderas\creadorPrecios\precios\src\components\productos\ProductosHeader.jsx)
+- [src/components/productos/EditorCategoriasPanel.jsx](C:\Users\matur\OneDrive\Escritorio Lenovo Javi\Sur_Maderas\creadorPrecios\precios\src\components\productos\EditorCategoriasPanel.jsx)
+- [src/components/productos/HistorialPanel.jsx](C:\Users\matur\OneDrive\Escritorio Lenovo Javi\Sur_Maderas\creadorPrecios\precios\src\components\productos\HistorialPanel.jsx)
+- [src/utils/productoCardTheme.js](C:\Users\matur\OneDrive\Escritorio Lenovo Javi\Sur_Maderas\creadorPrecios\precios\src\utils\productoCardTheme.js)
+- [src/utils/imprimirCartelesEditable.js](C:\Users\matur\OneDrive\Escritorio Lenovo Javi\Sur_Maderas\creadorPrecios\precios\src\utils\imprimirCartelesEditable.js)
+- [src/utils/imprimirCartelesIndividuales.js](C:\Users\matur\OneDrive\Escritorio Lenovo Javi\Sur_Maderas\creadorPrecios\precios\src\utils\imprimirCartelesIndividuales.js)
+- [src/styles/productos.css](C:\Users\matur\OneDrive\Escritorio Lenovo Javi\Sur_Maderas\creadorPrecios\precios\src\styles\productos.css)
+- [src/styles/productos-header.css](C:\Users\matur\OneDrive\Escritorio Lenovo Javi\Sur_Maderas\creadorPrecios\precios\src\styles\productos-header.css)
+- [src/styles/producto-card.css](C:\Users\matur\OneDrive\Escritorio Lenovo Javi\Sur_Maderas\creadorPrecios\precios\src\styles\producto-card.css)
+- [src/styles/carteles-preview-print.css](C:\Users\matur\OneDrive\Escritorio Lenovo Javi\Sur_Maderas\creadorPrecios\precios\src\styles\carteles-preview-print.css)
+- [server/routes/productos.js](C:\Users\matur\OneDrive\Escritorio Lenovo Javi\Sur_Maderas\creadorPrecios\precios\server\routes\productos.js)
+- [server/auth/googleAuth.js](C:\Users\matur\OneDrive\Escritorio Lenovo Javi\Sur_Maderas\creadorPrecios\precios\server\auth\googleAuth.js)
+- [server/models/HistorialAccion.js](C:\Users\matur\OneDrive\Escritorio Lenovo Javi\Sur_Maderas\creadorPrecios\precios\server\models\HistorialAccion.js)
 
 ## Notas
 
-- La URL publica actual esta en Vercel.
-- El acceso se restringe por `ALLOWED_GOOGLE_EMAILS`.
-- `GET /api/health` queda libre para chequeos de estado.
-- El proyecto todavia no tiene una estrategia de tests consolidada.
+- El frontend y el backend siguen sin una estrategia de tests consolidada.
+- La build actual muestra warnings de `@tailwind` durante el minify, pero no bloquean el deploy.
+- Suele quedar afuera de los commits tecnicos: `server/src/seed/reporte-imagenes-actualizadas.json`.
+
+## Pendientes razonables
+
+- Rehabilitar Google Auth cuando corresponda.
+- Sumar tests basicos para rutas criticas y flujos de impresion.
+- Corregir problemas de encoding en algunos textos heredados.
+- Seguir afinando la experiencia visual de preview e impresion.

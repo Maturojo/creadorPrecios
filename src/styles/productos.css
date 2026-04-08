@@ -671,3 +671,114 @@
   }
 }
 
+.productos-page {
+  padding: 30px 20px 40px;
+  font-family: "Montserrat", "Segoe UI", sans-serif;
+  position: relative;
+}
+
+.productos-page::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 220px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(191, 152, 91, 0.16), transparent 30%),
+    radial-gradient(circle at 88% 18%, rgba(26, 84, 67, 0.11), transparent 24%);
+  filter: blur(12px);
+}
+
+.productos-filtros {
+  padding: 16px;
+  border: 1px solid rgba(211, 198, 179, 0.7);
+  border-radius: 24px;
+  background: rgba(255, 252, 247, 0.82);
+  box-shadow:
+    0 18px 40px rgba(53, 43, 29, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(14px);
+}
+
+.productos-filtros input,
+.productos-filtros select {
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid rgba(208, 194, 172, 0.95);
+  border-radius: 14px;
+  font-size: 0.95rem;
+  color: #30271e;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.productos-filtros input::placeholder {
+  color: #8a7a65;
+}
+
+.productos-filtros input:focus,
+.productos-filtros select:focus {
+  outline: none;
+  border-color: #b88a47;
+  box-shadow: 0 0 0 4px rgba(184, 138, 71, 0.14);
+}
+
+.productos-resumen {
+  margin-bottom: 18px;
+  padding: 14px 18px;
+  border: 1px solid rgba(212, 202, 188, 0.9);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #544636;
+  box-shadow: 0 12px 30px rgba(59, 43, 22, 0.06);
+}
+
+.productos-grid {
+  gap: 18px;
+}
+
+.estado {
+  padding: 18px 20px;
+  border: 1px solid rgba(210, 202, 191, 0.9);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 14px 30px rgba(59, 43, 22, 0.06);
+}
+
+.estado.error {
+  border-color: rgba(176, 0, 32, 0.16);
+  background: rgba(255, 244, 246, 0.86);
+}
+
+.seleccion-resumen {
+  padding: 20px 22px;
+  border: 1px solid rgba(179, 212, 194, 0.85);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(86, 154, 117, 0.13), transparent 28%),
+    linear-gradient(180deg, rgba(249, 253, 250, 0.96) 0%, rgba(238, 248, 241, 0.95) 100%);
+  gap: 16px;
+  box-shadow: 0 18px 38px rgba(35, 72, 51, 0.09);
+}
+
+.seleccion-tag {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 24px rgba(35, 72, 51, 0.08);
+}
+
+.seleccion-panel-item {
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 8px 18px rgba(35, 72, 51, 0.06);
+}
+
+.productos-footer {
+  padding: 20px 22px;
+  border: 1px solid rgba(221, 206, 184, 0.92);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at left center, rgba(193, 152, 92, 0.12), transparent 30%),
+    linear-gradient(180deg, rgba(255, 253, 250, 0.96) 0%, rgba(248, 241, 232, 0.95) 100%);
+  box-shadow: 0 18px 38px rgba(70, 49, 24, 0.08);
+}
+
