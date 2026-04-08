@@ -190,6 +190,27 @@ body.formato-media-a4 {
   background: #fff;
 }
 
+.cartel-editor-field textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 74px;
+  resize: vertical;
+  border: 1px solid #d9ccb8;
+  border-radius: 12px;
+  padding: 11px 13px;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.35;
+  color: #2f2418;
+  background: #fff;
+}
+
+.cartel-editor-readonly {
+  opacity: 0.8;
+  cursor: default;
+  background: #f8f3ec !important;
+}
+
 .cartel-editor-reset {
   border: none;
   border-radius: 999px;
