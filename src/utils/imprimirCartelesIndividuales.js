@@ -265,6 +265,22 @@ export function imprimirCartelesIndividuales(productos, opciones) {
             const categoryInputs = document.querySelectorAll("[data-category-input]");
             const resetButtons = document.querySelectorAll("[data-reset-button]");
 
+            const normalizarTexto = (valor) => String(valor || "").trim();
+
+            const cerrarVentana = () => {
+              try {
+                window.open("", "_self");
+                window.close();
+              } catch (error) {
+                console.error("No se pudo cerrar la ventana", error);
+              }
+            };
+
+            const imprimirVentana = () => {
+              window.focus();
+              window.print();
+            };
+
             const getTitleSize = (texto) => (${obtenerTamanioTitulo.toString()})(texto, formato);
             const getCategorySize = (texto) => (${obtenerTamanioCategoria.toString()})(texto, formato);
 
@@ -374,8 +390,21 @@ export function imprimirCartelesIndividuales(productos, opciones) {
             showOriginalToggle?.addEventListener("change", syncPrices);
             syncPrices();
 
-            printButton?.addEventListener("click", () => window.print());
-            closeButton?.addEventListener("click", () => window.close());
+            printButton?.addEventListener("click", imprimirVentana);
+            closeButton?.addEventListener("click", cerrarVentana);
+
+            window.addEventListener("keydown", (event) => {
+              const key = event.key.toLowerCase();
+
+              if ((event.ctrlKey || event.metaKey) && key === "p") {
+                event.preventDefault();
+                imprimirVentana();
+              }
+
+              if (key === "escape") {
+                cerrarVentana();
+              }
+            });
           })();
         </script>
       </body>

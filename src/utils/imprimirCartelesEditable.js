@@ -431,8 +431,24 @@ export function imprimirCarteles(productos, formato = "a4") {
             const categoryInputs = document.querySelectorAll("[data-category-input]");
             const resetButtons = document.querySelectorAll("[data-reset-button]");
 
+            const normalizarTexto = (valor) => String(valor || "").trim();
+
+            const cerrarVentana = () => {
+              try {
+                window.open("", "_self");
+                window.close();
+              } catch (error) {
+                console.error("No se pudo cerrar la ventana", error);
+              }
+            };
+
+            const imprimirVentana = () => {
+              window.focus();
+              window.print();
+            };
+
             const getTitleSize = (texto) => {
-              const largo = (texto || "").trim().length;
+              const largo = normalizarTexto(texto).length;
 
               if (formato === "media-a4") {
                 if (largo > 42) return 6.8;
@@ -448,7 +464,7 @@ export function imprimirCarteles(productos, formato = "a4") {
             };
 
             const getCategorySize = (texto) => {
-              const largo = (texto || "").trim().length;
+              const largo = normalizarTexto(texto).length;
 
               if (formato === "media-a4") {
                 if (largo > 34) return 2.8;
@@ -573,19 +589,19 @@ export function imprimirCarteles(productos, formato = "a4") {
             showOriginalToggle?.addEventListener("change", syncPrices);
             syncPrices();
 
-            printButton?.addEventListener("click", () => window.print());
-            closeButton?.addEventListener("click", () => window.close());
+            printButton?.addEventListener("click", imprimirVentana);
+            closeButton?.addEventListener("click", cerrarVentana);
 
             window.addEventListener("keydown", (event) => {
               const key = event.key.toLowerCase();
 
               if ((event.ctrlKey || event.metaKey) && key === "p") {
                 event.preventDefault();
-                window.print();
+                imprimirVentana();
               }
 
               if (key === "escape") {
-                window.close();
+                cerrarVentana();
               }
             });
           })();
