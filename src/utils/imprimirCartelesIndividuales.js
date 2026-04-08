@@ -281,8 +281,35 @@ export function imprimirCartelesIndividuales(productos, opciones) {
               window.print();
             };
 
-            const getTitleSize = (texto) => (${obtenerTamanioTitulo.toString()})(texto, formato);
-            const getCategorySize = (texto) => (${obtenerTamanioCategoria.toString()})(texto, formato);
+            const getTitleSize = (texto) => {
+              const largo = normalizarTexto(texto).length;
+
+              if (formato === "media-a4") {
+                if (largo > 44) return 7.4;
+                if (largo > 32) return 8.2;
+                if (largo > 24) return 9.2;
+                return 10.4;
+              }
+
+              if (largo > 44) return 12.2;
+              if (largo > 32) return 13.8;
+              if (largo > 24) return 15.2;
+              return 17.2;
+            };
+
+            const getCategorySize = (texto) => {
+              const largo = normalizarTexto(texto).length;
+
+              if (formato === "media-a4") {
+                if (largo > 36) return 2.7;
+                if (largo > 24) return 3.1;
+                return 3.5;
+              }
+
+              if (largo > 36) return 4;
+              if (largo > 24) return 4.4;
+              return 4.8;
+            };
 
             const syncCartel = (index) => {
               const titleInput = document.querySelector('[data-title-input][data-cartel-index="' + index + '"]');
