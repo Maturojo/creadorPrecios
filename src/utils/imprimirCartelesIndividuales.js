@@ -166,7 +166,7 @@ export function imprimirCartelesIndividuales(productos, opciones) {
                       <input
                         type="number"
                         min="1.6"
-                        max="6"
+                        max="14"
                         step="0.1"
                         value="${tamanioTituloInicial}"
                         data-title-size-input
@@ -363,7 +363,7 @@ export function imprimirCartelesIndividuales(productos, opciones) {
               const titulo = titleDisplay.textContent?.trim() || "${SIN_TITULO}";
               const categoria = categoryInput.value.trim();
               const tamanioManual = Number(titleSizeInput.value || titleSizeInput.dataset.defaultValue || 0);
-              const tamanioNormalizado = Math.min(Math.max(tamanioManual, 1.6), 6);
+              const tamanioNormalizado = Math.min(Math.max(tamanioManual, 1.6), 14);
 
               titleDisplay.textContent = titulo;
               titleDisplay.style.fontSize = tamanioNormalizado + "mm";
