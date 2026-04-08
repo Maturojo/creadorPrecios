@@ -382,6 +382,8 @@
   justify-content: flex-end;
   align-items: flex-end;
   flex-wrap: nowrap;
+  margin-left: auto;
+  width: fit-content;
 }
 
 .btn-outline,
