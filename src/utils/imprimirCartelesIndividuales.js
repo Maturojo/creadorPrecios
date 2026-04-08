@@ -81,6 +81,13 @@ export function imprimirCartelesIndividuales(productos, opciones) {
       totalCarteles: lista.length,
     }));
 
+  const cartelesPorPagina = opciones.formato === "media-a4" ? 4 : 8;
+  const paginas = [];
+
+  for (let indice = 0; indice < carteles.length; indice += cartelesPorPagina) {
+    paginas.push(carteles.slice(indice, indice + cartelesPorPagina));
+  }
+
   const html = `
     <!DOCTYPE html>
     <html lang="es">
@@ -94,7 +101,7 @@ export function imprimirCartelesIndividuales(productos, opciones) {
         <div class="print-toolbar no-print">
           <div class="print-toolbar-copy">
             <strong>Vista previa de impresion</strong>
-            <span>${productos.length} producto(s), ${carteles.length} cartel(es) individuales, ${config.descripcion}</span>
+            <span>${productos.length} producto(s), ${carteles.length} cartel(es) individuales, ${paginas.length} hoja(s), ${config.descripcion}</span>
           </div>
 
           <div class="print-toolbar-actions">
@@ -128,6 +135,7 @@ export function imprimirCartelesIndividuales(productos, opciones) {
           </div>
         </div>
 
+        <section class="cartel-editor-list no-print">
         ${carteles
           .map(({ producto, numeroCartel, totalCarteles }, index) => {
             const tituloInicial = normalizarTexto(
@@ -145,111 +153,141 @@ export function imprimirCartelesIndividuales(productos, opciones) {
               .join(" · ");
 
             return `
-              <section class="cartel-shell" data-cartel-shell>
-                <div class="cartel-editor no-print">
-                  <div class="cartel-editor-grid">
-                    <label class="cartel-editor-field">
-                      <span>Titulo</span>
-                      <input
-                        type="text"
-                        value="${escaparHtml(tituloInicial)}"
-                        data-title-input
-                        data-default-value="${escaparHtml(tituloInicial)}"
-                        data-cartel-index="${index}"
-                      />
-                    </label>
+              <div class="cartel-editor">
+                <div class="cartel-editor-grid">
+                  <label class="cartel-editor-field">
+                    <span>Titulo</span>
+                    <input
+                      type="text"
+                      value="${escaparHtml(tituloInicial)}"
+                      data-title-input
+                      data-default-value="${escaparHtml(tituloInicial)}"
+                      data-cartel-index="${index}"
+                    />
+                  </label>
 
-                    <label class="cartel-editor-field">
-                      <span>Linea secundaria</span>
-                      <input
-                        type="text"
-                        value="${escaparHtml(categoriaInicial)}"
-                        data-category-input
-                        data-default-value="${escaparHtml(categoriaInicial)}"
-                        data-cartel-index="${index}"
-                        placeholder="Opcional"
-                      />
-                    </label>
+                  <label class="cartel-editor-field">
+                    <span>Linea secundaria</span>
+                    <input
+                      type="text"
+                      value="${escaparHtml(categoriaInicial)}"
+                      data-category-input
+                      data-default-value="${escaparHtml(categoriaInicial)}"
+                      data-cartel-index="${index}"
+                      placeholder="Opcional"
+                    />
+                  </label>
 
-                    <button type="button" class="cartel-editor-reset" data-reset-button data-cartel-index="${index}">
-                      Restaurar
-                    </button>
-                  </div>
+                  <button type="button" class="cartel-editor-reset" data-reset-button data-cartel-index="${index}">
+                    Restaurar
+                  </button>
                 </div>
-
-                <section class="cartel cartel--individual" data-cartel="${index}">
-                  <div class="cartel-individual-stage">
-                    <article class="cartel-individual-label">
-                      <div class="cartel-individual-topline">
-                        <span class="cartel-individual-kicker">Cod. ${escaparHtml(
-                          producto.codigo
-                        )}</span>
-                        ${
-                          totalCarteles > 1
-                            ? `<span class="cartel-individual-secuencia">${numeroCartel}/${totalCarteles}</span>`
-                            : ""
-                        }
-                      </div>
-
-                      <div class="cartel-individual-copy">
-                        <h1 class="cartel-individual-title" data-title-display data-cartel-index="${index}">
-                          ${escaparHtml(tituloInicial)}
-                        </h1>
-                        <p
-                          class="cartel-individual-category${
-                            categoriaInicial ? "" : " categoria-oculta"
-                          }"
-                          data-category-display
-                          data-cartel-index="${index}"
-                        >
-                          ${escaparHtml(categoriaInicial)}
-                        </p>
-                      </div>
-
-                      <div class="cartel-individual-divider"></div>
-
-                      <div class="cartel-individual-price-stack">
-                        <article class="cartel-individual-price-card cartel-individual-price-card--main" data-price-cell data-base-price="${Number(
-                          producto.precio || 0
-                        )}">
-                          <div class="precio-stack precio-stack--individual">
-                            <span class="precio-anterior oculto" data-original-price></span>
-                            <strong class="cartel-individual-price-value" data-current-price>${formatearPrecio(
-                              producto.precio
-                            )}</strong>
-                          </div>
-                        </article>
-
-                        ${
-                          esProductoVarilla(producto)
-                            ? `
-                              <article
-                                class="cartel-individual-price-card cartel-individual-price-card--secondary"
-                                data-rod-price-cell
-                                data-base-price="${Number(producto.precio || 0)}"
-                                data-aplica-varilla="true"
-                              >
-                                <span class="cartel-individual-price-label">Varilla ${LARGO_VARILLA.toFixed(
-                                  2
-                                )} m</span>
-                                <div class="precio-stack precio-stack--individual precio-stack--secondary">
-                                  <span class="precio-anterior oculto" data-original-rod-price></span>
-                                  <strong class="cartel-individual-price-value cartel-individual-price-value--secondary" data-current-rod-price>${formatearPrecio(
-                                    Number(producto.precio || 0) * LARGO_VARILLA
-                                  )}</strong>
-                                </div>
-                              </article>
-                            `
-                            : ""
-                        }
-                      </div>
-                    </article>
-                  </div>
-                </section>
-              </section>
+              </div>
             `;
           })
           .join("")}
+        </section>
+
+        <section class="individual-pages">
+        ${paginas
+          .map(
+            (pagina, paginaIndex) => `
+              <section class="individual-page">
+                ${pagina
+                  .map(({ producto, numeroCartel, totalCarteles }) => {
+                    const index = numeroCartel - 1;
+                    const tituloInicial = normalizarTexto(
+                      producto.nombre || producto.descripcion,
+                      SIN_TITULO
+                    );
+                    const categoriaInicial = [
+                      normalizarTexto(producto.categoria, ""),
+                      normalizarTexto(producto.subcategoria, SIN_SUBCATEGORIA) !==
+                      SIN_SUBCATEGORIA
+                        ? normalizarTexto(producto.subcategoria, "")
+                        : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" · ");
+
+                    return `
+                      <section class="cartel cartel--individual" data-cartel="${index}" data-page-index="${paginaIndex}">
+                        <div class="cartel-individual-stage">
+                          <article class="cartel-individual-label">
+                            <div class="cartel-individual-topline">
+                              <span class="cartel-individual-kicker">Cod. ${escaparHtml(
+                                producto.codigo
+                              )}</span>
+                              ${
+                                totalCarteles > 1
+                                  ? `<span class="cartel-individual-secuencia">${numeroCartel}/${totalCarteles}</span>`
+                                  : ""
+                              }
+                            </div>
+
+                            <div class="cartel-individual-copy">
+                              <h1 class="cartel-individual-title" data-title-display data-cartel-index="${index}">
+                                ${escaparHtml(tituloInicial)}
+                              </h1>
+                              <p
+                                class="cartel-individual-category${
+                                  categoriaInicial ? "" : " categoria-oculta"
+                                }"
+                                data-category-display
+                                data-cartel-index="${index}"
+                              >
+                                ${escaparHtml(categoriaInicial)}
+                              </p>
+                            </div>
+
+                            <div class="cartel-individual-divider"></div>
+
+                            <div class="cartel-individual-price-stack">
+                              <article class="cartel-individual-price-card cartel-individual-price-card--main" data-price-cell data-base-price="${Number(
+                                producto.precio || 0
+                              )}">
+                                <div class="precio-stack precio-stack--individual">
+                                  <span class="precio-anterior oculto" data-original-price></span>
+                                  <strong class="cartel-individual-price-value" data-current-price>${formatearPrecio(
+                                    producto.precio
+                                  )}</strong>
+                                </div>
+                              </article>
+
+                              ${
+                                esProductoVarilla(producto)
+                                  ? `
+                                    <article
+                                      class="cartel-individual-price-card cartel-individual-price-card--secondary"
+                                      data-rod-price-cell
+                                      data-base-price="${Number(producto.precio || 0)}"
+                                      data-aplica-varilla="true"
+                                    >
+                                      <span class="cartel-individual-price-label">Varilla ${LARGO_VARILLA.toFixed(
+                                        2
+                                      )} m</span>
+                                      <div class="precio-stack precio-stack--individual precio-stack--secondary">
+                                        <span class="precio-anterior oculto" data-original-rod-price></span>
+                                        <strong class="cartel-individual-price-value cartel-individual-price-value--secondary" data-current-rod-price>${formatearPrecio(
+                                          Number(producto.precio || 0) * LARGO_VARILLA
+                                        )}</strong>
+                                      </div>
+                                    </article>
+                                  `
+                                  : ""
+                              }
+                            </div>
+                          </article>
+                        </div>
+                      </section>
+                    `;
+                  })
+                  .join("")}
+              </section>
+            `
+          )
+          .join("")}
+        </section>
 
         <script>
           (() => {
