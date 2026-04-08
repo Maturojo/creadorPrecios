@@ -350,6 +350,41 @@ export function imprimirCartelesIndividuales(productos, opciones) {
               return 4.8;
             };
 
+            const ajustarTituloParaEntrar = (titleDisplay, categoryDisplay, tamanioBase) => {
+              const copy = titleDisplay?.closest(".cartel-individual-copy");
+
+              if (!copy || !titleDisplay) {
+                return tamanioBase;
+              }
+
+              const minSize = 2.4;
+              let tamanioAjustado = tamanioBase;
+
+              titleDisplay.style.fontSize = tamanioAjustado + "mm";
+
+              const obtenerEspacioDisponible = () => {
+                const estilosCopy = window.getComputedStyle(copy);
+                const gap = parseFloat(estilosCopy.rowGap || estilosCopy.gap || "0");
+                const paddingTop = parseFloat(estilosCopy.paddingTop || "0");
+                const paddingBottom = parseFloat(estilosCopy.paddingBottom || "0");
+                const categoriaVisible = categoryDisplay && !categoryDisplay.classList.contains("categoria-oculta");
+                const alturaCategoria = categoriaVisible ? categoryDisplay.offsetHeight : 0;
+                const gapCategoria = categoriaVisible ? gap : 0;
+
+                return copy.clientHeight - paddingTop - paddingBottom - alturaCategoria - gapCategoria;
+              };
+
+              let espacioDisponible = obtenerEspacioDisponible();
+
+              while (titleDisplay.scrollHeight > espacioDisponible + 1 && tamanioAjustado > minSize) {
+                tamanioAjustado = Number((tamanioAjustado - 0.2).toFixed(1));
+                titleDisplay.style.fontSize = tamanioAjustado + "mm";
+                espacioDisponible = obtenerEspacioDisponible();
+              }
+
+              return tamanioAjustado;
+            };
+
             const syncCartel = (index) => {
               const titleSizeInput = document.querySelector('[data-title-size-input][data-cartel-index="' + index + '"]');
               const categoryInput = document.querySelector('[data-category-input][data-cartel-index="' + index + '"]');
@@ -366,11 +401,10 @@ export function imprimirCartelesIndividuales(productos, opciones) {
               const tamanioNormalizado = Math.min(Math.max(tamanioManual, 1.6), 14);
 
               titleDisplay.textContent = titulo;
-              titleDisplay.style.fontSize = tamanioNormalizado + "mm";
-
               categoryDisplay.textContent = categoria;
               categoryDisplay.style.fontSize = getCategorySize(categoria) + "mm";
               categoryDisplay.classList.toggle("categoria-oculta", !categoria);
+              ajustarTituloParaEntrar(titleDisplay, categoryDisplay, tamanioNormalizado);
             };
 
             const formatPrice = (valor) =>
