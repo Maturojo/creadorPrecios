@@ -1,4 +1,5 @@
 import cartelPrintCssUrl from "../styles/carteles-preview-print.css?url";
+import { imprimirCartelesIndividuales } from "./imprimirCartelesIndividuales";
 
 const SIN_SUBCATEGORIA = "Sin subcategoria";
 const SIN_TITULO = "Sin titulo";
@@ -59,7 +60,14 @@ export function imprimirCarteles(productos, formato = "a4") {
   }
 
   const opciones =
-    typeof formato === "string" ? { formato, agrupacion: "clasificacion" } : formato;
+    typeof formato === "string"
+      ? { formato, modoCartel: "agrupado", agrupacion: "clasificacion" }
+      : formato;
+
+  if (opciones.modoCartel === "individual") {
+    imprimirCartelesIndividuales(productos, opciones);
+    return;
+  }
 
   const configFormato = {
     a4: {

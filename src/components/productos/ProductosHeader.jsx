@@ -23,6 +23,7 @@ export default function ProductosHeader({
   todosFiltradosSeleccionados,
   mostrandoHistorial,
   formatoImpresion,
+  modoCartelImpresion,
   modoAgrupacionImpresion,
   exportandoProductos,
   onToggleSeleccionTodos,
@@ -33,6 +34,7 @@ export default function ProductosHeader({
   onExportarProductos,
   onToggleHistorial,
   onFormatoImpresionChange,
+  onModoCartelImpresionChange,
   onModoAgrupacionImpresionChange,
   onImprimir,
 }) {
@@ -111,6 +113,20 @@ export default function ProductosHeader({
           </label>
 
           <label className="print-config">
+            <span>Modo de cartel</span>
+            <select
+              value={modoCartelImpresion}
+              onChange={(event) =>
+                onModoCartelImpresionChange(event.target.value)
+              }
+              className="select-impresion"
+            >
+              <option value="agrupado">Por seleccion</option>
+              <option value="individual">Individual por producto</option>
+            </select>
+          </label>
+
+          <label className="print-config">
             <span>Agrupacion</span>
             <select
               value={modoAgrupacionImpresion}
@@ -118,6 +134,7 @@ export default function ProductosHeader({
                 onModoAgrupacionImpresionChange(event.target.value)
               }
               className="select-impresion"
+              disabled={modoCartelImpresion === "individual"}
             >
               <option value="clasificacion">Separar por categoria</option>
               <option value="mezclar">Mezclar seleccion</option>

@@ -80,6 +80,7 @@ export default function Productos() {
   const [eliminandoClasificacion, setEliminandoClasificacion] = useState(false);
 
   const [formatoImpresion, setFormatoImpresion] = useState("a4");
+  const [modoCartelImpresion, setModoCartelImpresion] = useState("agrupado");
   const [modoAgrupacionImpresion, setModoAgrupacionImpresion] =
     useState("clasificacion");
   const [paginaActual, setPaginaActual] = useState(1);
@@ -835,6 +836,7 @@ export default function Productos() {
 
     imprimirCarteles(seleccionados, {
       formato: formatoImpresion,
+      modoCartel: modoCartelImpresion,
       agrupacion: modoAgrupacionImpresion,
     });
   }
@@ -871,6 +873,7 @@ export default function Productos() {
         todosFiltradosSeleccionados={todosFiltradosSeleccionados}
         mostrandoHistorial={mostrandoHistorial}
         formatoImpresion={formatoImpresion}
+        modoCartelImpresion={modoCartelImpresion}
         modoAgrupacionImpresion={modoAgrupacionImpresion}
         exportandoProductos={exportandoProductos}
         onToggleSeleccionTodos={toggleSeleccionTodos}
@@ -881,6 +884,7 @@ export default function Productos() {
         onExportarProductos={handleExportarProductos}
         onToggleHistorial={() => setMostrandoHistorial((prev) => !prev)}
         onFormatoImpresionChange={setFormatoImpresion}
+        onModoCartelImpresionChange={setModoCartelImpresion}
         onModoAgrupacionImpresionChange={setModoAgrupacionImpresion}
         onImprimir={handleImprimir}
       />
