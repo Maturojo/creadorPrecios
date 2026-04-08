@@ -216,21 +216,22 @@ body.formato-media-a4 {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex: 1;
+  align-items: stretch;
+  height: 100%;
 }
 
 .cartel-individual-label {
   width: 100%;
   height: 100%;
   min-height: 0;
-  padding: 3mm 3.8mm 3.2mm;
+  padding: 2.4mm 3.2mm 2.6mm;
   border: 0.6mm solid #76808a;
   box-shadow: 0 0 0 0.6mm #d8dee4 inset;
   background: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  align-content: center;
+  row-gap: 1.1mm;
   text-align: center;
 }
 
@@ -240,7 +241,7 @@ body.formato-media-a4 {
   align-items: center;
   justify-content: space-between;
   gap: 1.8mm;
-  margin-bottom: 1.2mm;
+  margin-bottom: 0;
 }
 
 .cartel-individual-kicker,
@@ -257,17 +258,17 @@ body.formato-media-a4 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 0.9mm;
-  flex: 1;
+  justify-content: flex-start;
+  gap: 0.5mm;
+  flex: initial;
 }
 
 .cartel-individual-title {
   margin: 0;
-  font-size: 5.6mm;
+  font-size: 5.2mm;
   font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 0.98;
+  line-height: 0.95;
   color: #2a3441;
   text-wrap: balance;
   overflow-wrap: anywhere;
@@ -275,16 +276,17 @@ body.formato-media-a4 {
 
 .cartel-individual-category {
   margin: 0;
-  font-size: 2.15mm;
+  font-size: 1.95mm;
   font-weight: 600;
   letter-spacing: 0;
   color: #556171;
+  line-height: 1.05;
 }
 
 .cartel-individual-divider {
   width: 100%;
   height: 0.4mm;
-  margin: 1.2mm 0 1.1mm;
+  margin: 0.4mm 0 0;
   background: #ccd5df;
 }
 
@@ -292,7 +294,7 @@ body.formato-media-a4 {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.9mm;
+  gap: 0.5mm;
   align-items: center;
 }
 
@@ -310,7 +312,7 @@ body.formato-media-a4 {
 }
 
 .cartel-individual-price-label {
-  font-size: 1.8mm;
+  font-size: 1.65mm;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -318,24 +320,24 @@ body.formato-media-a4 {
 }
 
 .cartel-individual-price-value {
-  font-size: 6.4mm;
+  font-size: 5.9mm;
   line-height: 1;
   letter-spacing: -0.05em;
   color: #111827;
 }
 
 .cartel-individual-price-value--secondary {
-  font-size: 3.9mm;
+  font-size: 3.4mm;
   letter-spacing: -0.03em;
 }
 
 .precio-stack--individual {
   align-items: center;
-  gap: 0.7mm;
+  gap: 0.4mm;
 }
 
 .precio-stack--individual .precio-anterior {
-  font-size: 1.8mm;
+  font-size: 1.5mm;
 }
 
 .precio-stack--secondary {
@@ -601,7 +603,7 @@ body.formato-media-a4 .cartel--individual {
 body.formato-media-a4 .cartel-individual-label {
   height: 100%;
   min-height: 0;
-  padding: 2.4mm 3mm 2.6mm;
+  padding: 2mm 2.6mm 2.2mm;
   border-width: 0.45mm;
   box-shadow: 0 0 0 0.45mm #d8dee4 inset;
 }
@@ -612,35 +614,35 @@ body.formato-media-a4 .cartel-individual-secuencia {
 }
 
 body.formato-media-a4 .cartel-individual-copy {
-  gap: 1mm;
+  gap: 0.35mm;
 }
 
 body.formato-media-a4 .cartel-individual-category {
-  font-size: 1.85mm;
+  font-size: 1.65mm;
 }
 
 body.formato-media-a4 .cartel-individual-title {
-  font-size: 4.8mm;
+  font-size: 4.3mm;
 }
 
 body.formato-media-a4 .cartel-individual-divider {
-  margin: 1mm 0 0.9mm;
+  margin: 0.3mm 0 0;
 }
 
 body.formato-media-a4 .cartel-individual-price-label {
-  font-size: 1.55mm;
+  font-size: 1.35mm;
 }
 
 body.formato-media-a4 .cartel-individual-price-value {
-  font-size: 5.2mm;
+  font-size: 4.8mm;
 }
 
 body.formato-media-a4 .cartel-individual-price-value--secondary {
-  font-size: 3.2mm;
+  font-size: 2.8mm;
 }
 
 body.formato-media-a4 .precio-stack--individual .precio-anterior {
-  font-size: 1.5mm;
+  font-size: 1.25mm;
 }
 
 body.formato-media-a4 .individual-page {
