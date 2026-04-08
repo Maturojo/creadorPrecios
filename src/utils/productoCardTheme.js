@@ -477,5 +477,8 @@ export function getProductoCardTheme(categoria, subcategoria, categoryColorKey =
     "--producto-card-tag-bg": colorSet.tagBackground,
     "--producto-card-tag-color": colorSet.tagColor,
     "--producto-card-code-color": colorSet.codeColor,
+    "--producto-card-accent": colorSet.border,
+    "--producto-card-accent-soft": colorSet.tagBackground,
+    "--producto-card-glow": `${colorSet.border}22`,
   };
 }
