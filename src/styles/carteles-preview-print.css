@@ -197,162 +197,136 @@ body.formato-media-a4 {
 }
 
 .cartel--individual {
-  padding: 10mm;
-  justify-content: space-between;
+  padding: 14mm 12mm;
+  justify-content: center;
+  align-items: center;
 }
 
-.cartel-individual-layout {
-  min-height: 100%;
+.cartel-individual-stage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.cartel-individual-label {
+  width: min(100%, 136mm);
+  padding: 4.5mm 5.5mm 5mm;
+  border: 0.6mm solid #76808a;
+  box-shadow: 0 0 0 0.6mm #d8dee4 inset;
+  background: #ffffff;
   display: flex;
   flex-direction: column;
-  gap: 8mm;
+  align-items: center;
+  text-align: center;
 }
 
-.cartel-individual-hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 62mm;
-  gap: 8mm;
-  align-items: stretch;
-}
-
-.cartel-individual-kicker-wrap {
+.cartel-individual-topline {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 4mm;
-  margin-bottom: 4mm;
+  gap: 3mm;
+  margin-bottom: 2.5mm;
 }
 
 .cartel-individual-kicker,
 .cartel-individual-secuencia {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 10mm;
-  padding: 0 4mm;
-  border-radius: 999px;
-  font-size: 4mm;
+  font-size: 2.8mm;
   font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-.cartel-individual-kicker {
-  background: #191511;
-  color: #fff8ef;
-}
-
-.cartel-individual-secuencia {
-  background: #f5ebde;
-  color: #5b4c39;
+  letter-spacing: 0.04em;
+  color: #6a7380;
+  text-transform: uppercase;
 }
 
 .cartel-individual-copy {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  min-height: 72mm;
-  padding: 6mm;
-  border: 1px solid #e6d7c4;
-  border-radius: 8mm;
-  background:
-    radial-gradient(circle at top left, rgba(214, 186, 149, 0.18), transparent 36%),
-    linear-gradient(180deg, #fffdfa 0%, #fff8ef 100%);
-}
-
-.cartel-individual-category {
-  margin: 0 0 3mm;
-  font-size: 4.8mm;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #7a6446;
+  gap: 1.6mm;
 }
 
 .cartel-individual-title {
   margin: 0;
-  font-size: 17.2mm;
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  line-height: 0.92;
-  color: #18120d;
+  font-size: 8.8mm;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  color: #2a3441;
   text-wrap: balance;
   overflow-wrap: anywhere;
 }
 
-.cartel-individual-image {
-  overflow: hidden;
-  border: 1px solid #e6d7c4;
-  border-radius: 8mm;
-  min-height: 84mm;
-  background: linear-gradient(135deg, #fbf3e8 0%, #f1e3cf 100%);
+.cartel-individual-category {
+  margin: 0;
+  font-size: 4mm;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #556171;
 }
 
-.cartel-individual-image img {
+.cartel-individual-divider {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  height: 0.4mm;
+  margin: 3.4mm 0 3mm;
+  background: #ccd5df;
 }
 
-.cartel-individual-image--placeholder {
-  display: grid;
-  place-items: center;
-}
-
-.cartel-individual-image--placeholder span {
-  width: 26mm;
-  height: 26mm;
-  display: grid;
-  place-items: center;
-  border-radius: 999px;
-  background: rgba(24, 18, 13, 0.86);
-  color: #fff8ef;
-  font-size: 12mm;
-  font-weight: 800;
-}
-
-.cartel-individual-price-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 5mm;
+.cartel-individual-price-stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2mm;
+  align-items: center;
 }
 
 .cartel-individual-price-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 58mm;
-  padding: 6mm;
-  border: 1.6px solid #15110d;
-  border-radius: 8mm;
-  background: #ffffff;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  min-height: 0;
 }
 
-.cartel-individual-price-card--secondary {
-  background: #f8efe3;
+.cartel-individual-price-card--main {
+  display: flex;
+  justify-content: center;
 }
 
 .cartel-individual-price-label {
-  font-size: 4.4mm;
+  font-size: 3.1mm;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: #66523a;
+  color: #6a7380;
 }
 
 .cartel-individual-price-value {
-  font-size: 14mm;
-  line-height: 0.95;
+  font-size: 13.6mm;
+  line-height: 1;
   letter-spacing: -0.05em;
+  color: #111827;
+}
+
+.cartel-individual-price-value--secondary {
+  font-size: 7.2mm;
+  letter-spacing: -0.03em;
 }
 
 .precio-stack--individual {
-  align-items: flex-start;
-  gap: 2mm;
+  align-items: center;
+  gap: 1.4mm;
 }
 
 .precio-stack--individual .precio-anterior {
-  font-size: 4mm;
+  font-size: 3.1mm;
+}
+
+.precio-stack--secondary {
+  gap: 1mm;
 }
 
 body.formato-a4 .cartel {
@@ -584,67 +558,51 @@ body.formato-media-a4 .cartel-tabla td {
 }
 
 body.formato-media-a4 .cartel--individual {
-  padding: 6mm;
+  padding: 8mm 6mm;
 }
 
-body.formato-media-a4 .cartel-individual-hero {
-  grid-template-columns: minmax(0, 1fr) 40mm;
-  gap: 4mm;
+body.formato-media-a4 .cartel-individual-label {
+  width: min(100%, 92mm);
+  padding: 3mm 3.8mm 3.4mm;
+  border-width: 0.45mm;
+  box-shadow: 0 0 0 0.45mm #d8dee4 inset;
 }
 
 body.formato-media-a4 .cartel-individual-kicker,
 body.formato-media-a4 .cartel-individual-secuencia {
-  min-height: 7mm;
-  padding: 0 3mm;
-  font-size: 2.6mm;
+  font-size: 1.9mm;
 }
 
 body.formato-media-a4 .cartel-individual-copy {
-  min-height: 44mm;
-  padding: 4mm;
-  border-radius: 5mm;
+  gap: 1mm;
 }
 
 body.formato-media-a4 .cartel-individual-category {
-  margin-bottom: 2mm;
-  font-size: 3.2mm;
+  font-size: 2.5mm;
 }
 
 body.formato-media-a4 .cartel-individual-title {
-  font-size: 10.4mm;
+  font-size: 5.9mm;
 }
 
-body.formato-media-a4 .cartel-individual-image {
-  min-height: 52mm;
-  border-radius: 5mm;
-}
-
-body.formato-media-a4 .cartel-individual-image--placeholder span {
-  width: 16mm;
-  height: 16mm;
-  font-size: 7mm;
-}
-
-body.formato-media-a4 .cartel-individual-price-grid {
-  gap: 3mm;
-}
-
-body.formato-media-a4 .cartel-individual-price-card {
-  min-height: 32mm;
-  padding: 4mm;
-  border-radius: 5mm;
+body.formato-media-a4 .cartel-individual-divider {
+  margin: 2.2mm 0 2mm;
 }
 
 body.formato-media-a4 .cartel-individual-price-label {
-  font-size: 3mm;
+  font-size: 2mm;
 }
 
 body.formato-media-a4 .cartel-individual-price-value {
-  font-size: 8.2mm;
+  font-size: 7mm;
+}
+
+body.formato-media-a4 .cartel-individual-price-value--secondary {
+  font-size: 4.3mm;
 }
 
 body.formato-media-a4 .precio-stack--individual .precio-anterior {
-  font-size: 2.7mm;
+  font-size: 2mm;
 }
 
 body.formato-media-a4 .precio-anterior {
@@ -687,7 +645,7 @@ body.formato-media-a4 .precio-anterior {
   }
 
   .modo-individual .cartel {
-    border-radius: 10mm;
+    border-radius: 6mm;
     overflow: hidden;
   }
 }

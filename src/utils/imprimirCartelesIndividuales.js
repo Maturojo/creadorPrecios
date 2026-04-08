@@ -108,7 +108,7 @@ export function imprimirCartelesIndividuales(productos, opciones) {
         </div>
 
         <div class="print-helper no-print">
-          Podes editar el titulo y la linea secundaria de cada cartel. El precio se recalcula con descuento para que el diseño individual quede listo para mostrador.
+          Podes editar el titulo y la linea secundaria de cada cartel. Este modo usa una etiqueta compacta de mostrador, inspirada en la referencia pero con mejor jerarquia y lectura.
         </div>
 
         <div class="print-controls no-print">
@@ -178,20 +178,23 @@ export function imprimirCartelesIndividuales(productos, opciones) {
                 </div>
 
                 <section class="cartel cartel--individual" data-cartel="${index}">
-                  <div class="cartel-individual-layout">
-                    <div class="cartel-individual-hero">
-                      <div class="cartel-individual-kicker-wrap">
-                        <span class="cartel-individual-kicker">Codigo ${escaparHtml(
+                  <div class="cartel-individual-stage">
+                    <article class="cartel-individual-label">
+                      <div class="cartel-individual-topline">
+                        <span class="cartel-individual-kicker">Cod. ${escaparHtml(
                           producto.codigo
                         )}</span>
                         ${
                           totalCarteles > 1
-                            ? `<span class="cartel-individual-secuencia">${numeroCartel} / ${totalCarteles}</span>`
+                            ? `<span class="cartel-individual-secuencia">${numeroCartel}/${totalCarteles}</span>`
                             : ""
                         }
                       </div>
 
                       <div class="cartel-individual-copy">
+                        <h1 class="cartel-individual-title" data-title-display data-cartel-index="${index}">
+                          ${escaparHtml(tituloInicial)}
+                        </h1>
                         <p
                           class="cartel-individual-category${
                             categoriaInicial ? "" : " categoria-oculta"
@@ -201,64 +204,46 @@ export function imprimirCartelesIndividuales(productos, opciones) {
                         >
                           ${escaparHtml(categoriaInicial)}
                         </p>
-                        <h1 class="cartel-individual-title" data-title-display data-cartel-index="${index}">
-                          ${escaparHtml(tituloInicial)}
-                        </h1>
                       </div>
 
-                      ${
-                        producto.imagenUrl
-                          ? `
-                            <div class="cartel-individual-image">
-                              <img src="${escaparHtml(producto.imagenUrl)}" alt="${escaparHtml(
-                              tituloInicial
-                            )}" />
-                            </div>
-                          `
-                          : `
-                            <div class="cartel-individual-image cartel-individual-image--placeholder" aria-hidden="true">
-                              <span>${escaparHtml((tituloInicial || "P").slice(0, 1))}</span>
-                            </div>
-                          `
-                      }
-                    </div>
+                      <div class="cartel-individual-divider"></div>
 
-                    <div class="cartel-individual-price-grid">
-                      <article class="cartel-individual-price-card" data-price-cell data-base-price="${Number(
-                        producto.precio || 0
-                      )}">
-                        <span class="cartel-individual-price-label">Precio</span>
-                        <div class="precio-stack precio-stack--individual">
-                          <span class="precio-anterior oculto" data-original-price></span>
-                          <strong class="cartel-individual-price-value" data-current-price>${formatearPrecio(
-                            producto.precio
-                          )}</strong>
-                        </div>
-                      </article>
+                      <div class="cartel-individual-price-stack">
+                        <article class="cartel-individual-price-card cartel-individual-price-card--main" data-price-cell data-base-price="${Number(
+                          producto.precio || 0
+                        )}">
+                          <div class="precio-stack precio-stack--individual">
+                            <span class="precio-anterior oculto" data-original-price></span>
+                            <strong class="cartel-individual-price-value" data-current-price>${formatearPrecio(
+                              producto.precio
+                            )}</strong>
+                          </div>
+                        </article>
 
-                      ${
-                        esProductoVarilla(producto)
-                          ? `
-                            <article
-                              class="cartel-individual-price-card cartel-individual-price-card--secondary"
-                              data-rod-price-cell
-                              data-base-price="${Number(producto.precio || 0)}"
-                              data-aplica-varilla="true"
-                            >
-                              <span class="cartel-individual-price-label">Varilla ${LARGO_VARILLA.toFixed(
-                                2
-                              )} m</span>
-                              <div class="precio-stack precio-stack--individual">
-                                <span class="precio-anterior oculto" data-original-rod-price></span>
-                                <strong class="cartel-individual-price-value" data-current-rod-price>${formatearPrecio(
-                                  Number(producto.precio || 0) * LARGO_VARILLA
-                                )}</strong>
-                              </div>
-                            </article>
-                          `
-                          : ""
-                      }
-                    </div>
+                        ${
+                          esProductoVarilla(producto)
+                            ? `
+                              <article
+                                class="cartel-individual-price-card cartel-individual-price-card--secondary"
+                                data-rod-price-cell
+                                data-base-price="${Number(producto.precio || 0)}"
+                                data-aplica-varilla="true"
+                              >
+                                <span class="cartel-individual-price-label">Varilla ${LARGO_VARILLA.toFixed(
+                                  2
+                                )} m</span>
+                                <div class="precio-stack precio-stack--individual precio-stack--secondary">
+                                  <span class="precio-anterior oculto" data-original-rod-price></span>
+                                  <strong class="cartel-individual-price-value cartel-individual-price-value--secondary" data-current-rod-price>${formatearPrecio(
+                                    Number(producto.precio || 0) * LARGO_VARILLA
+                                  )}</strong>
+                                </div>
+                              </article>
+                            `
+                            : ""
+                        }
+                      </div>
+                    </article>
                   </div>
                 </section>
               </section>
