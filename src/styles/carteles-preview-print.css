@@ -359,6 +359,24 @@ body.formato-media-a4 {
   letter-spacing: -0.03em;
 }
 
+.cartel-individual-financing-note {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 82%;
+  margin-top: 0.8mm;
+  padding: 0.9mm 1.8mm 0.7mm;
+  border-radius: 999px;
+  background: #f1eadf;
+  color: #6b5330;
+  font-size: 1.8mm;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .precio-stack--individual {
   align-items: center;
   gap: 0.25mm;
@@ -679,6 +697,12 @@ body.formato-media-a4 .cartel-individual-price-value {
 
 body.formato-media-a4 .cartel-individual-price-value--secondary {
   font-size: 3.4mm;
+}
+
+body.formato-media-a4 .cartel-individual-financing-note {
+  max-width: 90%;
+  font-size: 1.35mm;
+  padding: 0.7mm 1.4mm 0.6mm;
 }
 
 body.formato-media-a4 .precio-stack--individual .precio-anterior {

@@ -3,6 +3,7 @@ import cartelPrintCssUrl from "../styles/carteles-preview-print.css?url";
 const SIN_SUBCATEGORIA = "Sin subcategoria";
 const SIN_TITULO = "Sin titulo";
 const LARGO_VARILLA = 3.05;
+const UMBRAL_CUOTAS = 200000;
 
 function normalizarTexto(valor, fallback = "") {
   return String(valor || "").trim() || fallback;
@@ -268,6 +269,11 @@ export function imprimirCartelesIndividuales(productos, opciones) {
                                   <strong class="cartel-individual-price-value" data-current-price>${formatearPrecio(
                                     producto.precio
                                   )}</strong>
+                                  <span class="cartel-individual-financing-note${
+                                    Number(producto.precio || 0) > UMBRAL_CUOTAS ? "" : " oculto"
+                                  }" data-financing-note>
+                                    Consulta por 6 cuotas sin interes
+                                  </span>
                                 </div>
                               </article>
 
@@ -428,6 +434,7 @@ export function imprimirCartelesIndividuales(productos, opciones) {
                 const basePrice = Number(cell.dataset.basePrice || 0);
                 const currentPrice = cell.querySelector("[data-current-price]");
                 const originalPrice = cell.querySelector("[data-original-price]");
+                const financingNote = cell.querySelector("[data-financing-note]");
                 const discountedPrice = basePrice * multiplier;
 
                 if (currentPrice) {
@@ -437,6 +444,10 @@ export function imprimirCartelesIndividuales(productos, opciones) {
                 if (originalPrice) {
                   originalPrice.textContent = formatPrice(basePrice);
                   originalPrice.classList.toggle("oculto", !mostrarAnterior || multiplier === 1);
+                }
+
+                if (financingNote) {
+                  financingNote.classList.toggle("oculto", discountedPrice <= ${UMBRAL_CUOTAS});
                 }
               });
 
