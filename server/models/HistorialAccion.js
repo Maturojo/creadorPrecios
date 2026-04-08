@@ -26,6 +26,17 @@ const historialAccionSchema = new mongoose.Schema(
       default: "",
       trim: true,
     },
+    usuarioNombre: {
+      type: String,
+      default: "",
+      trim: true,
+    },
+    usuarioEmail: {
+      type: String,
+      default: "",
+      trim: true,
+      lowercase: true,
+    },
   },
   {
     timestamps: true,

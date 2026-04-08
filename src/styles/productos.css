@@ -541,6 +541,9 @@
 }
 
 .historial-item-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   font-size: 0.9rem;
   color: #666;
 }

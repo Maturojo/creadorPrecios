@@ -477,17 +477,19 @@ router.get("/historial", async (req, res) => {
       .limit(100)
       .lean();
 
-    res.json(
-      historial.map((item) => ({
-        id: item._id,
-        tipo: item.tipo,
-        descripcion: item.descripcion,
-        cantidad: item.cantidad || 0,
-        categoria: item.categoria || "",
-        subcategoria: item.subcategoria || "",
-        fecha: item.createdAt,
-      }))
-    );
+      res.json(
+        historial.map((item) => ({
+          id: item._id,
+          tipo: item.tipo,
+          descripcion: item.descripcion,
+          cantidad: item.cantidad || 0,
+          categoria: item.categoria || "",
+          subcategoria: item.subcategoria || "",
+          usuarioNombre: item.usuarioNombre || "",
+          usuarioEmail: item.usuarioEmail || "",
+          fecha: item.createdAt,
+        }))
+      );
   } catch (error) {
     console.error("Error al obtener historial:", error);
     res.status(500).json({ error: "Error al obtener historial" });
@@ -497,13 +499,15 @@ router.get("/historial", async (req, res) => {
 // Guardar acciÃ³n en historial
 router.post("/historial", async (req, res) => {
   try {
-    const {
-      tipo,
-      descripcion,
-      cantidad = 0,
-      categoria = "",
-      subcategoria = "",
-    } = req.body;
+      const {
+        tipo,
+        descripcion,
+        cantidad = 0,
+        categoria = "",
+        subcategoria = "",
+      } = req.body;
+      const usuarioNombre = req.authUser?.nombre || "";
+      const usuarioEmail = req.authUser?.email || "";
 
     if (!tipo?.trim() || !descripcion?.trim()) {
       return res
@@ -511,23 +515,27 @@ router.post("/historial", async (req, res) => {
         .json({ error: "Tipo y descripciÃ³n son obligatorios" });
     }
 
-    const nuevaAccion = await HistorialAccion.create({
-      tipo: tipo.trim(),
-      descripcion: descripcion.trim(),
-      cantidad,
-      categoria: categoria.trim(),
-      subcategoria: subcategoria.trim(),
-    });
+      const nuevaAccion = await HistorialAccion.create({
+        tipo: tipo.trim(),
+        descripcion: descripcion.trim(),
+        cantidad,
+        categoria: categoria.trim(),
+        subcategoria: subcategoria.trim(),
+        usuarioNombre,
+        usuarioEmail,
+      });
 
-    res.status(201).json({
-      id: nuevaAccion._id,
-      tipo: nuevaAccion.tipo,
-      descripcion: nuevaAccion.descripcion,
-      cantidad: nuevaAccion.cantidad,
-      categoria: nuevaAccion.categoria,
-      subcategoria: nuevaAccion.subcategoria,
-      fecha: nuevaAccion.createdAt,
-    });
+      res.status(201).json({
+        id: nuevaAccion._id,
+        tipo: nuevaAccion.tipo,
+        descripcion: nuevaAccion.descripcion,
+        cantidad: nuevaAccion.cantidad,
+        categoria: nuevaAccion.categoria,
+        subcategoria: nuevaAccion.subcategoria,
+        usuarioNombre: nuevaAccion.usuarioNombre || "",
+        usuarioEmail: nuevaAccion.usuarioEmail || "",
+        fecha: nuevaAccion.createdAt,
+      });
   } catch (error) {
     console.error("Error al guardar historial:", error);
     res.status(500).json({ error: "Error al guardar historial" });

@@ -62,6 +62,15 @@ export default function HistorialPanel({
                   <strong>{item.descripcion}</strong>
                 </div>
                 <div className="historial-item-meta">
+                  <span>
+                    {item.usuarioNombre || item.usuarioEmail
+                      ? `Por ${item.usuarioNombre || item.usuarioEmail}${
+                          item.usuarioNombre && item.usuarioEmail
+                            ? ` (${item.usuarioEmail})`
+                            : ""
+                        }`
+                      : "Usuario no registrado"}
+                  </span>
                   <span>{formatearFechaHistorial(item.fecha)}</span>
                 </div>
               </div>
