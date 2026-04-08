@@ -9,6 +9,21 @@ const GOOGLE_AUTH_DESACTIVADO =
   String(import.meta.env.VITE_DISABLE_GOOGLE_AUTH || "").toLowerCase() ===
   "true";
 
+function LogoutIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M9 21H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3m7 14 5-5m0 0-5-5m5 5H10"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 function App() {
   const [estadoSesion, setEstadoSesion] = useState("cargando");
   const [usuario, setUsuario] = useState(null);
@@ -163,9 +178,17 @@ function App() {
           </div>
         </div>
 
-        <button type="button" className="btn-outline" onClick={handleLogout}>
-          Cerrar sesion
-        </button>
+        <div className="session-actions">
+          <button
+            type="button"
+            className="session-icon-btn"
+            onClick={handleLogout}
+            aria-label="Cerrar sesion"
+            title="Cerrar sesion"
+          >
+            <LogoutIcon />
+          </button>
+        </div>
       </header>
 
       <Productos />

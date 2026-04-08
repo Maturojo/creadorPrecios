@@ -19,6 +19,37 @@
   gap: 12px;
 }
 
+.session-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.session-icon-btn {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d4b483;
+  border-radius: 12px;
+  background: #fffdfa;
+  color: #5b4c39;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.session-icon-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.session-icon-btn:hover {
+  background: #fff7eb;
+  color: #2f2418;
+  transform: translateY(-1px);
+}
+
 .session-user strong,
 .session-user span {
   display: block;

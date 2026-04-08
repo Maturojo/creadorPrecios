@@ -1,5 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 
+function IconButton({ label, title, onClick, disabled = false, active = false, children }) {
+  return (
+    <button
+      type="button"
+      className={`icon-action-btn${active ? " icon-action-btn--active" : ""}`}
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={label}
+      title={title || label}
+    >
+      {children}
+    </button>
+  );
+}
+
 export default function ProductosHeader({
   productosCount,
   totalFiltradosCount,
@@ -109,15 +124,64 @@ export default function ProductosHeader({
             </select>
           </label>
 
+          <div className="acciones-header-iconos" aria-label="Acciones rapidas">
+            <IconButton
+              label={exportandoProductos ? "Exportando CSV" : "Exportar CSV"}
+              title={exportandoProductos ? "Exportando CSV..." : "Exportar CSV"}
+              onClick={onExportarProductos}
+              disabled={exportandoProductos}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 3v10m0 0 4-4m-4 4-4-4M5 15v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </IconButton>
+
+            <IconButton
+              label={mostrandoHistorial ? "Ocultar historial" : "Ver historial"}
+              title={mostrandoHistorial ? "Ocultar historial" : "Ver historial"}
+              onClick={onToggleHistorial}
+              active={mostrandoHistorial}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 8v4l2.5 2.5M21 12a9 9 0 1 1-2.64-6.36"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </IconButton>
+          </div>
+
           <div className="menu-acciones" ref={menuRef}>
             <button
               type="button"
-              className="btn-text btn-text-menu"
+              className={`icon-action-btn${menuAbierto ? " icon-action-btn--active" : ""}`}
               onClick={() => setMenuAbierto((prev) => !prev)}
               aria-haspopup="menu"
               aria-expanded={menuAbierto}
+              aria-label="Mas opciones"
+              title="Mas opciones"
             >
-              Mas opciones
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm8 3.5-.86-.5a1 1 0 0 1-.48-1.13l.17-.97a1 1 0 0 0-.73-1.15l-.96-.26a1 1 0 0 1-.72-.98V6a1 1 0 0 0-1-1h-1.04a1 1 0 0 1-.98-.72l-.26-.96a1 1 0 0 0-1.15-.73l-.97.17a1 1 0 0 1-1.13-.48L12 2l-.5.86a1 1 0 0 1-1.13.48l-.97-.17a1 1 0 0 0-1.15.73l-.26.96a1 1 0 0 1-.98.72H6a1 1 0 0 0-1 1v1.04a1 1 0 0 1-.72.98l-.96.26a1 1 0 0 0-.73 1.15l.17.97a1 1 0 0 1-.48 1.13L2 12l.86.5a1 1 0 0 1 .48 1.13l-.17.97a1 1 0 0 0 .73 1.15l.96.26a1 1 0 0 1 .72.98V18a1 1 0 0 0 1 1h1.04a1 1 0 0 1 .98.72l.26.96a1 1 0 0 0 1.15.73l.97-.17a1 1 0 0 1 1.13.48L12 22l.5-.86a1 1 0 0 1 1.13-.48l.97.17a1 1 0 0 0 1.15-.73l.26-.96a1 1 0 0 1 .98-.72H18a1 1 0 0 0 1-1v-1.04a1 1 0 0 1 .72-.98l.96-.26a1 1 0 0 0 .73-1.15l-.17-.97a1 1 0 0 1 .48-1.13L22 12Z"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </button>
 
             {menuAbierto ? (
@@ -143,29 +207,6 @@ export default function ProductosHeader({
                   }}
                 >
                   Editar categorias
-                </button>
-
-                <button
-                  type="button"
-                  className="menu-acciones-item"
-                  onClick={() => {
-                    setMenuAbierto(false);
-                    onExportarProductos();
-                  }}
-                  disabled={exportandoProductos}
-                >
-                  {exportandoProductos ? "Exportando CSV..." : "Exportar CSV"}
-                </button>
-
-                <button
-                  type="button"
-                  className="menu-acciones-item"
-                  onClick={() => {
-                    setMenuAbierto(false);
-                    onToggleHistorial();
-                  }}
-                >
-                  {mostrandoHistorial ? "Ocultar historial" : "Ver historial"}
                 </button>
               </div>
             ) : null}
