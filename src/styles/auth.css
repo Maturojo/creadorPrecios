@@ -23,11 +23,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 14px;
-  border: 1px solid rgba(212, 180, 131, 0.48);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.75);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  min-width: 0;
 }
 
 .session-actions {
