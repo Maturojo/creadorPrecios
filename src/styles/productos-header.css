@@ -344,11 +344,13 @@
   line-height: 0.96;
   letter-spacing: -0.04em;
   color: #241c14;
+  text-shadow: 0 6px 18px rgba(73, 51, 25, 0.16);
 }
 
 .productos-header p {
   color: #6e5d49;
   line-height: 1.5;
+  text-shadow: 0 4px 14px rgba(73, 51, 25, 0.12);
 }
 
 .acciones-header {
@@ -374,6 +376,12 @@
   background: transparent;
   box-shadow: none;
   filter: drop-shadow(0 12px 24px rgba(73, 51, 25, 0.09));
+}
+
+.acciones-header-group--secondary {
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-wrap: nowrap;
 }
 
 .btn-outline,
@@ -424,6 +432,12 @@
 
 .print-config {
   min-width: 155px;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.print-config span {
+  text-shadow: 0 4px 12px rgba(73, 51, 25, 0.12);
 }
 
 .menu-acciones-dropdown {
