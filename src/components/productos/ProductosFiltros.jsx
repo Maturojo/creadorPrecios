@@ -88,19 +88,28 @@ export default function ProductosFiltros({
   return (
     <div className="productos-filtros">
       <div className="productos-busqueda-wrap">
-        <input
-          type="text"
-          placeholder="Buscar por nombre, codigo o por voz..."
-          value={busqueda}
-          onChange={(event) => onBusquedaChange(event.target.value)}
-        />
+        <div className="productos-busqueda-input-wrap">
+          <input
+            type="text"
+            placeholder="Buscar por nombre o codigo..."
+            value={busqueda}
+            onChange={(event) => onBusquedaChange(event.target.value)}
+          />
+        </div>
 
         <button
           type="button"
           className={`busqueda-voz-btn${escuchandoVoz ? " busqueda-voz-btn--active" : ""}`}
           onClick={toggleBusquedaPorVoz}
+          disabled={!SpeechRecognitionApi}
           aria-label={escuchandoVoz ? "Detener busqueda por voz" : "Buscar por voz"}
-          title={escuchandoVoz ? "Detener busqueda por voz" : "Buscar por voz"}
+          title={
+            !SpeechRecognitionApi
+              ? "La busqueda por voz no esta disponible en este navegador"
+              : escuchandoVoz
+                ? "Detener busqueda por voz"
+                : "Buscar por voz"
+          }
         >
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path
@@ -112,6 +121,7 @@ export default function ProductosFiltros({
               strokeLinejoin="round"
             />
           </svg>
+          <span>{escuchandoVoz ? "Escuchando" : "Voz"}</span>
         </button>
       </div>
 
