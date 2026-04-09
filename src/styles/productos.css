@@ -725,6 +725,11 @@
 
 .productos-busqueda-input-wrap {
   min-width: 0;
+  width: 100%;
+}
+
+.productos-busqueda-input-wrap input {
+  width: 100%;
 }
 
 .busqueda-voz-btn {
