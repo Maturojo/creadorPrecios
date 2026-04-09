@@ -114,7 +114,7 @@ export default function Productos() {
         q: busqueda,
       });
 
-      setProductos(data);
+      setProductos(Array.isArray(data?.items) ? data.items : []);
     } catch (err) {
       console.error(err);
       setError("No se pudieron cargar los productos");
@@ -134,6 +134,16 @@ export default function Productos() {
     }
   }
 
+  async function refrescarVista() {
+    try {
+      await Promise.all([cargarFiltros(), cargarProductos(), cargarHistorial()]);
+      toast.success("Productos actualizados.");
+    } catch (err) {
+      console.error(err);
+      toast.error("No se pudo actualizar la vista de productos.");
+    }
+  }
+
   useEffect(() => {
     cargarFiltros().catch((err) => {
       console.error(err);
@@ -145,6 +155,50 @@ export default function Productos() {
 
   useEffect(() => {
     cargarProductos();
+  }, [categoriaSeleccionada, subcategoriaSeleccionada, busqueda]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function refrescarSilencioso() {
+      try {
+        const [filtros, productosData] = await Promise.all([
+          obtenerFiltrosProductos(),
+          obtenerProductos({
+            categoria: categoriaSeleccionada,
+            subcategoria: subcategoriaSeleccionada,
+            q: busqueda,
+          }),
+        ]);
+
+        if (cancelled) return;
+
+        setCategorias(filtros.categorias || []);
+        setSubcategoriasPorCategoria(filtros.subcategorias || {});
+        setProductos(Array.isArray(productosData?.items) ? productosData.items : []);
+      } catch {
+        // Evitamos ruido visual en refrescos automaticos.
+      }
+    }
+
+    function onFocus() {
+      refrescarSilencioso();
+    }
+
+    function onVisibilityChange() {
+      if (!document.hidden) refrescarSilencioso();
+    }
+
+    const intervalId = window.setInterval(refrescarSilencioso, 15000);
+    window.addEventListener("focus", onFocus);
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
+    return () => {
+      cancelled = true;
+      window.clearInterval(intervalId);
+      window.removeEventListener("focus", onFocus);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
   }, [categoriaSeleccionada, subcategoriaSeleccionada, busqueda]);
 
   useEffect(() => {
@@ -626,6 +680,10 @@ export default function Productos() {
             onClick={abrirEliminarClasificacion}
           >
             Eliminar categoría / subcategoría
+          </button>
+
+          <button className="btn-secundario" onClick={refrescarVista}>
+            Actualizar
           </button>
 
           <button

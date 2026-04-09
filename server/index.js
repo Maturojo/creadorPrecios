@@ -10,7 +10,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CORS_ORIGIN || "http://localhost:5173",
     credentials: true,
   })
 );
@@ -24,7 +24,7 @@ app.get("/api/health", (req, res) => {
 
 app.use("/api/productos", productosRouter);
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4001;
 const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI;
 
 if (!mongoUri) {

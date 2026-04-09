@@ -1,4 +1,28 @@
-const API_URL = "http://localhost:4000/api/productos";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+const API_URL = `${API_BASE_URL}/api/productos`;
+const AUTH_KEY = "sm_auth";
+
+function getToken() {
+  try {
+    const auth = JSON.parse(localStorage.getItem(AUTH_KEY));
+    return auth?.token || null;
+  } catch {
+    return null;
+  }
+}
+
+function authHeaders() {
+  const token = getToken();
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
+async function parseResponse(response, fallbackMessage) {
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(data?.message || data?.error || fallbackMessage);
+  }
+  return data;
+}
 
 export async function obtenerProductos(params = {}) {
   const query = new URLSearchParams();
@@ -7,23 +31,25 @@ export async function obtenerProductos(params = {}) {
   if (params.subcategoria) query.set("subcategoria", params.subcategoria);
   if (params.q) query.set("q", params.q);
 
-  const response = await fetch(`${API_URL}?${query.toString()}`);
+  const response = await fetch(`${API_URL}?${query.toString()}`, {
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(),
+    },
+  });
 
-  if (!response.ok) {
-    throw new Error("No se pudieron obtener los productos");
-  }
-
-  return response.json();
+  return parseResponse(response, "No se pudieron obtener los productos");
 }
 
 export async function obtenerFiltrosProductos() {
-  const response = await fetch(`${API_URL}/filtros`);
+  const response = await fetch(`${API_URL}/filtros`, {
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(),
+    },
+  });
 
-  if (!response.ok) {
-    throw new Error("No se pudieron obtener los filtros");
-  }
-
-  return response.json();
+  return parseResponse(response, "No se pudieron obtener los filtros");
 }
 
 export async function crearCategoriaOSubcategoria(data) {
@@ -31,15 +57,12 @@ export async function crearCategoriaOSubcategoria(data) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      ...authHeaders(),
     },
     body: JSON.stringify(data),
   });
 
-  if (!response.ok) {
-    throw new Error("No se pudo crear la categoría o subcategoría");
-  }
-
-  return response.json();
+  return parseResponse(response, "No se pudo crear la categoria o subcategoria");
 }
 
 export async function actualizarClasificacionProducto(id, data) {
@@ -47,15 +70,12 @@ export async function actualizarClasificacionProducto(id, data) {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
+      ...authHeaders(),
     },
     body: JSON.stringify(data),
   });
 
-  if (!response.ok) {
-    throw new Error("No se pudo actualizar la clasificación");
-  }
-
-  return response.json();
+  return parseResponse(response, "No se pudo actualizar la clasificacion");
 }
 
 export async function actualizarClasificacionMultiple(ids, data) {
@@ -63,6 +83,7 @@ export async function actualizarClasificacionMultiple(ids, data) {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
+      ...authHeaders(),
     },
     body: JSON.stringify({
       ids,
@@ -70,21 +91,18 @@ export async function actualizarClasificacionMultiple(ids, data) {
     }),
   });
 
-  if (!response.ok) {
-    throw new Error("No se pudo actualizar la clasificación múltiple");
-  }
-
-  return response.json();
+  return parseResponse(response, "No se pudo actualizar la clasificacion multiple");
 }
 
 export async function obtenerHistorialProductos() {
-  const response = await fetch(`${API_URL}/historial`);
+  const response = await fetch(`${API_URL}/historial`, {
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(),
+    },
+  });
 
-  if (!response.ok) {
-    throw new Error("No se pudo obtener el historial");
-  }
-
-  return response.json();
+  return parseResponse(response, "No se pudo obtener el historial");
 }
 
 export async function guardarAccionHistorial(data) {
@@ -92,42 +110,34 @@ export async function guardarAccionHistorial(data) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      ...authHeaders(),
     },
     body: JSON.stringify(data),
   });
 
-  if (!response.ok) {
-    throw new Error("No se pudo guardar la acción en el historial");
-  }
-
-  return response.json();
+  return parseResponse(response, "No se pudo guardar la accion en el historial");
 }
 
 export async function limpiarHistorialProductos() {
   const response = await fetch(`${API_URL}/historial`, {
     method: "DELETE",
+    headers: {
+      ...authHeaders(),
+    },
   });
 
-  if (!response.ok) {
-    throw new Error("No se pudo limpiar el historial");
-  }
-
-  return response.json();
+  return parseResponse(response, "No se pudo limpiar el historial");
 }
 
 export async function eliminarCategoria(nombre) {
-  const response = await fetch(
-    `${API_URL}/categorias/${encodeURIComponent(nombre)}`,
-    {
-      method: "DELETE",
-    }
-  );
+  const response = await fetch(`${API_URL}/categorias/${encodeURIComponent(nombre)}`, {
+    method: "DELETE",
+    headers: {
+      ...authHeaders(),
+    },
+  });
 
-  if (!response.ok) {
-    throw new Error("No se pudo eliminar la categoría");
-  }
-
-  return response.json();
+  return parseResponse(response, "No se pudo eliminar la categoria");
 }
 
 export async function eliminarSubcategoria(categoria, subcategoria) {
@@ -135,13 +145,10 @@ export async function eliminarSubcategoria(categoria, subcategoria) {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      ...authHeaders(),
     },
     body: JSON.stringify({ categoria, subcategoria }),
   });
 
-  if (!response.ok) {
-    throw new Error("No se pudo eliminar la subcategoría");
-  }
-
-  return response.json();
+  return parseResponse(response, "No se pudo eliminar la subcategoria");
 }
