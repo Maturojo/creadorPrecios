@@ -192,6 +192,79 @@ function getRowValueByMatchers(row = {}, matchers = []) {
   return entry ? entry[1] : "";
 }
 
+function isCodeHeader(header = "") {
+  return (
+    header.includes("sku") ||
+    header.includes("codigo") ||
+    header === "cod" ||
+    header === "cod." ||
+    header.includes("barcode") ||
+    header.includes("ean") ||
+    header.includes("isbn") ||
+    header.includes("gtin") ||
+    header.includes("upc")
+  );
+}
+
+function isTextHeader(header = "") {
+  return (
+    header.includes("nombre") ||
+    header.includes("producto") ||
+    header.includes("descripcion") ||
+    header.includes("detalle") ||
+    header.includes("categoria") ||
+    header.includes("subcategoria") ||
+    header.includes("sub categoria") ||
+    header.includes("rubro") ||
+    header.includes("familia")
+  );
+}
+
+function getBestPriceValue(rawRow = {}) {
+  const entries = Object.entries(rawRow || {});
+
+  const prioritized = entries.find(([key, value]) => {
+    const header = normalizeHeader(key);
+    const parsed = parsePrice(value);
+
+    if (parsed === null) return false;
+
+    return (
+      header.includes("precio") ||
+      header.includes("price") ||
+      header.includes("importe") ||
+      header.includes("valor") ||
+      header.includes("monto") ||
+      header.includes("venta") ||
+      header.includes("lista") ||
+      header.includes("final") ||
+      header.includes("normal") ||
+      header.includes("publico") ||
+      header.includes("pvp")
+    );
+  });
+
+  if (prioritized) {
+    return prioritized[1];
+  }
+
+  const fallbackCandidates = entries.filter(([key, value]) => {
+    const header = normalizeHeader(key);
+
+    if (isCodeHeader(header) || isTextHeader(header)) {
+      return false;
+    }
+
+    return parsePrice(value) !== null;
+  });
+
+  if (fallbackCandidates.length === 1) {
+    return fallbackCandidates[0][1];
+  }
+
+  return "";
+}
+
 function extractImportRow(rawRow = {}) {
   const codigo = normalizeCode(
     getRowValueByMatchers(rawRow, [
@@ -203,16 +276,7 @@ function extractImportRow(rawRow = {}) {
     ])
   );
 
-  const precio = parsePrice(
-    getRowValueByMatchers(rawRow, [
-      "precio normal",
-      "precio",
-      "price",
-      "importe",
-      "valor",
-      "monto",
-    ])
-  );
+  const precio = parsePrice(getBestPriceValue(rawRow));
 
   const nombre = cleanValue(
     getRowValueByMatchers(rawRow, ["nombre", "producto", "descripcion", "detalle"])
