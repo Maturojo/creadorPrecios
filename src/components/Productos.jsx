@@ -326,6 +326,8 @@ export default function Productos() {
       }
 
       const resultado = await importarPreciosProductos(filas);
+      const totalCambios =
+        (resultado.actualizados || 0) + (resultado.creados || 0);
 
       await Promise.all([cargarProductos(), cargarFiltros(), cargarHistorial()]);
 
@@ -337,11 +339,42 @@ export default function Productos() {
         subcategoria: "",
       });
 
-      toast.success(
-        `Importacion lista: ${resultado.actualizados} actualizados, ${resultado.creados} nuevos, ${resultado.sinPrecio} sin precio y ${resultado.sinCodigo} sin codigo.`
-      );
+      await Swal.fire({
+        title:
+          totalCambios > 0
+            ? "Importacion completada"
+            : "Importacion sin cambios",
+        html: `
+          <div style="text-align:left">
+            <p><strong>Archivo:</strong> ${archivo.name}</p>
+            <p><strong>Filas procesadas:</strong> ${resultado.filasProcesadas || filas.length}</p>
+            <p><strong>Precios actualizados:</strong> ${resultado.actualizados || 0}</p>
+            <p><strong>Productos nuevos:</strong> ${resultado.creados || 0}</p>
+            <p><strong>Filas sin precio:</strong> ${resultado.sinPrecio || 0}</p>
+            <p><strong>Filas sin codigo:</strong> ${resultado.sinCodigo || 0}</p>
+          </div>
+        `,
+        icon: totalCambios > 0 ? "success" : "info",
+        confirmButtonText: "Aceptar",
+      });
+
+      if (totalCambios > 0) {
+        toast.success(
+          `Importacion lista: ${resultado.actualizados} actualizados y ${resultado.creados} nuevos.`
+        );
+      } else {
+        toast.info(
+          "La importacion termino, pero no se actualizaron ni crearon productos."
+        );
+      }
     } catch (err) {
       console.error(err);
+      await Swal.fire({
+        title: "No se pudo importar",
+        text: "Revisa que el Excel tenga columnas de codigo y precio validas.",
+        icon: "error",
+        confirmButtonText: "Aceptar",
+      });
       toast.error("No se pudieron importar los precios desde el Excel.");
     }
   }
