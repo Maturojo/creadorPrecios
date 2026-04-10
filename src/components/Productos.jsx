@@ -1,5 +1,6 @@
 ﻿import { useCallback, useEffect, useMemo, useState } from "react";
 import * as XLSX from "xlsx";
+import { useRef } from "react";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import {
@@ -37,9 +38,8 @@ const PRODUCTOS_POR_PAGINA = 24;
 const UMBRAL_CONFIRMACION_MASIVA = 20;
 const SIN_CLASIFICAR = "Sin clasificar";
 const SIN_SUBCATEGORIA = "Sin subcategoría";
-const IMPORTAR_PRECIOS_INPUT_ID = "importar-precios-input";
-
 export default function Productos() {
+  const importarPreciosInputRef = useRef(null);
   const [productos, setProductos] = useState([]);
   const [categorias, setCategorias] = useState([]);
   const [subcategoriasPorCategoria, setSubcategoriasPorCategoria] = useState({});
@@ -291,7 +291,20 @@ export default function Productos() {
   }
 
   function abrirSelectorImportacionPrecios() {
-    document.getElementById(IMPORTAR_PRECIOS_INPUT_ID)?.click();
+    const input = importarPreciosInputRef.current;
+
+    if (!input) return;
+
+    try {
+      if (typeof input.showPicker === "function") {
+        input.showPicker();
+        return;
+      }
+    } catch (error) {
+      console.warn("No se pudo abrir showPicker, se usa click()", error);
+    }
+
+    input.click();
   }
 
   async function handleArchivoPreciosChange(event) {
@@ -305,12 +318,15 @@ export default function Productos() {
       return;
     }
 
+    const loadingToastId = toast.loading(`Procesando ${archivo.name}...`);
+
     try {
       const buffer = await archivo.arrayBuffer();
       const workbook = XLSX.read(buffer, { type: "array" });
       const primeraHoja = workbook.SheetNames[0];
 
       if (!primeraHoja) {
+        toast.dismiss(loadingToastId);
         toast.warn("El archivo no tiene hojas para importar.");
         return;
       }
@@ -321,6 +337,7 @@ export default function Productos() {
       });
 
       if (!filas.length) {
+        toast.dismiss(loadingToastId);
         toast.warn("La hoja seleccionada no tiene filas con datos.");
         return;
       }
@@ -359,23 +376,36 @@ export default function Productos() {
       });
 
       if (totalCambios > 0) {
-        toast.success(
-          `Importacion lista: ${resultado.actualizados} actualizados y ${resultado.creados} nuevos.`
-        );
+        toast.update(loadingToastId, {
+          render: `Importacion lista: ${resultado.actualizados} actualizados y ${resultado.creados} nuevos.`,
+          type: "success",
+          isLoading: false,
+          autoClose: 5000,
+        });
       } else {
-        toast.info(
-          "La importacion termino, pero no se actualizaron ni crearon productos."
-        );
+        toast.update(loadingToastId, {
+          render: "La importacion termino, pero no se actualizaron ni crearon productos.",
+          type: "info",
+          isLoading: false,
+          autoClose: 5000,
+        });
       }
     } catch (err) {
       console.error(err);
+      toast.update(loadingToastId, {
+        render: "No se pudieron importar los precios desde el Excel.",
+        type: "error",
+        isLoading: false,
+        autoClose: 5000,
+      });
       await Swal.fire({
         title: "No se pudo importar",
-        text: "Revisa que el Excel tenga columnas de codigo y precio validas.",
+        text:
+          err?.message ||
+          "Revisa que el Excel tenga columnas de codigo y precio validas.",
         icon: "error",
         confirmButtonText: "Aceptar",
       });
-      toast.error("No se pudieron importar los precios desde el Excel.");
     }
   }
 
@@ -958,11 +988,24 @@ export default function Productos() {
   return (
     <section className="productos-page">
       <input
-        id={IMPORTAR_PRECIOS_INPUT_ID}
+        ref={importarPreciosInputRef}
         type="file"
         accept=".xls,.xlsx,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        onClick={(event) => {
+          event.currentTarget.value = "";
+        }}
         onChange={handleArchivoPreciosChange}
-        hidden
+        style={{
+          position: "absolute",
+          width: "1px",
+          height: "1px",
+          padding: 0,
+          margin: "-1px",
+          overflow: "hidden",
+          clip: "rect(0, 0, 0, 0)",
+          whiteSpace: "nowrap",
+          border: 0,
+        }}
       />
 
       <ProductosHeader
