@@ -356,6 +356,8 @@ export default function Productos() {
         subcategoria: "",
       });
 
+      toast.dismiss(loadingToastId);
+
       await Swal.fire({
         title:
           totalCambios > 0
@@ -376,28 +378,17 @@ export default function Productos() {
       });
 
       if (totalCambios > 0) {
-        toast.update(loadingToastId, {
-          render: `Importacion lista: ${resultado.actualizados} actualizados y ${resultado.creados} nuevos.`,
-          type: "success",
-          isLoading: false,
-          autoClose: 5000,
-        });
+        toast.success(
+          `Importacion lista: ${resultado.actualizados} actualizados y ${resultado.creados} nuevos.`
+        );
       } else {
-        toast.update(loadingToastId, {
-          render: "La importacion termino, pero no se actualizaron ni crearon productos.",
-          type: "info",
-          isLoading: false,
-          autoClose: 5000,
-        });
+        toast.info(
+          "La importacion termino, pero no se actualizaron ni crearon productos."
+        );
       }
     } catch (err) {
       console.error(err);
-      toast.update(loadingToastId, {
-        render: "No se pudieron importar los precios desde el Excel.",
-        type: "error",
-        isLoading: false,
-        autoClose: 5000,
-      });
+      toast.dismiss(loadingToastId);
       await Swal.fire({
         title: "No se pudo importar",
         text:
@@ -406,6 +397,7 @@ export default function Productos() {
         icon: "error",
         confirmButtonText: "Aceptar",
       });
+      toast.error("No se pudieron importar los precios desde el Excel.");
     }
   }
 
