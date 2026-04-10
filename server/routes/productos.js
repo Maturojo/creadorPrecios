@@ -195,6 +195,8 @@ function getRowValueByMatchers(row = {}, matchers = []) {
 function isCodeHeader(header = "") {
   return (
     header.includes("sku") ||
+    header.includes("barra") ||
+    header.includes("barras") ||
     header.includes("codigo") ||
     header === "cod" ||
     header === "cod." ||
@@ -269,6 +271,8 @@ function extractImportRow(rawRow = {}) {
   const codigo = normalizeCode(
     getRowValueByMatchers(rawRow, [
       "sku",
+      "barra",
+      "barras",
       "codigo",
       "cod",
       "code",
