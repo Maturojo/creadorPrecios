@@ -1,4 +1,5 @@
 ﻿import { useCallback, useEffect, useMemo, useState } from "react";
+import * as XLSX from "xlsx";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import {
@@ -12,6 +13,7 @@ import {
   eliminarCategoria,
   eliminarSubcategoria,
   guardarAccionHistorial,
+  importarPreciosProductos,
   limpiarHistorialProductos,
   obtenerFiltrosProductos,
   obtenerHistorialProductos,
@@ -35,6 +37,7 @@ const PRODUCTOS_POR_PAGINA = 24;
 const UMBRAL_CONFIRMACION_MASIVA = 20;
 const SIN_CLASIFICAR = "Sin clasificar";
 const SIN_SUBCATEGORIA = "Sin subcategoría";
+const IMPORTAR_PRECIOS_INPUT_ID = "importar-precios-input";
 
 export default function Productos() {
   const [productos, setProductos] = useState([]);
@@ -285,6 +288,62 @@ export default function Productos() {
 
   function normalizarTexto(texto) {
     return texto.trim().replace(/\s+/g, " ");
+  }
+
+  function abrirSelectorImportacionPrecios() {
+    document.getElementById(IMPORTAR_PRECIOS_INPUT_ID)?.click();
+  }
+
+  async function handleArchivoPreciosChange(event) {
+    const archivo = event.target.files?.[0];
+    event.target.value = "";
+
+    if (!archivo) return;
+
+    if (!/\.(xls|xlsx)$/i.test(archivo.name)) {
+      toast.warn("Selecciona un archivo Excel .xls o .xlsx.");
+      return;
+    }
+
+    try {
+      const buffer = await archivo.arrayBuffer();
+      const workbook = XLSX.read(buffer, { type: "array" });
+      const primeraHoja = workbook.SheetNames[0];
+
+      if (!primeraHoja) {
+        toast.warn("El archivo no tiene hojas para importar.");
+        return;
+      }
+
+      const filas = XLSX.utils.sheet_to_json(workbook.Sheets[primeraHoja], {
+        defval: "",
+        raw: false,
+      });
+
+      if (!filas.length) {
+        toast.warn("La hoja seleccionada no tiene filas con datos.");
+        return;
+      }
+
+      const resultado = await importarPreciosProductos(filas);
+
+      await Promise.all([cargarProductos(), cargarFiltros(), cargarHistorial()]);
+
+      await guardarEnHistorial({
+        tipo: "importar-precios",
+        descripcion: `Se importaron precios desde ${archivo.name}: ${resultado.actualizados} actualizados y ${resultado.creados} nuevos`,
+        cantidad: (resultado.actualizados || 0) + (resultado.creados || 0),
+        categoria: "",
+        subcategoria: "",
+      });
+
+      toast.success(
+        `Importacion lista: ${resultado.actualizados} actualizados, ${resultado.creados} nuevos, ${resultado.sinPrecio} sin precio y ${resultado.sinCodigo} sin codigo.`
+      );
+    } catch (err) {
+      console.error(err);
+      toast.error("No se pudieron importar los precios desde el Excel.");
+    }
   }
 
   function handleCategoriaChange(event) {
@@ -865,6 +924,14 @@ export default function Productos() {
 
   return (
     <section className="productos-page">
+      <input
+        id={IMPORTAR_PRECIOS_INPUT_ID}
+        type="file"
+        accept=".xls,.xlsx,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        onChange={handleArchivoPreciosChange}
+        hidden
+      />
+
       <ProductosHeader
         productosCount={productosPaginados.length}
         totalFiltradosCount={productos.length}
@@ -881,6 +948,7 @@ export default function Productos() {
         onDeseleccionarTodos={deseleccionarTodos}
         onAbrirEditorMultiple={abrirEditorMultiple}
         onAbrirEditorCategorias={abrirEditorCategorias}
+        onImportarPrecios={abrirSelectorImportacionPrecios}
         onExportarProductos={handleExportarProductos}
         onToggleHistorial={() => setMostrandoHistorial((prev) => !prev)}
         onFormatoImpresionChange={setFormatoImpresion}

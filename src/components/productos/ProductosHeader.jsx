@@ -31,6 +31,7 @@ export default function ProductosHeader({
   onDeseleccionarTodos,
   onAbrirEditorMultiple,
   onAbrirEditorCategorias,
+  onImportarPrecios,
   onExportarProductos,
   onToggleHistorial,
   onFormatoImpresionChange,
@@ -233,6 +234,17 @@ export default function ProductosHeader({
                   }}
                 >
                   Editar categorias
+                </button>
+
+                <button
+                  type="button"
+                  className="menu-acciones-item"
+                  onClick={() => {
+                    setMenuAbierto(false);
+                    onImportarPrecios();
+                  }}
+                >
+                  Importar precios nuevos
                 </button>
               </div>
             ) : null}

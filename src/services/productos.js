@@ -164,3 +164,19 @@ export async function eliminarSubcategoria(categoria, subcategoria) {
 
   return response.json();
 }
+
+export async function importarPreciosProductos(filas) {
+  const response = await apiFetch(`${API_URL}/importar-precios`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ filas }),
+  });
+
+  if (!response.ok) {
+    throw new Error("No se pudieron importar los precios");
+  }
+
+  return response.json();
+}

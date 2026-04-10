@@ -141,6 +141,98 @@ function esSinSubcategoria(valor = "") {
   );
 }
 
+function cleanValue(value = "") {
+  return String(value ?? "").trim();
+}
+
+function normalizeCode(value = "") {
+  return cleanValue(value).toUpperCase();
+}
+
+function parsePrice(value) {
+  if (value === null || value === undefined || value === "") return null;
+
+  let text = String(value)
+    .trim()
+    .replace(/^"|"$/g, "")
+    .replace(/\$/g, "")
+    .replace(/\s/g, "");
+
+  if (!text) return null;
+
+  if (text.includes(".") && text.includes(",")) {
+    const number = Number(text.replace(/\./g, "").replace(",", "."));
+    return Number.isFinite(number) ? Math.floor(number) : null;
+  }
+
+  if (text.includes(",") && !text.includes(".")) {
+    const number = Number(text.replace(",", "."));
+    return Number.isFinite(number) ? Math.floor(number) : null;
+  }
+
+  const number = Number(text);
+  return Number.isFinite(number) ? Math.floor(number) : null;
+}
+
+function normalizeHeader(value = "") {
+  return cleanValue(value)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+function getRowValueByMatchers(row = {}, matchers = []) {
+  const entry = Object.entries(row).find(([key]) => {
+    const header = normalizeHeader(key);
+    return matchers.some((matcher) =>
+      typeof matcher === "function" ? matcher(header) : header.includes(matcher)
+    );
+  });
+
+  return entry ? entry[1] : "";
+}
+
+function extractImportRow(rawRow = {}) {
+  const codigo = normalizeCode(
+    getRowValueByMatchers(rawRow, [
+      "sku",
+      "codigo",
+      "cod",
+      "code",
+      (header) => header === "cod.",
+    ])
+  );
+
+  const precio = parsePrice(
+    getRowValueByMatchers(rawRow, [
+      "precio normal",
+      "precio",
+      "price",
+      "importe",
+      "valor",
+      "monto",
+    ])
+  );
+
+  const nombre = cleanValue(
+    getRowValueByMatchers(rawRow, ["nombre", "producto", "descripcion", "detalle"])
+  );
+  const categoria = cleanValue(
+    getRowValueByMatchers(rawRow, ["categoria", "rubro", "familia"])
+  );
+  const subcategoria = cleanValue(
+    getRowValueByMatchers(rawRow, ["subcategoria", "sub categoria", "sub-rubro"])
+  );
+
+  return {
+    codigo,
+    precio,
+    nombre,
+    categoria,
+    subcategoria,
+  };
+}
+
 // Obtener todos los productos
 router.get("/", async (req, res) => {
   try {
@@ -466,6 +558,77 @@ router.get("/sin-clasificar", async (req, res) => {
   } catch (error) {
     console.error("Error al obtener sin clasificar:", error);
     res.status(500).json({ error: "Error al obtener sin clasificar" });
+  }
+});
+
+router.post("/importar-precios", async (req, res) => {
+  try {
+    const filas = Array.isArray(req.body?.filas) ? req.body.filas : [];
+
+    if (!filas.length) {
+      return res.status(400).json({ error: "No se recibieron filas para importar" });
+    }
+
+    let actualizados = 0;
+    let creados = 0;
+    let sinCodigo = 0;
+    let sinPrecio = 0;
+
+    const categoriasDetectadas = new Set();
+
+    for (const fila of filas) {
+      const { codigo, precio, nombre, categoria, subcategoria } = extractImportRow(fila);
+
+      if (!codigo) {
+        sinCodigo += 1;
+        continue;
+      }
+
+      const productoExistente = await Producto.findOne({ codigo });
+
+      if (productoExistente) {
+        if (precio === null) {
+          sinPrecio += 1;
+          continue;
+        }
+
+        productoExistente.precio = precio;
+        await productoExistente.save();
+        actualizados += 1;
+        continue;
+      }
+
+      const nuevoProducto = await Producto.create({
+        codigo,
+        nombre: nombre || codigo,
+        precio: precio ?? 0,
+        categoria,
+        subcategoria,
+        activo: true,
+      });
+
+      if (nuevoProducto.categoria) {
+        categoriasDetectadas.add(nuevoProducto.categoria);
+      }
+
+      creados += 1;
+    }
+
+    if (categoriasDetectadas.size) {
+      await ensureCategoryDocumentsWithPalette(Array.from(categoriasDetectadas));
+    }
+
+    res.json({
+      ok: true,
+      actualizados,
+      creados,
+      sinCodigo,
+      sinPrecio,
+      filasProcesadas: filas.length,
+    });
+  } catch (error) {
+    console.error("Error al importar precios:", error);
+    res.status(500).json({ error: "Error al importar precios" });
   }
 });
 
