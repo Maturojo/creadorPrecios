@@ -293,6 +293,11 @@ body.formato-media-a4 {
   min-width: 0;
 }
 
+.cartel-individual-kicker {
+  justify-self: start;
+  text-align: left;
+}
+
 .cartel-individual-kicker,
 .cartel-individual-secuencia {
   font-size: 1.9mm;
