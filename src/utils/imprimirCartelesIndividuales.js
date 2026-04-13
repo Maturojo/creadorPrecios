@@ -248,12 +248,12 @@ export function imprimirCartelesIndividuales(productos, opciones) {
                       <section class="cartel cartel--individual" data-cartel="${index}" data-page-index="${paginaIndex}">
                         <div class="cartel-individual-stage">
                           <article class="cartel-individual-label">
-                              <p class="cartel-individual-banner oculto" data-top-text-display></p>
-
                               <div class="cartel-individual-topline">
                                 <span class="cartel-individual-kicker">Cod. ${escaparHtml(
                                   producto.codigo
                                 )}</span>
+                                <p class="cartel-individual-banner oculto" data-top-text-display></p>
+                                <span class="cartel-individual-topline-spacer" aria-hidden="true"></span>
                               </div>
 
                             <div class="cartel-individual-copy">
