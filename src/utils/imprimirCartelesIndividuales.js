@@ -126,6 +126,17 @@ export function imprimirCartelesIndividuales(productos, opciones) {
         <div class="print-controls no-print">
           <div class="print-controls-grid">
             <label class="cartel-editor-field">
+              <span>Texto superior</span>
+              <input
+                type="text"
+                value=""
+                maxlength="40"
+                placeholder="Ej: OFERTA!!"
+                data-top-text-input
+              />
+            </label>
+
+            <label class="cartel-editor-field">
               <span>Descuento para el cartel</span>
               <div class="print-input-with-suffix">
                 <input type="number" min="0" max="99" step="1" value="0" data-discount-input />
@@ -237,6 +248,8 @@ export function imprimirCartelesIndividuales(productos, opciones) {
                       <section class="cartel cartel--individual" data-cartel="${index}" data-page-index="${paginaIndex}">
                         <div class="cartel-individual-stage">
                           <article class="cartel-individual-label">
+                              <p class="cartel-individual-banner oculto" data-top-text-display></p>
+
                               <div class="cartel-individual-topline">
                                 <span class="cartel-individual-kicker">Cod. ${escaparHtml(
                                   producto.codigo
@@ -320,6 +333,7 @@ export function imprimirCartelesIndividuales(productos, opciones) {
               : "a4";
             const printButton = document.querySelector('[data-action="print"]');
             const closeButton = document.querySelector('[data-action="close"]');
+            const topTextInput = document.querySelector("[data-top-text-input]");
             const discountInput = document.querySelector("[data-discount-input]");
             const showOriginalToggle = document.querySelector("[data-show-original-toggle]");
             const titleSizeInputs = document.querySelectorAll("[data-title-size-input]");
@@ -420,6 +434,15 @@ export function imprimirCartelesIndividuales(productos, opciones) {
                 maximumFractionDigits: 2,
               }).format(Number(valor || 0));
 
+            const syncTopText = () => {
+              const texto = normalizarTexto(topTextInput?.value || "");
+
+              document.querySelectorAll("[data-top-text-display]").forEach((element) => {
+                element.textContent = texto;
+                element.classList.toggle("oculto", !texto);
+              });
+            };
+
             const getDiscountMultiplier = () => {
               const descuento = Number(discountInput?.value || 0);
               const descuentoNormalizado = Math.min(Math.max(descuento, 0), 99);
@@ -499,8 +522,10 @@ export function imprimirCartelesIndividuales(productos, opciones) {
             });
 
             titleSizeInputs.forEach((input) => syncCartel(input.dataset.cartelIndex));
+            topTextInput?.addEventListener("input", syncTopText);
             discountInput?.addEventListener("input", syncPrices);
             showOriginalToggle?.addEventListener("change", syncPrices);
+            syncTopText();
             syncPrices();
 
             printButton?.addEventListener("click", imprimirVentana);
