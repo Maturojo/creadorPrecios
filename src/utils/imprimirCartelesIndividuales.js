@@ -137,6 +137,21 @@ export function imprimirCartelesIndividuales(productos, opciones) {
             </label>
 
             <label class="cartel-editor-field">
+              <span>Tamaño texto superior</span>
+              <div class="print-input-with-suffix">
+                <input
+                  type="number"
+                  min="1"
+                  max="6"
+                  step="0.1"
+                  value="2"
+                  data-top-text-size-input
+                />
+                <strong>mm</strong>
+              </div>
+            </label>
+
+            <label class="cartel-editor-field">
               <span>Descuento para el cartel</span>
               <div class="print-input-with-suffix">
                 <input type="number" min="0" max="99" step="1" value="0" data-discount-input />
@@ -334,6 +349,7 @@ export function imprimirCartelesIndividuales(productos, opciones) {
             const printButton = document.querySelector('[data-action="print"]');
             const closeButton = document.querySelector('[data-action="close"]');
             const topTextInput = document.querySelector("[data-top-text-input]");
+            const topTextSizeInput = document.querySelector("[data-top-text-size-input]");
             const discountInput = document.querySelector("[data-discount-input]");
             const showOriginalToggle = document.querySelector("[data-show-original-toggle]");
             const titleSizeInputs = document.querySelectorAll("[data-title-size-input]");
@@ -436,9 +452,14 @@ export function imprimirCartelesIndividuales(productos, opciones) {
 
             const syncTopText = () => {
               const texto = normalizarTexto(topTextInput?.value || "");
+              const tamanioTexto = Math.min(
+                Math.max(Number(topTextSizeInput?.value || 2), 1),
+                6
+              );
 
               document.querySelectorAll("[data-top-text-display]").forEach((element) => {
                 element.textContent = texto;
+                element.style.fontSize = tamanioTexto + "mm";
                 element.classList.toggle("oculto", !texto);
               });
             };
@@ -523,6 +544,7 @@ export function imprimirCartelesIndividuales(productos, opciones) {
 
             titleSizeInputs.forEach((input) => syncCartel(input.dataset.cartelIndex));
             topTextInput?.addEventListener("input", syncTopText);
+            topTextSizeInput?.addEventListener("input", syncTopText);
             discountInput?.addEventListener("input", syncPrices);
             showOriginalToggle?.addEventListener("change", syncPrices);
             syncTopText();
