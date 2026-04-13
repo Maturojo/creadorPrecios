@@ -99,7 +99,7 @@ body.formato-media-a4 {
 
 .print-controls-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 220px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 220px) auto;
   gap: 14px;
   align-items: center;
 }
@@ -163,7 +163,7 @@ body.formato-media-a4 {
 
 .cartel-editor-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 150px) minmax(0, 180px) minmax(0, 170px) minmax(0, 1.1fr) minmax(0, 1fr) auto;
   gap: 12px;
   align-items: end;
 }

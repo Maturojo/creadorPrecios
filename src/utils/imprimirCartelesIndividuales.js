@@ -14,7 +14,7 @@ function escaparHtml(texto) {
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
+    .replace(/\"/g, "&quot;")
     .replace(/'/g, "&#039;");
 }
 
@@ -23,37 +23,7 @@ function esProductoVarilla(producto) {
   return categoria === "listoneria" || categoria === "molduras";
 }
 
-function obtenerTamanioTitulo(texto, formato) {
-  const largo = normalizarTexto(texto).length;
-
-  if (formato === "media-a4") {
-    if (largo > 44) return 7.4;
-    if (largo > 32) return 8.2;
-    if (largo > 24) return 9.2;
-    return 10.4;
-  }
-
-  if (largo > 44) return 12.2;
-  if (largo > 32) return 13.8;
-  if (largo > 24) return 15.2;
-  return 17.2;
-}
-
-function obtenerTamanioCategoria(texto, formato) {
-  const largo = normalizarTexto(texto).length;
-
-  if (formato === "media-a4") {
-    if (largo > 36) return 2.7;
-    if (largo > 24) return 3.1;
-    return 3.5;
-  }
-
-  if (largo > 36) return 4;
-  if (largo > 24) return 4.4;
-  return 4.8;
-}
-
-function obtenerTamanioTituloBase(formato) {
+function obtenerTamanioTituloBase() {
   return 7;
 }
 
@@ -120,37 +90,11 @@ export function imprimirCartelesIndividuales(productos, opciones) {
         </div>
 
         <div class="print-helper no-print">
-          Podes ajustar el tamaño del titulo y editar la linea secundaria de cada cartel. El nombre del producto se mantiene fijo.
+          Podes ajustar el tamano del titulo y definir por cartel si queres texto superior y/o linea secundaria. El nombre del producto se mantiene fijo.
         </div>
 
         <div class="print-controls no-print">
           <div class="print-controls-grid">
-            <label class="cartel-editor-field">
-              <span>Texto superior</span>
-              <input
-                type="text"
-                value=""
-                maxlength="40"
-                placeholder="Ej: OFERTA!!"
-                data-top-text-input
-              />
-            </label>
-
-            <label class="cartel-editor-field">
-              <span>Tamaño texto superior</span>
-              <div class="print-input-with-suffix">
-                <input
-                  type="number"
-                  min="1"
-                  max="6"
-                  step="0.1"
-                  value="2"
-                  data-top-text-size-input
-                />
-                <strong>mm</strong>
-              </div>
-            </label>
-
             <label class="cartel-editor-field">
               <span>Descuento para el cartel</span>
               <div class="print-input-with-suffix">
@@ -168,12 +112,12 @@ export function imprimirCartelesIndividuales(productos, opciones) {
 
         <section class="cartel-editor-list no-print">
         ${carteles
-          .map(({ producto, numeroCartel, totalCarteles }, index) => {
+          .map(({ producto }, index) => {
             const tituloInicial = normalizarTexto(
               producto.nombre || producto.descripcion,
               SIN_TITULO
             );
-            const tamanioTituloInicial = obtenerTamanioTituloBase(opciones.formato);
+            const tamanioTituloInicial = obtenerTamanioTituloBase();
             const categoriaInicial = [
               normalizarTexto(producto.categoria, ""),
               normalizarTexto(producto.subcategoria, SIN_SUBCATEGORIA) !==
@@ -188,7 +132,7 @@ export function imprimirCartelesIndividuales(productos, opciones) {
               <div class="cartel-editor">
                 <div class="cartel-editor-grid">
                   <label class="cartel-editor-field">
-                    <span>Tamaño del titulo</span>
+                    <span>Tamano del titulo</span>
                     <div class="print-input-with-suffix">
                       <input
                         type="number"
@@ -198,6 +142,36 @@ export function imprimirCartelesIndividuales(productos, opciones) {
                         value="${tamanioTituloInicial}"
                         data-title-size-input
                         data-default-value="${tamanioTituloInicial}"
+                        data-cartel-index="${index}"
+                      />
+                      <strong>mm</strong>
+                    </div>
+                  </label>
+
+                  <label class="cartel-editor-field">
+                    <span>Texto superior</span>
+                    <input
+                      type="text"
+                      value=""
+                      maxlength="40"
+                      placeholder="Opcional"
+                      data-top-text-input
+                      data-default-value=""
+                      data-cartel-index="${index}"
+                    />
+                  </label>
+
+                  <label class="cartel-editor-field">
+                    <span>Tamano texto superior</span>
+                    <div class="print-input-with-suffix">
+                      <input
+                        type="number"
+                        min="1"
+                        max="6"
+                        step="0.1"
+                        value="2"
+                        data-top-text-size-input
+                        data-default-value="2"
                         data-cartel-index="${index}"
                       />
                       <strong>mm</strong>
@@ -243,7 +217,7 @@ export function imprimirCartelesIndividuales(productos, opciones) {
             (pagina, paginaIndex) => `
               <section class="individual-page">
                 ${pagina
-                  .map(({ producto, numeroCartel, totalCarteles }) => {
+                  .map(({ producto, numeroCartel }) => {
                     const index = numeroCartel - 1;
                     const tituloInicial = normalizarTexto(
                       producto.nombre || producto.descripcion,
@@ -263,13 +237,13 @@ export function imprimirCartelesIndividuales(productos, opciones) {
                       <section class="cartel cartel--individual" data-cartel="${index}" data-page-index="${paginaIndex}">
                         <div class="cartel-individual-stage">
                           <article class="cartel-individual-label">
-                              <div class="cartel-individual-topline">
-                                <span class="cartel-individual-kicker">Cod. ${escaparHtml(
-                                  producto.codigo
-                                )}</span>
-                                <p class="cartel-individual-banner oculto" data-top-text-display></p>
-                                <span class="cartel-individual-topline-spacer" aria-hidden="true"></span>
-                              </div>
+                            <div class="cartel-individual-topline">
+                              <span class="cartel-individual-kicker">Cod. ${escaparHtml(
+                                producto.codigo
+                              )}</span>
+                              <p class="cartel-individual-banner oculto" data-top-text-display data-cartel-index="${index}"></p>
+                              <span class="cartel-individual-topline-spacer" aria-hidden="true"></span>
+                            </div>
 
                             <div class="cartel-individual-copy">
                               <h1 class="cartel-individual-title" data-title-display data-cartel-index="${index}">
@@ -348,10 +322,10 @@ export function imprimirCartelesIndividuales(productos, opciones) {
               : "a4";
             const printButton = document.querySelector('[data-action="print"]');
             const closeButton = document.querySelector('[data-action="close"]');
-            const topTextInput = document.querySelector("[data-top-text-input]");
-            const topTextSizeInput = document.querySelector("[data-top-text-size-input]");
             const discountInput = document.querySelector("[data-discount-input]");
             const showOriginalToggle = document.querySelector("[data-show-original-toggle]");
+            const topTextInputs = document.querySelectorAll("[data-top-text-input]");
+            const topTextSizeInputs = document.querySelectorAll("[data-top-text-size-input]");
             const titleSizeInputs = document.querySelectorAll("[data-title-size-input]");
             const categoryInputs = document.querySelectorAll("[data-category-input]");
             const resetButtons = document.querySelectorAll("[data-reset-button]");
@@ -403,7 +377,8 @@ export function imprimirCartelesIndividuales(productos, opciones) {
                 const gap = parseFloat(estilosCopy.rowGap || estilosCopy.gap || "0");
                 const paddingTop = parseFloat(estilosCopy.paddingTop || "0");
                 const paddingBottom = parseFloat(estilosCopy.paddingBottom || "0");
-                const categoriaVisible = categoryDisplay && !categoryDisplay.classList.contains("categoria-oculta");
+                const categoriaVisible =
+                  categoryDisplay && !categoryDisplay.classList.contains("categoria-oculta");
                 const alturaCategoria = categoriaVisible ? categoryDisplay.offsetHeight : 0;
                 const gapCategoria = categoriaVisible ? gap : 0;
 
@@ -443,26 +418,32 @@ export function imprimirCartelesIndividuales(productos, opciones) {
               ajustarTituloParaEntrar(titleDisplay, categoryDisplay, tamanioNormalizado);
             };
 
+            const syncTopText = (index) => {
+              const topTextInput = document.querySelector('[data-top-text-input][data-cartel-index="' + index + '"]');
+              const topTextSizeInput = document.querySelector('[data-top-text-size-input][data-cartel-index="' + index + '"]');
+              const topTextDisplay = document.querySelector('[data-top-text-display][data-cartel-index="' + index + '"]');
+
+              if (!topTextInput || !topTextSizeInput || !topTextDisplay) {
+                return;
+              }
+
+              const texto = normalizarTexto(topTextInput.value || "");
+              const tamanioTexto = Math.min(
+                Math.max(Number(topTextSizeInput.value || topTextSizeInput.dataset.defaultValue || 2), 1),
+                6
+              );
+
+              topTextDisplay.textContent = texto;
+              topTextDisplay.style.fontSize = tamanioTexto + "mm";
+              topTextDisplay.classList.toggle("oculto", !texto);
+            };
+
             const formatPrice = (valor) =>
               new Intl.NumberFormat("es-AR", {
                 style: "currency",
                 currency: "ARS",
                 maximumFractionDigits: 2,
               }).format(Number(valor || 0));
-
-            const syncTopText = () => {
-              const texto = normalizarTexto(topTextInput?.value || "");
-              const tamanioTexto = Math.min(
-                Math.max(Number(topTextSizeInput?.value || 2), 1),
-                6
-              );
-
-              document.querySelectorAll("[data-top-text-display]").forEach((element) => {
-                element.textContent = texto;
-                element.style.fontSize = tamanioTexto + "mm";
-                element.classList.toggle("oculto", !texto);
-              });
-            };
 
             const getDiscountMultiplier = () => {
               const descuento = Number(discountInput?.value || 0);
@@ -524,14 +505,32 @@ export function imprimirCartelesIndividuales(productos, opciones) {
               input.addEventListener("input", () => syncCartel(input.dataset.cartelIndex));
             });
 
+            topTextInputs.forEach((input) => {
+              input.addEventListener("input", () => syncTopText(input.dataset.cartelIndex));
+            });
+
+            topTextSizeInputs.forEach((input) => {
+              input.addEventListener("input", () => syncTopText(input.dataset.cartelIndex));
+            });
+
             resetButtons.forEach((button) => {
               button.addEventListener("click", () => {
                 const index = button.dataset.cartelIndex;
                 const titleSizeInput = document.querySelector('[data-title-size-input][data-cartel-index="' + index + '"]');
+                const topTextInput = document.querySelector('[data-top-text-input][data-cartel-index="' + index + '"]');
+                const topTextSizeInput = document.querySelector('[data-top-text-size-input][data-cartel-index="' + index + '"]');
                 const categoryInput = document.querySelector('[data-category-input][data-cartel-index="' + index + '"]');
 
                 if (titleSizeInput) {
                   titleSizeInput.value = titleSizeInput.dataset.defaultValue || "";
+                }
+
+                if (topTextInput) {
+                  topTextInput.value = topTextInput.dataset.defaultValue || "";
+                }
+
+                if (topTextSizeInput) {
+                  topTextSizeInput.value = topTextSizeInput.dataset.defaultValue || "";
                 }
 
                 if (categoryInput) {
@@ -539,15 +538,17 @@ export function imprimirCartelesIndividuales(productos, opciones) {
                 }
 
                 syncCartel(index);
+                syncTopText(index);
               });
             });
 
-            titleSizeInputs.forEach((input) => syncCartel(input.dataset.cartelIndex));
-            topTextInput?.addEventListener("input", syncTopText);
-            topTextSizeInput?.addEventListener("input", syncTopText);
+            titleSizeInputs.forEach((input) => {
+              syncCartel(input.dataset.cartelIndex);
+              syncTopText(input.dataset.cartelIndex);
+            });
+
             discountInput?.addEventListener("input", syncPrices);
             showOriginalToggle?.addEventListener("change", syncPrices);
-            syncTopText();
             syncPrices();
 
             printButton?.addEventListener("click", imprimirVentana);
@@ -585,3 +586,4 @@ export function imprimirCartelesIndividuales(productos, opciones) {
   ventana.document.close();
   ventana.focus();
 }
+
