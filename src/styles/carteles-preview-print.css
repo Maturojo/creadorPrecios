@@ -10,7 +10,9 @@ body {
   padding: 0;
   background: #fff;
   font-family: 'Montserrat', Arial, sans-serif;
-  color: #111;
+  color: #000;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 body.formato-a4 {
@@ -247,8 +249,8 @@ body.formato-media-a4 {
   height: 100%;
   min-height: 0;
   padding: 2.6mm 3.4mm 3mm;
-  border: 0.65mm solid #a6afba;
-  box-shadow: 0 0 0 0.45mm #dce2e8 inset;
+  border: 0.75mm solid #000;
+  box-shadow: 0 0 0 0.35mm #000 inset;
   background: #ffffff;
   display: grid;
   grid-template-rows: 4.2mm minmax(0, 1fr) auto 15.5mm;
@@ -271,7 +273,7 @@ body.formato-media-a4 {
   font-size: 1.9mm;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: #66707d;
+  color: #111;
   text-transform: uppercase;
 }
 
@@ -292,7 +294,7 @@ body.formato-media-a4 {
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 0.96;
-  color: #252d3a;
+  color: #000;
   text-wrap: balance;
   overflow-wrap: anywhere;
   text-transform: uppercase;
@@ -302,18 +304,18 @@ body.formato-media-a4 {
 .cartel-individual-category {
   margin: 0;
   font-size: 2.7mm;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0;
-  color: #5b6573;
+  color: #111;
   line-height: 1.08;
   max-width: 100%;
 }
 
 .cartel-individual-divider {
   width: 100%;
-  height: 0.45mm;
+  height: 0.55mm;
   margin: 0 0 0.4mm;
-  background: #d2d8df;
+  background: #000;
 }
 
 .cartel-individual-price-stack {
@@ -344,14 +346,14 @@ body.formato-media-a4 {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: #6a7380;
+  color: #111;
 }
 
 .cartel-individual-price-value {
   font-size: 9.8mm;
   line-height: 0.95;
   letter-spacing: -0.06em;
-  color: #171d29;
+  color: #000;
 }
 
 .cartel-individual-price-value--secondary {
@@ -367,8 +369,9 @@ body.formato-media-a4 {
   margin-top: 0.8mm;
   padding: 0.9mm 1.8mm 0.7mm;
   border-radius: 999px;
-  background: #f1eadf;
-  color: #6b5330;
+  background: #fff;
+  color: #000;
+  border: 0.35mm solid #000;
   font-size: 1.8mm;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -383,7 +386,11 @@ body.formato-media-a4 {
 }
 
 .precio-stack--individual .precio-anterior {
-  font-size: 1.7mm;
+  font-size: 2.55mm;
+  font-weight: 700;
+  color: #111;
+  text-decoration-thickness: 0.24mm;
+  text-decoration-color: #000;
 }
 
 .precio-stack--secondary {
@@ -589,8 +596,10 @@ body.formato-media-a4 .cartel--individual {
 
 .precio-anterior {
   font-size: 3.1mm;
-  color: #5f5f5f;
+  color: #111;
   text-decoration: line-through;
+  text-decoration-thickness: 0.24mm;
+  text-decoration-color: #000;
   line-height: 1;
 }
 
@@ -706,7 +715,7 @@ body.formato-media-a4 .cartel-individual-financing-note {
 }
 
 body.formato-media-a4 .precio-stack--individual .precio-anterior {
-  font-size: 1.3mm;
+  font-size: 2.05mm;
 }
 
 body.formato-media-a4 .individual-page {
