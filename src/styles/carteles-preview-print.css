@@ -386,10 +386,10 @@ body.formato-media-a4 {
 }
 
 .precio-stack--individual .precio-anterior {
-  font-size: 2.55mm;
+  font-size: 3.35mm;
   font-weight: 700;
   color: #111;
-  text-decoration-thickness: 0.24mm;
+  text-decoration-thickness: 0.28mm;
   text-decoration-color: #000;
 }
 
@@ -715,7 +715,7 @@ body.formato-media-a4 .cartel-individual-financing-note {
 }
 
 body.formato-media-a4 .precio-stack--individual .precio-anterior {
-  font-size: 2.05mm;
+  font-size: 2.65mm;
 }
 
 body.formato-media-a4 .individual-page {
