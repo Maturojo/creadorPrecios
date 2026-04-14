@@ -641,7 +641,7 @@ router.post("/importar-precios", async (req, res) => {
     let creados = 0;
     let sinCodigo = 0;
     let sinPrecio = 0;
-
+    const filasNormalizadas = [];
     const categoriasDetectadas = new Set();
 
     for (const fila of filas) {
@@ -651,35 +651,81 @@ router.post("/importar-precios", async (req, res) => {
         sinCodigo += 1;
         continue;
       }
+      filasNormalizadas.push({
+        codigo,
+        precio,
+        nombre,
+        categoria,
+        subcategoria,
+      });
+    }
 
-      const productoExistente = await Producto.findOne({ codigo });
+    if (!filasNormalizadas.length) {
+      return res.json({
+        ok: true,
+        actualizados,
+        creados,
+        sinCodigo,
+        sinPrecio,
+        filasProcesadas: filas.length,
+      });
+    }
 
-      if (productoExistente) {
-        if (precio === null) {
+    const filasPorCodigo = new Map();
+    for (const fila of filasNormalizadas) {
+      filasPorCodigo.set(fila.codigo, fila);
+    }
+
+    const codigos = Array.from(filasPorCodigo.keys());
+    const productosExistentes = await Producto.find(
+      { codigo: { $in: codigos } },
+      "codigo"
+    ).lean();
+    const codigosExistentes = new Set(
+      productosExistentes.map((producto) => normalizeCode(producto.codigo))
+    );
+
+    const operacionesActualizacion = [];
+    const nuevosProductos = [];
+
+    for (const fila of filasPorCodigo.values()) {
+      if (codigosExistentes.has(fila.codigo)) {
+        if (fila.precio === null) {
           sinPrecio += 1;
           continue;
         }
 
-        productoExistente.precio = precio;
-        await productoExistente.save();
+        operacionesActualizacion.push({
+          updateOne: {
+            filter: { codigo: fila.codigo },
+            update: { $set: { precio: fila.precio } },
+          },
+        });
         actualizados += 1;
         continue;
       }
 
-      const nuevoProducto = await Producto.create({
-        codigo,
-        nombre: nombre || codigo,
-        precio: precio ?? 0,
-        categoria,
-        subcategoria,
+      nuevosProductos.push({
+        codigo: fila.codigo,
+        nombre: fila.nombre || fila.codigo,
+        precio: fila.precio ?? 0,
+        categoria: fila.categoria,
+        subcategoria: fila.subcategoria,
         activo: true,
       });
 
-      if (nuevoProducto.categoria) {
-        categoriasDetectadas.add(nuevoProducto.categoria);
+      if (fila.categoria) {
+        categoriasDetectadas.add(fila.categoria);
       }
-
       creados += 1;
+    }
+
+    if (operacionesActualizacion.length) {
+      await Producto.bulkWrite(operacionesActualizacion, { ordered: false });
+    }
+
+    if (nuevosProductos.length) {
+      await Producto.insertMany(nuevosProductos, { ordered: false });
     }
 
     if (categoriasDetectadas.size) {
