@@ -34,7 +34,7 @@ import "../styles/productos-header.css";
 import "../styles/producto-card.css";
 
 const PRODUCTOS_POR_PAGINA = 24;
-const IMPORTACION_PRECIOS_CHUNK_SIZE = 250;
+const IMPORTACION_PRECIOS_CHUNK_SIZE = 1000;
 
 const UMBRAL_CONFIRMACION_MASIVA = 20;
 const SIN_CLASIFICAR = "Sin clasificar";
