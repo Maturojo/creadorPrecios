@@ -175,7 +175,21 @@ export async function importarPreciosProductos(filas) {
   });
 
   if (!response.ok) {
-    throw new Error("No se pudieron importar los precios");
+    let errorMessage = "No se pudieron importar los precios";
+
+    try {
+      const data = await response.json();
+      if (data?.error) {
+        errorMessage = data.error;
+      }
+    } catch {
+      if (response.status === 413) {
+        errorMessage =
+          "El archivo es demasiado grande para enviarlo en un solo bloque.";
+      }
+    }
+
+    throw new Error(errorMessage);
   }
 
   return response.json();

@@ -34,6 +34,7 @@ import "../styles/productos-header.css";
 import "../styles/producto-card.css";
 
 const PRODUCTOS_POR_PAGINA = 24;
+const IMPORTACION_PRECIOS_CHUNK_SIZE = 250;
 
 const UMBRAL_CONFIRMACION_MASIVA = 20;
 const SIN_CLASIFICAR = "Sin clasificar";
@@ -342,7 +343,36 @@ export default function Productos() {
         return;
       }
 
-      const resultado = await importarPreciosProductos(filas);
+      const totalLotes = Math.max(
+        1,
+        Math.ceil(filas.length / IMPORTACION_PRECIOS_CHUNK_SIZE)
+      );
+      const resultado = {
+        actualizados: 0,
+        creados: 0,
+        sinCodigo: 0,
+        sinPrecio: 0,
+        filasProcesadas: 0,
+      };
+
+      for (let indice = 0; indice < filas.length; indice += IMPORTACION_PRECIOS_CHUNK_SIZE) {
+        const numeroLote = Math.floor(indice / IMPORTACION_PRECIOS_CHUNK_SIZE) + 1;
+        const lote = filas.slice(indice, indice + IMPORTACION_PRECIOS_CHUNK_SIZE);
+
+        toast.update(loadingToastId, {
+          render: `Procesando ${archivo.name}... lote ${numeroLote}/${totalLotes}`,
+          isLoading: true,
+        });
+
+        const resultadoLote = await importarPreciosProductos(lote);
+
+        resultado.actualizados += resultadoLote.actualizados || 0;
+        resultado.creados += resultadoLote.creados || 0;
+        resultado.sinCodigo += resultadoLote.sinCodigo || 0;
+        resultado.sinPrecio += resultadoLote.sinPrecio || 0;
+        resultado.filasProcesadas += resultadoLote.filasProcesadas || lote.length;
+      }
+
       const totalCambios =
         (resultado.actualizados || 0) + (resultado.creados || 0);
 
