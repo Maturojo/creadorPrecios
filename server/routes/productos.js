@@ -194,6 +194,8 @@ function getRowValueByMatchers(row = {}, matchers = []) {
 
 function isCodeHeader(header = "") {
   return (
+    header === "art" ||
+    header.includes("articulo") ||
     header.includes("sku") ||
     header.includes("barra") ||
     header.includes("barras") ||
@@ -268,6 +270,13 @@ function getBestPriceValue(rawRow = {}) {
 }
 
 function extractImportRow(rawRow = {}) {
+  const art = normalizeCode(
+    getRowValueByMatchers(rawRow, [
+      (header) => header === "art",
+      "articulo",
+    ])
+  );
+
   const codigo = normalizeCode(
     getRowValueByMatchers(rawRow, [
       "sku",
@@ -293,6 +302,7 @@ function extractImportRow(rawRow = {}) {
   );
 
   return {
+    art,
     codigo,
     precio,
     nombre,
@@ -642,21 +652,21 @@ router.post("/importar-precios", async (req, res) => {
     let sinCodigo = 0;
     let sinPrecio = 0;
     const filasNormalizadas = [];
-    const categoriasDetectadas = new Set();
 
     for (const fila of filas) {
-      const { codigo, precio, nombre, categoria, subcategoria } = extractImportRow(fila);
+      const { art, codigo, precio, nombre } = extractImportRow(fila);
+      const codigoActual = art || codigo;
+      const codigoNuevo = codigo || art;
 
-      if (!codigo) {
+      if (!codigoActual || !codigoNuevo) {
         sinCodigo += 1;
         continue;
       }
       filasNormalizadas.push({
-        codigo,
+        codigoActual,
+        codigoNuevo,
         precio,
         nombre,
-        categoria,
-        subcategoria,
       });
     }
 
@@ -673,7 +683,7 @@ router.post("/importar-precios", async (req, res) => {
 
     const filasPorCodigo = new Map();
     for (const fila of filasNormalizadas) {
-      filasPorCodigo.set(fila.codigo, fila);
+      filasPorCodigo.set(fila.codigoActual, fila);
     }
 
     const codigos = Array.from(filasPorCodigo.keys());
@@ -689,16 +699,31 @@ router.post("/importar-precios", async (req, res) => {
     const nuevosProductos = [];
 
     for (const fila of filasPorCodigo.values()) {
-      if (codigosExistentes.has(fila.codigo)) {
+      if (codigosExistentes.has(fila.codigoActual)) {
+        const updateSet = {};
+
+        if (fila.codigoNuevo) {
+          updateSet.codigo = fila.codigoNuevo;
+        }
+
+        if (fila.nombre) {
+          updateSet.nombre = fila.nombre;
+        }
+
         if (fila.precio === null) {
           sinPrecio += 1;
+        } else {
+          updateSet.precio = fila.precio;
+        }
+
+        if (!Object.keys(updateSet).length) {
           continue;
         }
 
         operacionesActualizacion.push({
           updateOne: {
-            filter: { codigo: fila.codigo },
-            update: { $set: { precio: fila.precio } },
+            filter: { codigo: fila.codigoActual },
+            update: { $set: updateSet },
           },
         });
         actualizados += 1;
@@ -706,17 +731,13 @@ router.post("/importar-precios", async (req, res) => {
       }
 
       nuevosProductos.push({
-        codigo: fila.codigo,
-        nombre: fila.nombre || fila.codigo,
+        codigo: fila.codigoNuevo,
+        nombre: fila.nombre || fila.codigoNuevo,
         precio: fila.precio ?? 0,
-        categoria: fila.categoria,
-        subcategoria: fila.subcategoria,
+        categoria: "",
+        subcategoria: "",
         activo: true,
       });
-
-      if (fila.categoria) {
-        categoriasDetectadas.add(fila.categoria);
-      }
       creados += 1;
     }
 
@@ -726,10 +747,6 @@ router.post("/importar-precios", async (req, res) => {
 
     if (nuevosProductos.length) {
       await Producto.insertMany(nuevosProductos, { ordered: false });
-    }
-
-    if (categoriasDetectadas.size) {
-      await ensureCategoryDocumentsWithPalette(Array.from(categoriasDetectadas));
     }
 
     res.json({
