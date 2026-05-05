@@ -228,6 +228,13 @@ export function imprimirCarteles(productos, formato = "a4") {
 
   const gruposPaginados = gruposBase.flatMap((grupo) => {
     const itemsOrdenados = [...grupo.items].sort((a, b) => {
+      const precioA = Number(a.precio || 0);
+      const precioB = Number(b.precio || 0);
+
+      if (precioA !== precioB) {
+        return precioA - precioB;
+      }
+
       const nombreA = normalizarTexto(a.nombre || a.descripcion);
       const nombreB = normalizarTexto(b.nombre || b.descripcion);
       return nombreA.localeCompare(nombreB, "es", { sensitivity: "base" });
